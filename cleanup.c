@@ -5,12 +5,12 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: wpepping <wpepping@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/27 18:03:53 by wpepping          #+#    #+#             */
-/*   Updated: 2024/09/27 18:10:42 by wpepping         ###   ########.fr       */
+/*   Created: 2024/09/27 20:07:24 by wpepping          #+#    #+#             */
+/*   Updated: 2024/09/27 20:07:25 by wpepping         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <cub3d.c>
+#include "cub3d.h"
 
 void	cleanup(t_data *data)
 {

@@ -6,13 +6,23 @@
 /*   By: wpepping <wpepping@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/03 19:09:39 by wpepping          #+#    #+#             */
-/*   Updated: 2024/09/27 17:58:01 by wpepping         ###   ########.fr       */
+/*   Updated: 2024/09/27 20:26:50 by wpepping         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "cub3d.h"
 
-int	err_handl(int fd, void *p, char **map)
+void	free_map(char **map)
+{
+	int	i;
+
+	i = 0;
+	while (map[i])
+		free(map[i++]);
+	free(map);
+}
+
+static int	err_handl(int fd, void *p, char **map)
 {
 	if (fd != -1)
 		close (fd);
@@ -23,7 +33,7 @@ int	err_handl(int fd, void *p, char **map)
 	return (-1);
 }
 
-int	is_valid(char *line, int width)
+static int	is_valid(char *line, int width)
 {
 	int	len;
 
@@ -34,7 +44,7 @@ int	is_valid(char *line, int width)
 		{
 			if (*line != EMPTY && *line != WALL && *line != NORTH
 				&& *line != SOUTH && *line != EAST && *line != WEST)
-				return (0);
+				return (false);
 			len++;
 		}
 		line++;
@@ -44,7 +54,7 @@ int	is_valid(char *line, int width)
 	return (true);
 }
 
-int	get_map_dimensions(int fd, t_data *data)
+static int	get_map_dimensions(int fd, t_data *data)
 {
 	char	*line;
 

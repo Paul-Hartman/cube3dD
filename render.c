@@ -6,19 +6,28 @@
 /*   By: wpepping <wpepping@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/27 18:07:22 by wpepping          #+#    #+#             */
-/*   Updated: 2024/09/27 18:10:08 by wpepping         ###   ########.fr       */
+/*   Updated: 2024/09/27 20:18:49 by wpepping         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-void	set_pixel(t_data *data, int c[3], x, y)
+void	set_pixel(t_data *data, int c[3], int x, int y)
 {
 	int		color;
-	char	pixel;
+	char	*pixel;
 
 	color = (c[0] * 256 * 256 + c[1] * 256 + c[2]);
-	color = mlx_get_color_value(data->mlx, color);
+	color = mlx_get_color_value(data->mlx_ptr, color);
 	pixel = data->imgbuff + y * data->lsize + x * data->bpp / 8;
 	ft_memcpy(pixel, &color, 4);
 }
+
+void	move_player(t_data *data, int x, int y)
+{
+	(void)data;
+	(void)x;
+	(void)y;
+	return ;
+}
+
