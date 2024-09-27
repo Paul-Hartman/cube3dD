@@ -1,4 +1,4 @@
-#include "cube3d.h"
+#include "cub3d.h"
 
 t_vars	init(void)
 {
@@ -12,6 +12,8 @@ t_vars	init(void)
 	//malloc_protection(vars.win, MLX_WINDOW_ERROR);
 	return (vars);
 }
+
+
 
 int main(int argc, char const *argv[])
 {
