@@ -6,7 +6,7 @@
 /*   By: wpepping <wpepping@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/27 17:52:36 by wpepping          #+#    #+#             */
-/*   Updated: 2024/09/27 18:04:10 by wpepping         ###   ########.fr       */
+/*   Updated: 2024/09/27 18:26:05 by wpepping         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,12 +25,9 @@
 # include <X11/Xlib.h>
 # include <X11/keysym.h>
 
-typedef struct s_main {
-	char	*imgbuff,
-	int		lsize,
-	int		bpp,
-	int		endian
-} t_main
+#define FOV 60
+#define CAR_HEIGHT 32
+#define WALL_HEIGHT 64
 
 typedef enum e_mapchars
 {
@@ -44,6 +41,37 @@ typedef enum e_mapchars
 	PIPE
 }	t_mapchars;
 
-void	cleanup(t_data *data);
+typedef struct s_main {
+	char	*imgbuff,
+	int		lsize,
+	int		bpp,
+	int		endian
+} 				t_main
+
+typedef struct s_ray
+{
+	float x;
+	float y;
+	float dx;
+	float dy;
+
+}				t_ray;
+
+typedef struct s_player
+{
+	float x;
+	float y;
+	float angle;
+}				t_player;
+
+typedef struct s_vars
+{
+	void	*mlx;
+	void	*win;
+	int		screenwidth;
+	int		screenheight;
+}				t_vars;
+
+void			cleanup(t_data *data);
 
 #endif
