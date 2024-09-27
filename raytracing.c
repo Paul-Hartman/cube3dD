@@ -10,9 +10,3 @@ t_vars	init(char *file)
 	malloc_protection(vars.win, MLX_WINDOW_ERROR);
 	return (vars);
 }
-
-int main(int argc, char const *argv[])
-{
-
-	return 0;
-}
