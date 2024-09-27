@@ -12,7 +12,7 @@
 # include <X11/keysym.h>
 
 #define FOV 60
-#define CAR_HEIGHT 32
+#define CHAR_HEIGHT 32
 #define WALL_HEIGHT 64
 
 typedef struct s_ray
