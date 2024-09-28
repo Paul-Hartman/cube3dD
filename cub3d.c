@@ -6,7 +6,7 @@
 /*   By: wpepping <wpepping@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/27 20:07:30 by wpepping          #+#    #+#             */
-/*   Updated: 2024/09/27 20:27:44 by wpepping         ###   ########.fr       */
+/*   Updated: 2024/09/28 22:58:43 by wpepping         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ static int	init(t_data *data, char *map)
 	data->mlx_ptr = NULL;
 	data->win_ptr = NULL;
 	data->map = NULL;
-	if (read_map(data, map))
+	if (read_map(data, map) < 0)
 		return (err_handl("Map error", data));
 	data->mlx_ptr = mlx_init();
 	if (data->mlx_ptr == NULL)

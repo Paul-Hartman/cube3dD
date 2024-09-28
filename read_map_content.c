@@ -1,36 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   readmap.c                                          :+:      :+:    :+:   */
+/*   read_map_content.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: wpepping <wpepping@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/03 19:09:39 by wpepping          #+#    #+#             */
-/*   Updated: 2024/09/27 20:26:50 by wpepping         ###   ########.fr       */
+/*   Updated: 2024/09/28 22:45:27 by wpepping         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-void	free_map(char **map)
+static int	err_handl(void *p, char **map)
 {
-	int	i;
-
-	i = 0;
-	while (map[i])
-		free(map[i++]);
-	free(map);
-}
-
-static int	err_handl(int fd, void *p, char **map)
-{
-	if (fd != -1)
-		close (fd);
 	if (p != NULL)
 		free(p);
 	if (map)
 		free_map(map);
 	return (-1);
+}
+
+static char	*get_first_map_line(int fd)
+{
+	char	*line;
+
+	line = get_next_line(fd);
+	while (line && line[0] == '\n')
+		line = get_next_line(fd);
+	return (line);
 }
 
 static int	is_valid(char *line, int width)
@@ -54,11 +52,11 @@ static int	is_valid(char *line, int width)
 	return (true);
 }
 
-static int	get_map_dimensions(int fd, t_data *data)
+int	get_map_dimensions(t_data *data, int fd)
 {
 	char	*line;
 
-	line = get_next_line(fd);
+	line = get_first_map_line(fd);
 	if (!line)
 		return (-1);
 	data->map_width = ft_strlen(line);
@@ -68,7 +66,7 @@ static int	get_map_dimensions(int fd, t_data *data)
 	while (line)
 	{
 		if (!is_valid(line, data->map_width))
-			return (err_handl(-1, line, NULL));
+			return (err_handl(line, NULL));
 		data->map_height++;
 		free(line);
 		line = get_next_line(fd);
@@ -76,28 +74,24 @@ static int	get_map_dimensions(int fd, t_data *data)
 	return (0);
 }
 
-int	read_map(t_data *data, char *fname)
+int	read_map_content(t_data *data, int fd)
 {
-	int		fd;
 	int		i;
+	char	*line;
 
-	fd = open(fname, O_RDONLY);
-	if (fd == -1)
-		return (-1);
-	if (get_map_dimensions(fd, data) < 0)
-		return (err_handl(fd, NULL, NULL));
 	data->map = ft_calloc(data->map_height + 1, sizeof(char *));
-	close(fd);
-	fd = open(fname, O_RDONLY);
-	if (fd == -1)
+	if (!data->map)
 		return (-1);
-	i = -1;
-	while (++i < data->map_height)
+	line = get_first_map_line(fd);
+	i = 0;
+	while (i < data->map_height)
 	{
-		data->map[i] = get_next_line(fd);
-		data->map[i][data->map_width] = '\0';
-		if (!data->map[i])
-			return (err_handl(fd, NULL, data->map));
+		if (!line)
+			return (err_handl(NULL, data->map));
+		line[data->map_width] = '\0';
+		data->map[i] = line;
+		line = get_next_line(fd);
+		i++;
 	}
 	get_next_line(fd);
 	close(fd);
