@@ -6,7 +6,7 @@
 /*   By: wpepping <wpepping@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/28 22:28:35 by wpepping          #+#    #+#             */
-/*   Updated: 2024/09/28 23:01:37 by wpepping         ###   ########.fr       */
+/*   Updated: 2024/09/28 23:11:24 by wpepping         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,5 +39,12 @@ int	try_save(char **dest, char *src)
 	if (*dest)
 		return (-1);
 	*dest = ft_strdup(src);
+	return (0);
+}
+
+int	save_floor_ceiling(t_data *data, t_config *config)
+{
+	(void)data;
+	(void)config;
 	return (0);
 }
