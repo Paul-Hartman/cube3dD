@@ -1,14 +1,14 @@
 
-CC := cc
+CC := gcc
 
-CFLAGS := -Wall -Wextra -Werror
+CFLAGS := -Wall -Wextra -Werror -g
 
-SRCS := raytracing.c
+SRCS := raytracing.c events.c cleanup.c cub3d.c readmap.c render.c get_next_line/get_next_line.c get_next_line/get_next_line_utils.c
 
 ifeq ($(shell uname), Linux)
-	INCLUDES = -I/usr/include -Imlx  game.h
+	INCLUDES = -I/usr/include -Imlx  cub3d.h
 else
-	INCLUDES = -I/opt/X11/include -Imlx game.h
+	INCLUDES = -I/opt/X11/include -Imlx cub3d.h
 endif
 
 MLX_LIB = ./mlx/libmlx.a
@@ -22,7 +22,7 @@ endif
 
 OBJS := $(SRCS:.c=.o)
 
-NAME := so_long
+NAME := cub3D
 
 $(NAME): $(OBJS) $(LIBFT) $(MLX_LIB)
 	@$(CC) $(CFLAGS)  $(OBJS) $(LIBFT) $(MLX_PATH) $(MLX_FLAGS) -o $(NAME) -lm

@@ -26,9 +26,9 @@
 # include <X11/Xlib.h>
 # include <X11/keysym.h>
 
-# define FOV 60
+# define FOV 1.047198 //60 degrees in radians
 # define CHAR_HEIGHT 32
-# define WALL_HEIGHT 64
+# define CUBE_SIZE 64
 # define WINDOW_WIDTH 640
 # define WINDOW_HEIGHT 480
 
@@ -55,29 +55,36 @@ typedef struct s_data
 	int		endian;
 }				t_data;
 
+typedef struct s_coord
+{
+	double	x;
+	double	y;
+}				t_coord;
+
 typedef struct s_ray
 {
-	float	x;
-	float	y;
-	float	dx;
-	float	dy;
-
+	t_coord	pos;
+	double	dir;
 }				t_ray;
 
 typedef struct s_player
 {
-	float	x;
-	float	y;
-	float	angle;
+	t_coord	pos;
+	double	dir;
 }				t_player;
 
-typedef struct s_vars
-{
-	void	*mlx;
-	void	*win;
-	int		screenwidth;
-	int		screenheight;
-}				t_vars;
+
+
+// typedef struct s_vars
+// {
+// 	void	*mlx;
+// 	void	*win;
+// 	int		screenwidth;
+// 	int		screenheight;
+// }				t_vars;
+
+// raycasting
+void cast_rays(char **map, t_player p);
 
 // Read map
 int				read_map(t_data *data, char *fname);
