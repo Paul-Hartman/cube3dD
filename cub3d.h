@@ -6,7 +6,7 @@
 /*   By: wpepping <wpepping@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/27 17:52:36 by wpepping          #+#    #+#             */
-/*   Updated: 2024/09/27 20:28:05 by wpepping         ###   ########.fr       */
+/*   Updated: 2024/09/28 23:01:57 by wpepping         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@
 # include "mlx/mlx.h"
 # include <X11/Xlib.h>
 # include <X11/keysym.h>
+# include <linux/limits.h>
 
 # define FOV 1.047198 //60 degrees in radians
 # define CHAR_HEIGHT 32
@@ -55,6 +56,8 @@ typedef struct s_data
 	int		lsize;
 	int		bpp;
 	int		endian;
+	int		floor[3];
+	int		ceiling[3];
 }				t_data;
 
 typedef struct s_coord
@@ -62,6 +65,15 @@ typedef struct s_coord
 	double	x;
 	double	y;
 }				t_coord;
+typedef struct s_config
+{
+	char	*north;
+	char	*east;
+	char	*south;
+	char	*west;
+	char	*floor;
+	char	*ceiling;
+}				t_config;
 
 typedef struct s_ray
 {
@@ -90,8 +102,13 @@ void cast_rays(char **map, t_player p);
 
 // Read map
 int				read_map(t_data *data, char *fname);
+int				read_map_content(t_data *data, int fd);
+int				get_map_dimensions(t_data *data, int fd);
+int				read_to_eoln(int fd, char *value);
+int				try_save(char **dest, char *src);
 
 // Render
+int				load_textures(t_data *data, t_config *config);
 void			set_pixel(t_data *data, int c[3], int x, int y);
 void			move_player(t_data *data, int x, int y);
 
