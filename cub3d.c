@@ -75,8 +75,8 @@ int main(int argc, char **argv)
 	if (check_input(argc, argv) || init(&data, argv[1]))
 		return (1);
     t_player player;
-	player.pos.x = 128;
-	player.pos.y = 64;
+	player.pos.x = 3 * CUBE_SIZE;
+	player.pos.y = CUBE_SIZE+70;
 	player.dir = 0;
 	cast_rays(data.map, player);
 	return 0;

@@ -18,6 +18,7 @@
 # include <stdio.h>
 # include <math.h>
 # include <stdlib.h>
+# include <float.h>
 # include <stdbool.h>
 # include "ft_printf/ft_printf.h"
 # include "ft_printf/libft/libft.h"
@@ -31,6 +32,7 @@
 # define CUBE_SIZE 64
 # define WINDOW_WIDTH 640
 # define WINDOW_HEIGHT 480
+#define EPSILON 1e-6
 
 # define EMPTY 48
 # define WALL 49
