@@ -3,14 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   read_map_utils.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wpepping <wpepping@student.42berlin.de>    +#+  +:+       +#+        */
+/*   By: phartman <phartman@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/28 22:28:35 by wpepping          #+#    #+#             */
-/*   Updated: 2024/09/28 23:11:24 by wpepping         ###   ########.fr       */
+/*   Updated: 2024/09/30 14:17:52 by phartman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
+
+
 
 int	read_to_eoln(int fd, char *value)
 {

@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: wpepping <wpepping@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/27 17:52:36 by wpepping          #+#    #+#             */
-/*   Updated: 2024/09/30 14:42:14 by wpepping         ###   ########.fr       */
+/*   Created: 2024/09/30 14:46:55 by wpepping          #+#    #+#             */
+/*   Updated: 2024/09/30 14:46:56 by wpepping         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@
 # define WINDOW_WIDTH 640
 # define WINDOW_HEIGHT 480
 #define EPSILON 1e-6
+#define M_PI 3.14159265358979323846
 
 # define EMPTY 48
 # define WALL 49
