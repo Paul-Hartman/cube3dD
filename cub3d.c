@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: wpepping <wpepping@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/27 20:07:30 by wpepping          #+#    #+#             */
-/*   Updated: 2024/09/30 19:30:36 by wpepping         ###   ########.fr       */
+/*   Created: 2024/09/30 19:55:11 by wpepping          #+#    #+#             */
+/*   Updated: 2024/09/30 19:57:12 by wpepping         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,7 @@ int	main(int argc, char **argv)
 	if (find_player(&map, &player) < 0 || !is_valid_map(&map, &player))
 		return (err_handl("Map error", &data));
  	init_events(&data);
-	cast_rays(data.map->grid, player);
+	draw_walls(cast_rays(data.map, player), &data);
 	//unload_textures(&data);
 	cleanup(&data);
 	return (0);

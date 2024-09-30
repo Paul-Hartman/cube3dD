@@ -1,0 +1,5120 @@
+r.dir: 329.999987
+coll.x: -1, coll.y: -1
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 128.000000
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 1
+r.dir: 330.093737
+coll.x: -1, coll.y: -1
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 128.000000
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 2
+r.dir: 330.187487
+coll.x: -1, coll.y: -1
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 128.000000
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 3
+r.dir: 330.281237
+coll.x: -1, coll.y: -1
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 128.000000
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 4
+r.dir: 330.374987
+coll.x: -1, coll.y: -1
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 128.000000
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 5
+r.dir: 330.468737
+coll.x: -1, coll.y: -1
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 128.000000
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 6
+r.dir: 330.562487
+coll.x: -1, coll.y: -1
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 128.000000
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 7
+r.dir: 330.656237
+coll.x: -1, coll.y: -1
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 128.000000
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 8
+r.dir: 330.749987
+coll.x: -1, coll.y: -1
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 128.000000
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 9
+r.dir: 330.843738
+coll.x: -1, coll.y: -1
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 128.000000
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 10
+r.dir: 330.937488
+coll.x: -1, coll.y: -1
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 128.000000
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 11
+r.dir: 331.031238
+coll.x: -1, coll.y: -1
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 128.000000
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 12
+r.dir: 331.124988
+coll.x: -1, coll.y: -1
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 128.000000
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 13
+r.dir: 331.218738
+coll.x: -1, coll.y: -1
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 128.000000
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 14
+r.dir: 331.312488
+coll.x: -1, coll.y: -1
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 128.000000
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 15
+r.dir: 331.406238
+coll.x: -1, coll.y: -1
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 128.000000
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 16
+r.dir: 331.499988
+coll.x: -1, coll.y: -1
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 128.000000
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 17
+r.dir: 331.593738
+coll.x: -1, coll.y: -1
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 128.000000
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 18
+r.dir: 331.687488
+coll.x: -1, coll.y: -1
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 128.000000
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 19
+r.dir: 331.781238
+coll.x: -1, coll.y: -1
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 128.000000
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 20
+r.dir: 331.874988
+coll.x: -1, coll.y: -1
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 128.000000
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 21
+r.dir: 331.968738
+coll.x: -1, coll.y: -1
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 128.000000
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 22
+r.dir: 332.062488
+coll.x: -1, coll.y: -1
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 128.000000
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 23
+r.dir: 332.156238
+coll.x: -1, coll.y: -1
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 128.000000
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 24
+r.dir: 332.249988
+coll.x: -1, coll.y: -1
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 128.000000
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 25
+r.dir: 332.343738
+coll.x: -1, coll.y: -1
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 128.000000
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 26
+r.dir: 332.437488
+coll.x: -1, coll.y: -1
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 128.000000
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 27
+r.dir: 332.531238
+coll.x: -1, coll.y: -1
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 128.000000
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 28
+r.dir: 332.624988
+coll.x: -1, coll.y: -1
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 128.000000
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 29
+r.dir: 332.718738
+coll.x: -1, coll.y: -1
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 128.000000
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 30
+r.dir: 332.812488
+coll.x: -1, coll.y: -1
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 128.000000
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 31
+r.dir: 332.906238
+coll.x: -1, coll.y: -1
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 128.000000
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 32
+r.dir: 332.999988
+coll.x: -1, coll.y: -1
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 128.000000
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 33
+r.dir: 333.093738
+coll.x: -1, coll.y: -1
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 128.000000
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 34
+r.dir: 333.187489
+coll.x: -1, coll.y: -1
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 128.000000
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 35
+r.dir: 333.281239
+coll.x: -1, coll.y: -1
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 128.000000
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 36
+r.dir: 333.374989
+coll.x: -1, coll.y: -1
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 128.000000
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 37
+r.dir: 333.468739
+coll.x: -1, coll.y: -1
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 128.000000
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 38
+r.dir: 333.562489
+coll.x: -1, coll.y: -1
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 128.000000
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 39
+r.dir: 333.656239
+coll.x: -1, coll.y: -1
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 128.000000
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 40
+r.dir: 333.749989
+coll.x: -1, coll.y: -1
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 128.000000
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 41
+r.dir: 333.843739
+coll.x: -1, coll.y: -1
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 128.000000
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 42
+r.dir: 333.937489
+coll.x: -1, coll.y: -1
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 128.000000
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 43
+r.dir: 334.031239
+coll.x: -1, coll.y: -1
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 128.000000
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 44
+r.dir: 334.124989
+coll.x: -1, coll.y: -1
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 128.000000
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 45
+r.dir: 334.218739
+coll.x: -1, coll.y: -1
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 128.000000
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 46
+r.dir: 334.312489
+coll.x: -1, coll.y: -1
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 128.000000
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 47
+r.dir: 334.406239
+coll.x: -1, coll.y: -1
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 128.000000
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 48
+r.dir: 334.499989
+coll.x: -1, coll.y: -1
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 128.000000
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 49
+r.dir: 334.593739
+coll.x: -1, coll.y: -1
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 128.000000
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 50
+r.dir: 334.687489
+coll.x: -1, coll.y: -1
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 128.000000
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 51
+r.dir: 334.781239
+coll.x: -2, coll.y: -1
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 128.000000
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 52
+r.dir: 334.874989
+coll.x: -2, coll.y: -1
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 128.000000
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 53
+r.dir: 334.968739
+coll.x: -2, coll.y: -1
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 128.000000
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 54
+r.dir: 335.062489
+coll.x: -2, coll.y: -1
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 128.000000
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 55
+r.dir: 335.156239
+coll.x: -2, coll.y: -1
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 128.000000
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 56
+r.dir: 335.249989
+coll.x: -2, coll.y: -1
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 128.000000
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 57
+r.dir: 335.343739
+coll.x: -2, coll.y: -1
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 128.000000
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 58
+r.dir: 335.437489
+coll.x: -2, coll.y: -1
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 128.000000
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 59
+r.dir: 335.531240
+coll.x: -2, coll.y: -1
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 128.000000
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 60
+r.dir: 335.624990
+coll.x: -2, coll.y: -1
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 128.000000
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 61
+r.dir: 335.718740
+coll.x: -2, coll.y: -1
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 128.000000
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 62
+r.dir: 335.812490
+coll.x: -2, coll.y: -1
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 128.000000
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 63
+r.dir: 335.906240
+coll.x: -2, coll.y: -1
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 128.000000
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 64
+r.dir: 335.999990
+coll.x: -2, coll.y: -1
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 128.000000
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 65
+r.dir: 336.093740
+coll.x: -2, coll.y: -1
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 128.000000
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 66
+r.dir: 336.187490
+coll.x: -2, coll.y: -1
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 128.000000
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 67
+r.dir: 336.281240
+coll.x: -2, coll.y: -1
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 128.000000
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 68
+r.dir: 336.374990
+coll.x: -2, coll.y: -1
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 128.000000
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 69
+r.dir: 336.468740
+coll.x: -2, coll.y: -1
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 128.000000
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 70
+r.dir: 336.562490
+coll.x: -2, coll.y: -1
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 128.000000
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 71
+r.dir: 336.656240
+coll.x: -2, coll.y: -1
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 128.000000
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 72
+r.dir: 336.749990
+coll.x: -2, coll.y: -1
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 128.000000
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 73
+r.dir: 336.843740
+coll.x: -2, coll.y: -1
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 128.000000
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 74
+r.dir: 336.937490
+coll.x: -2, coll.y: -1
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 128.000000
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 75
+r.dir: 337.031240
+coll.x: -2, coll.y: -1
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 128.000000
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 76
+r.dir: 337.124990
+coll.x: -2, coll.y: -1
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 128.000000
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 77
+r.dir: 337.218740
+coll.x: -2, coll.y: -1
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 128.000000
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 78
+r.dir: 337.312490
+coll.x: -2, coll.y: -1
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 128.000000
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 79
+r.dir: 337.406240
+coll.x: -2, coll.y: -1
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 128.000000
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 80
+r.dir: 337.499990
+coll.x: -2, coll.y: -1
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 128.000000
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 81
+r.dir: 337.593740
+coll.x: -2, coll.y: -1
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 128.000000
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 82
+r.dir: 337.687490
+coll.x: -2, coll.y: -1
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 128.000000
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 83
+r.dir: 337.781240
+coll.x: -2, coll.y: -1
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 128.000000
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 84
+r.dir: 337.874991
+coll.x: -2, coll.y: -1
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 128.000000
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 85
+r.dir: 337.968741
+coll.x: -2, coll.y: -1
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 128.000000
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 86
+r.dir: 338.062491
+coll.x: -2, coll.y: -1
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 128.000000
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 87
+r.dir: 338.156241
+coll.x: -2, coll.y: -1
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 128.000000
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 88
+r.dir: 338.249991
+coll.x: -2, coll.y: -1
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 128.000000
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 89
+r.dir: 338.343741
+coll.x: -2, coll.y: -1
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 128.000000
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 90
+r.dir: 338.437491
+coll.x: -2, coll.y: -1
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 128.000000
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 91
+r.dir: 338.531241
+coll.x: -2, coll.y: -1
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 128.000000
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 92
+r.dir: 338.624991
+coll.x: -2, coll.y: -1
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 128.000000
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 93
+r.dir: 338.718741
+coll.x: -2, coll.y: -1
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 128.000000
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 94
+r.dir: 338.812491
+coll.x: -2, coll.y: -1
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 128.000000
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 95
+r.dir: 338.906241
+coll.x: -2, coll.y: -1
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 128.000000
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 96
+r.dir: 338.999991
+coll.x: -2, coll.y: -1
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 128.000000
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 97
+r.dir: 339.093741
+coll.x: -2, coll.y: -1
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 128.000000
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 98
+r.dir: 339.187491
+coll.x: -2, coll.y: -1
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 128.000000
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 99
+r.dir: 339.281241
+coll.x: -2, coll.y: -1
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 128.000000
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 100
+r.dir: 339.374991
+coll.x: -3, coll.y: -1
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 128.000000
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 101
+r.dir: 339.468741
+coll.x: -3, coll.y: -1
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 128.000000
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 102
+r.dir: 339.562491
+coll.x: -3, coll.y: -1
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 128.000000
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 103
+r.dir: 339.656241
+coll.x: -3, coll.y: -1
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 128.000000
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 104
+r.dir: 339.749991
+coll.x: -3, coll.y: -1
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 128.000000
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 105
+r.dir: 339.843741
+coll.x: -3, coll.y: -1
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 128.000000
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 106
+r.dir: 339.937491
+coll.x: -3, coll.y: -1
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 128.000000
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 107
+r.dir: 340.031241
+coll.x: -3, coll.y: -1
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 128.000000
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 108
+r.dir: 340.124991
+coll.x: -3, coll.y: -1
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 128.000000
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 109
+r.dir: 340.218742
+coll.x: -3, coll.y: -1
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 128.000000
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 110
+r.dir: 340.312492
+coll.x: -3, coll.y: -1
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 128.000000
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 111
+r.dir: 340.406242
+coll.x: -3, coll.y: -1
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 128.000000
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 112
+r.dir: 340.499992
+coll.x: -3, coll.y: -1
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 128.000000
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 113
+r.dir: 340.593742
+coll.x: -3, coll.y: -1
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 128.000000
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 114
+r.dir: 340.687492
+coll.x: -3, coll.y: -1
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 128.000000
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 115
+r.dir: 340.781242
+coll.x: -3, coll.y: -1
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 128.000000
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 116
+r.dir: 340.874992
+coll.x: -3, coll.y: -1
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 128.000000
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 117
+r.dir: 340.968742
+coll.x: -3, coll.y: -1
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 128.000000
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 118
+r.dir: 341.062492
+coll.x: -3, coll.y: -1
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 128.000000
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 119
+r.dir: 341.156242
+coll.x: -3, coll.y: -1
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 128.000000
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 120
+r.dir: 341.249992
+coll.x: -3, coll.y: -1
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 128.000000
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 121
+r.dir: 341.343742
+coll.x: -3, coll.y: -1
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 128.000000
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 122
+r.dir: 341.437492
+coll.x: -3, coll.y: -1
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 128.000000
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 123
+r.dir: 341.531242
+coll.x: -3, coll.y: -1
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 128.000000
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 124
+r.dir: 341.624992
+coll.x: -3, coll.y: -1
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 128.000000
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 125
+r.dir: 341.718742
+coll.x: -3, coll.y: -1
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 128.000000
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 126
+r.dir: 341.812492
+coll.x: -3, coll.y: -1
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 128.000000
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 127
+r.dir: 341.906242
+coll.x: -3, coll.y: -1
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 128.000000
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 128
+r.dir: 341.999992
+coll.x: -3, coll.y: -1
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 128.000000
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 129
+r.dir: 342.093742
+coll.x: -3, coll.y: -1
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 128.000000
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 130
+r.dir: 342.187492
+coll.x: -3, coll.y: -1
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 128.000000
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 131
+r.dir: 342.281242
+coll.x: -3, coll.y: -1
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 128.000000
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 132
+r.dir: 342.374992
+coll.x: -3, coll.y: -1
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 128.000000
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 133
+r.dir: 342.468742
+coll.x: -3, coll.y: -1
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 128.000000
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 134
+r.dir: 342.562493
+coll.x: -4, coll.y: -1
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 128.000000
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 135
+r.dir: 342.656243
+coll.x: -4, coll.y: -1
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 128.000000
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 136
+r.dir: 342.749993
+coll.x: -4, coll.y: -1
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 128.000000
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 137
+r.dir: 342.843743
+coll.x: -4, coll.y: -1
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 128.000000
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 138
+r.dir: 342.937493
+coll.x: -4, coll.y: -1
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 128.000000
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 139
+r.dir: 343.031243
+coll.x: -4, coll.y: -1
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 128.000000
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 140
+r.dir: 343.124993
+coll.x: -4, coll.y: -1
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 128.000000
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 141
+r.dir: 343.218743
+coll.x: -4, coll.y: -1
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 128.000000
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 142
+r.dir: 343.312493
+coll.x: -4, coll.y: -1
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 128.000000
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 143
+r.dir: 343.406243
+coll.x: -4, coll.y: -1
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 128.000000
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 144
+r.dir: 343.499993
+coll.x: -1, coll.y: 0
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 128.000000
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 145
+r.dir: 343.593743
+coll.x: -1, coll.y: 0
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 128.000000
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 146
+r.dir: 343.687493
+coll.x: -1, coll.y: 0
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 128.000000
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 147
+r.dir: 343.781243
+coll.x: -1, coll.y: 0
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 128.000000
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 148
+r.dir: 343.874993
+coll.x: -1, coll.y: 0
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 128.000000
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 149
+r.dir: 343.968743
+coll.x: -1, coll.y: 0
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 128.000000
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 150
+r.dir: 344.062493
+coll.x: -1, coll.y: 0
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 128.000000
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 151
+r.dir: 344.156243
+coll.x: -1, coll.y: 0
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 128.000000
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 152
+r.dir: 344.249993
+coll.x: -1, coll.y: 0
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 128.000000
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 153
+r.dir: 344.343743
+coll.x: -1, coll.y: 0
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 128.000000
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 154
+r.dir: 344.437493
+coll.x: -1, coll.y: 0
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 128.000000
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 155
+r.dir: 344.531243
+coll.x: -1, coll.y: 0
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 128.000000
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 156
+r.dir: 344.624993
+coll.x: -1, coll.y: 0
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 128.000000
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 157
+r.dir: 344.718743
+coll.x: -1, coll.y: 0
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 128.000000
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 158
+r.dir: 344.812493
+coll.x: -1, coll.y: 0
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 128.000000
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 159
+r.dir: 344.906244
+coll.x: -1, coll.y: 0
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 128.000000
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 160
+r.dir: 344.999994
+coll.x: -1, coll.y: 0
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 128.000000
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 161
+r.dir: 345.093744
+coll.x: -1, coll.y: 0
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 128.000000
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 162
+r.dir: 345.187494
+coll.x: -1, coll.y: 0
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 128.000000
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 163
+r.dir: 345.281244
+coll.x: -1, coll.y: 0
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 128.000000
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 164
+r.dir: 345.374994
+coll.x: -1, coll.y: 0
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 128.000000
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 165
+r.dir: 345.468744
+coll.x: -1, coll.y: 0
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 128.000000
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 166
+r.dir: 345.562494
+coll.x: -1, coll.y: 0
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 128.000000
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 167
+r.dir: 345.656244
+coll.x: -1, coll.y: 0
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 128.000000
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 168
+r.dir: 345.749994
+coll.x: -1, coll.y: 0
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 128.000000
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 169
+r.dir: 345.843744
+coll.x: -1, coll.y: 0
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 128.000000
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 170
+r.dir: 345.937494
+coll.x: -1, coll.y: 0
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 128.000000
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 171
+r.dir: 346.031244
+coll.x: -1, coll.y: 0
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 128.000000
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 172
+r.dir: 346.124994
+coll.x: -1, coll.y: 0
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 128.000000
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 173
+r.dir: 346.218744
+coll.x: -1, coll.y: 0
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 128.000000
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 174
+r.dir: 346.312494
+coll.x: -1, coll.y: 0
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 128.000000
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 175
+r.dir: 346.406244
+coll.x: -1, coll.y: 0
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 128.000000
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 176
+r.dir: 346.499994
+coll.x: -1, coll.y: 0
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 128.000000
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 177
+r.dir: 346.593744
+coll.x: -1, coll.y: 0
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 128.000000
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 178
+r.dir: 346.687494
+coll.x: -1, coll.y: 0
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 128.000000
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 179
+r.dir: 346.781244
+coll.x: -1, coll.y: 0
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 128.000000
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 180
+r.dir: 346.874994
+coll.x: -1, coll.y: 0
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 128.000000
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 181
+r.dir: 346.968744
+coll.x: -1, coll.y: 0
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 128.000000
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 182
+r.dir: 347.062494
+coll.x: -1, coll.y: 0
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 128.000000
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 183
+r.dir: 347.156244
+coll.x: -1, coll.y: 0
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 128.000000
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 184
+r.dir: 347.249995
+coll.x: -1, coll.y: 0
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 128.000000
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 185
+r.dir: 347.343745
+coll.x: -1, coll.y: 0
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 128.000000
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 186
+r.dir: 347.437495
+coll.x: -1, coll.y: 0
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 128.000000
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 187
+r.dir: 347.531245
+coll.x: -2, coll.y: 0
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 128.000000
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 188
+r.dir: 347.624995
+coll.x: -2, coll.y: 0
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 128.000000
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 189
+r.dir: 347.718745
+coll.x: -2, coll.y: 0
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 128.000000
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 190
+r.dir: 347.812495
+coll.x: -2, coll.y: 0
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 128.000000
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 191
+r.dir: 347.906245
+coll.x: -2, coll.y: 0
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 128.000000
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 192
+r.dir: 347.999995
+coll.x: -2, coll.y: 0
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 128.000000
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 193
+r.dir: 348.093745
+coll.x: -2, coll.y: 0
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 128.000000
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 194
+r.dir: 348.187495
+coll.x: -2, coll.y: 0
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 128.000000
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 195
+r.dir: 348.281245
+coll.x: -2, coll.y: 0
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 128.000000
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 196
+r.dir: 348.374995
+coll.x: -2, coll.y: 0
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 128.000000
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 197
+r.dir: 348.468745
+coll.x: -2, coll.y: 0
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 128.000000
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 198
+r.dir: 348.562495
+coll.x: -2, coll.y: 0
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 128.000000
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 199
+r.dir: 348.656245
+coll.x: -2, coll.y: 0
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 128.000000
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 200
+r.dir: 348.749995
+coll.x: -2, coll.y: 0
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 128.000000
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 201
+r.dir: 348.843745
+coll.x: -2, coll.y: 0
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 128.000000
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 202
+r.dir: 348.937495
+coll.x: -2, coll.y: 0
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 128.000000
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 203
+r.dir: 349.031245
+coll.x: -2, coll.y: 0
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 128.000000
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 204
+r.dir: 349.124995
+coll.x: -2, coll.y: 0
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 128.000000
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 205
+r.dir: 349.218745
+coll.x: -2, coll.y: 0
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 128.000000
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 206
+r.dir: 349.312495
+coll.x: -2, coll.y: 0
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 128.000000
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 207
+r.dir: 349.406245
+coll.x: -2, coll.y: 0
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 128.000000
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 208
+r.dir: 349.499995
+coll.x: -2, coll.y: 0
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 128.000000
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 209
+r.dir: 349.593746
+coll.x: -2, coll.y: 0
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 128.000000
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 210
+r.dir: 349.687496
+coll.x: -2, coll.y: 0
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 128.000000
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 211
+r.dir: 349.781246
+coll.x: -2, coll.y: 0
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 128.000000
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 212
+r.dir: 349.874996
+coll.x: -2, coll.y: 0
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 128.000000
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 213
+r.dir: 349.968746
+coll.x: -3, coll.y: 0
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 128.000000
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 214
+r.dir: 350.062496
+coll.x: -3, coll.y: 0
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 128.000000
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 215
+r.dir: 350.156246
+coll.x: -3, coll.y: 0
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 128.000000
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 216
+r.dir: 350.249996
+coll.x: -3, coll.y: 0
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 128.000000
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 217
+r.dir: 350.343746
+coll.x: -3, coll.y: 0
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 128.000000
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 218
+r.dir: 350.437496
+coll.x: -3, coll.y: 0
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 128.000000
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 219
+r.dir: 350.531246
+coll.x: -3, coll.y: 0
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 128.000000
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 220
+r.dir: 350.624996
+coll.x: -3, coll.y: 0
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 128.000000
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 221
+r.dir: 350.718746
+coll.x: -3, coll.y: 0
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 128.000000
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 222
+r.dir: 350.812496
+coll.x: -3, coll.y: 0
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 128.000000
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 223
+r.dir: 350.906246
+coll.x: -3, coll.y: 0
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 128.000000
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 224
+r.dir: 350.999996
+coll.x: -3, coll.y: 0
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 128.000000
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 225
+r.dir: 351.093746
+coll.x: -3, coll.y: 0
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 128.000000
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 226
+r.dir: 351.187496
+coll.x: -3, coll.y: 0
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 128.000000
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 227
+r.dir: 351.281246
+coll.x: -3, coll.y: 0
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 128.000000
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 228
+r.dir: 351.374996
+coll.x: -3, coll.y: 0
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 128.000000
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 229
+r.dir: 351.468746
+coll.x: -3, coll.y: 0
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 128.000000
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 230
+r.dir: 351.562496
+coll.x: -4, coll.y: 0
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 128.000000
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 231
+r.dir: 351.656246
+coll.x: -4, coll.y: 0
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 128.000000
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 232
+r.dir: 351.749996
+coll.x: -4, coll.y: 0
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 128.000000
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 233
+r.dir: 351.843747
+coll.x: -4, coll.y: 0
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 128.000000
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 234
+r.dir: 351.937497
+coll.x: -4, coll.y: 0
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 128.000000
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 235
+r.dir: 352.031247
+coll.x: -4, coll.y: 0
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 128.000000
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 236
+r.dir: 352.124997
+coll.x: -4, coll.y: 0
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 128.000000
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 237
+r.dir: 352.218747
+coll.x: -4, coll.y: 0
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 128.000000
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 238
+r.dir: 352.312497
+coll.x: -4, coll.y: 0
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 128.000000
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 239
+r.dir: 352.406247
+coll.x: -4, coll.y: 0
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 128.000000
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 240
+r.dir: 352.499997
+coll.x: -4, coll.y: 0
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 128.000000
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 241
+r.dir: 352.593747
+coll.x: -4, coll.y: 0
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 128.000000
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 242
+r.dir: 352.687497
+coll.x: -4, coll.y: 0
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 128.000000
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 243
+r.dir: 352.781247
+coll.x: -5, coll.y: 0
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 128.000000
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 244
+r.dir: 352.874997
+coll.x: -5, coll.y: 0
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 128.000000
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 245
+r.dir: 352.968747
+coll.x: -5, coll.y: 0
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 128.000000
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 246
+r.dir: 353.062497
+coll.x: -5, coll.y: 0
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 128.000000
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 247
+r.dir: 353.156247
+coll.x: -5, coll.y: 0
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 128.000000
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 248
+r.dir: 353.249997
+coll.x: -5, coll.y: 0
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 128.000000
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 249
+r.dir: 353.343747
+coll.x: -5, coll.y: 0
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 128.000000
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 250
+r.dir: 353.437497
+coll.x: -5, coll.y: 0
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 128.000000
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 251
+r.dir: 353.531247
+coll.x: -5, coll.y: 0
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 128.000000
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 252
+r.dir: 353.624997
+coll.x: -5, coll.y: 0
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 128.000000
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 253
+r.dir: 353.718747
+coll.x: -6, coll.y: 0
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 128.000000
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 254
+r.dir: 353.812497
+coll.x: -6, coll.y: 0
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 128.000000
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 255
+r.dir: 353.906247
+coll.x: -6, coll.y: 0
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 128.000000
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 256
+r.dir: 353.999997
+coll.x: -6, coll.y: 0
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 128.000000
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 257
+r.dir: 354.093747
+coll.x: -6, coll.y: 0
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 128.000000
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 258
+r.dir: 354.187498
+coll.x: -6, coll.y: 0
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 128.000000
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 259
+r.dir: 354.281248
+coll.x: -6, coll.y: 0
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 128.000000
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 260
+r.dir: 354.374998
+coll.x: -7, coll.y: 0
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 128.000000
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 261
+r.dir: 354.468748
+coll.x: -7, coll.y: 0
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 128.000000
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 262
+r.dir: 354.562498
+coll.x: -7, coll.y: 0
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 128.000000
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 263
+r.dir: 354.656248
+coll.x: -7, coll.y: 0
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 128.000000
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 264
+r.dir: 354.749998
+coll.x: -7, coll.y: 0
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 128.000000
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 265
+r.dir: 354.843748
+coll.x: -7, coll.y: 0
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 128.000000
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 266
+r.dir: 354.937498
+coll.x: -8, coll.y: 0
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 128.000000
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 267
+r.dir: 355.031248
+coll.x: -8, coll.y: 0
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 128.000000
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 268
+r.dir: 355.124998
+coll.x: -8, coll.y: 0
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 128.000000
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 269
+r.dir: 355.218748
+coll.x: -8, coll.y: 0
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 128.000000
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 270
+r.dir: 355.312498
+coll.x: -8, coll.y: 0
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 128.000000
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 271
+r.dir: 355.406248
+coll.x: -9, coll.y: 0
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 128.000000
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 272
+r.dir: 355.499998
+coll.x: -9, coll.y: 0
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 128.000000
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 273
+r.dir: 355.593748
+coll.x: -9, coll.y: 0
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 128.000000
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 274
+r.dir: 355.687498
+coll.x: -9, coll.y: 0
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 128.000000
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 275
+r.dir: 355.781248
+coll.x: -10, coll.y: 0
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 128.000000
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 276
+r.dir: 355.874998
+coll.x: -10, coll.y: 0
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 128.000000
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 277
+r.dir: 355.968748
+coll.x: -10, coll.y: 0
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 128.000000
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 278
+r.dir: 356.062498
+coll.x: -10, coll.y: 0
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 128.000000
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 279
+r.dir: 356.156248
+coll.x: -11, coll.y: 0
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 128.000000
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 280
+r.dir: 356.249998
+coll.x: -11, coll.y: 0
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 128.000000
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 281
+r.dir: 356.343748
+coll.x: -11, coll.y: 0
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 128.000000
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 282
+r.dir: 356.437498
+coll.x: -12, coll.y: 0
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 128.000000
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 283
+r.dir: 356.531249
+coll.x: -12, coll.y: 0
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 128.000000
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 284
+r.dir: 356.624999
+coll.x: -13, coll.y: 0
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 128.000000
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 285
+r.dir: 356.718749
+coll.x: -13, coll.y: 0
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 128.000000
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 286
+r.dir: 356.812499
+coll.x: -13, coll.y: 0
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 128.000000
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 287
+r.dir: 356.906249
+coll.x: 5, coll.y: 1
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 128.000000
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 288
+r.dir: 356.999999
+coll.x: 5, coll.y: 1
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 128.000000
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 289
+r.dir: 357.093749
+coll.x: 5, coll.y: 1
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 128.000000
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 290
+r.dir: 357.187499
+coll.x: 5, coll.y: 1
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 128.000000
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 291
+r.dir: 357.281249
+coll.x: 5, coll.y: 1
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 128.000000
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 292
+r.dir: 357.374999
+coll.x: 5, coll.y: 1
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 128.000000
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 293
+r.dir: 357.468749
+coll.x: 5, coll.y: 1
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 128.000000
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 294
+r.dir: 357.562499
+coll.x: 5, coll.y: 1
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 128.000000
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 295
+r.dir: 357.656249
+coll.x: 5, coll.y: 1
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 128.000000
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 296
+r.dir: 357.749999
+coll.x: 5, coll.y: 1
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 128.000000
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 297
+r.dir: 357.843749
+coll.x: 5, coll.y: 1
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 128.000000
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 298
+r.dir: 357.937499
+coll.x: 6, coll.y: 1
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 128.000000
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 299
+r.dir: 358.031249
+coll.x: 6, coll.y: 1
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 128.000000
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 300
+r.dir: 358.124999
+coll.x: 6, coll.y: 1
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 128.000000
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 301
+r.dir: 358.218749
+coll.x: 6, coll.y: 1
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 128.000000
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 302
+r.dir: 358.312499
+coll.x: 6, coll.y: 1
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 128.000000
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 303
+r.dir: 358.406249
+coll.x: 6, coll.y: 1
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 128.000000
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 304
+r.dir: 358.499999
+coll.x: 7, coll.y: 1
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 128.000000
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 305
+r.dir: 358.593749
+coll.x: 7, coll.y: 1
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 128.000000
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 306
+r.dir: 358.687499
+coll.x: 7, coll.y: 1
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 128.000000
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 307
+r.dir: 358.781249
+coll.x: 8, coll.y: 1
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 128.000000
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 308
+r.dir: 358.875000
+coll.x: 8, coll.y: 1
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 128.000000
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 309
+r.dir: 358.968750
+coll.x: 9, coll.y: 1
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 128.000000
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 310
+r.dir: 359.062500
+coll.x: 9, coll.y: 1
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 128.000000
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 311
+r.dir: 359.156250
+coll.x: 10, coll.y: 1
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 128.000000
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 312
+r.dir: 359.250000
+coll.x: 11, coll.y: 1
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 128.000000
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 313
+r.dir: 359.343750
+coll.x: 12, coll.y: 1
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 128.000000
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 314
+r.dir: 359.437500
+coll.x: 14, coll.y: 1
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 128.000000
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 315
+r.dir: 359.531250
+coll.x: 16, coll.y: 1
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 128.000000
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 316
+r.dir: 359.625000
+coll.x: 19, coll.y: 1
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 128.000000
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 317
+r.dir: 359.718750
+coll.x: 25, coll.y: 1
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 128.000000
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 318
+r.dir: 359.812500
+coll.x: 36, coll.y: 1
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 128.000000
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 319
+r.dir: 359.906250
+coll.x: 69, coll.y: 1
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 128.000000
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 320
+r.dir: 0.000000
+coll.x: 12, coll.y: 3
+coll.x: 4, coll.y: 2
+coll.x: 4, coll.y: 2
+dist vert 64.319204
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 321
+r.dir: 0.093750
+coll.x: 556, coll.y: 3
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 128.000171
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 322
+r.dir: 0.187500
+coll.x: 279, coll.y: 3
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 128.000685
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 323
+r.dir: 0.281250
+coll.x: 187, coll.y: 3
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 128.001542
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 324
+r.dir: 0.375000
+coll.x: 141, coll.y: 3
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 128.002742
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 325
+r.dir: 0.468750
+coll.x: 113, coll.y: 3
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 128.004284
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 326
+r.dir: 0.562500
+coll.x: 95, coll.y: 3
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 128.006169
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 327
+r.dir: 0.656250
+coll.x: 82, coll.y: 3
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 128.008396
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 328
+r.dir: 0.750000
+coll.x: 72, coll.y: 3
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 128.010967
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 329
+r.dir: 0.843750
+coll.x: 64, coll.y: 3
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 128.013880
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 330
+r.dir: 0.937500
+coll.x: 58, coll.y: 3
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 128.017137
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 331
+r.dir: 1.031250
+coll.x: 53, coll.y: 3
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 128.020736
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 332
+r.dir: 1.125000
+coll.x: 49, coll.y: 3
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 128.024678
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 333
+r.dir: 1.218751
+coll.x: 45, coll.y: 3
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 128.028963
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 334
+r.dir: 1.312501
+coll.x: 42, coll.y: 3
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 128.033591
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 335
+r.dir: 1.406251
+coll.x: 39, coll.y: 3
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 128.038563
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 336
+r.dir: 1.500001
+coll.x: 37, coll.y: 3
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 128.043877
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 337
+r.dir: 1.593751
+coll.x: 35, coll.y: 3
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 128.049535
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 338
+r.dir: 1.687501
+coll.x: 33, coll.y: 3
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 128.055537
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 339
+r.dir: 1.781251
+coll.x: 32, coll.y: 3
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 128.061881
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 340
+r.dir: 1.875001
+coll.x: 30, coll.y: 3
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 128.068570
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 341
+r.dir: 1.968751
+coll.x: 29, coll.y: 3
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 128.075601
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 342
+r.dir: 2.062501
+coll.x: 28, coll.y: 3
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 128.082977
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 343
+r.dir: 2.156251
+coll.x: 27, coll.y: 3
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 128.090696
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 344
+r.dir: 2.250001
+coll.x: 26, coll.y: 3
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 128.098760
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 345
+r.dir: 2.343751
+coll.x: 25, coll.y: 3
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 128.107167
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 346
+r.dir: 2.437501
+coll.x: 24, coll.y: 3
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 128.115918
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 347
+r.dir: 2.531251
+coll.x: 23, coll.y: 3
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 128.125014
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 348
+r.dir: 2.625001
+coll.x: 22, coll.y: 3
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 128.134454
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 349
+r.dir: 2.718751
+coll.x: 22, coll.y: 3
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 128.144239
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 350
+r.dir: 2.812501
+coll.x: 21, coll.y: 3
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 128.154368
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 351
+r.dir: 2.906251
+coll.x: 20, coll.y: 3
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 128.164842
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 352
+r.dir: 3.000001
+coll.x: 20, coll.y: 3
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 128.175660
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 353
+r.dir: 3.093751
+coll.x: 19, coll.y: 3
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 128.186824
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 354
+r.dir: 3.187501
+coll.x: 19, coll.y: 3
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 128.198333
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 355
+r.dir: 3.281251
+coll.x: 18, coll.y: 3
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 128.210188
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 356
+r.dir: 3.375001
+coll.x: 18, coll.y: 3
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 128.222388
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 357
+r.dir: 3.468751
+coll.x: 17, coll.y: 3
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 128.234933
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 358
+r.dir: 3.562502
+coll.x: 17, coll.y: 3
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 128.247825
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 359
+r.dir: 3.656252
+coll.x: 17, coll.y: 3
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 128.261062
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 360
+r.dir: 3.750002
+coll.x: 16, coll.y: 3
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 128.274646
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 361
+r.dir: 3.843752
+coll.x: 16, coll.y: 3
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 128.288576
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 362
+r.dir: 3.937502
+coll.x: 16, coll.y: 3
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 128.302853
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 363
+r.dir: 4.031252
+coll.x: 15, coll.y: 3
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 128.317476
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 364
+r.dir: 4.125002
+coll.x: 15, coll.y: 3
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 128.332447
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 365
+r.dir: 4.218752
+coll.x: 15, coll.y: 3
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 128.347764
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 366
+r.dir: 4.312502
+coll.x: 15, coll.y: 3
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 128.363429
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 367
+r.dir: 4.406252
+coll.x: 14, coll.y: 3
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 128.379441
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 368
+r.dir: 4.500002
+coll.x: 14, coll.y: 3
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 128.395802
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 369
+r.dir: 4.593752
+coll.x: 14, coll.y: 3
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 128.412510
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 370
+r.dir: 4.687502
+coll.x: 14, coll.y: 3
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 128.429567
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 371
+r.dir: 4.781252
+coll.x: 13, coll.y: 3
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 128.446972
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 372
+r.dir: 4.875002
+coll.x: 13, coll.y: 3
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 128.464725
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 373
+r.dir: 4.968752
+coll.x: 13, coll.y: 3
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 128.482828
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 374
+r.dir: 5.062502
+coll.x: 13, coll.y: 3
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 128.501280
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 375
+r.dir: 5.156252
+coll.x: 13, coll.y: 3
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 128.520081
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 376
+r.dir: 5.250002
+coll.x: 12, coll.y: 3
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 128.539232
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 377
+r.dir: 5.343752
+coll.x: 12, coll.y: 3
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 128.558733
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 378
+r.dir: 5.437502
+coll.x: 12, coll.y: 3
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 128.578584
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 379
+r.dir: 5.531252
+coll.x: 12, coll.y: 3
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 128.598785
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 380
+r.dir: 5.625002
+coll.x: 12, coll.y: 3
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 128.619338
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 381
+r.dir: 5.718752
+coll.x: 12, coll.y: 3
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 128.640241
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 382
+r.dir: 5.812502
+coll.x: 11, coll.y: 3
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 128.661496
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 383
+r.dir: 5.906253
+coll.x: 11, coll.y: 3
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 128.683102
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 384
+r.dir: 6.000003
+coll.x: 11, coll.y: 3
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 128.705060
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 385
+r.dir: 6.093753
+coll.x: 11, coll.y: 3
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 128.727371
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 386
+r.dir: 6.187503
+coll.x: 11, coll.y: 3
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 128.750034
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 387
+r.dir: 6.281253
+coll.x: 11, coll.y: 3
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 128.773049
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 388
+r.dir: 6.375003
+coll.x: 11, coll.y: 3
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 128.796418
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 389
+r.dir: 6.468753
+coll.x: 10, coll.y: 3
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 128.820140
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 390
+r.dir: 6.562503
+coll.x: 10, coll.y: 3
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 128.844217
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 391
+r.dir: 6.656253
+coll.x: 10, coll.y: 3
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 128.868647
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 392
+r.dir: 6.750003
+coll.x: 10, coll.y: 3
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 128.893431
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 393
+r.dir: 6.843753
+coll.x: 10, coll.y: 3
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 128.918570
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 394
+r.dir: 6.937503
+coll.x: 10, coll.y: 3
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 128.944065
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 395
+r.dir: 7.031253
+coll.x: 10, coll.y: 3
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 128.969915
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 396
+r.dir: 7.125003
+coll.x: 10, coll.y: 3
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 128.996120
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 397
+r.dir: 7.218753
+coll.x: 10, coll.y: 3
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 129.022682
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 398
+r.dir: 7.312503
+coll.x: 10, coll.y: 3
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 129.049600
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 399
+r.dir: 7.406253
+coll.x: 9, coll.y: 3
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 129.076875
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 400
+r.dir: 7.500003
+coll.x: 9, coll.y: 3
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 129.104508
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 401
+r.dir: 7.593753
+coll.x: 9, coll.y: 3
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 129.132498
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 402
+r.dir: 7.687503
+coll.x: 9, coll.y: 3
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 129.160846
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 403
+r.dir: 7.781253
+coll.x: 9, coll.y: 3
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 129.189553
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 404
+r.dir: 7.875003
+coll.x: 9, coll.y: 3
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 129.218618
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 405
+r.dir: 7.968753
+coll.x: 9, coll.y: 3
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 129.248042
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 406
+r.dir: 8.062503
+coll.x: 9, coll.y: 3
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 129.277826
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 407
+r.dir: 8.156253
+coll.x: 9, coll.y: 3
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 129.307970
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 408
+r.dir: 8.250004
+coll.x: 9, coll.y: 3
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 129.338475
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 409
+r.dir: 8.343754
+coll.x: 9, coll.y: 3
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 129.369340
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 410
+r.dir: 8.437504
+coll.x: 9, coll.y: 3
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 129.400567
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 411
+r.dir: 8.531254
+coll.x: 9, coll.y: 3
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 129.432155
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 412
+r.dir: 8.625004
+coll.x: 8, coll.y: 3
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 129.464106
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 413
+r.dir: 8.718754
+coll.x: 8, coll.y: 3
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 129.496419
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 414
+r.dir: 8.812504
+coll.x: 8, coll.y: 3
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 129.529095
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 415
+r.dir: 8.906254
+coll.x: 8, coll.y: 3
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 129.562134
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 416
+r.dir: 9.000004
+coll.x: 8, coll.y: 3
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 129.595537
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 417
+r.dir: 9.093754
+coll.x: 8, coll.y: 3
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 129.629305
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 418
+r.dir: 9.187504
+coll.x: 8, coll.y: 3
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 129.663438
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 419
+r.dir: 9.281254
+coll.x: 8, coll.y: 3
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 129.697936
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 420
+r.dir: 9.375004
+coll.x: 8, coll.y: 3
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 129.732799
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 421
+r.dir: 9.468754
+coll.x: 8, coll.y: 3
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 129.768029
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 422
+r.dir: 9.562504
+coll.x: 8, coll.y: 3
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 129.803626
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 423
+r.dir: 9.656254
+coll.x: 8, coll.y: 3
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 129.839590
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 424
+r.dir: 9.750004
+coll.x: 8, coll.y: 3
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 129.875922
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 425
+r.dir: 9.843754
+coll.x: 8, coll.y: 3
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 129.912622
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 426
+r.dir: 9.937504
+coll.x: 8, coll.y: 3
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 129.949690
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 427
+r.dir: 10.031254
+coll.x: 8, coll.y: 3
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 129.987128
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 428
+r.dir: 10.125004
+coll.x: 8, coll.y: 3
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 130.024936
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 429
+r.dir: 10.218754
+coll.x: 8, coll.y: 3
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 130.063114
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 430
+r.dir: 10.312504
+coll.x: 7, coll.y: 3
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 130.101663
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 431
+r.dir: 10.406254
+coll.x: 7, coll.y: 3
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 130.140584
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 432
+r.dir: 10.500005
+coll.x: 7, coll.y: 3
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 130.179876
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 433
+r.dir: 10.593755
+coll.x: 7, coll.y: 3
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 130.219541
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 434
+r.dir: 10.687505
+coll.x: 7, coll.y: 3
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 130.259578
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 435
+r.dir: 10.781255
+coll.x: 7, coll.y: 3
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 130.299990
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 436
+r.dir: 10.875005
+coll.x: 7, coll.y: 3
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 130.340775
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 437
+r.dir: 10.968755
+coll.x: 7, coll.y: 3
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 130.381936
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 438
+r.dir: 11.062505
+coll.x: 7, coll.y: 3
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 130.423471
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 439
+r.dir: 11.156255
+coll.x: 7, coll.y: 3
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 130.465383
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 440
+r.dir: 11.250005
+coll.x: 7, coll.y: 3
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 130.507670
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 441
+r.dir: 11.343755
+coll.x: 7, coll.y: 3
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 130.550335
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 442
+r.dir: 11.437505
+coll.x: 7, coll.y: 3
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 130.593378
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 443
+r.dir: 11.531255
+coll.x: 7, coll.y: 3
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 130.636799
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 444
+r.dir: 11.625005
+coll.x: 7, coll.y: 3
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 130.680599
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 445
+r.dir: 11.718755
+coll.x: 7, coll.y: 3
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 130.724778
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 446
+r.dir: 11.812505
+coll.x: 7, coll.y: 3
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 130.769337
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 447
+r.dir: 11.906255
+coll.x: 7, coll.y: 3
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 130.814277
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 448
+r.dir: 12.000005
+coll.x: 7, coll.y: 3
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 130.859599
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 449
+r.dir: 12.093755
+coll.x: 7, coll.y: 3
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 130.905302
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 450
+r.dir: 12.187505
+coll.x: 7, coll.y: 3
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 130.951388
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 451
+r.dir: 12.281255
+coll.x: 7, coll.y: 3
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 130.997858
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 452
+r.dir: 12.375005
+coll.x: 7, coll.y: 3
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 131.044711
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 453
+r.dir: 12.468755
+coll.x: 7, coll.y: 3
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 131.091949
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 454
+r.dir: 12.562505
+coll.x: 7, coll.y: 3
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 131.139572
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 455
+r.dir: 12.656255
+coll.x: 7, coll.y: 3
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 131.187582
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 456
+r.dir: 12.750005
+coll.x: 7, coll.y: 3
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 131.235977
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 457
+r.dir: 12.843756
+coll.x: 6, coll.y: 3
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 131.284761
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 458
+r.dir: 12.937506
+coll.x: 6, coll.y: 3
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 131.333932
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 459
+r.dir: 13.031256
+coll.x: 6, coll.y: 3
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 131.383492
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 460
+r.dir: 13.125006
+coll.x: 6, coll.y: 3
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 131.433441
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 461
+r.dir: 13.218756
+coll.x: 6, coll.y: 3
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 131.483781
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 462
+r.dir: 13.312506
+coll.x: 6, coll.y: 3
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 131.534512
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 463
+r.dir: 13.406256
+coll.x: 6, coll.y: 3
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 131.585634
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 464
+r.dir: 13.500006
+coll.x: 6, coll.y: 3
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 131.637148
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 465
+r.dir: 13.593756
+coll.x: 6, coll.y: 3
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 131.689055
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 466
+r.dir: 13.687506
+coll.x: 6, coll.y: 3
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 131.741357
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 467
+r.dir: 13.781256
+coll.x: 6, coll.y: 3
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 131.794052
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 468
+r.dir: 13.875006
+coll.x: 6, coll.y: 3
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 131.847144
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 469
+r.dir: 13.968756
+coll.x: 6, coll.y: 3
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 131.900631
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 470
+r.dir: 14.062506
+coll.x: 6, coll.y: 3
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 131.954515
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 471
+r.dir: 14.156256
+coll.x: 6, coll.y: 3
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 132.008796
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 472
+r.dir: 14.250006
+coll.x: 6, coll.y: 3
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 132.063476
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 473
+r.dir: 14.343756
+coll.x: 6, coll.y: 3
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 132.118556
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 474
+r.dir: 14.437506
+coll.x: 6, coll.y: 3
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 132.174035
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 475
+r.dir: 14.531256
+coll.x: 6, coll.y: 3
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 132.229915
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 476
+r.dir: 14.625006
+coll.x: 6, coll.y: 3
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 132.286196
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 477
+r.dir: 14.718756
+coll.x: 6, coll.y: 3
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 132.342880
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 478
+r.dir: 14.812506
+coll.x: 6, coll.y: 3
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 132.399968
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 479
+r.dir: 14.906256
+coll.x: 6, coll.y: 3
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 132.457459
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 480
+r.dir: 15.000006
+coll.x: 6, coll.y: 3
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 132.515355
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 481
+r.dir: 15.093756
+coll.x: 6, coll.y: 3
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 132.573657
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 482
+r.dir: 15.187507
+coll.x: 6, coll.y: 3
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 132.632365
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 483
+r.dir: 15.281257
+coll.x: 6, coll.y: 3
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 132.691481
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 484
+r.dir: 15.375007
+coll.x: 6, coll.y: 3
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 132.751005
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 485
+r.dir: 15.468757
+coll.x: 6, coll.y: 3
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 132.810939
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 486
+r.dir: 15.562507
+coll.x: 6, coll.y: 3
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 132.871282
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 487
+r.dir: 15.656257
+coll.x: 6, coll.y: 3
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 132.932036
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 488
+r.dir: 15.750007
+coll.x: 6, coll.y: 3
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 132.993203
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 489
+r.dir: 15.843757
+coll.x: 6, coll.y: 3
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 133.054781
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 490
+r.dir: 15.937507
+coll.x: 6, coll.y: 3
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 133.116774
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 491
+r.dir: 16.031257
+coll.x: 6, coll.y: 3
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 133.179181
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 492
+r.dir: 16.125007
+coll.x: 6, coll.y: 3
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 133.242003
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 493
+r.dir: 16.218757
+coll.x: 6, coll.y: 3
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 133.305242
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 494
+r.dir: 16.312507
+coll.x: 6, coll.y: 3
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 133.368898
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 495
+r.dir: 16.406257
+coll.x: 6, coll.y: 3
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 133.432972
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 496
+r.dir: 16.500007
+coll.x: 6, coll.y: 3
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 133.497466
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 497
+r.dir: 16.593757
+coll.x: 6, coll.y: 3
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 133.562379
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 498
+r.dir: 16.687507
+coll.x: 6, coll.y: 3
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 133.627714
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 499
+r.dir: 16.781257
+coll.x: 6, coll.y: 3
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 133.693471
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 500
+r.dir: 16.875007
+coll.x: 5, coll.y: 3
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 133.759651
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 501
+r.dir: 16.968757
+coll.x: 5, coll.y: 3
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 133.826254
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 502
+r.dir: 17.062507
+coll.x: 5, coll.y: 3
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 133.893283
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 503
+r.dir: 17.156257
+coll.x: 5, coll.y: 3
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 133.960738
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 504
+r.dir: 17.250007
+coll.x: 5, coll.y: 3
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 134.028620
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 505
+r.dir: 17.343757
+coll.x: 5, coll.y: 3
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 134.096930
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 506
+r.dir: 17.437507
+coll.x: 5, coll.y: 3
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 134.165669
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 507
+r.dir: 17.531258
+coll.x: 5, coll.y: 3
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 134.234838
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 508
+r.dir: 17.625008
+coll.x: 5, coll.y: 3
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 134.304438
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 509
+r.dir: 17.718758
+coll.x: 5, coll.y: 3
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 134.374470
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 510
+r.dir: 17.812508
+coll.x: 5, coll.y: 3
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 134.444936
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 511
+r.dir: 17.906258
+coll.x: 5, coll.y: 3
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 134.515835
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 512
+r.dir: 18.000008
+coll.x: 5, coll.y: 3
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 134.587171
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 513
+r.dir: 18.093758
+coll.x: 5, coll.y: 3
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 134.658942
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 514
+r.dir: 18.187508
+coll.x: 5, coll.y: 3
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 134.731151
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 515
+r.dir: 18.281258
+coll.x: 5, coll.y: 3
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 134.803799
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 516
+r.dir: 18.375008
+coll.x: 5, coll.y: 3
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 134.876886
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 517
+r.dir: 18.468758
+coll.x: 5, coll.y: 3
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 134.950414
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 518
+r.dir: 18.562508
+coll.x: 5, coll.y: 3
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 135.024384
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 519
+r.dir: 18.656258
+coll.x: 5, coll.y: 3
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 135.098797
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 520
+r.dir: 18.750008
+coll.x: 5, coll.y: 3
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 135.173654
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 521
+r.dir: 18.843758
+coll.x: 5, coll.y: 3
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 135.248957
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 522
+r.dir: 18.937508
+coll.x: 5, coll.y: 3
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 135.324706
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 523
+r.dir: 19.031258
+coll.x: 5, coll.y: 3
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 135.400902
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 524
+r.dir: 19.125008
+coll.x: 5, coll.y: 3
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 135.477548
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 525
+r.dir: 19.218758
+coll.x: 5, coll.y: 3
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 135.554643
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 526
+r.dir: 19.312508
+coll.x: 5, coll.y: 3
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 135.632190
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 527
+r.dir: 19.406258
+coll.x: 5, coll.y: 3
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 135.710188
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 528
+r.dir: 19.500008
+coll.x: 5, coll.y: 3
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 135.788641
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 529
+r.dir: 19.593758
+coll.x: 5, coll.y: 3
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 135.867548
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 530
+r.dir: 19.687508
+coll.x: 5, coll.y: 3
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 135.946910
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 531
+r.dir: 19.781258
+coll.x: 5, coll.y: 3
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 136.026731
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 532
+r.dir: 19.875009
+coll.x: 5, coll.y: 3
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 136.107009
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 533
+r.dir: 19.968759
+coll.x: 5, coll.y: 3
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 136.187747
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 534
+r.dir: 20.062509
+coll.x: 5, coll.y: 3
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 136.268946
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 535
+r.dir: 20.156259
+coll.x: 5, coll.y: 3
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 136.350607
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 536
+r.dir: 20.250009
+coll.x: 5, coll.y: 3
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 136.432732
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 537
+r.dir: 20.343759
+coll.x: 5, coll.y: 3
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 136.515321
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 538
+r.dir: 20.437509
+coll.x: 5, coll.y: 3
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 136.598377
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 539
+r.dir: 20.531259
+coll.x: 5, coll.y: 3
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 136.681899
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 540
+r.dir: 20.625009
+coll.x: 5, coll.y: 3
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 136.765890
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 541
+r.dir: 20.718759
+coll.x: 5, coll.y: 3
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 136.850352
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 542
+r.dir: 20.812509
+coll.x: 5, coll.y: 3
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 136.935284
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 543
+r.dir: 20.906259
+coll.x: 5, coll.y: 3
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 137.020689
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 544
+r.dir: 21.000009
+coll.x: 5, coll.y: 3
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 137.106567
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 545
+r.dir: 21.093759
+coll.x: 5, coll.y: 3
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 137.192921
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 546
+r.dir: 21.187509
+coll.x: 5, coll.y: 3
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 137.279752
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 547
+r.dir: 21.281259
+coll.x: 5, coll.y: 3
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 137.367061
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 548
+r.dir: 21.375009
+coll.x: 5, coll.y: 3
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 137.454849
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 549
+r.dir: 21.468759
+coll.x: 5, coll.y: 3
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 137.543118
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 550
+r.dir: 21.562509
+coll.x: 5, coll.y: 3
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 137.631868
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 551
+r.dir: 21.656259
+coll.x: 5, coll.y: 3
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 137.721103
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 552
+r.dir: 21.750009
+coll.x: 5, coll.y: 3
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 137.810822
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 553
+r.dir: 21.843759
+coll.x: 5, coll.y: 3
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 137.901028
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 554
+r.dir: 21.937509
+coll.x: 5, coll.y: 3
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 137.991722
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 555
+r.dir: 22.031259
+coll.x: 5, coll.y: 3
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 138.082905
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 556
+r.dir: 22.125009
+coll.x: 5, coll.y: 3
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 138.174579
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 557
+r.dir: 22.218760
+coll.x: 5, coll.y: 3
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 138.266745
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 558
+r.dir: 22.312510
+coll.x: 5, coll.y: 3
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 138.359405
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 559
+r.dir: 22.406260
+coll.x: 5, coll.y: 3
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 138.452560
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 560
+r.dir: 22.500010
+coll.x: 5, coll.y: 3
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 138.546211
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 561
+r.dir: 22.593760
+coll.x: 5, coll.y: 3
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 138.640361
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 562
+r.dir: 22.687510
+coll.x: 5, coll.y: 3
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 138.735011
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 563
+r.dir: 22.781260
+coll.x: 5, coll.y: 3
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 138.830162
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 564
+r.dir: 22.875010
+coll.x: 5, coll.y: 3
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 138.925815
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 565
+r.dir: 22.968760
+coll.x: 5, coll.y: 3
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 139.021973
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 566
+r.dir: 23.062510
+coll.x: 5, coll.y: 3
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 139.118637
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 567
+r.dir: 23.156260
+coll.x: 5, coll.y: 3
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 139.215809
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 568
+r.dir: 23.250010
+coll.x: 5, coll.y: 3
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 139.313489
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 569
+r.dir: 23.343760
+coll.x: 5, coll.y: 3
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 139.411681
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 570
+r.dir: 23.437510
+coll.x: 5, coll.y: 3
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 139.510384
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 571
+r.dir: 23.531260
+coll.x: 5, coll.y: 3
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 139.609602
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 572
+r.dir: 23.625010
+coll.x: 5, coll.y: 3
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 139.709335
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 573
+r.dir: 23.718760
+coll.x: 5, coll.y: 3
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 139.809585
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 574
+r.dir: 23.812510
+coll.x: 5, coll.y: 3
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 139.910354
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 575
+r.dir: 23.906260
+coll.x: 5, coll.y: 3
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 140.011643
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 576
+r.dir: 24.000010
+coll.x: 5, coll.y: 3
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 140.113455
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 577
+r.dir: 24.093760
+coll.x: 5, coll.y: 3
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 140.215790
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 578
+r.dir: 24.187510
+coll.x: 5, coll.y: 3
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 140.318651
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 579
+r.dir: 24.281260
+coll.x: 5, coll.y: 3
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 140.422040
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 580
+r.dir: 24.375010
+coll.x: 5, coll.y: 3
+coll.x: 5, coll.y: 2
+coll.x: 5, coll.y: 2
+dist vert 140.525957
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 581
+r.dir: 24.468760
+coll.x: 7, coll.y: 4
+coll.x: 5, coll.y: 3
+coll.x: 5, coll.y: 3
+dist vert 140.630405
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 582
+r.dir: 24.562511
+coll.x: 7, coll.y: 4
+coll.x: 5, coll.y: 3
+coll.x: 5, coll.y: 3
+dist vert 140.735385
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 583
+r.dir: 24.656261
+coll.x: 7, coll.y: 4
+coll.x: 5, coll.y: 3
+coll.x: 5, coll.y: 3
+dist vert 140.840900
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 584
+r.dir: 24.750011
+coll.x: 7, coll.y: 4
+coll.x: 5, coll.y: 3
+coll.x: 5, coll.y: 3
+dist vert 140.946950
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 585
+r.dir: 24.843761
+coll.x: 7, coll.y: 4
+coll.x: 5, coll.y: 3
+coll.x: 5, coll.y: 3
+dist vert 141.053539
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 586
+r.dir: 24.937511
+coll.x: 7, coll.y: 4
+coll.x: 5, coll.y: 3
+coll.x: 5, coll.y: 3
+dist vert 141.160667
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 587
+r.dir: 25.031261
+coll.x: 7, coll.y: 4
+coll.x: 5, coll.y: 3
+coll.x: 5, coll.y: 3
+dist vert 141.268336
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 588
+r.dir: 25.125011
+coll.x: 7, coll.y: 4
+coll.x: 5, coll.y: 3
+coll.x: 5, coll.y: 3
+dist vert 141.376548
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 589
+r.dir: 25.218761
+coll.x: 7, coll.y: 4
+coll.x: 5, coll.y: 3
+coll.x: 5, coll.y: 3
+dist vert 141.485306
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 590
+r.dir: 25.312511
+coll.x: 7, coll.y: 4
+coll.x: 5, coll.y: 3
+coll.x: 5, coll.y: 3
+dist vert 141.594610
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 591
+r.dir: 25.406261
+coll.x: 7, coll.y: 4
+coll.x: 5, coll.y: 3
+coll.x: 5, coll.y: 3
+dist vert 141.704463
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 592
+r.dir: 25.500011
+coll.x: 6, coll.y: 4
+coll.x: 5, coll.y: 3
+coll.x: 5, coll.y: 3
+dist vert 141.814867
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 593
+r.dir: 25.593761
+coll.x: 6, coll.y: 4
+coll.x: 5, coll.y: 3
+coll.x: 5, coll.y: 3
+dist vert 141.925823
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 594
+r.dir: 25.687511
+coll.x: 6, coll.y: 4
+coll.x: 5, coll.y: 3
+coll.x: 5, coll.y: 3
+dist vert 142.037333
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 595
+r.dir: 25.781261
+coll.x: 6, coll.y: 4
+coll.x: 5, coll.y: 3
+coll.x: 5, coll.y: 3
+dist vert 142.149399
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 596
+r.dir: 25.875011
+coll.x: 6, coll.y: 4
+coll.x: 5, coll.y: 3
+coll.x: 5, coll.y: 3
+dist vert 142.262024
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 597
+r.dir: 25.968761
+coll.x: 6, coll.y: 4
+coll.x: 5, coll.y: 3
+coll.x: 5, coll.y: 3
+dist vert 142.375209
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 598
+r.dir: 26.062511
+coll.x: 6, coll.y: 4
+coll.x: 5, coll.y: 3
+coll.x: 5, coll.y: 3
+dist vert 142.488956
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 599
+r.dir: 26.156261
+coll.x: 6, coll.y: 4
+coll.x: 5, coll.y: 3
+coll.x: 5, coll.y: 3
+dist vert 142.603266
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 600
+r.dir: 26.250011
+coll.x: 6, coll.y: 4
+coll.x: 5, coll.y: 3
+coll.x: 5, coll.y: 3
+dist vert 142.718143
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 601
+r.dir: 26.343761
+coll.x: 6, coll.y: 4
+coll.x: 5, coll.y: 3
+coll.x: 5, coll.y: 3
+dist vert 142.833588
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 602
+r.dir: 26.437511
+coll.x: 6, coll.y: 4
+coll.x: 5, coll.y: 3
+coll.x: 5, coll.y: 3
+dist vert 142.949603
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 603
+r.dir: 26.531261
+coll.x: 6, coll.y: 4
+coll.x: 5, coll.y: 3
+coll.x: 5, coll.y: 3
+dist vert 143.066189
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 604
+r.dir: 26.625011
+coll.x: 6, coll.y: 4
+coll.x: 5, coll.y: 3
+coll.x: 5, coll.y: 3
+dist vert 143.183350
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 605
+r.dir: 26.718761
+coll.x: 6, coll.y: 4
+coll.x: 5, coll.y: 3
+coll.x: 5, coll.y: 3
+dist vert 143.301087
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 606
+r.dir: 26.812511
+coll.x: 6, coll.y: 4
+coll.x: 5, coll.y: 3
+coll.x: 5, coll.y: 3
+dist vert 143.419401
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 607
+r.dir: 26.906262
+coll.x: 6, coll.y: 4
+coll.x: 5, coll.y: 3
+coll.x: 5, coll.y: 3
+dist vert 143.538296
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 608
+r.dir: 27.000012
+coll.x: 6, coll.y: 4
+coll.x: 5, coll.y: 3
+coll.x: 5, coll.y: 3
+dist vert 143.657773
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 609
+r.dir: 27.093762
+coll.x: 6, coll.y: 4
+coll.x: 5, coll.y: 3
+coll.x: 5, coll.y: 3
+dist vert 143.777835
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 610
+r.dir: 27.187512
+coll.x: 6, coll.y: 4
+coll.x: 5, coll.y: 3
+coll.x: 5, coll.y: 3
+dist vert 143.898482
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 611
+r.dir: 27.281262
+coll.x: 6, coll.y: 4
+coll.x: 5, coll.y: 3
+coll.x: 5, coll.y: 3
+dist vert 144.019719
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 612
+r.dir: 27.375012
+coll.x: 6, coll.y: 4
+coll.x: 5, coll.y: 3
+coll.x: 5, coll.y: 3
+dist vert 144.141546
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 613
+r.dir: 27.468762
+coll.x: 6, coll.y: 4
+coll.x: 5, coll.y: 3
+coll.x: 5, coll.y: 3
+dist vert 144.263966
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 614
+r.dir: 27.562512
+coll.x: 6, coll.y: 4
+coll.x: 5, coll.y: 3
+coll.x: 5, coll.y: 3
+dist vert 144.386981
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 615
+r.dir: 27.656262
+coll.x: 6, coll.y: 4
+coll.x: 5, coll.y: 3
+coll.x: 5, coll.y: 3
+dist vert 144.510593
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 616
+r.dir: 27.750012
+coll.x: 6, coll.y: 4
+coll.x: 5, coll.y: 3
+coll.x: 5, coll.y: 3
+dist vert 144.634805
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 617
+r.dir: 27.843762
+coll.x: 6, coll.y: 4
+coll.x: 5, coll.y: 3
+coll.x: 5, coll.y: 3
+dist vert 144.759618
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 618
+r.dir: 27.937512
+coll.x: 6, coll.y: 4
+coll.x: 5, coll.y: 3
+coll.x: 5, coll.y: 3
+dist vert 144.885035
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 619
+r.dir: 28.031262
+coll.x: 6, coll.y: 4
+coll.x: 5, coll.y: 3
+coll.x: 5, coll.y: 3
+dist vert 145.011058
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 620
+r.dir: 28.125012
+coll.x: 6, coll.y: 4
+coll.x: 5, coll.y: 3
+coll.x: 5, coll.y: 3
+dist vert 145.137689
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 621
+r.dir: 28.218762
+coll.x: 6, coll.y: 4
+coll.x: 5, coll.y: 3
+coll.x: 5, coll.y: 3
+dist vert 145.264931
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 622
+r.dir: 28.312512
+coll.x: 6, coll.y: 4
+coll.x: 5, coll.y: 3
+coll.x: 5, coll.y: 3
+dist vert 145.392786
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 623
+r.dir: 28.406262
+coll.x: 6, coll.y: 4
+coll.x: 5, coll.y: 3
+coll.x: 5, coll.y: 3
+dist vert 145.521256
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 624
+r.dir: 28.500012
+coll.x: 6, coll.y: 4
+coll.x: 5, coll.y: 3
+coll.x: 5, coll.y: 3
+dist vert 145.650344
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 625
+r.dir: 28.593762
+coll.x: 6, coll.y: 4
+coll.x: 5, coll.y: 3
+coll.x: 5, coll.y: 3
+dist vert 145.780052
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 626
+r.dir: 28.687512
+coll.x: 6, coll.y: 4
+coll.x: 5, coll.y: 3
+coll.x: 5, coll.y: 3
+dist vert 145.910381
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 627
+r.dir: 28.781262
+coll.x: 6, coll.y: 4
+coll.x: 5, coll.y: 3
+coll.x: 5, coll.y: 3
+dist vert 146.041336
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 628
+r.dir: 28.875012
+coll.x: 6, coll.y: 4
+coll.x: 5, coll.y: 3
+coll.x: 5, coll.y: 3
+dist vert 146.172917
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 629
+r.dir: 28.968762
+coll.x: 6, coll.y: 4
+coll.x: 5, coll.y: 3
+coll.x: 5, coll.y: 3
+dist vert 146.305128
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 630
+r.dir: 29.062512
+coll.x: 6, coll.y: 4
+coll.x: 5, coll.y: 3
+coll.x: 5, coll.y: 3
+dist vert 146.437970
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 631
+r.dir: 29.156262
+coll.x: 6, coll.y: 4
+coll.x: 5, coll.y: 3
+coll.x: 5, coll.y: 3
+dist vert 146.571447
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 632
+r.dir: 29.250013
+coll.x: 6, coll.y: 4
+coll.x: 5, coll.y: 3
+coll.x: 5, coll.y: 3
+dist vert 146.705560
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 633
+r.dir: 29.343763
+coll.x: 6, coll.y: 4
+coll.x: 5, coll.y: 3
+coll.x: 5, coll.y: 3
+dist vert 146.840313
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 634
+r.dir: 29.437513
+coll.x: 6, coll.y: 4
+coll.x: 5, coll.y: 3
+coll.x: 5, coll.y: 3
+dist vert 146.975707
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 635
+r.dir: 29.531263
+coll.x: 6, coll.y: 4
+coll.x: 5, coll.y: 3
+coll.x: 5, coll.y: 3
+dist vert 147.111746
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 636
+r.dir: 29.625013
+coll.x: 6, coll.y: 4
+coll.x: 5, coll.y: 3
+coll.x: 5, coll.y: 3
+dist vert 147.248431
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 637
+r.dir: 29.718763
+coll.x: 6, coll.y: 4
+coll.x: 5, coll.y: 3
+coll.x: 5, coll.y: 3
+dist vert 147.385765
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 638
+r.dir: 29.812513
+coll.x: 6, coll.y: 4
+coll.x: 5, coll.y: 3
+coll.x: 5, coll.y: 3
+dist vert 147.523751
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 639
+r.dir: 29.906263
+coll.x: 6, coll.y: 4
+coll.x: 5, coll.y: 3
+coll.x: 5, coll.y: 3
+dist vert 147.662391
+HORIZ dist: 234.136712
+vert dist: 234.136712
+i = 640

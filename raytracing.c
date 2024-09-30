@@ -1,6 +1,5 @@
 #include "cub3d.h"
 
-void cast_rays(char **map, t_player p);
 double get_dist(t_ray r, t_coord coll, t_player p);
 double get_horiz_coll(t_player p, t_ray r, char **map);
 t_coord	get_ray_delta(t_ray r, bool is_horiz);
@@ -11,25 +10,62 @@ double deg_to_rad(double degrees);
 double radians_to_degrees(double radians) ;
 double norm_angle(double angle);
 
-void cast_rays(char **map, t_player p)
+double projected_wall_height(double dist)
+{
+	return(CUBE_SIZE / dist * FOCAL_LEN);
+}
+
+void draw_walls(t_ray *rays, t_data *data)
+{
+	int i;
+	int height;
+	int wall_top;
+	int j;
+	//int wall_color[3] = {255, 0, 0};
+	//int other_color[3] = {0, 0, 255};
+
+	i=0;
+	while(i < WINDOW_WIDTH)
+	{
+		height = (int)projected_wall_height(rays[i].dist);
+		wall_top = 100 - height / 2;
+		j = 0;
+		while(j < wall_top)
+			set_pixel(data, (int[3]){255, 0, 255}, i, j++);
+		while(j < height)
+			set_pixel(data, (int[3]){255, 0, 0}, i, j++);
+		while(j < WINDOW_HEIGHT)
+			set_pixel(data, (int[3]){0, 0, 255}, i, j++);
+		i++;
+	}
+}
+
+t_ray *cast_rays(char **map, t_player p)
 {
 	int i;
 	t_ray r;
+	t_ray *rays;
 
 	i = 0;
 	r.pos = p.pos;
+	rays = malloc(sizeof(t_ray) * WINDOW_WIDTH);
 	while(i < WINDOW_WIDTH)
 	{
 		r.dir = p.dir - (FOV / 2) + (FOV / WINDOW_WIDTH) * i;
 		r.dir = norm_angle(r.dir);
+		r.is_horiz = false;
 		printf("r.dir: %f\n", radians_to_degrees(r.dir));
 		if(get_horiz_coll(p, r, map) < get_vert_coll(p, r, map))
-			printf("dist horiz %f", get_horiz_coll(p, r, map));
+		{
+			r.dist = get_horiz_coll(p, r, map);
+			rays[i].is_horiz = true;
+		}
 		else
-			printf("dist vert %f", get_vert_coll(p, r, map));
+			r.dist = get_vert_coll(p, r, map);
+		rays[i] = r;
 		i++;
-		printf("i = %d\n", i);
 	}
+	return rays;
 }
 
 double norm_angle(double angle)
@@ -53,10 +89,15 @@ double radians_to_degrees(double radians)
 double get_dist(t_ray r, t_coord coll, t_player p)
 {
 	double dist;
-
+	if(coll.x == -1.0 && coll.y == -1.0)
+		return INFINITY;
 	dist = sqrt(pow(p.pos.x - coll.x, 2) + pow(p.pos.y - coll.y, 2));
-	(void)r;
-	//dist = dist * cos(r.dir - p.dir);
+	double angle_diff = r.dir - norm_angle(p.dir);
+	printf("dist: %f\n", dist);
+    // Print debug information
+    printf("r.dir: %f, p.dir: %f, angle_diff: %f\n", radians_to_degrees(r.dir), p.dir, angle_diff);
+
+	dist = dist * cos(angle_diff);
 	return (dist);
 }
 
@@ -92,6 +133,7 @@ t_coord	get_ray_delta(t_ray r, bool is_horiz)
 	return delta;
 }
 
+
 t_coord get_wall_coll(t_coord coll, t_ray r, char **map, bool is_horiz)
 {
 	t_coord delta;
@@ -102,20 +144,17 @@ t_coord get_wall_coll(t_coord coll, t_ray r, char **map, bool is_horiz)
 	map_y = ((int)floor((coll.y/CUBE_SIZE)));
 
 	delta = get_ray_delta(r, is_horiz);
-	if(!(map_x < 0 || map_y < 0 || map_x >= 5 || map_y >= 4))
+	while(!(map_x < 0 || map_y < 0 || map_x > 5 || map_y > 5))
 	{
-	while(map[map_x][map_y] != WALL && delta.x != 0 && delta.y != 0)
-	{
+		if(map[map_y][map_x] == WALL)
+			return coll;
 		coll.x += delta.x;
 		coll.y += delta.y;
 		map_x = ((int)floor((coll.x/CUBE_SIZE)));
 		map_y = ((int)floor((coll.y/CUBE_SIZE)));
-		if (map_x < 0 || map_y < 0 || map_x >= 5 || map_y >= 4)
-			break;
 	}
-	}
+	return (t_coord){-1.0, -1.0};
 	printf("coll.x: %d, coll.y: %d\n", map_x, map_y);
-	return (coll);
 }
 
 
@@ -123,8 +162,9 @@ double get_vert_coll(t_player p, t_ray r, char **map)
 {
 	t_coord coll;
 	double tan_val;
+	double dist;
 
-	tan_val = fabs(tan(r.dir));
+	tan_val = tan(r.dir);
 	if (check_dir(r, false) == WEST)
 	{
 		coll.x = floor(p.pos.x / CUBE_SIZE) * CUBE_SIZE - 1;
@@ -138,7 +178,8 @@ double get_vert_coll(t_player p, t_ray r, char **map)
 
 	coll.y = p.pos.y + (coll.x - p.pos.x) * tan_val;
 	coll = get_wall_coll(coll, r, map, false);
-	return get_dist(r, coll, p);
+	dist = get_dist(r, coll, p);
+	return (dist);
 }
 
 
@@ -150,7 +191,7 @@ double get_horiz_coll(t_player p, t_ray r, char **map)
 	tan_val = fabs(tan(r.dir));
 	if(check_dir(r, true) == NORTH)
 	{
-		coll.y = floor(p.pos.y/CUBE_SIZE) * CUBE_SIZE - 1;
+		coll.y = floor(p.pos.y/CUBE_SIZE) * CUBE_SIZE - 1; // inside current square
 		tan_val = -tan_val;
 	}
 	else if(check_dir(r, true) == SOUTH)
