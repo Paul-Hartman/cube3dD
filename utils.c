@@ -6,7 +6,7 @@
 /*   By: wpepping <wpepping@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/30 14:41:16 by wpepping          #+#    #+#             */
-/*   Updated: 2024/09/30 14:41:55 by wpepping         ###   ########.fr       */
+/*   Updated: 2024/09/30 15:13:43 by wpepping         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,21 @@
 
 char	*ft_remove(char *str, char c)
 {
-	(void)c;
-	return (ft_strdup(str));
+	int		i;
+	int		len;
+	char	*result;
+
+	i = 0;
+	len = 0;
+	while (str[i])
+		if (str[i++] != c)
+			len++;
+	result = malloc((len + 1) * sizeof(char));
+	while (i >= 0)
+	{
+		if (str[i] != c)
+			result[len--] = str[i];
+		i--;
+	}
+	return (result);
 }

@@ -6,7 +6,7 @@
 /*   By: wpepping <wpepping@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/03 19:09:39 by wpepping          #+#    #+#             */
-/*   Updated: 2024/09/30 14:37:37 by wpepping         ###   ########.fr       */
+/*   Updated: 2024/09/30 15:03:35 by wpepping         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,12 +54,17 @@ static int	is_valid(char *line, int width)
 
 int	get_map_dimensions(t_data *data, int fd)
 {
+	char	*temp;
 	char	*line;
 
-	line = get_first_map_line(fd);
-	if (!line)
+	temp = get_first_map_line(fd);
+	if (!temp)
 		return (-1);
+	line = ft_remove(temp, ' ');
+	free(temp);
 	data->map_width = ft_strlen(line);
+	if (data->map_width == 0)
+		return (err_handl(line, NULL));
 	if (line[data->map_width - 1] == '\n')
 		data->map_width--;
 	data->map_height = 0;
