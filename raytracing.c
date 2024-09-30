@@ -1,6 +1,5 @@
 #include "cub3d.h"
 
-void cast_rays(char **map, t_player p);
 double get_dist(t_ray r, t_coord coll, t_player p);
 double get_horiz_coll(t_player p, t_ray r, char **map);
 t_coord	get_ray_delta(t_ray r, bool is_horiz);
@@ -11,29 +10,32 @@ double deg_to_rad(double degrees);
 double radians_to_degrees(double radians) ;
 double norm_angle(double angle);
 
-void cast_rays(char **map, t_player p)
+double *cast_rays(char **map, t_player p)
 {
 	int i;
 	t_ray r;
-	t_coord horiz_coll;
-	t_coord vert_coll;
+	double *distances;
 
 	i = 0;
 	r.pos = p.pos;
+	distances = malloc(sizeof(double) * WINDOW_WIDTH);
 	while(i < WINDOW_WIDTH)
 	{
 		r.dir = p.dir - (FOV / 2) + (FOV / WINDOW_WIDTH) * i;
 		r.dir = norm_angle(r.dir);
 		printf("r.dir: %f\n", radians_to_degrees(r.dir));
 		if(get_horiz_coll(p, r, map) < get_vert_coll(p, r, map))
-			printf("dist horiz %f", get_horiz_coll(p, r, map));
+			distances[i] = get_horiz_coll(p, r, map);
 		else
-			printf("dist vert %f", get_vert_coll(p, r, map));
-		printf("HORIZ dist: %f\n", get_dist(r, horiz_coll, p));
-		printf("vert dist: %f\n", get_dist(r, vert_coll, p));
+			distances[i] = get_vert_coll(p, r, map);
 		i++;
 		printf("i = %d\n", i);
 	}
+	for (int i = 0; i < WINDOW_WIDTH; i++)
+	{
+		printf("distances[%d]: %f\n", i, distances[i]);
+	}
+	return distances;
 }
 
 double norm_angle(double angle)
@@ -57,10 +59,15 @@ double radians_to_degrees(double radians)
 double get_dist(t_ray r, t_coord coll, t_player p)
 {
 	double dist;
-
+	if(coll.x == -1.0 && coll.y == -1.0)
+		return INFINITY;
 	dist = sqrt(pow(p.pos.x - coll.x, 2) + pow(p.pos.y - coll.y, 2));
-	(void)r;
-	//dist = dist * cos(r.dir - p.dir);
+	double angle_diff = r.dir - norm_angle(p.dir);
+	printf("dist: %f\n", dist);
+    // Print debug information
+    printf("r.dir: %f, p.dir: %f, angle_diff: %f\n", radians_to_degrees(r.dir), p.dir, angle_diff);
+
+	dist = dist * cos(angle_diff);
 	return (dist);
 }
 
@@ -96,6 +103,21 @@ t_coord	get_ray_delta(t_ray r, bool is_horiz)
 	return delta;
 }
 
+void print_map(char **map, int rows, int cols) {
+    for (int i = 0; i < rows; i++) {
+        for (int j = 0; j < cols; j++) {
+            if (map[i][j] == WALL) {
+                printf("#"); // Print a symbol for the wall
+            } else if (map[i][j] == EMPTY) {
+                printf(" "); // Print a space for empty cells
+            } else {
+                printf("%c", map[i][j]); // Print any other characters as they are
+            }
+        }
+        printf("\n");
+    }
+}
+
 t_coord get_wall_coll(t_coord coll, t_ray r, char **map, bool is_horiz)
 {
 	t_coord delta;
@@ -106,20 +128,19 @@ t_coord get_wall_coll(t_coord coll, t_ray r, char **map, bool is_horiz)
 	map_y = ((int)floor((coll.y/CUBE_SIZE)));
 
 	delta = get_ray_delta(r, is_horiz);
-	if(!(map_x < 0 || map_y < 0 || map_x >= 5 || map_y >= 4))
+	print_map(map, 5, 5);
+	while(!(map_x < 0 || map_y < 0 || map_x >= 5 || map_y >= 5))
 	{
-	while(map[map_x][map_y] != WALL && delta.x != 0 && delta.y != 0)
-	{
+		if(map[map_y][map_x] == WALL)
+			return coll;
 		coll.x += delta.x;
 		coll.y += delta.y;
 		map_x = ((int)floor((coll.x/CUBE_SIZE)));
 		map_y = ((int)floor((coll.y/CUBE_SIZE)));
-		if (map_x < 0 || map_y < 0 || map_x >= 5 || map_y >= 4)
-			break;
+		
 	}
-	}
+	return (t_coord){-1.0, -1.0};
 	printf("coll.x: %d, coll.y: %d\n", map_x, map_y);
-	return (coll);
 }
 
 
@@ -154,7 +175,7 @@ double get_horiz_coll(t_player p, t_ray r, char **map)
 	tan_val = fabs(tan(r.dir));
 	if(check_dir(r, true) == NORTH)
 	{
-		coll.y = floor(p.pos.y/CUBE_SIZE) * CUBE_SIZE - 1;
+		coll.y = floor(p.pos.y/CUBE_SIZE) * CUBE_SIZE - 1; // inside current square
 		tan_val = -tan_val;
 	}
 	else if(check_dir(r, true) == SOUTH)

@@ -6,7 +6,7 @@
 /*   By: phartman <phartman@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/27 17:52:36 by wpepping          #+#    #+#             */
-/*   Updated: 2024/09/30 14:30:41 by phartman         ###   ########.fr       */
+/*   Updated: 2024/09/30 16:24:41 by phartman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,8 @@
 # define WINDOW_HEIGHT 480
 #define EPSILON 1e-6
 #define M_PI 3.14159265358979323846
+
+
 
 # define EMPTY 48
 # define WALL 49
@@ -99,7 +101,7 @@ typedef struct s_player
 // }				t_vars;
 
 // raycasting
-void cast_rays(char **map, t_player p);
+double *cast_rays(char **map, t_player p);
 
 // Read map
 int				read_map(t_data *data, char *fname);

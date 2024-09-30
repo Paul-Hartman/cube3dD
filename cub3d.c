@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wpepping <wpepping@student.42berlin.de>    +#+  +:+       +#+        */
+/*   By: phartman <phartman@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/27 20:07:30 by wpepping          #+#    #+#             */
-/*   Updated: 2024/09/28 22:58:43 by wpepping         ###   ########.fr       */
+/*   Updated: 2024/09/30 16:27:54 by phartman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,7 @@ int main(int argc, char **argv)
 		return (1);
     t_player player;
 	player.pos.x = 3 * CUBE_SIZE;
-	player.pos.y = CUBE_SIZE+70;
+	player.pos.y = CUBE_SIZE;
 	player.dir = 0;
 	cast_rays(data.map, player);
 	return 0;
