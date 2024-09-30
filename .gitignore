@@ -1,5 +1,7 @@
 .gitignore
 .vscode
+cub3d
+cub3D
 map.cub
 *.o
 mlx/obj/*
