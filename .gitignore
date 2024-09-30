@@ -5,3 +5,4 @@ map.cub
 mlx/obj/*
 */*.a
 *.a
+.cub

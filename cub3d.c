@@ -6,7 +6,7 @@
 /*   By: phartman <phartman@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/27 20:07:30 by wpepping          #+#    #+#             */
-/*   Updated: 2024/09/30 19:38:22 by phartman         ###   ########.fr       */
+/*   Updated: 2024/09/30 19:53:10 by phartman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,13 +41,13 @@ static int	init(t_data *data, char *map)
 	return (0);
 }
 
-// static void	init_events(t_data *data)
-// {
-// 	mlx_key_hook(data->win_ptr, &handle_input, data);
-// 	mlx_mouse_hook(data->win_ptr, &handle_mouse, data);
-// 	mlx_hook(data->win_ptr, DestroyNotify, StructureNotifyMask,
-// 		&handle_close, data);
-// }
+static void	init_events(t_data *data)
+{
+	mlx_key_hook(data->win_ptr, &handle_input, data);
+	mlx_mouse_hook(data->win_ptr, &handle_mouse, data);
+	mlx_hook(data->win_ptr, DestroyNotify, StructureNotifyMask,
+		&handle_close, data);
+}
 
 static int	check_input(int argc, char **argv)
 {
@@ -69,34 +69,36 @@ static int	check_input(int argc, char **argv)
 	return (0);
 }
 
-int main(int argc, char **argv)
-{
-	t_data	data;
-
-	//int wall_color[3] = {255, 0, 0};
-	if (check_input(argc, argv) || init(&data, argv[1]))
-		return (1);
-    t_player player;
-	player.pos.x = CUBE_SIZE + (CUBE_SIZE/2);
-	player.pos.y = CUBE_SIZE + (CUBE_SIZE/2);
-	player.dir = 0;
-	
-	
-	draw_walls(cast_rays(data.map, player), &data);
-	return 0;
-}
-
-// int	main(int argc, char **argv)
+// int main(int argc, char **argv)
 // {
 // 	t_data	data;
 
 // 	if (check_input(argc, argv) || init(&data, argv[1]))
 // 		return (1);
-// 	init_events(&data);
-// 	mlx_loop(data.mlx_ptr);
-// 	//unload_textures(&data);
-// 	mlx_destroy_window(data.mlx_ptr, data.win_ptr);
-// 	mlx_destroy_display(data.mlx_ptr);
-// 	free(data.mlx_ptr);
-// 	return (0);
+
+	
+	
+	
+// 	return 0;
 // }
+
+int	main(int argc, char **argv)
+{
+	t_data	data;
+
+	if (check_input(argc, argv) || init(&data, argv[1]))
+		return (1);
+	init_events(&data);
+	t_player player;
+	player.pos.x = CUBE_SIZE + (CUBE_SIZE/2);
+	player.pos.y = CUBE_SIZE + (CUBE_SIZE/2);
+	player.dir = 0;
+	draw_walls(cast_rays(data.map, player), &data);
+	mlx_loop(data.mlx_ptr);
+	
+	//unload_textures(&data);
+	mlx_destroy_window(data.mlx_ptr, data.win_ptr);
+	mlx_destroy_display(data.mlx_ptr);
+	free(data.mlx_ptr);
+	return (0);
+}

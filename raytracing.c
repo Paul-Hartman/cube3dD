@@ -134,7 +134,7 @@ t_coord	get_ray_delta(t_ray r, bool is_horiz)
 }
 
 
-t_coord get_wall_coll(t_coord coll, t_ray r, char **map, bool is_horiz)
+t_coord get_wall_coll(t_coord coll, t_ray r, t_map map, bool is_horiz)
 {
 	t_coord delta;
 	int map_x;
@@ -144,7 +144,7 @@ t_coord get_wall_coll(t_coord coll, t_ray r, char **map, bool is_horiz)
 	map_y = ((int)floor((coll.y/CUBE_SIZE)));
 
 	delta = get_ray_delta(r, is_horiz);
-	while(!(map_x < 0 || map_y < 0 || map_x > 5 || map_y > 5))
+	while(!(map_x <  || map_y < 0 || map_x > 5 || map_y > 5))
 	{
 		if(map[map_y][map_x] == WALL)
 			return coll;
