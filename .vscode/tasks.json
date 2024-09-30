@@ -6,11 +6,10 @@
             "type": "shell",
             "command": "make re",
             "args": [],
-            "group": {
-                "kind": "build",
-                "isDefault": true
-            },
-            "problemMatcher": ["$gcc"],
+            "group": "build",
+            "problemMatcher": [
+                "$gcc"
+            ],
             "detail": "Generated task by Debugger."
         }
     ]
