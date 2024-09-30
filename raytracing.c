@@ -15,8 +15,6 @@ void cast_rays(char **map, t_player p)
 {
 	int i;
 	t_ray r;
-	t_coord horiz_coll;
-	t_coord vert_coll;
 
 	i = 0;
 	r.pos = p.pos;
@@ -29,8 +27,6 @@ void cast_rays(char **map, t_player p)
 			printf("dist horiz %f", get_horiz_coll(p, r, map));
 		else
 			printf("dist vert %f", get_vert_coll(p, r, map));
-		printf("HORIZ dist: %f\n", get_dist(r, horiz_coll, p));
-		printf("vert dist: %f\n", get_dist(r, vert_coll, p));
 		i++;
 		printf("i = %d\n", i);
 	}

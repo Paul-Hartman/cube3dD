@@ -6,11 +6,19 @@
 /*   By: wpepping <wpepping@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/30 14:41:16 by wpepping          #+#    #+#             */
-/*   Updated: 2024/09/30 19:09:25 by wpepping         ###   ########.fr       */
+/*   Updated: 2024/09/30 19:51:14 by wpepping         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
+
+bool	ft_isnum(char *str)
+{
+	while (str)
+		if (!ft_isdigit(*(str++)))
+			return (false);
+	return (true);
+}
 
 double	get_angle(char dir)
 {

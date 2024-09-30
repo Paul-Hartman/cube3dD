@@ -6,7 +6,7 @@
 /*   By: wpepping <wpepping@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/27 20:07:30 by wpepping          #+#    #+#             */
-/*   Updated: 2024/09/30 19:13:43 by wpepping         ###   ########.fr       */
+/*   Updated: 2024/09/30 19:30:36 by wpepping         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,13 +41,13 @@ static int	init(t_data *data, char *fname)
 	return (0);
 }
 
-// static void	init_events(t_data *data)
-// {
-// 	mlx_key_hook(data->win_ptr, &handle_input, data);
-// 	mlx_mouse_hook(data->win_ptr, &handle_mouse, data);
-// 	mlx_hook(data->win_ptr, DestroyNotify, StructureNotifyMask,
-// 		&handle_close, data);
-// }
+static void	init_events(t_data *data)
+{
+	mlx_key_hook(data->win_ptr, &handle_input, data);
+	mlx_mouse_hook(data->win_ptr, &handle_mouse, data);
+	mlx_hook(data->win_ptr, DestroyNotify, StructureNotifyMask,
+		&handle_close, data);
+}
 
 static int	check_input(int argc, char **argv)
 {
@@ -81,7 +81,10 @@ int	main(int argc, char **argv)
 		return (1);
 	if (find_player(&map, &player) < 0 || !is_valid_map(&map, &player))
 		return (err_handl("Map error", &data));
+ 	init_events(&data);
 	cast_rays(data.map->grid, player);
+	//unload_textures(&data);
+	cleanup(&data);
 	return (0);
 }
 

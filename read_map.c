@@ -6,7 +6,7 @@
 /*   By: wpepping <wpepping@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/28 20:03:56 by wpepping          #+#    #+#             */
-/*   Updated: 2024/09/30 18:40:01 by wpepping         ###   ########.fr       */
+/*   Updated: 2024/09/30 19:49:47 by wpepping         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,7 +100,9 @@ int	read_map(t_data *data, char *fname)
 	if (read_config(&config, fd) < 0)
 		return (err_handl(fd));
 	load_textures(data, &config);
-	if (save_floor_ceiling(data, &config) < 0)
+	if (save_rgb(config.floor, data->floor) < 0)
+		return (err_handl(fd));
+	if (save_rgb(config.ceiling, data->ceiling) < 0)
 		return (err_handl(fd));
 	if (get_map_dimensions(data->map, fd) < 0)
 		return (err_handl(fd));
@@ -109,5 +111,4 @@ int	read_map(t_data *data, char *fname)
 	if (fd == -1)
 		return (-1);
 	return (read_map_content(data->map, fd, config.map_start));
-
 }

@@ -6,7 +6,7 @@
 /*   By: wpepping <wpepping@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/30 14:46:55 by wpepping          #+#    #+#             */
-/*   Updated: 2024/09/30 19:07:32 by wpepping         ###   ########.fr       */
+/*   Updated: 2024/09/30 19:51:30 by wpepping         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,9 +114,10 @@ int				read_map_content(t_map *map, int fd, int map_start);
 int				get_map_dimensions(t_map *map, int fd);
 int				read_to_eoln(int fd, char *value);
 int				try_save(char **dest, char *src);
-int				save_floor_ceiling(t_data *data, t_config *config);
+int				save_rgb(char *str, int dest[3]);
 int				find_player(t_map *map, t_player *player);
 int				is_valid_map(t_map *map, t_player *player);
+
 
 // Render
 int				load_textures(t_data *data, t_config *config);
@@ -136,5 +137,6 @@ void			free_map(char **map);
 // Utils
 char			*ft_remove(char *str, char c);
 double			get_angle(char dir);
+bool			ft_isnum(char *str);
 
 #endif

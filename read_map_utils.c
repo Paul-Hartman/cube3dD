@@ -6,7 +6,7 @@
 /*   By: wpepping <wpepping@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/28 22:28:35 by wpepping          #+#    #+#             */
-/*   Updated: 2024/09/30 19:22:03 by wpepping         ###   ########.fr       */
+/*   Updated: 2024/09/30 19:51:57 by wpepping         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,10 +42,19 @@ int	try_save(char **dest, char *src)
 	return (0);
 }
 
-int	save_floor_ceiling(t_data *data, t_config *config)
+int	save_rgb(char *str, int dest[3])
 {
-	(void)data;
-	(void)config;
+	char	**rgb;
+
+	(void)dest;
+	rgb = ft_split(str, ',');
+	if (!rgb || !rgb[0] || !rgb[1] || !rgb[2] || rgb[3] || ft_strlen(rgb[0]) > 3
+		|| ft_strlen(rgb[1]) > 3 || ft_strlen(rgb[2]) > 3)
+	{
+		free(rgb);
+		return (-1);
+	}
+	free(rgb);
 	return (0);
 }
 
