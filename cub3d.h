@@ -6,7 +6,7 @@
 /*   By: wpepping <wpepping@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/30 14:46:55 by wpepping          #+#    #+#             */
-/*   Updated: 2024/09/30 14:46:56 by wpepping         ###   ########.fr       */
+/*   Updated: 2024/09/30 16:23:52 by wpepping         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,8 +33,8 @@
 # define CUBE_SIZE 64
 # define WINDOW_WIDTH 640
 # define WINDOW_HEIGHT 480
-#define EPSILON 1e-6
-#define M_PI 3.14159265358979323846
+# define EPSILON 1e-6
+# define M_PI 3.14159265358979323846
 
 # define EMPTY 48
 # define WALL 49
@@ -74,6 +74,7 @@ typedef struct s_config
 	char	*west;
 	char	*floor;
 	char	*ceiling;
+	int		map_start;
 }				t_config;
 
 typedef struct s_ray
@@ -103,7 +104,7 @@ void cast_rays(char **map, t_player p);
 
 // Read map
 int				read_map(t_data *data, char *fname);
-int				read_map_content(t_data *data, int fd);
+int				read_map_content(t_data *data, int fd, int map_start);
 int				get_map_dimensions(t_data *data, int fd);
 int				read_to_eoln(int fd, char *value);
 int				try_save(char **dest, char *src);

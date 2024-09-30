@@ -6,7 +6,7 @@
 /*   By: wpepping <wpepping@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/28 20:03:56 by wpepping          #+#    #+#             */
-/*   Updated: 2024/09/28 23:10:38 by wpepping         ###   ########.fr       */
+/*   Updated: 2024/09/30 16:28:51 by wpepping         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,11 +42,16 @@ static int	save_type(t_config *config, int fd, char type[2])
 static int	read_type(int fd, char type[2])
 {
 	int		bytes_read;
+	int		lines_read;
 	char	c;
 
+	lines_read = 1;
 	bytes_read = read(fd, &type[0], 1);
 	while (bytes_read && type[0] == '\n')
+	{
+		lines_read++;
 		bytes_read = read(fd, &type[0], 1);
+	}
 	if (!bytes_read)
 		return (-1);
 	if (type[0] != 'F' && type[0] != 'C')
@@ -54,12 +59,13 @@ static int	read_type(int fd, char type[2])
 	bytes_read = read(fd, &c, 1);
 	if (bytes_read == 0 || c != ' ')
 		return (-1);
-	return (0);
+	return (lines_read);
 }
 
 static int	read_config(t_config *config, int fd)
 {
 	int		i;
+	int		lines;
 	char	type[2];
 
 	config->floor = NULL;
@@ -68,11 +74,14 @@ static int	read_config(t_config *config, int fd)
 	config->east = NULL;
 	config->south = NULL;
 	config->west = NULL;
+	config->map_start = 0;
 	i = 0;
 	while (i < 6)
 	{
-		if (read_type(fd, type) < 0)
+		lines = read_type(fd, type);
+		if (lines < 0)
 			return (-1);
+		config->map_start += lines;
 		if (save_type(config, fd, type) < 0)
 			return (-1);
 		i++;
@@ -99,6 +108,6 @@ int	read_map(t_data *data, char *fname)
 	fd = open(fname, O_RDONLY);
 	if (fd == -1)
 		return (-1);
-	return (read_map_content(data, fd));
+	return (read_map_content(data, fd, config.map_start));
 
 }

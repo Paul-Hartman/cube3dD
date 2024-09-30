@@ -6,7 +6,7 @@
 /*   By: wpepping <wpepping@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/03 19:09:39 by wpepping          #+#    #+#             */
-/*   Updated: 2024/09/30 15:03:35 by wpepping         ###   ########.fr       */
+/*   Updated: 2024/09/30 16:33:14 by wpepping         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,10 +21,15 @@ static int	err_handl(void *p, char **map)
 	return (-1);
 }
 
-static char	*get_first_map_line(int fd)
+static char	*get_first_map_line(int fd, int skip_lines)
 {
 	char	*line;
 
+	while (skip_lines > 0)
+	{
+		get_next_line(fd);
+		skip_lines--;
+	}
 	line = get_next_line(fd);
 	while (line && line[0] == '\n')
 		line = get_next_line(fd);
@@ -57,7 +62,7 @@ int	get_map_dimensions(t_data *data, int fd)
 	char	*temp;
 	char	*line;
 
-	temp = get_first_map_line(fd);
+	temp = get_first_map_line(fd, 0);
 	if (!temp)
 		return (-1);
 	line = ft_remove(temp, ' ');
@@ -79,7 +84,7 @@ int	get_map_dimensions(t_data *data, int fd)
 	return (0);
 }
 
-int	read_map_content(t_data *data, int fd)
+int	read_map_content(t_data *data, int fd, int map_start)
 {
 	int		i;
 	char	*line;
@@ -87,14 +92,14 @@ int	read_map_content(t_data *data, int fd)
 	data->map = ft_calloc(data->map_height + 1, sizeof(char *));
 	if (!data->map)
 		return (-1);
-	line = get_first_map_line(fd);
+	line = get_first_map_line(fd, map_start);
 	i = 0;
 	while (i < data->map_height)
 	{
 		if (!line)
 			return (err_handl(NULL, data->map));
-		line[data->map_width] = '\0';
 		data->map[i] = ft_remove(line, ' ');
+		data->map[i][data->map_width] = '\0';
 		free(line);
 		line = get_next_line(fd);
 		i++;
