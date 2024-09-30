@@ -1,10 +1,11 @@
 #include "cub3d.h"
+
 void cast_rays(char **map, t_player p);
 double get_dist(t_ray r, t_coord coll, t_player p);
-t_coord get_horiz_coll(t_player p, t_ray r, char **map);
+double get_horiz_coll(t_player p, t_ray r, char **map);
 t_coord	get_ray_delta(t_ray r, bool is_horiz);
 t_coord get_wall_coll(t_coord coll, t_ray r, char **map, bool is_horiz);
-t_coord get_vert_coll(t_player p, t_ray r, char **map);
+double get_vert_coll(t_player p, t_ray r, char **map);
 int check_dir(t_ray r, bool is_horiz);
 double deg_to_rad(double degrees);
 double radians_to_degrees(double radians) ;
@@ -24,13 +25,10 @@ void cast_rays(char **map, t_player p)
 		r.dir = p.dir - (FOV / 2) + (FOV / WINDOW_WIDTH) * i;
 		r.dir = norm_angle(r.dir);
 		printf("r.dir: %f\n", radians_to_degrees(r.dir));
-		horiz_coll = get_horiz_coll(p, r, map);
-		vert_coll = get_vert_coll(p, r, map);
-		if(get_dist(r, horiz_coll, p) < get_dist(r, vert_coll, p))
-			printf("horiz_coll.x: %f, horiz_coll.y: %f\n", horiz_coll.x, horiz_coll.y);
+		if(get_horiz_coll(p, r, map) < get_vert_coll(p, r, map))
+			printf("dist horiz %f", get_horiz_coll(p, r, map));
 		else
-			printf("vert_coll.x: %f, vert_coll.y: %f\n", vert_coll.x, vert_coll.y);
-		printf("vert_coll.x: %f, vert_coll.y: %f\n", vert_coll.x, vert_coll.y);
+			printf("dist vert %f", get_vert_coll(p, r, map));
 		printf("HORIZ dist: %f\n", get_dist(r, horiz_coll, p));
 		printf("vert dist: %f\n", get_dist(r, vert_coll, p));
 		i++;
@@ -124,20 +122,8 @@ t_coord get_wall_coll(t_coord coll, t_ray r, char **map, bool is_horiz)
 	return (coll);
 }
 
-// t_coord get_vert_coll(t_player p, t_ray r, char **map)
-// {
-// 	t_coord coll;
 
-// 	if(check_dir(r, false) == EAST)
-// 		coll.x = floor(p.pos.x/CUBE_SIZE) * CUBE_SIZE + CUBE_SIZE;
-// 	else if(check_dir(r, false) == WEST)
-// 		coll.x = floor(p.pos.x/CUBE_SIZE) * CUBE_SIZE - 1;
-// 	coll.y = p.pos.y + (coll.x -p.pos.x) * tan(r.dir);
-// 	coll = get_wall_coll(coll, r, map, false);
-// 	return (coll);
-// }
-
-t_coord get_vert_coll(t_player p, t_ray r, char **map)
+double get_vert_coll(t_player p, t_ray r, char **map)
 {
 	t_coord coll;
 	double tan_val;
@@ -156,11 +142,11 @@ t_coord get_vert_coll(t_player p, t_ray r, char **map)
 
 	coll.y = p.pos.y + (coll.x - p.pos.x) * tan_val;
 	coll = get_wall_coll(coll, r, map, false);
-	return coll;
+	return get_dist(r, coll, p);
 }
 
 
-t_coord get_horiz_coll(t_player p, t_ray r, char **map)
+double get_horiz_coll(t_player p, t_ray r, char **map)
 {
 	t_coord coll;
 	double tan_val;
@@ -177,7 +163,7 @@ t_coord get_horiz_coll(t_player p, t_ray r, char **map)
 		tan_val = 0.1;
 	coll.x = p.pos.x + (coll.y -p.pos.y) / tan_val;
 	coll = get_wall_coll(coll, r, map, true);
-	return coll;
+	return (get_dist(r, coll, p));
 }
 
 

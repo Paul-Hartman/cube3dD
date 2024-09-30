@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wpepping <wpepping@student.42berlin.de>    +#+  +:+       +#+        */
+/*   By: phartman <phartman@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/27 17:52:36 by wpepping          #+#    #+#             */
-/*   Updated: 2024/09/28 23:01:57 by wpepping         ###   ########.fr       */
+/*   Updated: 2024/09/30 14:30:41 by phartman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@
 # define WINDOW_WIDTH 640
 # define WINDOW_HEIGHT 480
 #define EPSILON 1e-6
+#define M_PI 3.14159265358979323846
 
 # define EMPTY 48
 # define WALL 49
@@ -106,6 +107,7 @@ int				read_map_content(t_data *data, int fd);
 int				get_map_dimensions(t_data *data, int fd);
 int				read_to_eoln(int fd, char *value);
 int				try_save(char **dest, char *src);
+int	save_floor_ceiling(t_data *data, t_config *config);
 
 // Render
 int				load_textures(t_data *data, t_config *config);
