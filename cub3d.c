@@ -6,7 +6,7 @@
 /*   By: phartman <phartman@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/27 20:07:30 by wpepping          #+#    #+#             */
-/*   Updated: 2024/09/30 16:38:06 by phartman         ###   ########.fr       */
+/*   Updated: 2024/09/30 19:38:22 by phartman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,13 +72,17 @@ static int	check_input(int argc, char **argv)
 int main(int argc, char **argv)
 {
 	t_data	data;
+
+	//int wall_color[3] = {255, 0, 0};
 	if (check_input(argc, argv) || init(&data, argv[1]))
 		return (1);
     t_player player;
-	player.pos.x = 3 * CUBE_SIZE;
-	player.pos.y = CUBE_SIZE;
+	player.pos.x = CUBE_SIZE + (CUBE_SIZE/2);
+	player.pos.y = CUBE_SIZE + (CUBE_SIZE/2);
 	player.dir = 0;
-	cast_rays(data.map, player);
+	
+	
+	draw_walls(cast_rays(data.map, player), &data);
 	return 0;
 }
 

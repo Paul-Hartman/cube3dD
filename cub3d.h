@@ -6,7 +6,7 @@
 /*   By: phartman <phartman@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/30 14:46:55 by wpepping          #+#    #+#             */
-/*   Updated: 2024/09/30 16:40:45 by phartman         ###   ########.fr       */
+/*   Updated: 2024/09/30 19:38:03 by phartman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,13 +29,13 @@
 # include <linux/limits.h>
 
 # define FOV 1.047198 //60 degrees in radians
+# define FOCAL_LEN 277
 # define CHAR_HEIGHT 32
 # define CUBE_SIZE 64
 # define WINDOW_WIDTH 640
 # define WINDOW_HEIGHT 480
 # define EPSILON 1e-6
 # define M_PI 3.14159265358979323846
-
 
 
 # define EMPTY 48
@@ -82,6 +82,8 @@ typedef struct s_config
 typedef struct s_ray
 {
 	t_coord	pos;
+	bool	is_horiz;
+	double	dist;
 	double	dir;
 }				t_ray;
 
@@ -102,7 +104,8 @@ typedef struct s_player
 // }				t_vars;
 
 // raycasting
-double *cast_rays(char **map, t_player p);
+t_ray *cast_rays(char **map, t_player p);
+void draw_walls(t_ray *rays, t_data *data);
 
 // Read map
 int				read_map(t_data *data, char *fname);
