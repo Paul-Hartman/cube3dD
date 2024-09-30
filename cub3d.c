@@ -6,7 +6,7 @@
 /*   By: phartman <phartman@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/27 20:07:30 by wpepping          #+#    #+#             */
-/*   Updated: 2024/09/30 16:27:54 by phartman         ###   ########.fr       */
+/*   Updated: 2024/09/30 16:38:06 by phartman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,7 +89,6 @@ int main(int argc, char **argv)
 // 	if (check_input(argc, argv) || init(&data, argv[1]))
 // 		return (1);
 // 	init_events(&data);
-// 	//load_textures(&data);
 // 	mlx_loop(data.mlx_ptr);
 // 	//unload_textures(&data);
 // 	mlx_destroy_window(data.mlx_ptr, data.win_ptr);

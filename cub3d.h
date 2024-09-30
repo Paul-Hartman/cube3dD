@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: phartman <phartman@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/27 17:52:36 by wpepping          #+#    #+#             */
-/*   Updated: 2024/09/30 16:24:41 by phartman         ###   ########.fr       */
+/*   Created: 2024/09/30 14:46:55 by wpepping          #+#    #+#             */
+/*   Updated: 2024/09/30 16:38:10 by phartman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,7 +109,7 @@ int				read_map_content(t_data *data, int fd);
 int				get_map_dimensions(t_data *data, int fd);
 int				read_to_eoln(int fd, char *value);
 int				try_save(char **dest, char *src);
-int	save_floor_ceiling(t_data *data, t_config *config);
+int				save_floor_ceiling(t_data *data, t_config *config);
 
 // Render
 int				load_textures(t_data *data, t_config *config);
@@ -125,5 +125,8 @@ int				handle_mouse(t_data *data);
 // Clean up
 void			cleanup(t_data *data);
 void			free_map(char **map);
+
+// Utils
+char			*ft_remove(char *str, char c);
 
 #endif
