@@ -6,7 +6,7 @@
 /*   By: wpepping <wpepping@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/03 19:09:39 by wpepping          #+#    #+#             */
-/*   Updated: 2024/09/28 22:45:27 by wpepping         ###   ########.fr       */
+/*   Updated: 2024/09/30 14:37:37 by wpepping         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,7 +89,8 @@ int	read_map_content(t_data *data, int fd)
 		if (!line)
 			return (err_handl(NULL, data->map));
 		line[data->map_width] = '\0';
-		data->map[i] = line;
+		data->map[i] = ft_remove(line, ' ');
+		free(line);
 		line = get_next_line(fd);
 		i++;
 	}
