@@ -1,3 +1,8 @@
+.gitignore
+.vscode
+map.cub
 *.o
+*/*.o
+*/*/*.o
 mlx/obj/*
-*.a
+*/*.a
