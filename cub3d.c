@@ -6,7 +6,7 @@
 /*   By: wpepping <wpepping@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/27 20:07:30 by wpepping          #+#    #+#             */
-/*   Updated: 2024/09/30 14:32:35 by wpepping         ###   ########.fr       */
+/*   Updated: 2024/09/30 19:13:43 by wpepping         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,12 +19,12 @@ static int	err_handl(char *error_msg, t_data *data)
 	return (-1);
 }
 
-static int	init(t_data *data, char *map)
+static int	init(t_data *data, char *fname)
 {
 	data->mlx_ptr = NULL;
 	data->win_ptr = NULL;
-	data->map = NULL;
-	if (read_map(data, map) < 0)
+	data->map->grid = NULL;
+	if (read_map(data, fname) < 0)
 		return (err_handl("Map error", data));
 	data->mlx_ptr = mlx_init();
 	if (data->mlx_ptr == NULL)
@@ -69,17 +69,20 @@ static int	check_input(int argc, char **argv)
 	return (0);
 }
 
-int main(int argc, char **argv)
+int	main(int argc, char **argv)
 {
-	t_data	data;
-	if (check_input(argc, argv) || init(&data, argv[1]))
+	t_data		data;
+	t_map		map;
+	t_player	player;
+
+	data.map = &map;
+	data.player = &player;
+	if (check_input(argc, argv) < 0 || init(&data, argv[1]) < 0)
 		return (1);
-    t_player player;
-	player.pos.x = 3 * CUBE_SIZE;
-	player.pos.y = CUBE_SIZE+70;
-	player.dir = 0;
-	cast_rays(data.map, player);
-	return 0;
+	if (find_player(&map, &player) < 0 || !is_valid_map(&map, &player))
+		return (err_handl("Map error", &data));
+	cast_rays(data.map->grid, player);
+	return (0);
 }
 
 // int	main(int argc, char **argv)

@@ -3,16 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   read_map_utils.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: phartman <phartman@student.42berlin.de>    +#+  +:+       +#+        */
+/*   By: wpepping <wpepping@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/28 22:28:35 by wpepping          #+#    #+#             */
-/*   Updated: 2024/09/30 14:17:52 by phartman         ###   ########.fr       */
+/*   Updated: 2024/09/30 19:22:03 by wpepping         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
-
-
 
 int	read_to_eoln(int fd, char *value)
 {
@@ -49,4 +47,33 @@ int	save_floor_ceiling(t_data *data, t_config *config)
 	(void)data;
 	(void)config;
 	return (0);
+}
+
+int	find_player(t_map *map, t_player *player)
+{
+	t_coord	coord;
+	int		n;
+	char	c;
+
+	coord.y = 0;
+	n = -1;
+	while (coord.y < map->height)
+	{
+		coord.x = 0;
+		while (coord.x < map->width)
+		{
+			c = map->grid[(int)coord.y][(int)coord.x];
+			if (c == NORTH || c == EAST || c == SOUTH || c == WEST)
+			{
+				if (n++ > -1)
+					return (-1);
+				player->pos.x = coord.x * CUBE_SIZE + 0.5 * CUBE_SIZE;
+				player->pos.y = coord.y * CUBE_SIZE + 0.5 * CUBE_SIZE;
+				player->dir = get_angle(c);
+			}
+			coord.x++;
+		}
+		coord.y++;
+	}
+	return (n);
 }

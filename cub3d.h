@@ -6,7 +6,7 @@
 /*   By: wpepping <wpepping@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/30 14:46:55 by wpepping          #+#    #+#             */
-/*   Updated: 2024/09/30 16:23:52 by wpepping         ###   ########.fr       */
+/*   Updated: 2024/09/30 19:07:32 by wpepping         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,27 +45,41 @@
 
 # define WINDOW_NAME "Cub3d"
 
-typedef struct s_data
-{
-	void	*mlx_ptr;
-	void	*win_ptr;
-	void	*img_ptr;
-	char	*imgbuff;
-	char	**map;
-	int		map_width;
-	int		map_height;
-	int		lsize;
-	int		bpp;
-	int		endian;
-	int		floor[3];
-	int		ceiling[3];
-}				t_data;
 
 typedef struct s_coord
 {
 	double	x;
 	double	y;
 }				t_coord;
+
+typedef struct s_map
+{
+	char	**grid;
+	int		width;
+	int		height;
+}				t_map;
+
+typedef struct s_player
+{
+	t_coord	pos;
+	double	dir;
+}				t_player;
+
+typedef struct s_data
+{
+	t_map		*map;
+	t_player	*player;
+	void		*mlx_ptr;
+	void		*win_ptr;
+	void		*img_ptr;
+	char		*imgbuff;
+	int			lsize;
+	int			bpp;
+	int			endian;
+	int			floor[3];
+	int			ceiling[3];
+}				t_data;
+
 typedef struct s_config
 {
 	char	*north;
@@ -83,14 +97,6 @@ typedef struct s_ray
 	double	dir;
 }				t_ray;
 
-typedef struct s_player
-{
-	t_coord	pos;
-	double	dir;
-}				t_player;
-
-
-
 // typedef struct s_vars
 // {
 // 	void	*mlx;
@@ -104,11 +110,13 @@ void cast_rays(char **map, t_player p);
 
 // Read map
 int				read_map(t_data *data, char *fname);
-int				read_map_content(t_data *data, int fd, int map_start);
-int				get_map_dimensions(t_data *data, int fd);
+int				read_map_content(t_map *map, int fd, int map_start);
+int				get_map_dimensions(t_map *map, int fd);
 int				read_to_eoln(int fd, char *value);
 int				try_save(char **dest, char *src);
 int				save_floor_ceiling(t_data *data, t_config *config);
+int				find_player(t_map *map, t_player *player);
+int				is_valid_map(t_map *map, t_player *player);
 
 // Render
 int				load_textures(t_data *data, t_config *config);
@@ -127,5 +135,6 @@ void			free_map(char **map);
 
 // Utils
 char			*ft_remove(char *str, char c);
+double			get_angle(char dir);
 
 #endif

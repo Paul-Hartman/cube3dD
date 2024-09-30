@@ -49,7 +49,7 @@ double deg_to_rad(double degrees)
 	return degrees * (M_PI / 180.0);
 }
 
-double radians_to_degrees(double radians) 
+double radians_to_degrees(double radians)
 {
     return radians * (180.0 / M_PI);
 }

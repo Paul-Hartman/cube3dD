@@ -3,7 +3,7 @@ CC := gcc
 
 CFLAGS := -Wall -Wextra -Werror -g
 
-SRCS := raytracing.c events.c read_map.c cleanup.c cub3d.c read_map_utils.c read_map_content.c render.c textures.c utils.c get_next_line/get_next_line.c get_next_line/get_next_line_utils.c
+SRCS := raytracing.c events.c read_map.c cleanup.c cub3d.c read_map_utils.c read_map_content.c render.c textures.c utils.c validate_map.c get_next_line/get_next_line.c get_next_line/get_next_line_utils.c
 
 ifeq ($(shell uname), Linux)
 	INCLUDES = -I/usr/include -Imlx  cub3d.h

@@ -6,11 +6,23 @@
 /*   By: wpepping <wpepping@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/30 14:41:16 by wpepping          #+#    #+#             */
-/*   Updated: 2024/09/30 15:13:43 by wpepping         ###   ########.fr       */
+/*   Updated: 2024/09/30 19:09:25 by wpepping         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
+
+double	get_angle(char dir)
+{
+	if (dir == NORTH)
+		return (1.5 * M_PI);
+	if (dir == EAST)
+		return (0);
+	if (dir == SOUTH)
+		return (0.5 * M_PI);
+	else
+		return (M_PI);
+}
 
 char	*ft_remove(char *str, char c)
 {

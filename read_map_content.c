@@ -6,7 +6,7 @@
 /*   By: wpepping <wpepping@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/03 19:09:39 by wpepping          #+#    #+#             */
-/*   Updated: 2024/09/30 16:33:14 by wpepping         ###   ########.fr       */
+/*   Updated: 2024/09/30 18:45:52 by wpepping         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ static int	is_valid(char *line, int width)
 	return (true);
 }
 
-int	get_map_dimensions(t_data *data, int fd)
+int	get_map_dimensions(t_map *map, int fd)
 {
 	char	*temp;
 	char	*line;
@@ -67,39 +67,39 @@ int	get_map_dimensions(t_data *data, int fd)
 		return (-1);
 	line = ft_remove(temp, ' ');
 	free(temp);
-	data->map_width = ft_strlen(line);
-	if (data->map_width == 0)
+	map->width = ft_strlen(line);
+	if (map->width == 0)
 		return (err_handl(line, NULL));
-	if (line[data->map_width - 1] == '\n')
-		data->map_width--;
-	data->map_height = 0;
+	if (line[map->width - 1] == '\n')
+		map->width--;
+	map->height = 0;
 	while (line)
 	{
-		if (!is_valid(line, data->map_width))
+		if (!is_valid(line, map->width))
 			return (err_handl(line, NULL));
-		data->map_height++;
+		map->height++;
 		free(line);
 		line = get_next_line(fd);
 	}
 	return (0);
 }
 
-int	read_map_content(t_data *data, int fd, int map_start)
+int	read_map_content(t_map *map, int fd, int map_start)
 {
 	int		i;
 	char	*line;
 
-	data->map = ft_calloc(data->map_height + 1, sizeof(char *));
-	if (!data->map)
+	map->grid = ft_calloc(map->height + 1, sizeof(char *));
+	if (!map->grid)
 		return (-1);
 	line = get_first_map_line(fd, map_start);
 	i = 0;
-	while (i < data->map_height)
+	while (i < map->height)
 	{
 		if (!line)
-			return (err_handl(NULL, data->map));
-		data->map[i] = ft_remove(line, ' ');
-		data->map[i][data->map_width] = '\0';
+			return (err_handl(NULL, map->grid));
+		map->grid[i] = ft_remove(line, ' ');
+		map->grid[i][map->width] = '\0';
 		free(line);
 		line = get_next_line(fd);
 		i++;
