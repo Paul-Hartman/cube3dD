@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wpepping <wpepping@student.42berlin.de>    +#+  +:+       +#+        */
+/*   By: phartman <phartman@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/30 19:54:07 by wpepping          #+#    #+#             */
-/*   Updated: 2024/09/30 19:54:21 by wpepping         ###   ########.fr       */
+/*   Updated: 2024/09/30 20:22:00 by phartman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,7 +110,7 @@ typedef struct s_ray
 // }				t_vars;
 
 // raycasting
-t_ray			*cast_rays(char **map, t_player p);
+t_ray *cast_rays(t_map *map, t_player p);
 void			draw_walls(t_ray *rays, t_data *data);
 
 // Read map

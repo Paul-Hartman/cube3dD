@@ -1,14 +1,14 @@
 #include "cub3d.h"
 
 double get_dist(t_ray r, t_coord coll, t_player p);
-double get_horiz_coll(t_player p, t_ray r, char **map);
+double get_horiz_coll(t_player p, t_ray r, t_map *map);
 t_coord	get_ray_delta(t_ray r, bool is_horiz);
-t_coord get_wall_coll(t_coord coll, t_ray r, char **map, bool is_horiz);
-double get_vert_coll(t_player p, t_ray r, char **map);
-int check_dir(t_ray r, bool is_horiz);
+t_coord get_wall_coll(t_coord coll, t_ray r, t_map *map, bool is_horiz);
+double get_vert_coll(t_player p, t_ray r, t_map *map);
 double deg_to_rad(double degrees);
 double radians_to_degrees(double radians) ;
 double norm_angle(double angle);
+int check_dir(t_ray r, bool is_horiz);
 
 double projected_wall_height(double dist)
 {
@@ -40,7 +40,7 @@ void draw_walls(t_ray *rays, t_data *data)
 	}
 }
 
-t_ray *cast_rays(char **map, t_player p)
+t_ray *cast_rays(t_map *map, t_player p)
 {
 	int i;
 	t_ray r;
@@ -134,7 +134,7 @@ t_coord	get_ray_delta(t_ray r, bool is_horiz)
 }
 
 
-t_coord get_wall_coll(t_coord coll, t_ray r, char **map, bool is_horiz)
+t_coord get_wall_coll(t_coord coll, t_ray r, t_map *map, bool is_horiz)
 {
 	t_coord delta;
 	int map_x;
@@ -144,9 +144,9 @@ t_coord get_wall_coll(t_coord coll, t_ray r, char **map, bool is_horiz)
 	map_y = ((int)floor((coll.y/CUBE_SIZE)));
 
 	delta = get_ray_delta(r, is_horiz);
-	while(!(map_x < 0 || map_y < 0 || map_x > 5 || map_y > 5))
+	while(!(map_x < 0 || map_y < 0 || map_x > map->width - 1 || map_y > map->height - 1))
 	{
-		if(map[map_y][map_x] == WALL)
+		if(map->grid[map_y][map_x] == WALL)
 			return coll;
 		coll.x += delta.x;
 		coll.y += delta.y;
@@ -158,7 +158,7 @@ t_coord get_wall_coll(t_coord coll, t_ray r, char **map, bool is_horiz)
 }
 
 
-double get_vert_coll(t_player p, t_ray r, char **map)
+double get_vert_coll(t_player p, t_ray r, t_map *map)
 {
 	t_coord coll;
 	double tan_val;
@@ -183,7 +183,7 @@ double get_vert_coll(t_player p, t_ray r, char **map)
 }
 
 
-double get_horiz_coll(t_player p, t_ray r, char **map)
+double get_horiz_coll(t_player p, t_ray r, t_map *map)
 {
 	t_coord coll;
 	double tan_val;
