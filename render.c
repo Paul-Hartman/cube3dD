@@ -6,7 +6,7 @@
 /*   By: phartman <phartman@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/27 18:07:22 by wpepping          #+#    #+#             */
-/*   Updated: 2024/10/01 17:03:52 by phartman         ###   ########.fr       */
+/*   Updated: 2024/10/01 18:19:16 by phartman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ void	move_player(t_data *data, bool rev)
 	double move_x;
 	double move_y;
 	double move_speed;
-	move_speed = 3;
+	move_speed = .1;
 	if(rev)
 		move_speed *= -1;
 	move_x = move_speed * cos(data->player->dir);

@@ -6,7 +6,7 @@
 /*   By: phartman <phartman@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/30 19:55:11 by wpepping          #+#    #+#             */
-/*   Updated: 2024/10/01 15:06:50 by phartman         ###   ########.fr       */
+/*   Updated: 2024/10/01 17:58:56 by phartman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ static int	init(t_data *data, char *fname)
 	data->mlx_ptr = NULL;
 	data->win_ptr = NULL;
 	data->map->grid = NULL;
+	data->key_state = (t_key_state){false, false, false, false};
 	if (read_map(data, fname) < 0)
 		return (err_handl("Map error", data));
 	data->mlx_ptr = mlx_init();
@@ -43,7 +44,9 @@ static int	init(t_data *data, char *fname)
 
 static void	init_events(t_data *data)
 {
-	mlx_key_hook(data->win_ptr, &handle_input, data);
+	mlx_hook(data->win_ptr, KeyPress, KeyPressMask, &handle_key_press, data);
+	mlx_hook(data->win_ptr, KeyRelease, KeyReleaseMask, &handle_key_release, data);
+	//mlx_key_hook(data->win_ptr, &handle_input, data);
 	mlx_mouse_hook(data->win_ptr, &handle_mouse, data);
 	mlx_hook(data->win_ptr, DestroyNotify, StructureNotifyMask,
 		&handle_close, data);

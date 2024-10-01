@@ -6,7 +6,7 @@
 /*   By: phartman <phartman@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/30 19:54:07 by wpepping          #+#    #+#             */
-/*   Updated: 2024/10/01 17:03:30 by phartman         ###   ########.fr       */
+/*   Updated: 2024/10/01 18:19:25 by phartman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,6 @@
 # define EPSILON 1e-6
 # define M_PI 3.14159265358979323846
 
-
 # define EMPTY 48
 # define WALL 49
 # define NORTH 78
@@ -67,6 +66,14 @@ typedef struct s_player
 	double	dir;
 }				t_player;
 
+typedef struct s_key_state
+{
+	bool mv_up;
+	bool mv_dn;
+	bool rot_r;
+	bool rot_l;
+}				t_key_state;
+
 typedef struct s_data
 {
 	t_map		*map;
@@ -80,6 +87,7 @@ typedef struct s_data
 	int			endian;
 	int			floor[3];
 	int			ceiling[3];
+	t_key_state	key_state;
 }				t_data;
 
 typedef struct s_config
@@ -133,8 +141,11 @@ void rotate_player(t_data *data, double angle);
 // Events
 int				handle_loop(t_data *data);
 int				handle_close(t_data *data);
-int				handle_input(int keycode, t_data *data);
+//int				handle_input(int keycode, t_data *data);
 int				handle_mouse(t_data *data);
+
+int handle_key_press(int keycode, t_data *data);
+int handle_key_release(int keycode, t_data *data);
 
 // Clean up
 void			cleanup(t_data *data);
