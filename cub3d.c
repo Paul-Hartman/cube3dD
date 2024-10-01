@@ -6,7 +6,7 @@
 /*   By: phartman <phartman@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/30 19:55:11 by wpepping          #+#    #+#             */
-/*   Updated: 2024/10/01 12:54:08 by phartman         ###   ########.fr       */
+/*   Updated: 2024/10/01 15:06:50 by phartman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,6 @@ int	main(int argc, char **argv)
 	if (find_player(&map, &player) < 0 || !is_valid_map(&map, &player))
 		return (err_handl("Map error", &data));
  	init_events(&data);
-	
 	mlx_loop_hook(data.mlx_ptr, handle_loop, &data);
 	mlx_loop(data.mlx_ptr);
 	

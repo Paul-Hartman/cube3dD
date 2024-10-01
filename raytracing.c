@@ -7,7 +7,6 @@ t_coord get_wall_coll(t_coord coll, t_ray r, t_map *map, bool is_horiz);
 double get_vert_coll(t_player p, t_ray r, t_map *map);
 double deg_to_rad(double degrees);
 double radians_to_degrees(double radians) ;
-double norm_angle(double angle);
 int check_dir(t_ray r, bool is_horiz);
 
 double projected_wall_height(double dist)
@@ -24,8 +23,6 @@ void draw_walls(t_ray *rays, t_data *data)
 	int wall_top;
 	int wall_bottom;
 	int j;
-	//int wall_color[3] = {255, 0, 0};
-	//int other_color[3] = {0, 0, 255};
 
 	i=0;
 	while(i < WINDOW_WIDTH)
@@ -58,7 +55,6 @@ t_ray *cast_rays(t_map *map, t_player p)
 		r.dir = p.dir - (FOV / 2) + (FOV / WINDOW_WIDTH) * i;
 		r.dir = norm_angle(r.dir);
 		r.is_horiz = false;
-		printf("r.dir: %f\n", radians_to_degrees(r.dir));
 		if(get_horiz_coll(p, r, map) < get_vert_coll(p, r, map))
 		{
 			r.dist = get_horiz_coll(p, r, map);
@@ -67,6 +63,12 @@ t_ray *cast_rays(t_map *map, t_player p)
 		else
 			r.dist = get_vert_coll(p, r, map);
 		rays[i] = r;
+		i++;
+	}
+	i = 0;
+	while(i < WINDOW_WIDTH)
+	{
+		printf("ray dist: %f\n", rays[i].dist);
 		i++;
 	}
 	return rays;
@@ -97,11 +99,8 @@ double get_dist(t_ray r, t_coord coll, t_player p)
 		return INFINITY;
 	dist = sqrt(pow(p.pos.x - coll.x, 2) + pow(p.pos.y - coll.y, 2));
 	double angle_diff = r.dir - norm_angle(p.dir);
-	printf("dist: %f\n", dist);
-    // Print debug information
-    printf("r.dir: %f, p.dir: %f, angle_diff: %f\n", radians_to_degrees(r.dir), p.dir, angle_diff);
-
-	dist = dist * cos(angle_diff);
+    
+	dist = dist * cos(norm_angle(angle_diff));
 	return (dist);
 }
 
@@ -158,7 +157,6 @@ t_coord get_wall_coll(t_coord coll, t_ray r, t_map *map, bool is_horiz)
 		map_y = ((int)floor((coll.y/CUBE_SIZE)));
 	}
 	return (t_coord){-1.0, -1.0};
-	printf("coll.x: %d, coll.y: %d\n", map_x, map_y);
 }
 
 
