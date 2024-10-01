@@ -6,7 +6,7 @@
 /*   By: phartman <phartman@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/27 18:07:22 by wpepping          #+#    #+#             */
-/*   Updated: 2024/10/01 16:10:41 by phartman         ###   ########.fr       */
+/*   Updated: 2024/10/01 17:03:52 by phartman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,13 +23,16 @@ void	set_pixel(t_data *data, int c[3], int x, int y)
 	ft_memcpy(pixel, &color, 4);
 }
 
-void	move_player(t_data *data, int x, int y)
+void	move_player(t_data *data, bool rev)
 {
 	double move_x;
 	double move_y;
-	
-	move_x = x * cos(data->player->dir);
-	move_y = y * cos(data->player->dir);
+	double move_speed;
+	move_speed = 3;
+	if(rev)
+		move_speed *= -1;
+	move_x = move_speed * cos(data->player->dir);
+	move_y = move_speed * sin(data->player->dir);
 	data->player->pos.x += move_x;
 	data->player->pos.y += move_y;
 	return ;

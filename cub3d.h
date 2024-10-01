@@ -6,7 +6,7 @@
 /*   By: phartman <phartman@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/30 19:54:07 by wpepping          #+#    #+#             */
-/*   Updated: 2024/10/01 15:13:12 by phartman         ###   ########.fr       */
+/*   Updated: 2024/10/01 17:03:30 by phartman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -127,7 +127,7 @@ int				is_valid_map(t_map *map, t_player *player);
 // Render
 int				load_textures(t_data *data, t_config *config);
 void			set_pixel(t_data *data, int c[3], int x, int y);
-void			move_player(t_data *data, int x, int y);
+void	move_player(t_data *data, bool rev);
 void rotate_player(t_data *data, double angle);
 
 // Events
