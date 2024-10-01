@@ -12,7 +12,9 @@ int check_dir(t_ray r, bool is_horiz);
 
 double projected_wall_height(double dist)
 {
-	return(CUBE_SIZE / dist * FOCAL_LEN);
+	int focal_len;
+	focal_len = (WINDOW_WIDTH / 2.0) / (tan(FOV / 2.0));
+	return((CUBE_SIZE / dist) * focal_len);
 }
 
 void draw_walls(t_ray *rays, t_data *data)
@@ -20,6 +22,7 @@ void draw_walls(t_ray *rays, t_data *data)
 	int i;
 	int height;
 	int wall_top;
+	int wall_bottom;
 	int j;
 	//int wall_color[3] = {255, 0, 0};
 	//int other_color[3] = {0, 0, 255};
@@ -28,13 +31,14 @@ void draw_walls(t_ray *rays, t_data *data)
 	while(i < WINDOW_WIDTH)
 	{
 		height = (int)projected_wall_height(rays[i].dist);
-		wall_top = 100 - height / 2;
+		wall_top = WINDOW_HEIGHT/2 - height / 2;
+		wall_bottom = (WINDOW_HEIGHT / 2) + (height / 2);
 		j = 0;
-		while(j < wall_top)
+		while(j < wall_top && j < WINDOW_HEIGHT)
 			set_pixel(data, (int[3]){255, 0, 255}, i, j++);
-		while(j < height)
+		while(j < wall_bottom && j < WINDOW_HEIGHT)
 			set_pixel(data, (int[3]){255, 0, 0}, i, j++);
-		while(j < WINDOW_HEIGHT)
+		while(j < WINDOW_HEIGHT && j < WINDOW_HEIGHT)
 			set_pixel(data, (int[3]){0, 0, 255}, i, j++);
 		i++;
 	}

@@ -6,7 +6,7 @@
 /*   By: phartman <phartman@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/30 19:54:07 by wpepping          #+#    #+#             */
-/*   Updated: 2024/09/30 20:22:00 by phartman         ###   ########.fr       */
+/*   Updated: 2024/10/01 12:59:28 by phartman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@
 # include <linux/limits.h>
 
 # define FOV 1.047198 //60 degrees in radians
-# define FOCAL_LEN 277
+//# define FOCAL_LEN 277
 # define CHAR_HEIGHT 32
 # define CUBE_SIZE 64
 # define WINDOW_WIDTH 640
