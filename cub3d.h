@@ -6,7 +6,7 @@
 /*   By: phartman <phartman@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/30 19:54:07 by wpepping          #+#    #+#             */
-/*   Updated: 2024/10/03 16:02:48 by phartman         ###   ########.fr       */
+/*   Updated: 2024/10/03 19:09:29 by phartman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@
 
 # define FOV 1.047198 //60 degrees in radians
 //# define FOCAL_LEN 277
+# define MINI_TILE_SZ 20
 # define CHAR_HEIGHT 32
 # define CUBE_SIZE 180
 # define TEXTURE_HEIGHT 180
@@ -72,9 +73,12 @@ typedef struct s_key_state
 {
 	bool mv_up;
 	bool mv_dn;
+	bool mv_r;
+	bool mv_l;
 	bool rot_r;
 	bool rot_l;
 }				t_key_state;
+
 typedef struct s_image
 {
 	void	*img_ptr;
@@ -122,7 +126,7 @@ typedef struct s_config
 
 typedef struct s_ray
 {
-	t_coord	pos;
+	t_coord	coll;
 	bool	is_horiz;
 	double	dist;
 	double	dir;
@@ -157,9 +161,12 @@ void			unload_textures(void *mlx_ptr, t_textures *textures);
 void			set_pixel(t_data *data, int c[3], int x, int y);
 void			put_pixel_from_img(t_data *data, t_image *src_img,
 					t_coord src_coord, t_coord dest_coord);
-void	rotate_player(t_data *data, bool right);
-void	move_player(t_data *data, bool rev);
+void draw_minimap(t_data *data);
 
+//movement
+bool	move_player(t_data *data, bool rev);
+bool strafe_player(t_data *data, bool left);
+bool	rotate_player(t_data *data, bool left);
 
 // Events
 int				handle_loop(t_data *data);
@@ -178,6 +185,7 @@ void			free_map(char **map);
 char			*ft_remove(char *str, char c);
 double			get_angle(char dir);
 bool			ft_isnum(char *str);
+bool is_wall(t_coord pos, t_map *map);
 
 // render utils
 double norm_angle(double angle);

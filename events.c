@@ -6,7 +6,7 @@
 /*   By: phartman <phartman@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/27 20:07:36 by wpepping          #+#    #+#             */
-/*   Updated: 2024/10/03 15:02:08 by phartman         ###   ########.fr       */
+/*   Updated: 2024/10/03 18:56:06 by phartman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,15 +14,26 @@
 
 int	handle_loop(t_data *data)
 {
+	bool moved;
+
+	moved = false;
 	if (data->key_state.mv_up)
-		move_player(data, false);
+		moved = move_player(data, false);
 	if (data->key_state.mv_dn)
-		move_player(data, true);
+		moved = move_player(data, true);
+	if (data->key_state.mv_r)
+		moved = strafe_player(data, false);
+	if (data->key_state.mv_l)
+		moved = strafe_player(data, true);
 	if (data->key_state.rot_r)
-		rotate_player(data, true);
+		moved = rotate_player(data, false);
 	if (data->key_state.rot_l)
-		rotate_player(data, false);
-	draw_walls(cast_rays(data->map, *data->player), data);
+		moved = rotate_player(data, true);
+	if (moved)
+	{
+		draw_walls(cast_rays(data->map, *data->player), data);
+		draw_minimap(data);
+	}
 	mlx_put_image_to_window(data->mlx_ptr, data->win_ptr, data->img_ptr, 0, 0);
 	return (0);
 }
@@ -56,9 +67,13 @@ int handle_key_press(int keycode, t_data *data)
 		data->key_state.mv_up = true;
 	if (keycode == XK_s || keycode == XK_S || keycode == XK_Down)
 		data->key_state.mv_dn = true;
-	if (keycode == XK_a || keycode == XK_A || keycode == XK_Left)
+	if (keycode == XK_a || keycode == XK_A)
+		data->key_state.mv_r = true;
+	if (keycode == XK_d || keycode == XK_D)
+		data->key_state.mv_l = true;
+	if (keycode == XK_Right)
 		data->key_state.rot_r = true;
-	if (keycode == XK_d || keycode == XK_D || keycode == XK_Right)
+	if (keycode == XK_Left)
 		data->key_state.rot_l = true;
 	return (0);
 }
@@ -69,9 +84,13 @@ int handle_key_release(int keycode, t_data *data)
 		data->key_state.mv_up = false;
 	if (keycode == XK_s || keycode == XK_S || keycode == XK_Down)
 		data->key_state.mv_dn = false;
-	if (keycode == XK_a || keycode == XK_A || keycode == XK_Left)
+	if (keycode == XK_a || keycode == XK_A)
+		data->key_state.mv_r = false;
+	if (keycode == XK_d || keycode == XK_D)
+		data->key_state.mv_l = false;
+	if (keycode == XK_Right)
 		data->key_state.rot_r = false;
-	if (keycode == XK_d || keycode == XK_D || keycode == XK_Right)
+	if (keycode == XK_Left)
 		data->key_state.rot_l = false;
 	return (0);
 }
