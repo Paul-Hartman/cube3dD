@@ -37,11 +37,14 @@ void draw_walls(t_ray *rays, t_data *data)
 		wall_bottom = (WINDOW_HEIGHT / 2) + (height / 2);
 		j = 0;
 		while(j < wall_top && j < WINDOW_HEIGHT)
-			set_pixel(data, (int[3]){255, 0, 255}, i, j++);
+			set_pixel(data, data->ceiling, i, j++);
 		while(j < wall_bottom && j < WINDOW_HEIGHT)
-			set_pixel(data, (int[3]){255, 0, 0}, i, j++);
+		{
+			put_pixel_from_img(data, &data->textures->north, (t_coord){i, j}, (t_coord){i, j});
+			j++;
+		}
 		while(j < WINDOW_HEIGHT && j < WINDOW_HEIGHT)
-			set_pixel(data, (int[3]){0, 0, 255}, i, j++);
+			set_pixel(data, data->floor, i, j++);
 		i++;
 	}
 }

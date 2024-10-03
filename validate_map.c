@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   validate_map.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wpepping <wpepping@student.42berlin.de>    +#+  +:+       +#+        */
+/*   By: phartman <phartman@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/30 18:15:24 by wpepping          #+#    #+#             */
-/*   Updated: 2024/09/30 19:24:31 by wpepping         ###   ########.fr       */
+/*   Updated: 2024/10/03 16:04:19 by phartman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ int	is_valid_map(t_map *map, t_player *player)
 	i = 0;
 	while (i < map->height)
 		is_checked[i++] = ft_calloc(map->width, sizeof(char));
-	i = chk_tile(map, player->pos.x / 64, player->pos.y / 64, is_checked);
+	i = chk_tile(map, player->pos.x / CUBE_SIZE, player->pos.y / CUBE_SIZE, is_checked);
 	free_map(is_checked);
 	if (i)
 		return (0);

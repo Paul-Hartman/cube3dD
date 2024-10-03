@@ -6,7 +6,7 @@
 /*   By: phartman <phartman@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/30 19:54:07 by wpepping          #+#    #+#             */
-/*   Updated: 2024/10/03 15:26:21 by phartman         ###   ########.fr       */
+/*   Updated: 2024/10/03 16:02:48 by phartman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@
 # define FOV 1.047198 //60 degrees in radians
 //# define FOCAL_LEN 277
 # define CHAR_HEIGHT 32
-# define CUBE_SIZE 64
+# define CUBE_SIZE 180
 # define TEXTURE_HEIGHT 180
 # define WINDOW_WIDTH 640
 # define WINDOW_HEIGHT 480
@@ -157,7 +157,9 @@ void			unload_textures(void *mlx_ptr, t_textures *textures);
 void			set_pixel(t_data *data, int c[3], int x, int y);
 void			put_pixel_from_img(t_data *data, t_image *src_img,
 					t_coord src_coord, t_coord dest_coord);
-void			move_player(t_data *data, int x, int y);
+void	rotate_player(t_data *data, bool right);
+void	move_player(t_data *data, bool rev);
+
 
 // Events
 int				handle_loop(t_data *data);
