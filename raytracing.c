@@ -25,7 +25,7 @@ int	get_tex_offset(t_ray r)
 		tex_x = (int)r.coll.x % CUBE_SIZE;
 	else
 		tex_x = (int)r.coll.y % CUBE_SIZE;
-	// tex_x = (tex_x * TEXTURE_HEIGHT) / CUBE_SIZE;
+	tex_x = (tex_x * TEXTURE_HEIGHT) / CUBE_SIZE;
 	return (tex_x);
 }
 
@@ -79,7 +79,7 @@ void	draw_walls(t_ray *rays, t_data *data)
 	int	i;
 	int	height;
 	int	wall_top;
-	int	wall_bottom;
+	double tex_y;
 	int	j;
 
 	i = 0;
@@ -87,15 +87,14 @@ void	draw_walls(t_ray *rays, t_data *data)
 	{
 		height = (int)projected_wall_height(rays[i].dist);
 		wall_top = WINDOW_HEIGHT / 2 - height / 2;
-		wall_bottom = (WINDOW_HEIGHT / 2) + (height / 2);
 		j = 0;
 		while (j < wall_top && j < WINDOW_HEIGHT)
 			set_pixel(data, data->ceiling, i, j++);
-		while (j < wall_bottom && j < WINDOW_HEIGHT)
+		while (j < wall_top + height && j < WINDOW_HEIGHT)
 		{
+			tex_y = ((j - wall_top) * TEXTURE_HEIGHT) / height;
 			put_pixel_from_img(data, &data->textures->north,
-				(t_coord){get_tex_offset(rays[i]), 1.0 * j * TEXTURE_HEIGHT
-				/ height}, (t_coord){i, j});
+				(t_coord){get_tex_offset(rays[i]), tex_y}, (t_coord){i, j});
 			j++;
 		}
 		while (j < WINDOW_HEIGHT && j < WINDOW_HEIGHT)
