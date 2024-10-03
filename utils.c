@@ -6,7 +6,7 @@
 /*   By: wpepping <wpepping@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/30 19:54:58 by wpepping          #+#    #+#             */
-/*   Updated: 2024/09/30 19:55:00 by wpepping         ###   ########.fr       */
+/*   Updated: 2024/10/02 16:55:59 by wpepping         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 bool	ft_isnum(char *str)
 {
-	while (str)
+	while (*str)
 		if (!ft_isdigit(*(str++)))
 			return (false);
 	return (true);

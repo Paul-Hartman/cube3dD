@@ -6,7 +6,7 @@
 /*   By: phartman <phartman@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/30 19:54:07 by wpepping          #+#    #+#             */
-/*   Updated: 2024/10/03 15:01:44 by phartman         ###   ########.fr       */
+/*   Updated: 2024/10/03 15:26:21 by phartman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@
 //# define FOCAL_LEN 277
 # define CHAR_HEIGHT 32
 # define CUBE_SIZE 64
+# define TEXTURE_HEIGHT 180
 # define WINDOW_WIDTH 640
 # define WINDOW_HEIGHT 480
 #define MOVE_SPEED 0.1
@@ -47,7 +48,6 @@
 # define WEST 87
 
 # define WINDOW_NAME "Cub3d"
-
 
 typedef struct s_coord
 {
@@ -75,11 +75,28 @@ typedef struct s_key_state
 	bool rot_r;
 	bool rot_l;
 }				t_key_state;
+typedef struct s_image
+{
+	void	*img_ptr;
+	char	*buff;
+	int		lsize;
+	int		bpp;
+	int		endian;
+}				t_image;
+
+typedef struct s_textures
+{
+	t_image	north;
+	t_image	east;
+	t_image	south;
+	t_image	west;
+}				t_textures;
 
 typedef struct s_data
 {
 	t_map		*map;
 	t_player	*player;
+	t_textures	*textures;
 	void		*mlx_ptr;
 	void		*win_ptr;
 	void		*img_ptr;
@@ -129,16 +146,18 @@ int				read_map_content(t_map *map, int fd, int map_start);
 int				get_map_dimensions(t_map *map, int fd);
 int				read_to_eoln(int fd, char *value);
 int				try_save(char **dest, char *src);
-int				save_rgb(char *str, int dest[3]);
+int				save_rgbs(char *str, int dest[3]);
 int				find_player(t_map *map, t_player *player);
 int				is_valid_map(t_map *map, t_player *player);
 
 
 // Render
 int				load_textures(t_data *data, t_config *config);
+void			unload_textures(void *mlx_ptr, t_textures *textures);
 void			set_pixel(t_data *data, int c[3], int x, int y);
-void	move_player(t_data *data, bool rev);
-void	rotate_player(t_data *data, bool right);
+void			put_pixel_from_img(t_data *data, t_image *src_img,
+					t_coord src_coord, t_coord dest_coord);
+void			move_player(t_data *data, int x, int y);
 
 // Events
 int				handle_loop(t_data *data);

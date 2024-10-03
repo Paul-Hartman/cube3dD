@@ -6,11 +6,42 @@
 /*   By: wpepping <wpepping@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/28 22:28:35 by wpepping          #+#    #+#             */
-/*   Updated: 2024/09/30 19:51:57 by wpepping         ###   ########.fr       */
+/*   Updated: 2024/10/02 16:48:17 by wpepping         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
+
+static int	save_rgb(char *str, int *dest)
+{
+	int	strlen;
+
+	strlen = ft_strlen(str);
+	if (strlen == 0 || strlen > 3 || !ft_isnum(str))
+		return (-1);
+	*dest = ft_atoi(str);
+	if (*dest > 255)
+		return (-1);
+	return (0);
+}
+
+int	save_rgbs(char *str, int dest[3])
+{
+	char	**rgb;
+
+	(void)dest;
+	rgb = ft_split(str, ',');
+	if (!rgb || !rgb[0] || !rgb[1] || !rgb[2] || rgb[3]
+		|| save_rgb(rgb[0], &dest[0]) == -1
+		|| save_rgb(rgb[1], &dest[1]) == -1
+		|| save_rgb(rgb[2], &dest[2]) == -1)
+	{
+		free(rgb);
+		return (-1);
+	}
+	free(rgb);
+	return (0);
+}
 
 int	read_to_eoln(int fd, char *value)
 {
@@ -39,22 +70,6 @@ int	try_save(char **dest, char *src)
 	if (*dest)
 		return (-1);
 	*dest = ft_strdup(src);
-	return (0);
-}
-
-int	save_rgb(char *str, int dest[3])
-{
-	char	**rgb;
-
-	(void)dest;
-	rgb = ft_split(str, ',');
-	if (!rgb || !rgb[0] || !rgb[1] || !rgb[2] || rgb[3] || ft_strlen(rgb[0]) > 3
-		|| ft_strlen(rgb[1]) > 3 || ft_strlen(rgb[2]) > 3)
-	{
-		free(rgb);
-		return (-1);
-	}
-	free(rgb);
 	return (0);
 }
 

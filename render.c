@@ -6,7 +6,7 @@
 /*   By: phartman <phartman@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/27 18:07:22 by wpepping          #+#    #+#             */
-/*   Updated: 2024/10/03 15:01:18 by phartman         ###   ########.fr       */
+/*   Updated: 2024/10/03 15:26:28 by phartman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,22 @@ void	set_pixel(t_data *data, int c[3], int x, int y)
 	ft_memcpy(pixel, &color, 4);
 }
 
-void	move_player(t_data *data, bool rev)
+void	put_pixel_from_img(t_data *data, t_image *src_img,
+	t_coord src_coord, t_coord dest_coord)
+{
+	char	*pixel_src;
+	char	*pixel_dest;
+	int		offset;
+
+	offset = dest_coord.y * data->lsize + dest_coord.x * data->bpp / 8;
+	pixel_src = data->imgbuff + offset;
+	offset = src_coord.y * src_img->lsize + src_coord.x * src_img->bpp / 8;
+	offset = offset % (src_img->lsize * TEXTURE_HEIGHT);
+	pixel_dest = src_img->buff + offset;
+	ft_memcpy(pixel_dest, pixel_src, 4);
+}
+
+void	move_player(t_data *data, int x, int y)
 {
 	double move_x;
 	double move_y;

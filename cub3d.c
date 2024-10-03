@@ -6,7 +6,7 @@
 /*   By: phartman <phartman@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/30 19:55:11 by wpepping          #+#    #+#             */
-/*   Updated: 2024/10/01 17:58:56 by phartman         ###   ########.fr       */
+/*   Updated: 2024/10/03 15:25:46 by phartman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,12 +24,11 @@ static int	init(t_data *data, char *fname)
 	data->mlx_ptr = NULL;
 	data->win_ptr = NULL;
 	data->map->grid = NULL;
-	data->key_state = (t_key_state){false, false, false, false};
-	if (read_map(data, fname) < 0)
-		return (err_handl("Map error", data));
 	data->mlx_ptr = mlx_init();
 	if (data->mlx_ptr == NULL)
 		return (err_handl("Out of memory error", data));
+	if (read_map(data, fname) < 0)
+		return (err_handl("Map error", data));
 	data->win_ptr = mlx_new_window(data->mlx_ptr, WINDOW_WIDTH, WINDOW_HEIGHT,
 			WINDOW_NAME);
 	if (data->win_ptr == NULL)
@@ -77,9 +76,11 @@ int	main(int argc, char **argv)
 	t_data		data;
 	t_map		map;
 	t_player	player;
+	t_textures	textures;
 
 	data.map = &map;
 	data.player = &player;
+	data.textures = &textures;
 	if (check_input(argc, argv) < 0 || init(&data, argv[1]) < 0)
 		return (1);
 	if (find_player(&map, &player) < 0 || !is_valid_map(&map, &player))
