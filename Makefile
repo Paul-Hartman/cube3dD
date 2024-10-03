@@ -1,3 +1,4 @@
+NAME := cub3D
 
 CC := cc
 
@@ -22,7 +23,6 @@ endif
 
 OBJS := $(SRCS:.c=.o)
 
-NAME := cub3D
 
 $(NAME): $(OBJS) $(LIBFT) $(MLX_LIB)
 	@$(CC) $(CFLAGS)  $(OBJS) $(LIBFT) $(MLX_PATH) $(MLX_FLAGS) -o $(NAME) -lm

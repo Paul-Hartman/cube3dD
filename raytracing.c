@@ -16,6 +16,11 @@ double projected_wall_height(double dist)
 	return((CUBE_SIZE / dist) * focal_len);
 }
 
+// void draw_minimap(t_map map)
+// {
+
+// }
+
 void draw_walls(t_ray *rays, t_data *data)
 {
 	int i;

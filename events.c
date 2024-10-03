@@ -6,7 +6,7 @@
 /*   By: phartman <phartman@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/27 20:07:36 by wpepping          #+#    #+#             */
-/*   Updated: 2024/10/01 18:00:40 by phartman         ###   ########.fr       */
+/*   Updated: 2024/10/03 15:02:08 by phartman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,9 @@ int	handle_loop(t_data *data)
 	if (data->key_state.mv_dn)
 		move_player(data, true);
 	if (data->key_state.rot_r)
-		rotate_player(data, -0.001);
+		rotate_player(data, true);
 	if (data->key_state.rot_l)
-		rotate_player(data, 0.001);
+		rotate_player(data, false);
 	draw_walls(cast_rays(data->map, *data->player), data);
 	mlx_put_image_to_window(data->mlx_ptr, data->win_ptr, data->img_ptr, 0, 0);
 	return (0);

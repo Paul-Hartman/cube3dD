@@ -6,7 +6,7 @@
 /*   By: phartman <phartman@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/30 19:54:07 by wpepping          #+#    #+#             */
-/*   Updated: 2024/10/01 18:19:25 by phartman         ###   ########.fr       */
+/*   Updated: 2024/10/03 15:01:44 by phartman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,8 @@
 # define CUBE_SIZE 64
 # define WINDOW_WIDTH 640
 # define WINDOW_HEIGHT 480
+#define MOVE_SPEED 0.1
+#define ROTATE_SPEED 0.01
 # define EPSILON 1e-6
 # define M_PI 3.14159265358979323846
 
@@ -136,7 +138,7 @@ int				is_valid_map(t_map *map, t_player *player);
 int				load_textures(t_data *data, t_config *config);
 void			set_pixel(t_data *data, int c[3], int x, int y);
 void	move_player(t_data *data, bool rev);
-void rotate_player(t_data *data, double angle);
+void	rotate_player(t_data *data, bool right);
 
 // Events
 int				handle_loop(t_data *data);
