@@ -6,7 +6,7 @@
 /*   By: wpepping <wpepping@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/30 19:54:07 by wpepping          #+#    #+#             */
-/*   Updated: 2024/10/04 14:51:22 by wpepping         ###   ########.fr       */
+/*   Updated: 2024/10/04 19:43:22 by wpepping         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -162,6 +162,8 @@ void			set_pixel(t_data *data, int c[3], int x, int y);
 void			put_pixel_from_img(t_data *data, t_image *src_img,
 					t_coord src_coord, t_coord dest_coord);
 void draw_minimap(t_data *data);
+void draw_line(t_data *data, t_coord p1, t_coord p2);
+//void draw_player(t_data data);
 
 //movement
 bool	move_player(t_data *data, bool rev);

@@ -28,50 +28,6 @@ int	get_tex_offset(t_ray r)
 	return (tex_x);
 }
 
-void	draw_square(t_data *data, int x, int y, int c[3])
-{
-	int	i;
-	int	j;
-
-	i = 0;
-	x = x * MINI_TILE_SZ;
-	y = y * MINI_TILE_SZ;
-	while (i < MINI_TILE_SZ)
-	{
-		j = 0;
-		while (j < MINI_TILE_SZ)
-		{
-			set_pixel(data, c, x + i, y + j);
-			j++;
-		}
-		i++;
-	}
-}
-
-void	draw_minimap(t_data *data)
-{
-	int		y;
-	int		x;
-	t_coord	p;
-
-	y = 0;
-	while (y < data->map->height)
-	{
-		x = 0;
-		while (x < data->map->width)
-		{
-			if (data->map->grid[y][x] == WALL)
-				draw_square(data, x, y, (int[3]){200, 0, 255});
-			else
-				draw_square(data, x, y, (int[3]){255, 200, 0});
-			x++;
-		}
-		y++;
-	}
-	p.x = data->player->pos.x / CUBE_SIZE * MINI_TILE_SZ;
-	p.y = data->player->pos.y / CUBE_SIZE * MINI_TILE_SZ;
-	set_pixel(data, (int[3]){0, 0, 0}, p.x, p.y);
-}
 
 void	draw_walls(t_ray *rays, t_data *data)
 {
@@ -114,7 +70,7 @@ t_ray	*cast_rays(t_map *map, t_player p)
 	rays = malloc(sizeof(t_ray) * WINDOW_WIDTH);
 	while (i < WINDOW_WIDTH)
 	{
-		r.dir = p.dir - (FOV / 2) + (FOV / WINDOW_WIDTH) * i;
+		r.dir = p.dir + (FOV / 2) - (FOV / WINDOW_WIDTH) * i;
 		r.dir = norm_angle(r.dir);
 		r.is_horiz = false;
 		if (get_horiz_coll(p, &r, map) < get_vert_coll(p, &r, map))
@@ -130,7 +86,8 @@ t_ray	*cast_rays(t_map *map, t_player p)
 	i = 0;
 	while (i < WINDOW_WIDTH)
 	{
-		printf("ray dist: %f\n", rays[i].dist);
+		printf("ray[%d] x= %f ray[%d] y= %f is_horiz=%d \n", i, rays[i].coll.x, i, rays[i].coll.y, rays[i].is_horiz);
+		printf("ray[%d] y= %f\n", i, rays[i].coll.y);
 		i++;
 	}
 	return (rays);
@@ -138,7 +95,8 @@ t_ray	*cast_rays(t_map *map, t_player p)
 
 double	norm_angle(double angle)
 {
-	angle = fmod(angle, 2 * M_PI);
+	if(angle >= 2 * M_PI)
+		angle -= 2 * M_PI;
 	if (angle < 0)
 		angle += 2 * M_PI;
 	return (angle);
@@ -172,7 +130,7 @@ t_coord	get_ray_delta(t_ray r, bool is_horiz)
 	t_coord	delta;
 	double	tan_val;
 
-	tan_val = tan(r.dir);
+	tan_val = fabs(tan(r.dir));
 	if (is_horiz)
 	{
 		if (check_dir(r, is_horiz) == SOUTH)
@@ -181,6 +139,8 @@ t_coord	get_ray_delta(t_ray r, bool is_horiz)
 			delta.y = -CUBE_SIZE;
 		if (tan_val == 0)
 			delta.x = 0;
+		else if (check_dir(r, false) == WEST)
+			delta.x = -CUBE_SIZE / tan_val;
 		else
 			delta.x = CUBE_SIZE / tan_val;
 	}
@@ -192,6 +152,8 @@ t_coord	get_ray_delta(t_ray r, bool is_horiz)
 			delta.x = -CUBE_SIZE;
 		if (tan_val == 0)
 			delta.y = 0;
+		else if (check_dir(r, true) == NORTH)
+			delta.y = -CUBE_SIZE * tan_val;
 		else
 			delta.y = CUBE_SIZE * tan_val;
 	}
@@ -238,7 +200,7 @@ double	get_vert_coll(t_player p, t_ray *r, t_map *map)
 	double	tan_val;
 	double	dist;
 
-	tan_val = tan(r->dir);
+	tan_val = fabs(tan(r->dir));
 	if (check_dir(*r, false) == WEST)
 	{
 		coll.x = floor(p.pos.x / CUBE_SIZE) * CUBE_SIZE - 1;
@@ -248,7 +210,7 @@ double	get_vert_coll(t_player p, t_ray *r, t_map *map)
 		coll.x = floor(p.pos.x / CUBE_SIZE) * CUBE_SIZE + CUBE_SIZE;
 	if (tan_val == 0)
 		tan_val = 0.1;
-	coll.y = p.pos.y + (coll.x - p.pos.x) * tan_val;
+	coll.y = p.pos.y + (p.pos.x - coll.x) * tan_val;
 	r->coll = get_wall_coll(coll, *r, map, false);
 	dist = get_dist(*r, r->coll, p);
 	return (dist);

@@ -46,7 +46,7 @@ bool	rotate_player(t_data *data, bool left)
 	rotate_speed = ROTATE_SPEED;
 	if (left)
 		rotate_speed *= -1;
-	data->player->dir += rotate_speed;
+	data->player->dir -= rotate_speed;
 	data->player->dir = norm_angle(data->player->dir);
 	return (true);
 }

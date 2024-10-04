@@ -2,8 +2,9 @@
 .vscode
 cub3d
 cub3D
-map.cub
+*.cub
 *.o
 mlx/obj/*
 */*.a
 *.a
+*.txt
