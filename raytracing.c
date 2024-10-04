@@ -25,7 +25,6 @@ int	get_tex_offset(t_ray r)
 		tex_x = (int)r.coll.x % CUBE_SIZE;
 	else
 		tex_x = (int)r.coll.y % CUBE_SIZE;
-	tex_x = (tex_x * TEXTURE_HEIGHT) / CUBE_SIZE;
 	return (tex_x);
 }
 
@@ -79,6 +78,7 @@ void	draw_walls(t_ray *rays, t_data *data)
 	int	i;
 	int	height;
 	int	wall_top;
+	double tex_x;
 	double tex_y;
 	int	j;
 
@@ -92,9 +92,10 @@ void	draw_walls(t_ray *rays, t_data *data)
 			set_pixel(data, data->ceiling, i, j++);
 		while (j < wall_top + height && j < WINDOW_HEIGHT)
 		{
+			tex_x = get_tex_offset(rays[i]) * TEXTURE_HEIGHT / height;
 			tex_y = ((j - wall_top) * TEXTURE_HEIGHT) / height;
 			put_pixel_from_img(data, &data->textures->north,
-				(t_coord){get_tex_offset(rays[i]), tex_y}, (t_coord){i, j});
+				(t_coord){tex_x , tex_y}, (t_coord){i, j});
 			j++;
 		}
 		while (j < WINDOW_HEIGHT && j < WINDOW_HEIGHT)
@@ -119,7 +120,7 @@ t_ray	*cast_rays(t_map *map, t_player p)
 		if (get_horiz_coll(p, &r, map) < get_vert_coll(p, &r, map))
 		{
 			r.dist = get_horiz_coll(p, &r, map);
-			rays[i].is_horiz = true;
+			r.is_horiz = true;
 		}
 		else
 			r.dist = get_vert_coll(p, &r, map);
@@ -281,9 +282,9 @@ int	check_dir(t_ray r, bool is_horiz)
 	if (is_horiz)
 	{
 		if (angle >= 0 && angle < M_PI)
-			return (SOUTH);
-		else
 			return (NORTH);
+		else
+			return (SOUTH);
 	}
 	else
 	{

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: phartman <phartman@student.42berlin.de>    +#+  +:+       +#+        */
+/*   By: wpepping <wpepping@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/30 19:54:07 by wpepping          #+#    #+#             */
-/*   Updated: 2024/10/03 19:09:29 by phartman         ###   ########.fr       */
+/*   Updated: 2024/10/04 14:51:22 by wpepping         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,8 +36,8 @@
 # define TEXTURE_HEIGHT 180
 # define WINDOW_WIDTH 640
 # define WINDOW_HEIGHT 480
-#define MOVE_SPEED 0.1
-#define ROTATE_SPEED 0.01
+# define MOVE_SPEED 0.4
+# define ROTATE_SPEED 0.02
 # define EPSILON 1e-6
 # define M_PI 3.14159265358979323846
 
