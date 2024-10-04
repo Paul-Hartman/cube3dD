@@ -25,7 +25,7 @@ int	get_tex_offset(t_ray r)
 		tex_x = (int)r.coll.x % CUBE_SIZE;
 	else
 		tex_x = (int)r.coll.y % CUBE_SIZE;
-	//printf("tex_x: %d\n", tex_x);
+	tex_x = (tex_x * TEXTURE_HEIGHT) / CUBE_SIZE;
 	return (tex_x);
 }
 
