@@ -6,7 +6,7 @@
 /*   By: phartman <phartman@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/27 20:07:36 by wpepping          #+#    #+#             */
-/*   Updated: 2024/10/03 18:56:06 by phartman         ###   ########.fr       */
+/*   Updated: 2024/10/04 17:49:06 by phartman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ int	handle_loop(t_data *data)
 	{
 		draw_walls(cast_rays(data->map, *data->player), data);
 		draw_minimap(data);
+		//draw_line(data, (t_coord){10 ,10}, (t_coord){100, 100});
 	}
 	mlx_put_image_to_window(data->mlx_ptr, data->win_ptr, data->img_ptr, 0, 0);
 	return (0);

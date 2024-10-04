@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wpepping <wpepping@student.42berlin.de>    +#+  +:+       +#+        */
+/*   By: phartman <phartman@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/30 19:54:58 by wpepping          #+#    #+#             */
-/*   Updated: 2024/10/02 16:55:59 by wpepping         ###   ########.fr       */
+/*   Updated: 2024/10/04 17:32:34 by phartman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,11 +23,11 @@ bool	ft_isnum(char *str)
 double	get_angle(char dir)
 {
 	if (dir == NORTH)
-		return (1.5 * M_PI);
+		return (0.5 * M_PI);
 	if (dir == EAST)
 		return (0);
 	if (dir == SOUTH)
-		return (0.5 * M_PI);
+		return (1.5 * M_PI);
 	else
 		return (M_PI);
 }
