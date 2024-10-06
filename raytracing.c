@@ -9,11 +9,8 @@ double	deg_to_rad(double degrees);
 double	radians_to_degrees(double radians);
 int		check_dir(t_ray r, bool is_horiz);
 
-double	projected_wall_height(double dist)
+double	projected_wall_height(int focal_len, double dist)
 {
-	int	focal_len;
-
-	focal_len = (WINDOW_WIDTH / 2.0) / (tan(FOV / 2.0));
 	return ((CUBE_SIZE / dist) * focal_len);
 }
 
@@ -31,17 +28,17 @@ int	get_tex_offset(t_ray r)
 
 void	draw_walls(t_ray *rays, t_data *data)
 {
-	int	i;
-	int	height;
-	int	wall_top;
-	double tex_x;
-	double tex_y;
-	int	j;
+	int		i;
+	int		height;
+	int		wall_top;
+	double	tex_x;
+	double	tex_y;
+	int		j;
 
 	i = 0;
 	while (i < WINDOW_WIDTH)
 	{
-		height = (int)projected_wall_height(rays[i].dist);
+		height = (int)projected_wall_height(data->focal_len, rays[i].dist);
 		wall_top = WINDOW_HEIGHT / 2 - height / 2;
 		j = 0;
 		while (j < wall_top && j < WINDOW_HEIGHT)
@@ -51,7 +48,7 @@ void	draw_walls(t_ray *rays, t_data *data)
 			tex_x = get_tex_offset(rays[i]) * TEXTURE_HEIGHT / height;
 			tex_y = ((j - wall_top) * TEXTURE_HEIGHT) / height;
 			put_pixel_from_img(data, &data->textures->north,
-				(t_coord){tex_x , tex_y}, (t_coord){i, j});
+				(t_coord){tex_x, tex_y}, (t_coord){i, j});
 			j++;
 		}
 		while (j < WINDOW_HEIGHT && j < WINDOW_HEIGHT)
@@ -95,7 +92,7 @@ t_ray	*cast_rays(t_map *map, t_player p)
 
 double	norm_angle(double angle)
 {
-	if(angle >= 2 * M_PI)
+	if (angle >= 2 * M_PI)
 		angle -= 2 * M_PI;
 	if (angle < 0)
 		angle += 2 * M_PI;
@@ -202,15 +199,13 @@ double	get_vert_coll(t_player p, t_ray *r, t_map *map)
 
 	tan_val = fabs(tan(r->dir));
 	if (check_dir(*r, false) == WEST)
-	{
 		coll.x = floor(p.pos.x / CUBE_SIZE) * CUBE_SIZE - 1;
-		tan_val = -tan_val;
-	}
-	else if (check_dir(*r, false) == EAST)
+	else
 		coll.x = floor(p.pos.x / CUBE_SIZE) * CUBE_SIZE + CUBE_SIZE;
-	if (tan_val == 0)
-		tan_val = 0.1;
-	coll.y = p.pos.y + (p.pos.x - coll.x) * tan_val;
+	if (check_dir(*r, true) == NORTH)
+		coll.y = p.pos.y - fabs(p.pos.x - coll.x) * tan_val;
+	else
+		coll.y = p.pos.y + fabs(p.pos.x - coll.x) * tan_val;
 	r->coll = get_wall_coll(coll, *r, map, false);
 	dist = get_dist(*r, r->coll, p);
 	return (dist);
@@ -222,16 +217,16 @@ double	get_horiz_coll(t_player p, t_ray *r, t_map *map)
 	double	tan_val;
 
 	tan_val = fabs(tan(r->dir));
-	if (check_dir(*r, true) == NORTH)
-	{
-		coll.y = floor(p.pos.y / CUBE_SIZE) * CUBE_SIZE - 1;
-		tan_val = -tan_val;
-	}
-	else if (check_dir(*r, true) == SOUTH)
-		coll.y = floor(p.pos.y / CUBE_SIZE) * CUBE_SIZE + CUBE_SIZE;
 	if (tan_val == 0)
-		tan_val = 0.1;
-	coll.x = p.pos.x + (coll.y - p.pos.y) / tan_val;
+		return (INFINITY);
+	if (check_dir(*r, true) == NORTH)
+		coll.y = floor(p.pos.y / CUBE_SIZE) * CUBE_SIZE - 1;
+	else
+		coll.y = floor(p.pos.y / CUBE_SIZE) * CUBE_SIZE + CUBE_SIZE;
+	if (check_dir(*r, false) == WEST)
+		coll.x = p.pos.x - fabs(p.pos.y - coll.y) / tan_val;
+	else
+		coll.x = p.pos.x + fabs(p.pos.y - coll.y) / tan_val;
 	r->coll = get_wall_coll(coll, *r, map, true);
 	return (get_dist(*r, r->coll, p));
 }

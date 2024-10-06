@@ -6,7 +6,7 @@
 /*   By: wpepping <wpepping@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/30 19:54:07 by wpepping          #+#    #+#             */
-/*   Updated: 2024/10/04 19:43:22 by wpepping         ###   ########.fr       */
+/*   Updated: 2024/10/06 18:25:01 by wpepping         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@
 # define TEXTURE_HEIGHT 180
 # define WINDOW_WIDTH 640
 # define WINDOW_HEIGHT 480
-# define MOVE_SPEED 0.4
+# define MOVE_SPEED 0.5
 # define ROTATE_SPEED 0.02
 # define EPSILON 1e-6
 # define M_PI 3.14159265358979323846
@@ -110,6 +110,7 @@ typedef struct s_data
 	int			endian;
 	int			floor[3];
 	int			ceiling[3];
+	double		focal_len;
 	t_key_state	key_state;
 }				t_data;
 

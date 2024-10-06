@@ -13,7 +13,7 @@ bool	move_player(t_data *data, bool rev)
 	if (!is_wall((t_coord){data->player->pos.x - move.x, data->player->pos.y
 			- move.y}, data->map))
 	{
-		data->player->pos.x -= move.x;
+		data->player->pos.x += move.x;
 		data->player->pos.y -= move.y;
 	}
 	return (true);
@@ -33,7 +33,7 @@ bool	strafe_player(t_data *data, bool left)
 	if (!is_wall((t_coord){data->player->pos.x - move.x, data->player->pos.y
 			- move.y}, data->map))
 	{
-		data->player->pos.x -= move.x;
+		data->player->pos.x += move.x;
 		data->player->pos.y -= move.y;
 	}
 	return (true);

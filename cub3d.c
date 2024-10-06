@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: phartman <phartman@student.42berlin.de>    +#+  +:+       +#+        */
+/*   By: wpepping <wpepping@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/30 19:55:11 by wpepping          #+#    #+#             */
-/*   Updated: 2024/10/03 17:51:57 by phartman         ###   ########.fr       */
+/*   Updated: 2024/10/06 18:18:35 by wpepping         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,13 +21,12 @@ static int	err_handl(char *error_msg, t_data *data)
 
 static int	init(t_data *data, char *fname)
 {
-	t_key_state	keystate;
-	keystate = (t_key_state){0, 0, 0, 0, 0, 0};
-	data->key_state = keystate;
+	data->key_state = (t_key_state){0, 0, 0, 0, 0, 0};
 	data->mlx_ptr = NULL;
 	data->win_ptr = NULL;
 	data->map->grid = NULL;
 	data->mlx_ptr = mlx_init();
+	data->focal_len = (WINDOW_WIDTH / 2.0) / (tan(FOV / 2.0));
 	if (data->mlx_ptr == NULL)
 		return (err_handl("Out of memory error", data));
 	if (read_map(data, fname) < 0)
@@ -92,7 +91,7 @@ int	main(int argc, char **argv)
  	init_events(&data);
 	draw_walls(cast_rays(data.map, *data.player), &data);
 	mlx_loop(data.mlx_ptr);
-	
+
 	//unload_textures(&data);
 	cleanup(&data);
 	return (0);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   events.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: phartman <phartman@student.42berlin.de>    +#+  +:+       +#+        */
+/*   By: wpepping <wpepping@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/27 20:07:36 by wpepping          #+#    #+#             */
-/*   Updated: 2024/10/04 17:49:06 by phartman         ###   ########.fr       */
+/*   Updated: 2024/10/06 18:13:10 by wpepping         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	handle_loop(t_data *data)
 {
-	bool moved;
+	bool	moved;
 
 	moved = false;
 	if (data->key_state.mv_up)
@@ -60,7 +60,7 @@ int	handle_close(t_data *data)
 // 	return (0);
 // }
 
-int handle_key_press(int keycode, t_data *data)
+int	handle_key_press(int keycode, t_data *data)
 {
 	if (keycode == XK_Escape)
 		mlx_loop_end(data->mlx_ptr);
@@ -69,9 +69,9 @@ int handle_key_press(int keycode, t_data *data)
 	if (keycode == XK_s || keycode == XK_S || keycode == XK_Down)
 		data->key_state.mv_dn = true;
 	if (keycode == XK_a || keycode == XK_A)
-		data->key_state.mv_r = true;
-	if (keycode == XK_d || keycode == XK_D)
 		data->key_state.mv_l = true;
+	if (keycode == XK_d || keycode == XK_D)
+		data->key_state.mv_r = true;
 	if (keycode == XK_Right)
 		data->key_state.rot_r = true;
 	if (keycode == XK_Left)
@@ -79,16 +79,16 @@ int handle_key_press(int keycode, t_data *data)
 	return (0);
 }
 
-int handle_key_release(int keycode, t_data *data)
+int	handle_key_release(int keycode, t_data *data)
 {
 	if (keycode == XK_w || keycode == XK_W || keycode == XK_Up)
 		data->key_state.mv_up = false;
 	if (keycode == XK_s || keycode == XK_S || keycode == XK_Down)
 		data->key_state.mv_dn = false;
 	if (keycode == XK_a || keycode == XK_A)
-		data->key_state.mv_r = false;
-	if (keycode == XK_d || keycode == XK_D)
 		data->key_state.mv_l = false;
+	if (keycode == XK_d || keycode == XK_D)
+		data->key_state.mv_r = false;
 	if (keycode == XK_Right)
 		data->key_state.rot_r = false;
 	if (keycode == XK_Left)
