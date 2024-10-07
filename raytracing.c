@@ -97,13 +97,6 @@ t_ray	*cast_rays(t_map *map, t_player p)
 			rays[i] = update_ray(&ray[1], vert_coll, false);
 		i++;
 	}
-	i = 0;
-	while (i < WINDOW_WIDTH)
-	{
-		printf("ray[%d] x= %f ray[%d] y= %f is_horiz=%d \n", i, rays[i].coll.x, i, rays[i].coll.y, rays[i].is_horiz);
-		printf("ray[%d] y= %f\n", i, rays[i].coll.y);
-		i++;
-	}
 	return (rays);
 }
 
