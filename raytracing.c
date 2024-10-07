@@ -52,11 +52,24 @@ void	draw_walls(t_ray *rays, t_data *data)
 				(t_coord){tex_x, tex_y}, (t_coord){i, j});
 			j++;
 		}
-		while (j < WINDOW_HEIGHT && j < WINDOW_HEIGHT)
+		while (j < WINDOW_HEIGHT)
 			set_pixel(data, data->floor, i, j++);
 		i++;
 	}
 }
+
+// void draw_floor(t_data *data, int j, bool is_texture)
+// {
+// 	if(is_texture)
+// 	{
+
+// 	}
+// 	else
+// 	{
+// 		while (j < WINDOW_HEIGHT)
+// 			set_pixel(data, data->floor, i, j++);
+// 	}
+// }
 
 t_ray	init_ray(double dir, int i)
 {

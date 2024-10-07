@@ -6,7 +6,7 @@
 /*   By: phartman <phartman@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/27 18:07:22 by wpepping          #+#    #+#             */
-/*   Updated: 2024/10/07 18:47:16 by phartman         ###   ########.fr       */
+/*   Updated: 2024/10/07 18:54:44 by phartman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,7 +115,6 @@ void draw_player(t_data *data, t_ray *rays)
 		{
 			end_line.x = rays[i].coll.x / CUBE_SIZE * MINI_TILE_SZ;
 			end_line.y = rays[i].coll.y / CUBE_SIZE * MINI_TILE_SZ;
-			printf("p.x: %f, p.y: %f, end_line.x: %f, end_line.y: %f\n", p.x, p.y, end_line.x, end_line.y);
 			draw_line(data, p, end_line);
 		}
 		i++;	
