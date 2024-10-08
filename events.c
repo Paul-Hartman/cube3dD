@@ -6,7 +6,7 @@
 /*   By: wpepping <wpepping@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/27 20:07:36 by wpepping          #+#    #+#             */
-/*   Updated: 2024/10/06 18:13:10 by wpepping         ###   ########.fr       */
+/*   Updated: 2024/10/07 17:30:18 by wpepping         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,16 +26,17 @@ int	handle_loop(t_data *data)
 	if (data->key_state.mv_l)
 		moved = strafe_player(data, true);
 	if (data->key_state.rot_r)
-		moved = rotate_player(data, false);
+		moved = rotate_player(data, false, ROTATE_SPEED);
 	if (data->key_state.rot_l)
-		moved = rotate_player(data, true);
+		moved = rotate_player(data, true, ROTATE_SPEED);
 	if (moved)
 	{
 		draw_walls(cast_rays(data->map, *data->player), data);
 		draw_minimap(data);
 		//draw_line(data, (t_coord){10 ,10}, (t_coord){100, 100});
+		mlx_put_image_to_window(data->mlx_ptr,
+			data->win_ptr, data->img_ptr, 0, 0);
 	}
-	mlx_put_image_to_window(data->mlx_ptr, data->win_ptr, data->img_ptr, 0, 0);
 	return (0);
 }
 
@@ -96,8 +97,18 @@ int	handle_key_release(int keycode, t_data *data)
 	return (0);
 }
 
-int	handle_mouse(t_data *data)
+int	handle_mouse_move(int x, int y, t_data *data)
 {
-	(void)data;
+	(void)y;
+	if (x != WINDOW_WIDTH / 2)
+	{
+		rotate_player(data, x < WINDOW_WIDTH / 2, MOUSE_SENSITIVITY);
+		draw_walls(cast_rays(data->map, *data->player), data);
+		draw_minimap(data);
+		mlx_put_image_to_window(data->mlx_ptr,
+			data->win_ptr, data->img_ptr, 0, 0);
+		mlx_mouse_move(data->mlx_ptr, data->win_ptr,
+			WINDOW_WIDTH / 2, WINDOW_HEIGHT / 2);
+	}
 	return (0);
 }

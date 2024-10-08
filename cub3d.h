@@ -6,7 +6,7 @@
 /*   By: wpepping <wpepping@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/30 19:54:07 by wpepping          #+#    #+#             */
-/*   Updated: 2024/10/06 18:25:01 by wpepping         ###   ########.fr       */
+/*   Updated: 2024/10/08 19:54:52 by wpepping         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,8 @@
 # define TEXTURE_HEIGHT 180
 # define WINDOW_WIDTH 640
 # define WINDOW_HEIGHT 480
-# define MOVE_SPEED 0.5
+# define MOVE_SPEED 1.5
+# define MOUSE_SENSITIVITY 0.05
 # define ROTATE_SPEED 0.02
 # define EPSILON 1e-6
 # define M_PI 3.14159265358979323846
@@ -47,8 +48,15 @@
 # define EAST 69
 # define SOUTH 83
 # define WEST 87
+# define SPACE 32
 
 # define WINDOW_NAME "Cub3d"
+
+# define MAP_ERROR "Map error"
+
+# ifndef REQUIRE_SPACE
+#  define REQUIRE_SPACE 0
+# endif
 
 typedef struct s_coord
 {
@@ -71,12 +79,12 @@ typedef struct s_player
 
 typedef struct s_key_state
 {
-	bool mv_up;
-	bool mv_dn;
-	bool mv_r;
-	bool mv_l;
-	bool rot_r;
-	bool rot_l;
+	bool	mv_up;
+	bool	mv_dn;
+	bool	mv_r;
+	bool	mv_l;
+	bool	rot_r;
+	bool	rot_l;
 }				t_key_state;
 
 typedef struct s_image
@@ -157,6 +165,7 @@ int				is_valid_map(t_map *map, t_player *player);
 
 
 // Render
+void			init_textures(t_textures *textures);
 int				load_textures(t_data *data, t_config *config);
 void			unload_textures(void *mlx_ptr, t_textures *textures);
 void			set_pixel(t_data *data, int c[3], int x, int y);
@@ -168,14 +177,15 @@ void draw_line(t_data *data, t_coord p1, t_coord p2);
 
 //movement
 bool	move_player(t_data *data, bool rev);
-bool strafe_player(t_data *data, bool left);
-bool	rotate_player(t_data *data, bool left);
+bool 	strafe_player(t_data *data, bool left);
+bool	rotate_player(t_data *data, bool left, double rotate_speed);
 
 // Events
 int				handle_loop(t_data *data);
 int				handle_close(t_data *data);
 //int				handle_input(int keycode, t_data *data);
-int				handle_mouse(t_data *data);
+int				handle_mouse(void *data);
+int				handle_mouse_move(int x, int y, t_data *data);
 
 int handle_key_press(int keycode, t_data *data);
 int handle_key_release(int keycode, t_data *data);
@@ -183,6 +193,7 @@ int handle_key_release(int keycode, t_data *data);
 // Clean up
 void			cleanup(t_data *data);
 void			free_map(char **map);
+void			free_config(t_config *config);
 
 // Utils
 char			*ft_remove(char *str, char c);

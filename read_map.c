@@ -6,16 +6,18 @@
 /*   By: wpepping <wpepping@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/28 20:03:56 by wpepping          #+#    #+#             */
-/*   Updated: 2024/10/02 16:35:39 by wpepping         ###   ########.fr       */
+/*   Updated: 2024/10/08 19:35:09 by wpepping         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-static int	err_handl(int fd)
+static int	err_handl(int fd, t_config *config)
 {
 	if (fd != -1)
 		close(fd);
+	if (config)
+		free_config(config);
 	return (-1);
 }
 
@@ -56,9 +58,12 @@ static int	read_type(int fd, char type[2])
 		return (-1);
 	if (type[0] != 'F' && type[0] != 'C')
 		read(fd, &type[1], 1);
-	bytes_read = read(fd, &c, 1);
-	if (bytes_read == 0 || c != ' ')
-		return (-1);
+	if (REQUIRE_SPACE)
+	{
+		bytes_read = read(fd, &c, 1);
+		if (bytes_read == 0 || c != ' ')
+			return (-1);
+	}
 	return (lines_read);
 }
 
@@ -92,23 +97,27 @@ static int	read_config(t_config *config, int fd)
 int	read_map(t_data *data, char *fname)
 {
 	int			fd;
+	int			result;
 	t_config	config;
 
 	fd = open(fname, O_RDONLY);
 	if (fd == -1)
 		return (-1);
 	if (read_config(&config, fd) < 0)
-		return (err_handl(fd));
-	load_textures(data, &config);
+		return (err_handl(fd, &config));
+	if (load_textures(data, &config) < 0)
+		return (err_handl(fd, &config));
 	if (save_rgbs(config.floor, data->floor) < 0)
-		return (err_handl(fd));
+		return (err_handl(fd, &config));
 	if (save_rgbs(config.ceiling, data->ceiling) < 0)
-		return (err_handl(fd));
+		return (err_handl(fd, &config));
 	if (get_map_dimensions(data->map, fd) < 0)
-		return (err_handl(fd));
+		return (err_handl(fd, &config));
 	close(fd);
 	fd = open(fname, O_RDONLY);
 	if (fd == -1)
 		return (-1);
-	return (read_map_content(data->map, fd, config.map_start));
+	result = read_map_content(data->map, fd, config.map_start);
+	free_config(&config);
+	return (result);
 }

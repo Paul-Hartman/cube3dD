@@ -10,7 +10,7 @@ bool	move_player(t_data *data, bool rev)
 		move_speed *= -1;
 	move.x = move_speed * cos(data->player->dir);
 	move.y = move_speed * sin(data->player->dir);
-	if (!is_wall((t_coord){data->player->pos.x - move.x, data->player->pos.y
+	if (!is_wall((t_coord){data->player->pos.x + move.x, data->player->pos.y
 			- move.y}, data->map))
 	{
 		data->player->pos.x += move.x;
@@ -30,7 +30,7 @@ bool	strafe_player(t_data *data, bool left)
 		strafe_dir = data->player->dir - M_PI / 2;
 	move.x = MOVE_SPEED * cos(strafe_dir);
 	move.y = MOVE_SPEED * sin(strafe_dir);
-	if (!is_wall((t_coord){data->player->pos.x - move.x, data->player->pos.y
+	if (!is_wall((t_coord){data->player->pos.x + move.x, data->player->pos.y
 			- move.y}, data->map))
 	{
 		data->player->pos.x += move.x;
@@ -39,11 +39,8 @@ bool	strafe_player(t_data *data, bool left)
 	return (true);
 }
 
-bool	rotate_player(t_data *data, bool left)
+bool	rotate_player(t_data *data, bool left, double rotate_speed)
 {
-	double	rotate_speed;
-
-	rotate_speed = ROTATE_SPEED;
 	if (left)
 		rotate_speed *= -1;
 	data->player->dir -= rotate_speed;

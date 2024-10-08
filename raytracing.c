@@ -45,7 +45,7 @@ void	draw_walls(t_ray *rays, t_data *data)
 			set_pixel(data, data->ceiling, i, j++);
 		while (j < wall_top + height && j < WINDOW_HEIGHT)
 		{
-			tex_x = get_tex_offset(rays[i]) * TEXTURE_HEIGHT / height;
+			tex_x = get_tex_offset(rays[i]);
 			tex_y = ((j - wall_top) * TEXTURE_HEIGHT) / height;
 			put_pixel_from_img(data, &data->textures->north,
 				(t_coord){tex_x, tex_y}, (t_coord){i, j});
@@ -55,6 +55,7 @@ void	draw_walls(t_ray *rays, t_data *data)
 			set_pixel(data, data->floor, i, j++);
 		i++;
 	}
+	free(rays);
 }
 
 t_ray	*cast_rays(t_map *map, t_player p)
