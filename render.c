@@ -6,7 +6,7 @@
 /*   By: phartman <phartman@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/27 18:07:22 by wpepping          #+#    #+#             */
-/*   Updated: 2024/10/04 19:40:39 by phartman         ###   ########.fr       */
+/*   Updated: 2024/10/07 15:16:53 by phartman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,8 +35,8 @@ void	put_pixel_from_img(t_data *data, t_image *src_img,
 	offset_dest = dest_coord.y * data->lsize + dest_coord.x * data->bpp / 8;
 	pixel_dest = data->imgbuff + offset_dest;
 
-	src_coord.x = (int)src_coord.x % src_img->lsize;
-	src_coord.y = (int)src_coord.y % src_img->lsize;
+	src_coord.x = (int)src_coord.x;// % src_img->lsize;
+	src_coord.y = (int)src_coord.y;// % src_img->lsize;
 
 	offset_src = src_coord.y * src_img->lsize + src_coord.x * src_img->bpp / 8;
 	pixel_src = src_img->buff + offset_src;

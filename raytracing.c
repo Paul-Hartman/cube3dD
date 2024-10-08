@@ -22,6 +22,7 @@ int	get_tex_offset(t_ray r)
 		tex_x = (int)r.coll.x % CUBE_SIZE;
 	else
 		tex_x = (int)r.coll.y % CUBE_SIZE;
+	
 	return (tex_x);
 }
 
@@ -58,27 +59,43 @@ void	draw_walls(t_ray *rays, t_data *data)
 	free(rays);
 }
 
+t_ray	init_ray(double dir, int i)
+{
+	t_ray	r;
+
+	r.dir = dir + (FOV / 2) - (FOV / WINDOW_WIDTH) * i;
+	r.dir = norm_angle(r.dir);
+	r.is_horiz = false;
+	return (r);
+}
+
+t_ray	update_ray(t_ray *r, double dist, bool is_horiz)
+{
+	r->dist = dist;
+	r->is_horiz = is_horiz;
+	return (*r);
+}
+
 t_ray	*cast_rays(t_map *map, t_player p)
 {
 	int		i;
-	t_ray	r;
 	t_ray	*rays;
+	t_ray	ray[2];
+	double	horiz_coll;
+	double	vert_coll;
 
 	i = 0;
 	rays = malloc(sizeof(t_ray) * WINDOW_WIDTH);
 	while (i < WINDOW_WIDTH)
 	{
-		r.dir = p.dir + (FOV / 2) - (FOV / WINDOW_WIDTH) * i;
-		r.dir = norm_angle(r.dir);
-		r.is_horiz = false;
-		if (get_horiz_coll(p, &r, map) < get_vert_coll(p, &r, map))
-		{
-			r.dist = get_horiz_coll(p, &r, map);
-			r.is_horiz = true;
-		}
+		ray[0] = init_ray(p.dir, i);
+		ray[1] = init_ray(p.dir, i);
+		horiz_coll = get_horiz_coll(p, &ray[0], map);
+		vert_coll = get_vert_coll(p, &ray[1], map);
+		if (horiz_coll < vert_coll)
+			rays[i] = update_ray(&ray[0], horiz_coll, true);
 		else
-			r.dist = get_vert_coll(p, &r, map);
-		rays[i] = r;
+			rays[i] = update_ray(&ray[1], vert_coll, false);
 		i++;
 	}
 	i = 0;
