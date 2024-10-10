@@ -6,7 +6,7 @@
 /*   By: wpepping <wpepping@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/30 19:54:07 by wpepping          #+#    #+#             */
-/*   Updated: 2024/10/08 19:54:52 by wpepping         ###   ########.fr       */
+/*   Updated: 2024/10/10 13:00:29 by wpepping         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,10 @@
 # include <X11/Xlib.h>
 # include <X11/keysym.h>
 # include <linux/limits.h>
+# include <sys/time.h>
 
-# define FOV 1.047198 //60 degrees in radians
+//# define FOV 1.047198 //60 degrees in radians
+# define FOV 1.4
 //# define FOCAL_LEN 277
 # define MINI_TILE_SZ 20
 # define CHAR_HEIGHT 32
@@ -37,8 +39,9 @@
 # define WINDOW_WIDTH 640
 # define WINDOW_HEIGHT 480
 # define MOVE_SPEED 1.5
-# define MOUSE_SENSITIVITY 0.05
+# define MOUSE_SENSITIVITY 0.12
 # define ROTATE_SPEED 0.02
+# define MS_BETWEEN_FRAMES 10
 # define EPSILON 1e-6
 # define M_PI 3.14159265358979323846
 
@@ -119,6 +122,7 @@ typedef struct s_data
 	int			floor[3];
 	int			ceiling[3];
 	double		focal_len;
+	int			last_render;
 	t_key_state	key_state;
 }				t_data;
 
@@ -171,8 +175,9 @@ void			unload_textures(void *mlx_ptr, t_textures *textures);
 void			set_pixel(t_data *data, int c[3], int x, int y);
 void			put_pixel_from_img(t_data *data, t_image *src_img,
 					t_coord src_coord, t_coord dest_coord);
-void draw_minimap(t_data *data);
-void draw_line(t_data *data, t_coord p1, t_coord p2);
+void			render_frame(t_data *data);
+void 			draw_minimap(t_data *data);
+void 			draw_line(t_data *data, t_coord p1, t_coord p2);
 //void draw_player(t_data data);
 
 //movement
@@ -199,7 +204,8 @@ void			free_config(t_config *config);
 char			*ft_remove(char *str, char c);
 double			get_angle(char dir);
 bool			ft_isnum(char *str);
-bool is_wall(t_coord pos, t_map *map);
+long			currtime(void);
+bool			is_wall(t_coord pos, t_map *map);
 
 // render utils
 double norm_angle(double angle);

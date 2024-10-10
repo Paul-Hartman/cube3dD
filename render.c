@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   render.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: phartman <phartman@student.42berlin.de>    +#+  +:+       +#+        */
+/*   By: wpepping <wpepping@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/27 18:07:22 by wpepping          #+#    #+#             */
-/*   Updated: 2024/10/07 15:16:53 by phartman         ###   ########.fr       */
+/*   Updated: 2024/10/10 13:01:41 by wpepping         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,18 @@ void	put_pixel_from_img(t_data *data, t_image *src_img,
 	ft_memcpy(pixel_dest, pixel_src, 4);
 }
 
+void	render_frame(t_data *data)
+{
+	if (currtime() - data->last_render > MS_BETWEEN_FRAMES)
+	{
+		draw_walls(cast_rays(data->map, *data->player), data);
+		draw_minimap(data);
+		mlx_put_image_to_window(data->mlx_ptr,
+			data->win_ptr, data->img_ptr, 0, 0);
+		data->last_render = currtime();
+	}
+}
+
 void	draw_square(t_data *data, int x, int y, int c[3])
 {
 	int	i;
@@ -69,7 +81,7 @@ void draw_line(t_data *data, t_coord p1, t_coord p2)
 	dist = (int)sqrt(pow(p2.x - p1.x, 2) + pow(p2.y - p1.y, 2));
 	while (dist && (p1.x < WINDOW_WIDTH && p1.y < WINDOW_HEIGHT))
 	{
-		
+
 		if (p1.x < p2.x)
 			p1.x++;
 		else if (p1.x > p2.x)
@@ -110,10 +122,10 @@ void	draw_minimap(t_data *data)
 	}
 	p.x = data->player->pos.x / CUBE_SIZE * MINI_TILE_SZ;
 	p.y = data->player->pos.y / CUBE_SIZE * MINI_TILE_SZ;
-	
+
 	//draw_line(data, (t_coord){p.x - 10/2, p.y - 10}, p);
 	draw_line(data, (t_coord){p.x + 10/2, p.y - 10}, p);
 	set_pixel(data, (int[3]){0, 0, 0}, p.x, p.y);
-	
+
 }
 

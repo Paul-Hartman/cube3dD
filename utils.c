@@ -6,7 +6,7 @@
 /*   By: wpepping <wpepping@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/30 19:54:58 by wpepping          #+#    #+#             */
-/*   Updated: 2024/10/04 19:44:10 by wpepping         ###   ########.fr       */
+/*   Updated: 2024/10/10 12:46:57 by wpepping         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,4 +51,13 @@ char	*ft_remove(char *str, char c)
 		i--;
 	}
 	return (result);
+}
+
+long	currtime(void)
+{
+	struct timeval	result;
+
+	if (gettimeofday(&result, NULL))
+		ft_putendl_fd("Error getting current time.", STDOUT_FILENO);
+	return (result.tv_sec * 1000 + result.tv_usec / 1000);
 }

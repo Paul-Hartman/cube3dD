@@ -6,7 +6,7 @@
 /*   By: wpepping <wpepping@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/30 19:55:11 by wpepping          #+#    #+#             */
-/*   Updated: 2024/10/08 19:55:06 by wpepping         ###   ########.fr       */
+/*   Updated: 2024/10/10 13:00:53 by wpepping         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,9 +42,7 @@ static int	init(t_data *data, char *fname)
 		return (err_handl("Out of memory error", data));
 	data->imgbuff = mlx_get_data_addr(data->img_ptr, &data->bpp,
 			&(data->lsize), &(data->endian));
-	mlx_mouse_move(data->mlx_ptr, data->win_ptr,
-		WINDOW_WIDTH / 2, WINDOW_HEIGHT / 2);
-	//mlx_mouse_hide(data->mlx_ptr, data->win_ptr);
+	data->last_render = currtime();
 	return (0);
 }
 
@@ -59,6 +57,9 @@ static void	init_events(t_data *data)
 	mlx_hook(data->win_ptr, MotionNotify, PointerMotionMask,
 		&handle_mouse_move, data);
 	mlx_loop_hook(data->mlx_ptr, &handle_loop, data);
+	mlx_mouse_move(data->mlx_ptr, data->win_ptr,
+		WINDOW_WIDTH / 2, WINDOW_HEIGHT / 2);
+	mlx_mouse_hide(data->mlx_ptr, data->win_ptr);
 }
 
 static int	check_input(int argc, char **argv)
