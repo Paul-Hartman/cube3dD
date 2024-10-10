@@ -6,7 +6,7 @@
 /*   By: wpepping <wpepping@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/03 19:09:39 by wpepping          #+#    #+#             */
-/*   Updated: 2024/10/08 19:47:55 by wpepping         ###   ########.fr       */
+/*   Updated: 2024/10/10 15:58:36 by wpepping         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,7 +84,7 @@ int	get_map_dimensions(t_map *map, int fd)
 	return (0);
 }
 
-int	read_map_content(t_map *map, int fd, int map_start)
+int	read_map_content(t_map *map, int fd, int start)
 {
 	int		i;
 	int		len;
@@ -93,7 +93,7 @@ int	read_map_content(t_map *map, int fd, int map_start)
 	if (!map->grid)
 		return (-1);
 	i = 0;
-	map->grid[i] = get_first_map_line(fd, map_start);
+	map->grid[i] = ft_strdup2(get_first_map_line(fd, start), map->width + 1);
 	while (i < map->height)
 	{
 		if (!map->grid[i])
@@ -104,7 +104,7 @@ int	read_map_content(t_map *map, int fd, int map_start)
 			len--;
 		ft_memset(map->grid[i] + len, ' ', map->width - len);
 		i++;
-		map->grid[i] = get_next_line(fd);
+		map->grid[i] = ft_strdup2(get_next_line(fd), map->width + 1);
 	}
  	get_next_line(-1);
 	close(fd);

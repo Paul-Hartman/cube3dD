@@ -6,7 +6,7 @@
 /*   By: wpepping <wpepping@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/30 19:54:07 by wpepping          #+#    #+#             */
-/*   Updated: 2024/10/10 13:00:29 by wpepping         ###   ########.fr       */
+/*   Updated: 2024/10/10 15:59:08 by wpepping         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -206,6 +206,7 @@ double			get_angle(char dir);
 bool			ft_isnum(char *str);
 long			currtime(void);
 bool			is_wall(t_coord pos, t_map *map);
+char			*ft_strdup2(char *s, size_t n);
 
 // render utils
 double norm_angle(double angle);

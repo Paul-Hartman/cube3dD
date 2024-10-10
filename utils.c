@@ -6,7 +6,7 @@
 /*   By: wpepping <wpepping@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/30 19:54:58 by wpepping          #+#    #+#             */
-/*   Updated: 2024/10/10 12:46:57 by wpepping         ###   ########.fr       */
+/*   Updated: 2024/10/10 15:59:57 by wpepping         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,4 +60,25 @@ long	currtime(void)
 	if (gettimeofday(&result, NULL))
 		ft_putendl_fd("Error getting current time.", STDOUT_FILENO);
 	return (result.tv_sec * 1000 + result.tv_usec / 1000);
+}
+
+char	*ft_strdup2(char *s, size_t n)
+{
+	int		i;
+	char	*dup;
+
+	if (s == NULL)
+		return (NULL);
+	i = 0;
+	dup = malloc(n);
+	if (!dup)
+		return (NULL);
+	while (s[i])
+	{
+		dup[i] = s[i];
+		i++;
+	}
+	dup[i] = '\0';
+	free(s);
+	return (dup);
 }
