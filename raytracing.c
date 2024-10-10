@@ -40,6 +40,8 @@ int	get_tex_offset(t_ray r)
 // 	}
 // }
 
+
+
 void draw_floor(t_data *data, int i, int j, bool is_texture)
 {
 	t_ray r;
@@ -82,6 +84,38 @@ void draw_floor(t_data *data, int i, int j, bool is_texture)
 		set_pixel(data, data->floor, i, j);
 }
 
+void draw_ceiling(t_data *data, int i, int j, bool is_texture)
+{
+	t_ray r;
+	int tex_x;
+	int tex_y;
+
+	if(is_texture)
+	{
+		
+		r.dist = CHAR_HEIGHT * data->focal_len /  ((double)j - (double)WINDOW_HEIGHT / 2.0) ;
+		r.dir = data->player->dir + (FOV / 2.0) - (FOV / WINDOW_WIDTH) * i;
+		r.dir = norm_angle(r.dir);
+		r.dist = r.dist/ cos(norm_angle(r.dir - data->player->dir));
+
+		r.coll.x = data->player->pos.x - r.dist * cos(r.dir);
+		r.coll.y = data->player->pos.y + r.dist * sin(r.dir);
+		
+			r.coll.x = fmod(r.coll.x, CUBE_SIZE) / CUBE_SIZE;
+		r.coll.y = fmod(r.coll.y, CUBE_SIZE)/ CUBE_SIZE;
+		
+		tex_x = (int)(r.coll.x  * (TEXTURE_HEIGHT * 3) );
+		tex_y = (int)(r.coll.y  * (TEXTURE_HEIGHT * 3));
+		tex_x = tex_x % TEXTURE_HEIGHT;
+		tex_y = tex_y % TEXTURE_HEIGHT; 
+		if (tex_x < 0) tex_x += TEXTURE_HEIGHT;
+		if (tex_y < 0) tex_y += TEXTURE_HEIGHT;
+		put_pixel_from_img(data, &data->textures->north, (t_coord){tex_x, tex_y}, (t_coord){i, j});
+		
+	}
+	else
+		set_pixel(data, data->floor, i, j);
+}
 
 
 void	draw_walls(t_ray *rays, t_data *data)
@@ -100,7 +134,7 @@ void	draw_walls(t_ray *rays, t_data *data)
 		wall_top = WINDOW_HEIGHT / 2 - height / 2;
 		j = 0;
 		while (j < wall_top && j < WINDOW_HEIGHT)
-			draw_floor(data, i, j++, true);
+			draw_ceiling(data, i, j++, true);
 		while (j < wall_top + height && j < WINDOW_HEIGHT)
 		{
 			tex_x = get_tex_offset(rays[i]);
