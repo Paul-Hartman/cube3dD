@@ -43,68 +43,43 @@ int	get_tex_offset(t_ray r)
 void draw_floor(t_data *data, int i, int j, bool is_texture)
 {
 	t_ray r;
+	// int tex_x;
+	// int tex_y;
+	// double vert_fov;
+	double floor_x;
+	double floor_y;
 	int tex_x;
 	int tex_y;
-	double vert_fov;
-
-	double floor_dist;
-
 
 	if(is_texture)
 	{
-		vert_fov = 2 * atan((WINDOW_HEIGHT / 2) / data->focal_len);
-		int p = j - WINDOW_HEIGHT / 2;
-		double row_dist = CHAR_HEIGHT / p;
-		double x_dir = data->player->dir + (FOV / 2.0) - (FOV / WINDOW_WIDTH) * i;
-		double y_dir =  vert_fov / 2.0 - vert_fov / WINDOW_HEIGHT * j;
+		r.dist = CHAR_HEIGHT * data->focal_len / (j - WINDOW_HEIGHT / 2) ;
+		r.dir = data->player->dir + (FOV / 2.0) - (FOV / WINDOW_WIDTH) * i;
+		//double ray_angle = data->player->dir - (FOV / 2.0) + (FOV * i) / (double)WINDOW_WIDTH;
+		//ray_angle = norm_angle(ray_angle);
+		r.dir = norm_angle(r.dir);
+		r.dist = r.dist/ cos(norm_angle(r.dir - data->player->dir));
+		//printf("row_dist: %f\n", r.dist);
+		floor_x = data->player->pos.x + r.dist * cos(r.dir);
+		floor_y = data->player->pos.y + r.dist * sin(r.dir);
+		//int cellX = (int)(floorX / TILE_SIZE);
+		//int cellY = (int)(floorY / TILE_SIZE);
+		r.coll.x = fmod(floor_x, CUBE_SIZE) / CUBE_SIZE;
+		r.coll.y = fmod(floor_y, CUBE_SIZE) / CUBE_SIZE;
+		tex_x = (int)(r.coll.x  * TEXTURE_HEIGHT);
+		tex_y = (int)(r.coll.y  * TEXTURE_HEIGHT);
+		//tex_x = tex_x % TEXTURE_HEIGHT;
+		//tex_y = tex_y % TEXTURE_HEIGHT;
+
+		//if (tex_x < 0) tex_x += TEXTURE_HEIGHT;
+		//if (tex_y < 0) tex_y += TEXTURE_HEIGHT;
+		//tex_y = (int)(floor_y * TEXTURE_HEIGHT) % TEXTURE_HEIGHT;
+		put_pixel_from_img(data, &data->textures->north, (t_coord){tex_x, tex_y}, (t_coord){i, j});
 		
 	}
 	else
 		set_pixel(data, data->floor, i, j);
 }
-
-
-// void draw_floor(t_data *data, int i, int j, bool is_texture)
-// {
-// 	t_ray r;
-// 	int tex_x;
-// 	int tex_y;
-
-
-// 	double floor_dist;
-// 	if(is_texture)
-// 	{
-// 		floor_dist = ((j - WINDOW_HEIGHT / 2.0) / CHAR_HEIGHT) * data->focal_len;
-		
-// 		r.dir = data->player->dir + (FOV / 2.0) - (FOV / WINDOW_WIDTH) * i;
-// 		r.dir = norm_angle(r.dir);
-// 		double angle = r.dir - data->player->dir;
-// 		double x_end = floor_dist * cos(angle);
-// 		double y_end = floor_dist * sin(angle);
-// 		r.coll = (t_coord){floor(x_end / CUBE_SIZE),
-// 				floor(y_end/ CUBE_SIZE)};
-// 		if(r.coll.y > 0 && r.coll.y < data->map->height && r.coll.x > 0 && r.coll.x < data->map->width)
-// 		{
-// 			tex_x = fmod(y_end, TEXTURE_HEIGHT);
-// 			tex_y = fmod(x_end, TEXTURE_HEIGHT);
-// 			put_pixel_from_img(data, &data->textures->north,
-// 			(t_coord){tex_x, tex_y}, (t_coord){i, j});
-
-// 		}
-// 		// else
-// 		// 	set_pixel(data, data->floor, i, j);
-// 		// tex_x = (int)(TEXTURE_HEIGHT * (r.coll.x - floor(r.coll.x)))% TEXTURE_HEIGHT;
-// 		// tex_y = (int)(TEXTURE_HEIGHT * (r.coll.y - floor(r.coll.y)))% TEXTURE_HEIGHT;
-// 		// if(tex_x < 0)
-// 		// 	tex_x += TEXTURE_HEIGHT;
-// 		// if(tex_y < 0)
-// 		// 	tex_y += TEXTURE_HEIGHT;
-// 		// put_pixel_from_img(data, &data->textures->north,
-// 		// (t_coord){tex_x, tex_y}, (t_coord){i, j});
-// 	}
-// 	else
-// 		set_pixel(data, data->floor, i, j);
-// }
 
 
 
