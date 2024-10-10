@@ -108,7 +108,7 @@ void draw_player(t_data *data, t_ray *rays)
 	i=0;
 	p.x = data->player->pos.x / CUBE_SIZE * MINI_TILE_SZ;
 	p.y = data->player->pos.y / CUBE_SIZE * MINI_TILE_SZ;
-	printf("start\n");
+
 	while(i < WINDOW_WIDTH)
 	{
 		if (i % 20 == 0)
@@ -119,7 +119,7 @@ void draw_player(t_data *data, t_ray *rays)
 		}
 		i++;	
 	}
-	printf("end\n");
+
 }
 
 void	draw_minimap(t_data *data, t_ray *rays)

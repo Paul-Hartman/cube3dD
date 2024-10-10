@@ -46,8 +46,6 @@ void draw_floor(t_data *data, int i, int j, bool is_texture)
 	// int tex_x;
 	// int tex_y;
 	// double vert_fov;
-	double floor_x;
-	double floor_y;
 	int tex_x;
 	int tex_y;
 
@@ -55,25 +53,28 @@ void draw_floor(t_data *data, int i, int j, bool is_texture)
 	{
 		r.dist = CHAR_HEIGHT * data->focal_len / (j - WINDOW_HEIGHT / 2) ;
 		r.dir = data->player->dir + (FOV / 2.0) - (FOV / WINDOW_WIDTH) * i;
-		//double ray_angle = data->player->dir - (FOV / 2.0) + (FOV * i) / (double)WINDOW_WIDTH;
-		//ray_angle = norm_angle(ray_angle);
 		r.dir = norm_angle(r.dir);
 		r.dist = r.dist/ cos(norm_angle(r.dir - data->player->dir));
-		//printf("row_dist: %f\n", r.dist);
-		floor_x = data->player->pos.x + r.dist * cos(r.dir);
-		floor_y = data->player->pos.y + r.dist * sin(r.dir);
-		//int cellX = (int)(floorX / TILE_SIZE);
-		//int cellY = (int)(floorY / TILE_SIZE);
-		r.coll.x = fmod(floor_x, CUBE_SIZE) / CUBE_SIZE;
-		r.coll.y = fmod(floor_y, CUBE_SIZE) / CUBE_SIZE;
-		tex_x = (int)(r.coll.x  * TEXTURE_HEIGHT);
-		tex_y = (int)(r.coll.y  * TEXTURE_HEIGHT);
-		//tex_x = tex_x % TEXTURE_HEIGHT;
-		//tex_y = tex_y % TEXTURE_HEIGHT;
 
-		//if (tex_x < 0) tex_x += TEXTURE_HEIGHT;
-		//if (tex_y < 0) tex_y += TEXTURE_HEIGHT;
-		//tex_y = (int)(floor_y * TEXTURE_HEIGHT) % TEXTURE_HEIGHT;
+		r.coll.x = data->player->pos.x + r.dist * cos(r.dir);
+		r.coll.y = data->player->pos.y - r.dist * sin(r.dir);
+		//printf("map coll Point: (%d, %d)\n", (int)r.coll.x / CUBE_SIZE, (int)r.coll.y / CUBE_SIZE);
+		r.coll.x = fmod(r.coll.x, CUBE_SIZE) / CUBE_SIZE;
+		r.coll.y = fmod(r.coll.y, CUBE_SIZE)/ CUBE_SIZE;
+		
+		tex_x = (int)(r.coll.x  * (TEXTURE_HEIGHT * 3) );
+		tex_y = (int)(r.coll.y  * (TEXTURE_HEIGHT * 3));
+		tex_x = tex_x % TEXTURE_HEIGHT;
+		tex_y = tex_y % TEXTURE_HEIGHT; 
+		if (tex_x < 0) tex_x += TEXTURE_HEIGHT;
+		if (tex_y < 0) tex_y += TEXTURE_HEIGHT;
+	//printf("Screen Position: i = %d, j = %d\n", i, j);
+//printf("Ray Direction: %f\n", r.dir);
+//printf("Angle Difference: %f\n", r.dir - data->player->dir);
+//printf("Corrected Distance: %f\n", r.dist);
+//printf("Collision Point: (%f, %f)\n", r.coll.x * CUBE_SIZE, r.coll.y * CUBE_SIZE);
+
+//printf("Texture Coordinates: (%d, %d)\n", tex_x, tex_y);
 		put_pixel_from_img(data, &data->textures->north, (t_coord){tex_x, tex_y}, (t_coord){i, j});
 		
 	}
@@ -99,7 +100,7 @@ void	draw_walls(t_ray *rays, t_data *data)
 		wall_top = WINDOW_HEIGHT / 2 - height / 2;
 		j = 0;
 		while (j < wall_top && j < WINDOW_HEIGHT)
-			set_pixel(data, data->ceiling, i, j++);
+			draw_floor(data, i, j++, true);
 		while (j < wall_top + height && j < WINDOW_HEIGHT)
 		{
 			tex_x = get_tex_offset(rays[i]);
