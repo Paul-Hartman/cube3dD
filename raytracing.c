@@ -40,49 +40,39 @@ int	get_tex_offset(t_ray r)
 // 	}
 // }
 
-
-
 void draw_floor(t_data *data, int i, int j, bool is_texture)
 {
 	t_ray r;
-	// int tex_x;
-	// int tex_y;
-	// double vert_fov;
 	int tex_x;
 	int tex_y;
 
 	if(is_texture)
 	{
-		r.dist = CHAR_HEIGHT * data->focal_len / (j - WINDOW_HEIGHT / 2) ;
+		
+		r.dist = CHAR_HEIGHT * data->focal_len /  ((double)j - (double)WINDOW_HEIGHT / 2.0) ;
 		r.dir = data->player->dir + (FOV / 2.0) - (FOV / WINDOW_WIDTH) * i;
 		r.dir = norm_angle(r.dir);
 		r.dist = r.dist/ cos(norm_angle(r.dir - data->player->dir));
 
-		r.coll.x = data->player->pos.x + r.dist * cos(r.dir);
-		r.coll.y = data->player->pos.y - r.dist * sin(r.dir);
-		//printf("map coll Point: (%d, %d)\n", (int)r.coll.x / CUBE_SIZE, (int)r.coll.y / CUBE_SIZE);
+		r.coll.x = data->player->pos.x + r.dist * cos(r.dir) * 3;
+		r.coll.y = data->player->pos.y - r.dist * sin(r.dir) * 3;
+		
 		r.coll.x = fmod(r.coll.x, CUBE_SIZE) / CUBE_SIZE;
 		r.coll.y = fmod(r.coll.y, CUBE_SIZE)/ CUBE_SIZE;
 		
-		tex_x = (int)(r.coll.x  * (TEXTURE_HEIGHT * 3) );
-		tex_y = (int)(r.coll.y  * (TEXTURE_HEIGHT * 3));
+		tex_x = (int)(r.coll.x  * (TEXTURE_HEIGHT) );
+		tex_y = (int)(r.coll.y  * (TEXTURE_HEIGHT));
 		tex_x = tex_x % TEXTURE_HEIGHT;
 		tex_y = tex_y % TEXTURE_HEIGHT; 
 		if (tex_x < 0) tex_x += TEXTURE_HEIGHT;
 		if (tex_y < 0) tex_y += TEXTURE_HEIGHT;
-	//printf("Screen Position: i = %d, j = %d\n", i, j);
-//printf("Ray Direction: %f\n", r.dir);
-//printf("Angle Difference: %f\n", r.dir - data->player->dir);
-//printf("Corrected Distance: %f\n", r.dist);
-//printf("Collision Point: (%f, %f)\n", r.coll.x * CUBE_SIZE, r.coll.y * CUBE_SIZE);
-
-//printf("Texture Coordinates: (%d, %d)\n", tex_x, tex_y);
 		put_pixel_from_img(data, &data->textures->north, (t_coord){tex_x, tex_y}, (t_coord){i, j});
 		
 	}
 	else
 		set_pixel(data, data->floor, i, j);
 }
+
 
 void draw_ceiling(t_data *data, int i, int j, bool is_texture)
 {
@@ -98,14 +88,14 @@ void draw_ceiling(t_data *data, int i, int j, bool is_texture)
 		r.dir = norm_angle(r.dir);
 		r.dist = r.dist/ cos(norm_angle(r.dir - data->player->dir));
 
-		r.coll.x = data->player->pos.x - r.dist * cos(r.dir);
-		r.coll.y = data->player->pos.y + r.dist * sin(r.dir);
+		r.coll.x = data->player->pos.x - r.dist * cos(r.dir) * 3;
+		r.coll.y = data->player->pos.y + r.dist * sin(r.dir) * 3;
 		
-			r.coll.x = fmod(r.coll.x, CUBE_SIZE) / CUBE_SIZE;
+		r.coll.x = fmod(r.coll.x, CUBE_SIZE) / CUBE_SIZE;
 		r.coll.y = fmod(r.coll.y, CUBE_SIZE)/ CUBE_SIZE;
 		
-		tex_x = (int)(r.coll.x  * (TEXTURE_HEIGHT * 3) );
-		tex_y = (int)(r.coll.y  * (TEXTURE_HEIGHT * 3));
+		tex_x = (int)(r.coll.x  * (TEXTURE_HEIGHT) );
+		tex_y = (int)(r.coll.y  * (TEXTURE_HEIGHT));
 		tex_x = tex_x % TEXTURE_HEIGHT;
 		tex_y = tex_y % TEXTURE_HEIGHT; 
 		if (tex_x < 0) tex_x += TEXTURE_HEIGHT;
