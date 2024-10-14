@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: wpepping <wpepping@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/30 19:55:11 by wpepping          #+#    #+#             */
-/*   Updated: 2024/10/14 16:13:51 by wpepping         ###   ########.fr       */
+/*   Created: 2024/10/14 18:29:21 by wpepping          #+#    #+#             */
+/*   Updated: 2024/10/14 18:29:23 by wpepping         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,7 +93,7 @@ int	main(int argc, char **argv)
 	}
 	init_events(&data);
 	draw_walls(cast_rays(data.map, *data.player), &data);
-	draw_minimap(&data);
+	draw_minimap(&data, cast_rays(data.map, *data.player));
 	mlx_put_image_to_window(data.mlx_ptr, data.win_ptr, data.img_ptr, 0, 0);
 	mlx_loop(data.mlx_ptr);
 	cleanup(&data);

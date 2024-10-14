@@ -26,6 +26,53 @@ int	get_tex_offset(t_ray r)
 	return (tex_x);
 }
 
+void draw_floor(t_data *data, int i, int j, bool is_texture)
+{
+	t_ray r;
+	int tex_x;
+	int tex_y;
+
+	if(is_texture)
+	{
+		r.dist = CHAR_HEIGHT * data->focal_len /  ((double)j - (double)WINDOW_HEIGHT / 2.0) ;
+		r.dir = norm_angle(data->player->dir + (FOV / 2.0) - (FOV / WINDOW_WIDTH) * i);
+		r.dist = r.dist/ cos(norm_angle(r.dir - data->player->dir));
+		r.coll.x = data->player->pos.x + r.dist * cos(r.dir) * 3;
+		r.coll.y = data->player->pos.y - r.dist * sin(r.dir) * 3;
+		r.coll.x = fmod(r.coll.x, CUBE_SIZE) / CUBE_SIZE;
+		r.coll.y = fmod(r.coll.y, CUBE_SIZE)/ CUBE_SIZE;
+		tex_x = (int)(r.coll.x  * (TEXTURE_HEIGHT));
+		tex_y = (int)(r.coll.y  * (TEXTURE_HEIGHT));
+		put_pixel_from_img(data, &data->textures->north, (t_coord){tex_x, tex_y}, (t_coord){i, j});
+	}
+	else
+		set_pixel(data, data->floor, i, j);
+}
+
+
+void draw_ceiling(t_data *data, int i, int j, bool is_texture)
+{
+	t_ray r;
+	int tex_x;
+	int tex_y;
+
+	if(is_texture)
+	{
+		r.dist = CHAR_HEIGHT * data->focal_len /  ((double)j - (double)WINDOW_HEIGHT / 2.0) ;
+		r.dir = norm_angle(data->player->dir + (FOV / 2.0) - (FOV / WINDOW_WIDTH) * i);
+		r.dist = r.dist/ cos(norm_angle(r.dir - data->player->dir));
+		r.coll.x = data->player->pos.x - r.dist * cos(r.dir) * 3;
+		r.coll.y = data->player->pos.y + r.dist * sin(r.dir) * 3;
+		r.coll.x = fmod(r.coll.x, CUBE_SIZE) / CUBE_SIZE;
+		r.coll.y = fmod(r.coll.y, CUBE_SIZE)/ CUBE_SIZE;
+		tex_x = (int)(r.coll.x  * (TEXTURE_HEIGHT));
+		tex_y = (int)(r.coll.y  * (TEXTURE_HEIGHT));
+		put_pixel_from_img(data, &data->textures->north, (t_coord){tex_x, tex_y}, (t_coord){i, j});
+	}
+	else
+		set_pixel(data, data->floor, i, j);
+}
+
 
 void	draw_walls(t_ray *rays, t_data *data)
 {
@@ -43,7 +90,7 @@ void	draw_walls(t_ray *rays, t_data *data)
 		wall_top = WINDOW_HEIGHT / 2 - height / 2;
 		j = 0;
 		while (j < wall_top && j < WINDOW_HEIGHT)
-			set_pixel(data, data->ceiling, i, j++);
+			draw_ceiling(data, i, j++, true);
 		while (j < wall_top + height && j < WINDOW_HEIGHT)
 		{
 			tex_x = get_tex_offset(rays[i]);
@@ -52,12 +99,17 @@ void	draw_walls(t_ray *rays, t_data *data)
 				(t_coord){tex_x, tex_y}, (t_coord){i, j});
 			j++;
 		}
-		while (j < WINDOW_HEIGHT && j < WINDOW_HEIGHT)
-			set_pixel(data, data->floor, i, j++);
+		while (j >= wall_top + height && j < WINDOW_HEIGHT)
+		 	draw_floor(data, i, j++, true);
 		i++;
 	}
 	free(rays);
 }
+
+
+
+
+
 
 t_ray	init_ray(double dir, int i)
 {
@@ -96,13 +148,6 @@ t_ray	*cast_rays(t_map *map, t_player p)
 			rays[i] = update_ray(&ray[0], horiz_coll, true);
 		else
 			rays[i] = update_ray(&ray[1], vert_coll, false);
-		i++;
-	}
-	i = 0;
-	while (i < WINDOW_WIDTH)
-	{
-		printf("ray[%d] x= %f ray[%d] y= %f is_horiz=%d \n", i, rays[i].coll.x, i, rays[i].coll.y, rays[i].is_horiz);
-		printf("ray[%d] y= %f\n", i, rays[i].coll.y);
 		i++;
 	}
 	return (rays);

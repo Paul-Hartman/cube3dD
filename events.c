@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: wpepping <wpepping@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/27 20:07:36 by wpepping          #+#    #+#             */
-/*   Updated: 2024/10/11 16:51:28 by wpepping         ###   ########.fr       */
+/*   Created: 2024/10/14 18:29:48 by wpepping          #+#    #+#             */
+/*   Updated: 2024/10/14 18:29:49 by wpepping         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 int	handle_loop(t_data *data)
 {
+	//t_ray	*rays;
 	bool	moved;
 
 	moved = false;

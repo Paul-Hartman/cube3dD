@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: wpepping <wpepping@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/30 19:54:07 by wpepping          #+#    #+#             */
-/*   Updated: 2024/10/14 18:22:55 by wpepping         ###   ########.fr       */
+/*   Created: 2024/10/14 18:29:37 by wpepping          #+#    #+#             */
+/*   Updated: 2024/10/14 18:29:41 by wpepping         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -181,7 +181,7 @@ void			set_pixel(t_data *data, int c[3], int x, int y);
 void			put_pixel_from_img(t_data *data, t_image *src_img,
 					t_coord src_coord, t_coord dest_coord);
 void			render_frame(t_data *data);
-void 			draw_minimap(t_data *data);
+void	draw_minimap(t_data *data, t_ray *rays);
 void 			draw_line(t_data *data, t_coord p1, t_coord p2);
 //void draw_player(t_data data);
 
