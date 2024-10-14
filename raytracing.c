@@ -22,7 +22,7 @@ int	get_tex_offset(t_ray r)
 		tex_x = (int)r.coll.x % CUBE_SIZE;
 	else
 		tex_x = (int)r.coll.y % CUBE_SIZE;
-	
+
 	return (tex_x);
 }
 

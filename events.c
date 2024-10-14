@@ -6,7 +6,7 @@
 /*   By: wpepping <wpepping@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/27 20:07:36 by wpepping          #+#    #+#             */
-/*   Updated: 2024/10/10 13:01:54 by wpepping         ###   ########.fr       */
+/*   Updated: 2024/10/11 16:51:28 by wpepping         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,10 +93,14 @@ int	handle_key_release(int keycode, t_data *data)
 
 int	handle_mouse_move(int x, int y, t_data *data)
 {
+	int	dx;
+
 	(void)y;
+	dx = x - WINDOW_WIDTH / 2;
+	data->mouse_x = x;
 	if (x != WINDOW_WIDTH / 2)
 	{
-		rotate_player(data, x < WINDOW_WIDTH / 2, MOUSE_SENSITIVITY);
+		rotate_player(data, false, MOUSE_SENSITIVITY * dx);
 		render_frame(data);
 		mlx_mouse_move(data->mlx_ptr, data->win_ptr,
 			WINDOW_WIDTH / 2, WINDOW_HEIGHT / 2);
