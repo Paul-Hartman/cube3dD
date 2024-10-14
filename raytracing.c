@@ -90,7 +90,7 @@ void	draw_walls(t_ray *rays, t_data *data)
 		wall_top = WINDOW_HEIGHT / 2 - height / 2;
 		j = 0;
 		while (j < wall_top && j < WINDOW_HEIGHT)
-			draw_ceiling(data, i, j++, true);
+			draw_ceiling(data, i, j++, data->textures->south.img_ptr != NULL);
 		while (j < wall_top + height && j < WINDOW_HEIGHT)
 		{
 			tex_x = get_tex_offset(rays[i]);
@@ -100,7 +100,7 @@ void	draw_walls(t_ray *rays, t_data *data)
 			j++;
 		}
 		while (j >= wall_top + height && j < WINDOW_HEIGHT)
-		 	draw_floor(data, i, j++, true);
+		 	draw_floor(data, i, j++, data->textures->south.img_ptr != NULL);
 		i++;
 	}
 	free(rays);

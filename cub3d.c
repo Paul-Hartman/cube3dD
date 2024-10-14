@@ -6,7 +6,7 @@
 /*   By: phartman <phartman@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/30 19:55:11 by wpepping          #+#    #+#             */
-/*   Updated: 2024/10/14 14:35:43 by phartman         ###   ########.fr       */
+/*   Updated: 2024/10/14 15:36:48 by phartman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ static void	init_events(t_data *data)
 	mlx_loop_hook(data->mlx_ptr, &handle_loop, data);
 	mlx_mouse_move(data->mlx_ptr, data->win_ptr,
 		WINDOW_WIDTH / 2, WINDOW_HEIGHT / 2);
-	//mlx_mouse_hide(data->mlx_ptr, data->win_ptr);
+	mlx_mouse_hide(data->mlx_ptr, data->win_ptr);
 }
 
 static int	check_input(int argc, char **argv)

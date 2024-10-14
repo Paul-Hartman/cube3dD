@@ -6,7 +6,7 @@
 /*   By: phartman <phartman@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/30 19:54:07 by wpepping          #+#    #+#             */
-/*   Updated: 2024/10/14 14:34:56 by phartman         ###   ########.fr       */
+/*   Updated: 2024/10/14 18:21:41 by phartman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,15 +33,16 @@
 # define FOV 1.4
 //# define FOCAL_LEN 277
 # define MINI_TILE_SZ 20
+# define MINI_SIZE 250
 # define CHAR_HEIGHT 32
 # define CUBE_SIZE 180
 # define TEXTURE_HEIGHT 180
-# define WINDOW_WIDTH 640
-# define WINDOW_HEIGHT 480
+# define WINDOW_WIDTH 1024
+# define WINDOW_HEIGHT 720
 # define MOVE_SPEED 1.5
-# define MOUSE_SENSITIVITY 0.12
+# define MOUSE_SENSITIVITY 0.04
 # define ROTATE_SPEED 0.02
-# define MS_BETWEEN_FRAMES 10
+# define MS_BETWEEN_FRAMES 20
 # define EPSILON 1e-6
 # define M_PI 3.14159265358979323846
 
