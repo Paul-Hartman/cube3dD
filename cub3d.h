@@ -6,7 +6,7 @@
 /*   By: phartman <phartman@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/30 19:54:07 by wpepping          #+#    #+#             */
-/*   Updated: 2024/10/08 14:38:52 by phartman         ###   ########.fr       */
+/*   Updated: 2024/10/14 14:28:28 by phartman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,10 @@
 # include <X11/Xlib.h>
 # include <X11/keysym.h>
 # include <linux/limits.h>
+# include <sys/time.h>
 
-# define FOV 1.047198 //60 degrees in radians
+//# define FOV 1.047198 //60 degrees in radians
+# define FOV 1.4
 //# define FOCAL_LEN 277
 # define MINI_TILE_SZ 20
 # define CHAR_HEIGHT 32
@@ -36,8 +38,10 @@
 # define TEXTURE_HEIGHT 180
 # define WINDOW_WIDTH 640
 # define WINDOW_HEIGHT 480
-# define MOVE_SPEED 0.5
+# define MOVE_SPEED 1.5
+# define MOUSE_SENSITIVITY 0.12
 # define ROTATE_SPEED 0.02
+# define MS_BETWEEN_FRAMES 10
 # define EPSILON 1e-6
 # define M_PI 3.14159265358979323846
 
@@ -47,8 +51,15 @@
 # define EAST 69
 # define SOUTH 83
 # define WEST 87
+# define SPACE 32
 
 # define WINDOW_NAME "Cub3d"
+
+# define MAP_ERROR "Map error"
+
+# ifndef REQUIRE_SPACE
+#  define REQUIRE_SPACE 0
+# endif
 
 typedef struct s_coord
 {
@@ -71,12 +82,12 @@ typedef struct s_player
 
 typedef struct s_key_state
 {
-	bool mv_up;
-	bool mv_dn;
-	bool mv_r;
-	bool mv_l;
-	bool rot_r;
-	bool rot_l;
+	bool	mv_up;
+	bool	mv_dn;
+	bool	mv_r;
+	bool	mv_l;
+	bool	rot_r;
+	bool	rot_l;
 }				t_key_state;
 
 typedef struct s_image
@@ -111,6 +122,7 @@ typedef struct s_data
 	int			floor[3];
 	int			ceiling[3];
 	double		focal_len;
+	int			last_render;
 	t_key_state	key_state;
 }				t_data;
 
@@ -157,25 +169,28 @@ int				is_valid_map(t_map *map, t_player *player);
 
 
 // Render
+void			init_textures(t_textures *textures);
 int				load_textures(t_data *data, t_config *config);
 void			unload_textures(void *mlx_ptr, t_textures *textures);
 void			set_pixel(t_data *data, int c[3], int x, int y);
 void			put_pixel_from_img(t_data *data, t_image *src_img,
 					t_coord src_coord, t_coord dest_coord);
-void draw_minimap(t_data *data, t_ray *rays);
-void draw_line(t_data *data, t_coord p1, t_coord p2);
-void draw_player(t_data *data, t_ray *rays);
+void			render_frame(t_data *data);
+void 			draw_minimap(t_data *data);
+void 			draw_line(t_data *data, t_coord p1, t_coord p2);
+//void draw_player(t_data data);
 
 //movement
 bool	move_player(t_data *data, bool rev);
-bool strafe_player(t_data *data, bool left);
-bool	rotate_player(t_data *data, bool left);
+bool 	strafe_player(t_data *data, bool left);
+bool	rotate_player(t_data *data, bool left, double rotate_speed);
 
 // Events
 int				handle_loop(t_data *data);
 int				handle_close(t_data *data);
 //int				handle_input(int keycode, t_data *data);
-int				handle_mouse(t_data *data);
+int				handle_mouse(void *data);
+int				handle_mouse_move(int x, int y, t_data *data);
 
 int handle_key_press(int keycode, t_data *data);
 int handle_key_release(int keycode, t_data *data);
@@ -183,12 +198,15 @@ int handle_key_release(int keycode, t_data *data);
 // Clean up
 void			cleanup(t_data *data);
 void			free_map(char **map);
+void			free_config(t_config *config);
 
 // Utils
 char			*ft_remove(char *str, char c);
 double			get_angle(char dir);
 bool			ft_isnum(char *str);
-bool is_wall(t_coord pos, t_map *map);
+long			currtime(void);
+bool			is_wall(t_coord pos, t_map *map);
+char			*ft_strdup2(char *s, size_t n);
 
 // render utils
 double norm_angle(double angle);

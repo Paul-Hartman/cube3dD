@@ -6,7 +6,7 @@
 /*   By: phartman <phartman@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/27 18:07:22 by wpepping          #+#    #+#             */
-/*   Updated: 2024/10/07 18:54:44 by phartman         ###   ########.fr       */
+/*   Updated: 2024/10/14 14:31:48 by phartman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,18 @@ void	put_pixel_from_img(t_data *data, t_image *src_img,
 	offset_src = src_coord.y * src_img->lsize + src_coord.x * src_img->bpp / 8;
 	pixel_src = src_img->buff + offset_src;
 	ft_memcpy(pixel_dest, pixel_src, 4);
+}
+
+void	render_frame(t_data *data)
+{
+	if (currtime() - data->last_render > MS_BETWEEN_FRAMES)
+	{
+		draw_walls(cast_rays(data->map, *data->player), data);
+		draw_minimap(data);
+		mlx_put_image_to_window(data->mlx_ptr,
+			data->win_ptr, data->img_ptr, 0, 0);
+		data->last_render = currtime();
+	}
 }
 
 void	draw_square(t_data *data, int x, int y, int c[3])
@@ -84,6 +96,14 @@ void draw_line(t_data *data, t_coord p1, t_coord p2)
 	while (p1.x < data->map->width * MINI_TILE_SZ && p1.y < data->map->height * MINI_TILE_SZ && p1.x >= 0 && p1.y >= 0)
 	{
 
+		if (p1.x < p2.x)
+			p1.x++;
+		else if (p1.x > p2.x)
+			p1.x--;
+		if (p1.y < p2.y)
+			p1.y++;
+		else if (p1.y > p2.y)
+			p1.y--;
 		set_pixel(data, (int[3]){255, 255, 255}, (int)p1.x, (int)p1.y);
 		if (fabs(p1.x - p2.x) < 2 && fabs(p1.y - p2.y) < 2)
 			break;

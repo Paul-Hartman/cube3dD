@@ -123,7 +123,7 @@ void	draw_walls(t_ray *rays, t_data *data)
 		 	draw_floor(data, i, j++, true);
 		i++;
 	}
-	
+	free(rays);
 }
 
 

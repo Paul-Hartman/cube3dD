@@ -27,7 +27,7 @@ OBJS := $(SRCS:.c=.o)
 
 
 $(NAME): $(OBJS) $(LIBFT) $(MLX_LIB)
-	@$(CC) $(CFLAGS)  $(OBJS) $(LIBFT) $(MLX_PATH) $(MLX_FLAGS) -o $(NAME) -lm
+	$(CC) $(CFLAGS)  $(OBJS) $(LIBFT) $(MLX_PATH) $(MLX_FLAGS) -o $(NAME) -lm
 
 all: $(NAME) $(MLX_LIB) $(LIBFT)
 
