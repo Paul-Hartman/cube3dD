@@ -6,7 +6,7 @@
 /*   By: phartman <phartman@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/27 18:07:22 by wpepping          #+#    #+#             */
-/*   Updated: 2024/10/14 14:31:48 by phartman         ###   ########.fr       */
+/*   Updated: 2024/10/14 14:37:31 by phartman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,10 +45,13 @@ void	put_pixel_from_img(t_data *data, t_image *src_img,
 
 void	render_frame(t_data *data)
 {
+	t_ray	*rays;
+	
+	rays = cast_rays(data->map, *data->player);
 	if (currtime() - data->last_render > MS_BETWEEN_FRAMES)
 	{
-		draw_walls(cast_rays(data->map, *data->player), data);
-		draw_minimap(data);
+		draw_walls(rays, data);
+		draw_minimap(data, rays);
 		mlx_put_image_to_window(data->mlx_ptr,
 			data->win_ptr, data->img_ptr, 0, 0);
 		data->last_render = currtime();
