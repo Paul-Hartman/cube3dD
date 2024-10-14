@@ -26,20 +26,6 @@ int	get_tex_offset(t_ray r)
 	return (tex_x);
 }
 
-// t_ray *cast_rays_vert(int height, t_data *data)
-// {
-// 	int i;
-// 	t_ray *rays;
-// 	i = 0;
-// 	rays = malloc(sizeof(t_ray) * height);
-// 	while(i < height)
-// 	{
-// 		CHAR_HEIGHT
-// 		rays[i] = init_ray(data->player.dir, i);
-// 		i++;
-// 	}
-// }
-
 void draw_floor(t_data *data, int i, int j, bool is_texture)
 {
 	t_ray r;
