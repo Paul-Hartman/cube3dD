@@ -6,7 +6,7 @@
 /*   By: wpepping <wpepping@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/14 18:29:37 by wpepping          #+#    #+#             */
-/*   Updated: 2024/10/14 18:29:41 by wpepping         ###   ########.fr       */
+/*   Updated: 2024/10/15 20:01:25 by wpepping         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,7 @@
 # define SOUTH 83
 # define WEST 87
 # define SPACE 32
+# define DOOR 68
 
 # define WINDOW_NAME "Cub3d"
 
@@ -110,6 +111,7 @@ typedef struct s_textures
 	t_image	west;
 	t_image	floor;
 	t_image	ceiling;
+	t_image	door;
 }				t_textures;
 
 typedef struct s_data
@@ -140,6 +142,7 @@ typedef struct s_config
 	char	*west;
 	char	*floor;
 	char	*ceiling;
+	char	*door;
 	int		map_start;
 }				t_config;
 
@@ -147,6 +150,8 @@ typedef struct s_ray
 {
 	t_coord	coll;
 	bool	is_horiz;
+	bool	is_door;
+	int		map_item;
 	double	dist;
 	double	dir;
 }				t_ray;
@@ -172,6 +177,7 @@ int				try_save(char **dest, char *src);
 int				save_rgbs(char *str, int dest[3]);
 int				find_player(t_map *map, t_player *player);
 int				is_valid_map(t_map *map, t_player *player);
+void			init_config(t_config *config);
 
 // Render
 void			init_textures(t_textures *textures);
@@ -212,6 +218,7 @@ bool			ft_isnum(char *str);
 long			currtime(void);
 bool			is_wall(t_coord pos, t_map *map);
 char			*ft_strdup2(char *s, size_t n);
+int				get_map_item(t_coord pos, t_map *map);
 
 // render utils
 double norm_angle(double angle);

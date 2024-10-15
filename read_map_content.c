@@ -6,7 +6,7 @@
 /*   By: wpepping <wpepping@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/03 19:09:39 by wpepping          #+#    #+#             */
-/*   Updated: 2024/10/10 15:58:36 by wpepping         ###   ########.fr       */
+/*   Updated: 2024/10/15 18:35:05 by wpepping         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ static int	get_width(char *line)
 		{
 			if (*line != EMPTY && *line != WALL && *line != NORTH
 				&& *line != SOUTH && *line != EAST && *line != WEST
-				&& *line != SPACE)
+				&& *line != SPACE && *line != DOOR)
 				return (-1);
 			len++;
 		}
@@ -106,7 +106,7 @@ int	read_map_content(t_map *map, int fd, int start)
 		i++;
 		map->grid[i] = ft_strdup2(get_next_line(fd), map->width + 1);
 	}
- 	get_next_line(-1);
+	get_next_line(-1);
 	close(fd);
 	return (0);
 }

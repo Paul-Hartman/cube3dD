@@ -6,7 +6,7 @@
 /*   By: wpepping <wpepping@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/28 20:03:56 by wpepping          #+#    #+#             */
-/*   Updated: 2024/10/14 16:18:33 by wpepping         ###   ########.fr       */
+/*   Updated: 2024/10/15 20:05:57 by wpepping         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,8 @@ static int	save_type(t_config *config, int fd, char type[2])
 		return (try_save(&config->floor, value));
 	if (type[0] == 'C')
 		return (try_save(&config->ceiling, value));
+	if (BONUS && type[0] == 'D')
+		return (try_save(&config->door, value));
 	if (type[0] == 'N' && type[1] == 'O')
 		return (try_save(&config->north, value));
 	if (type[0] == 'E' && type[1] == 'A')
@@ -56,7 +58,7 @@ static int	read_type(int fd, char type[2])
 	}
 	if (!bytes_read)
 		return (-1);
-	if (type[0] != 'F' && type[0] != 'C')
+	if (type[0] != 'F' && type[0] != 'C' && type[0] != 'D')
 		read(fd, &type[1], 1);
 	if (REQUIRE_SPACE)
 	{
@@ -73,14 +75,10 @@ static int	read_config(t_config *config, int fd)
 	int		lines;
 	char	type[2];
 
-	config->floor = NULL;
-	config->ceiling = NULL;
-	config->north = NULL;
-	config->east = NULL;
-	config->south = NULL;
-	config->west = NULL;
-	config->map_start = 0;
+	init_config(config);
 	i = 0;
+	if (BONUS)
+		i--;
 	while (i < 6)
 	{
 		lines = read_type(fd, type);

@@ -1,5 +1,15 @@
 #include "cub3d.h"
 
+bool	is_wall(t_coord pos, t_map *map)
+{
+	char	map_item;
+
+	map_item = get_map_item(pos, map);
+	if (map_item == DOOR || map_item == WALL)
+		return (true);
+	return (false);
+}
+
 bool	move_player(t_data *data, bool rev)
 {
 	t_coord	move;
