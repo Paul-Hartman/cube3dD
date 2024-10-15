@@ -6,7 +6,7 @@
 /*   By: phartman <phartman@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/30 19:55:11 by wpepping          #+#    #+#             */
-/*   Updated: 2024/10/14 15:36:48 by phartman         ###   ########.fr       */
+/*   Updated: 2024/10/15 15:09:55 by phartman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,22 @@ static int	err_handl(char *error_msg, t_data *data)
 	return (-1);
 }
 
+void init_trig_tables(double *sin_table, double *cos_table)
+{
+	double angle;
+	int i;
+
+	i = 0;
+	while (i < 3600)
+	{
+		angle = deg_to_rad(i * 0.1);
+		sin_table[i] = sin(angle);
+		cos_table[i] = cos(angle);
+		i++;
+	}
+}
+
+
 static int	init(t_data *data, char *fname)
 {
 	data->key_state = (t_key_state){0, 0, 0, 0, 0, 0};
@@ -26,6 +42,7 @@ static int	init(t_data *data, char *fname)
 	data->win_ptr = NULL;
 	data->img_ptr = NULL;
 	data->map->grid = NULL;
+	init_trig_tables(data->sin_table, data->cos_table);
 	init_textures(data->textures);
 	data->focal_len = (WINDOW_WIDTH / 2.0) / (tan(FOV / 2.0));
 	data->mlx_ptr = mlx_init();

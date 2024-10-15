@@ -6,7 +6,7 @@
 /*   By: phartman <phartman@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/27 18:07:22 by wpepping          #+#    #+#             */
-/*   Updated: 2024/10/14 19:01:54 by phartman         ###   ########.fr       */
+/*   Updated: 2024/10/15 14:34:08 by phartman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,15 +96,6 @@ void draw_line(t_data *data, t_coord p1, t_coord p2)
 		stepy = -1;
 	while (p1.x < data->map->width * MINI_TILE_SZ && p1.y < data->map->height * MINI_TILE_SZ && p1.x >= 0 && p1.y >= 0)
 	{
-
-		if (p1.x < p2.x)
-			p1.x++;
-		else if (p1.x > p2.x)
-			p1.x--;
-		if (p1.y < p2.y)
-			p1.y++;
-		else if (p1.y > p2.y)
-			p1.y--;
 		set_pixel(data, (int[3]){255, 255, 255}, (int)p1.x, (int)p1.y);
 		if (fabs(p1.x - p2.x) < 2 && fabs(p1.y - p2.y) < 2)
 			break;
@@ -130,7 +121,7 @@ void draw_player(t_data *data, t_ray *rays, t_coord offset)
 	
 	p.x = data->player->pos.x / CUBE_SIZE * MINI_TILE_SZ - offset.x;
 	p.y = data->player->pos.y / CUBE_SIZE * MINI_TILE_SZ - offset.y;
-	draw_square(data, p, 5, (int[3]){0, 255, 0});
+	draw_square(data, (t_coord){p.x - 2.5, p.y - 2.5}, 5, (int[3]){0, 255, 0});
 	while(i < WINDOW_WIDTH)
 	{
 		if (i % 20 == 0)

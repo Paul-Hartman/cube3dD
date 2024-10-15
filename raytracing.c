@@ -107,10 +107,6 @@ void	draw_walls(t_ray *rays, t_data *data)
 }
 
 
-
-
-
-
 t_ray	init_ray(double dir, int i)
 {
 	t_ray	r;
@@ -155,9 +151,9 @@ t_ray	*cast_rays(t_map *map, t_player p)
 
 double	norm_angle(double angle)
 {
-	if (angle >= 2 * M_PI)
+	while (angle >= 2 * M_PI)
 		angle -= 2 * M_PI;
-	if (angle < 0)
+	while (angle < 0)
 		angle += 2 * M_PI;
 	return (angle);
 }

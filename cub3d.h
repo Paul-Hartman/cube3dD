@@ -6,7 +6,7 @@
 /*   By: phartman <phartman@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/30 19:54:07 by wpepping          #+#    #+#             */
-/*   Updated: 2024/10/14 18:21:41 by phartman         ###   ########.fr       */
+/*   Updated: 2024/10/15 14:57:41 by phartman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -125,6 +125,8 @@ typedef struct s_data
 	double		focal_len;
 	int			last_render;
 	t_key_state	key_state;
+	double		sin_table[3600];
+	double		cos_table[3600];
 }				t_data;
 
 typedef struct s_config
@@ -211,5 +213,6 @@ char			*ft_strdup2(char *s, size_t n);
 
 // render utils
 double norm_angle(double angle);
+double	deg_to_rad(double degrees);
 
 #endif
