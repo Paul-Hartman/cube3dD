@@ -29,9 +29,6 @@ bool	move_player(t_data *data, bool rev)
 	return (true);
 }
 
-
-
-
 bool	strafe_player(t_data *data, bool left)
 {
 	t_coord	move;

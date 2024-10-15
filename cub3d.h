@@ -6,7 +6,7 @@
 /*   By: phartman <phartman@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/14 18:29:37 by wpepping          #+#    #+#             */
-/*   Updated: 2024/10/15 17:54:39 by phartman         ###   ########.fr       */
+/*   Updated: 2024/10/15 18:26:07 by phartman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,7 @@
 # define MS_BETWEEN_FRAMES 20
 # define EPSILON 1e-6
 # define M_PI 3.14159265358979323846
+
 
 # define EMPTY 48
 # define WALL 49
@@ -84,6 +85,20 @@ typedef struct s_player
 	double	dir;
 }				t_player;
 
+typedef struct s_enemy
+{
+	t_coord	pos;
+	double dir;
+	t_coord		point_a;
+	t_coord		point_b;
+	t_coord		prev_pos;
+	int			x;
+	int			y;
+	t_coord		target;
+	int 		height;
+	int 		width;
+}				t_enemy;
+
 typedef struct s_key_state
 {
 	bool	mv_up;
@@ -111,12 +126,14 @@ typedef struct s_textures
 	t_image	west;
 	t_image	floor;
 	t_image	ceiling;
+	t_image enemy;
 }				t_textures;
 
 typedef struct s_data
 {
 	t_map		*map;
 	t_player	*player;
+	t_enemy		*enemy;
 	t_textures	*textures;
 	void		*mlx_ptr;
 	void		*win_ptr;
@@ -143,6 +160,7 @@ typedef struct s_config
 	char	*west;
 	char	*floor;
 	char	*ceiling;
+	char 	*enemy;
 	int		map_start;
 }				t_config;
 

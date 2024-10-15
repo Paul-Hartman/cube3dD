@@ -95,8 +95,7 @@ void	draw_walls(t_ray *rays, t_data *data)
 		{
 			tex_x = get_tex_offset(rays[i]);
 			tex_y = ((j - wall_top) * TEXTURE_HEIGHT) / height;
-			put_pixel_from_img(data, &data->textures->north,
-				(t_coord){tex_x, tex_y}, (t_coord){i, j});
+			put_pixel_from_img(data, &data->textures->north, (t_coord){tex_x, tex_y}, (t_coord){i, j});
 			j++;
 		}
 		while (j >= wall_top + height && j < WINDOW_HEIGHT)
@@ -289,6 +288,7 @@ double	get_horiz_coll(t_player p, t_ray *r, t_map *map)
 	r->coll = get_wall_coll(coll, *r, map, true);
 	return (get_dist(*r, r->coll, p));
 }
+
 
 int	check_dir(t_ray r, bool is_horiz)
 {
