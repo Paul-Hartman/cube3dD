@@ -2,7 +2,7 @@
 
 int angle_to_index(double angle)
 {
-    norm_angle(angle);
+    angle = norm_angle(angle);
 
     int index = (int)(angle * 3600 / (2 * M_PI));
     return index % 3600;
@@ -19,8 +19,7 @@ bool	move_player(t_data *data, bool rev)
 		move_speed *= -1;
 	move.x = move_speed * data->cos_table[angle_to_index(data->player->dir)];
 	move.y = move_speed * data->sin_table[angle_to_index(data->player->dir)];
-	//move.x = move_speed * cos(data->player->dir);
-	//move.y = move_speed * sin(data->player->dir);
+	
 	if (!is_wall((t_coord){data->player->pos.x + move.x, data->player->pos.y
 			- move.y}, data->map))
 	{

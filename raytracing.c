@@ -36,11 +36,11 @@ void draw_floor(t_data *data, int i, int j, bool is_texture)
 	{
 		r.dist = CHAR_HEIGHT * data->focal_len /  ((double)j - (double)WINDOW_HEIGHT / 2.0) ;
 		r.dir = norm_angle(data->player->dir + (FOV / 2.0) - (FOV / WINDOW_WIDTH) * i);
-		r.dist = r.dist/ cos(norm_angle(r.dir - data->player->dir));
-		r.coll.x = data->player->pos.x + r.dist * cos(r.dir) * 3;
-		r.coll.y = data->player->pos.y - r.dist * sin(r.dir) * 3;
-		r.coll.x = fmod(r.coll.x, CUBE_SIZE) / CUBE_SIZE;
-		r.coll.y = fmod(r.coll.y, CUBE_SIZE)/ CUBE_SIZE;
+		r.dist = r.dist/ data->cos_table[angle_to_index(r.dir - data->player->dir)];
+		r.coll.x = data->player->pos.x + r.dist * data->cos_table[angle_to_index(r.dir)] * 3;
+		r.coll.y = data->player->pos.y - r.dist * data->sin_table[angle_to_index(r.dir)] * 3;
+		r.coll.x = ((int)(r.coll.x * 1000) % (CUBE_SIZE * 1000)) / 1000.0 / CUBE_SIZE;
+		r.coll.y = ((int)(r.coll.y * 1000) % (CUBE_SIZE * 1000)) / 1000.0 / CUBE_SIZE;
 		tex_x = (int)(r.coll.x  * (TEXTURE_HEIGHT));
 		tex_y = (int)(r.coll.y  * (TEXTURE_HEIGHT));
 		put_pixel_from_img(data, &data->textures->north, (t_coord){tex_x, tex_y}, (t_coord){i, j});
@@ -60,11 +60,11 @@ void draw_ceiling(t_data *data, int i, int j, bool is_texture)
 	{
 		r.dist = CHAR_HEIGHT * data->focal_len /  ((double)j - (double)WINDOW_HEIGHT / 2.0) ;
 		r.dir = norm_angle(data->player->dir + (FOV / 2.0) - (FOV / WINDOW_WIDTH) * i);
-		r.dist = r.dist/ cos(norm_angle(r.dir - data->player->dir));
-		r.coll.x = data->player->pos.x - r.dist * cos(r.dir) * 3;
-		r.coll.y = data->player->pos.y + r.dist * sin(r.dir) * 3;
-		r.coll.x = fmod(r.coll.x, CUBE_SIZE) / CUBE_SIZE;
-		r.coll.y = fmod(r.coll.y, CUBE_SIZE)/ CUBE_SIZE;
+		r.dist = r.dist/ data->cos_table[angle_to_index(r.dir - data->player->dir)];
+		r.coll.x = data->player->pos.x - r.dist * data->cos_table[angle_to_index(r.dir)] * 3;
+		r.coll.y = data->player->pos.y + r.dist * data->sin_table[angle_to_index(r.dir)] * 3;
+		r.coll.x = ((int)(r.coll.x * 1000) % (CUBE_SIZE * 1000)) / 1000.0 / CUBE_SIZE;
+		r.coll.y = ((int)(r.coll.y * 1000) % (CUBE_SIZE * 1000)) / 1000.0 / CUBE_SIZE;
 		tex_x = (int)(r.coll.x  * (TEXTURE_HEIGHT));
 		tex_y = (int)(r.coll.y  * (TEXTURE_HEIGHT));
 		put_pixel_from_img(data, &data->textures->north, (t_coord){tex_x, tex_y}, (t_coord){i, j});
@@ -153,7 +153,7 @@ double	norm_angle(double angle)
 {
 	while (angle >= 2 * M_PI)
 		angle -= 2 * M_PI;
-	while (angle < 0)
+	if (angle < 0)
 		angle += 2 * M_PI;
 	return (angle);
 }
