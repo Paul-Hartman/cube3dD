@@ -6,7 +6,7 @@
 /*   By: phartman <phartman@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/27 18:07:22 by wpepping          #+#    #+#             */
-/*   Updated: 2024/10/14 14:37:31 by phartman         ###   ########.fr       */
+/*   Updated: 2024/10/15 17:53:32 by phartman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,8 @@ void	put_pixel_from_img(t_data *data, t_image *src_img,
 {
 	char	*pixel_src;
 	char	*pixel_dest;
-	int		offset_src;
 	int		offset_dest;
+	int		offset_src;
 
 
 	offset_dest = dest_coord.y * data->lsize + dest_coord.x * data->bpp / 8;
@@ -58,20 +58,18 @@ void	render_frame(t_data *data)
 	}
 }
 
-void	draw_square(t_data *data, int x, int y, int c[3])
+void	draw_square(t_data *data, t_coord pos, int size, int c[3])
 {
 	int	i;
 	int	j;
-
 	i = 0;
-	x = x * MINI_TILE_SZ;
-	y = y * MINI_TILE_SZ;
-	while (i < MINI_TILE_SZ)
+
+	while (i < size)
 	{
 		j = 0;
-		while (j < MINI_TILE_SZ)
+		while (j < size)
 		{
-			set_pixel(data, c, x + i, y + j);
+			set_pixel(data, c, pos.x + i, pos.y + j);
 			j++;
 		}
 		i++;
@@ -98,15 +96,6 @@ void draw_line(t_data *data, t_coord p1, t_coord p2)
 		stepy = -1;
 	while (p1.x < data->map->width * MINI_TILE_SZ && p1.y < data->map->height * MINI_TILE_SZ && p1.x >= 0 && p1.y >= 0)
 	{
-
-		if (p1.x < p2.x)
-			p1.x++;
-		else if (p1.x > p2.x)
-			p1.x--;
-		if (p1.y < p2.y)
-			p1.y++;
-		else if (p1.y > p2.y)
-			p1.y--;
 		set_pixel(data, (int[3]){255, 255, 255}, (int)p1.x, (int)p1.y);
 		if (fabs(p1.x - p2.x) < 2 && fabs(p1.y - p2.y) < 2)
 			break;
@@ -123,47 +112,54 @@ void draw_line(t_data *data, t_coord p1, t_coord p2)
 	}
 }
 
-void draw_player(t_data *data, t_ray *rays)
+void draw_player(t_data *data, t_ray *rays, t_coord offset)
 {
 	t_coord p;
 	t_coord end_line;
 	int i;
 	i=0;
-	p.x = data->player->pos.x / CUBE_SIZE * MINI_TILE_SZ;
-	p.y = data->player->pos.y / CUBE_SIZE * MINI_TILE_SZ;
-
+	
+	p.x = data->player->pos.x / CUBE_SIZE * MINI_TILE_SZ - offset.x;
+	p.y = data->player->pos.y / CUBE_SIZE * MINI_TILE_SZ - offset.y;
+	draw_square(data, (t_coord){p.x - 2.5, p.y - 2.5}, 5, (int[3]){0, 255, 0});
 	while(i < WINDOW_WIDTH)
 	{
 		if (i % 20 == 0)
 		{
-			end_line.x = rays[i].coll.x / CUBE_SIZE * MINI_TILE_SZ;
-			end_line.y = rays[i].coll.y / CUBE_SIZE * MINI_TILE_SZ;
+			end_line.x = rays[i].coll.x / CUBE_SIZE * MINI_TILE_SZ - offset.x;
+			end_line.y = rays[i].coll.y / CUBE_SIZE * MINI_TILE_SZ - offset.y;
 			draw_line(data, p, end_line);
 		}
 		i++;	
 	}
-
 }
 
 void	draw_minimap(t_data *data, t_ray *rays)
 {
-	int		y;
-	int		x;
+	int	y;
+	int	x;
+	t_coord offset;
 
-	y = 0;
-	while (y < data->map->height)
+	
+	offset.y = (data->player->pos.y/ CUBE_SIZE)*MINI_TILE_SZ - MINI_SIZE / 2;
+	offset.x = (data->player->pos.x/ CUBE_SIZE)* MINI_TILE_SZ - MINI_SIZE / 2;
+	if (offset.y < 0)
+		offset.y = 0;
+	if (offset.x < 0)
+		offset.x = 0;
+	y = offset.y;
+	while (y / MINI_TILE_SZ < data->map->height && y< MINI_SIZE + offset.y)
 	{
-		x = 0;
-		while (x < data->map->width)
+		x = offset.x;
+		while (x/MINI_TILE_SZ  < data->map->width && x < MINI_SIZE + offset.x)
 		{
-			if (data->map->grid[y][x] == WALL)
-				draw_square(data, x, y, (int[3]){200, 0, 255});
+			if (data->map->grid[y/ MINI_TILE_SZ][x/ MINI_TILE_SZ] == WALL)
+				draw_square(data, (t_coord){x- offset.x, y - offset.y},MINI_TILE_SZ, (int[3]){95, 95, 95});
 			else
-				draw_square(data, x, y, (int[3]){255, 200, 0});
-			x++;
+				draw_square(data, (t_coord){x- offset.x, y - offset.y}, MINI_TILE_SZ, (int[3]){195, 195, 195});
+			x += MINI_TILE_SZ/5;
 		}
-		y++;
+		y+= MINI_TILE_SZ/5;
 	}
-	draw_player(data, rays);
+	draw_player(data, rays, offset);
 }
-

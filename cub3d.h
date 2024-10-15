@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: wpepping <wpepping@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/14 18:29:37 by wpepping          #+#    #+#             */
-/*   Updated: 2024/10/15 20:01:25 by wpepping         ###   ########.fr       */
+/*   Created: 2024/10/15 20:13:31 by wpepping          #+#    #+#             */
+/*   Updated: 2024/10/15 20:13:37 by wpepping         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@
 # define FOV 1.047198 //60 degrees in radians
 //# define FOCAL_LEN 277
 # define MINI_TILE_SZ 20
+# define MINI_SIZE 250
 # define CHAR_HEIGHT 32
 # define CUBE_SIZE 180
 # define TEXTURE_HEIGHT 180
@@ -40,7 +41,7 @@
 # define MOVE_SPEED 1.5
 # define MOUSE_SENSITIVITY 0.0025
 # define ROTATE_SPEED 0.02
-# define MS_BETWEEN_FRAMES 10
+# define MS_BETWEEN_FRAMES 20
 # define EPSILON 1e-6
 # define M_PI 3.14159265358979323846
 
@@ -132,6 +133,8 @@ typedef struct s_data
 	int			last_render;
 	int			mouse_x;
 	t_key_state	key_state;
+	double		sin_table[3600];
+	double		cos_table[3600];
 }				t_data;
 
 typedef struct s_config
@@ -222,5 +225,7 @@ int				get_map_item(t_coord pos, t_map *map);
 
 // render utils
 double norm_angle(double angle);
+double	deg_to_rad(double degrees);
+int angle_to_index(double angle);
 
 #endif
