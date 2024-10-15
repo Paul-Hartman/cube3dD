@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: phartman <phartman@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/30 19:55:11 by wpepping          #+#    #+#             */
-/*   Updated: 2024/10/15 17:10:57 by phartman         ###   ########.fr       */
+/*   Created: 2024/10/14 18:29:21 by wpepping          #+#    #+#             */
+/*   Updated: 2024/10/15 17:54:21 by phartman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,7 @@ static int	init(t_data *data, char *fname)
 	data->imgbuff = mlx_get_data_addr(data->img_ptr, &data->bpp,
 			&(data->lsize), &(data->endian));
 	data->last_render = currtime();
+	data->mouse_x = WINDOW_WIDTH / 2;
 	return (0);
 }
 
@@ -81,21 +82,11 @@ static void	init_events(t_data *data)
 
 static int	check_input(int argc, char **argv)
 {
-	char	*extension;
-
-	if (argc != 2 || ft_strlen(argv[1]) < 5)
+	if (argc != 2 || ft_strncmp(file_ext(argv[1]), ".cub", 4) != 0)
 	{
 		ft_putendl_fd("Usage: cub3d <map name>.cub", 2);
 		return (-1);
 	}
-	extension = ft_substr(argv[1], ft_strlen(argv[1]) - 4, 4);
-	if (ft_strncmp(extension, ".cub", 4) != 0)
-	{
-		free(extension);
-		ft_putendl_fd("Usage: cub3d <map name>.cub", 2);
-		return (-1);
-	}
-	free(extension);
 	return (0);
 }
 

@@ -6,7 +6,7 @@
 /*   By: wpepping <wpepping@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/30 19:54:58 by wpepping          #+#    #+#             */
-/*   Updated: 2024/10/10 15:59:57 by wpepping         ###   ########.fr       */
+/*   Updated: 2024/10/14 16:16:33 by wpepping         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,25 +32,16 @@ double	get_angle(char dir)
 		return (M_PI);
 }
 
-char	*ft_remove(char *str, char c)
+char	*file_ext(char *fname)
 {
+	int		strlen;
 	int		i;
-	int		len;
-	char	*result;
 
-	i = 0;
-	len = 0;
-	while (str[i])
-		if (str[i++] != c)
-			len++;
-	result = malloc((len + 1) * sizeof(char));
-	while (i >= 0)
-	{
-		if (str[i] != c)
-			result[len--] = str[i];
-		i--;
-	}
-	return (result);
+	strlen = ft_strlen(fname);
+	i = fmax(strlen - 5, 0);
+	while (fname[i] != '.' && fname[i] != '\0')
+		i++;
+	return (fname + i);
 }
 
 long	currtime(void)

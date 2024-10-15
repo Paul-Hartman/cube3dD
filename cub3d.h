@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: phartman <phartman@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/30 19:54:07 by wpepping          #+#    #+#             */
-/*   Updated: 2024/10/15 17:52:28 by phartman         ###   ########.fr       */
+/*   Created: 2024/10/14 18:29:37 by wpepping          #+#    #+#             */
+/*   Updated: 2024/10/15 17:54:39 by phartman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,25 +22,24 @@
 # include <stdbool.h>
 # include "ft_printf/ft_printf.h"
 # include "ft_printf/libft/libft.h"
-# include "get_next_line/get_next_line.h"
+# include "get_next_line.h"
 # include "mlx/mlx.h"
 # include <X11/Xlib.h>
 # include <X11/keysym.h>
 # include <linux/limits.h>
 # include <sys/time.h>
 
-//# define FOV 1.047198 //60 degrees in radians
-# define FOV 1.4
+# define FOV 1.047198 //60 degrees in radians
 //# define FOCAL_LEN 277
 # define MINI_TILE_SZ 20
 # define MINI_SIZE 250
 # define CHAR_HEIGHT 32
 # define CUBE_SIZE 180
 # define TEXTURE_HEIGHT 180
-# define WINDOW_WIDTH 1920
-# define WINDOW_HEIGHT 1080
+# define WINDOW_WIDTH 800
+# define WINDOW_HEIGHT 600
 # define MOVE_SPEED 1.5
-# define MOUSE_SENSITIVITY 0.04
+# define MOUSE_SENSITIVITY 0.0025
 # define ROTATE_SPEED 0.02
 # define MS_BETWEEN_FRAMES 20
 # define EPSILON 1e-6
@@ -59,7 +58,11 @@
 # define MAP_ERROR "Map error"
 
 # ifndef REQUIRE_SPACE
-#  define REQUIRE_SPACE 0
+#  define REQUIRE_SPACE false
+# endif
+
+# ifndef BONUS
+#  define BONUS false
 # endif
 
 typedef struct s_coord
@@ -106,6 +109,8 @@ typedef struct s_textures
 	t_image	east;
 	t_image	south;
 	t_image	west;
+	t_image	floor;
+	t_image	ceiling;
 }				t_textures;
 
 typedef struct s_data
@@ -124,6 +129,7 @@ typedef struct s_data
 	int			ceiling[3];
 	double		focal_len;
 	int			last_render;
+	int			mouse_x;
 	t_key_state	key_state;
 	double		sin_table[3600];
 	double		cos_table[3600];
@@ -170,7 +176,6 @@ int				save_rgbs(char *str, int dest[3]);
 int				find_player(t_map *map, t_player *player);
 int				is_valid_map(t_map *map, t_player *player);
 
-
 // Render
 void			init_textures(t_textures *textures);
 int				load_textures(t_data *data, t_config *config);
@@ -204,7 +209,7 @@ void			free_map(char **map);
 void			free_config(t_config *config);
 
 // Utils
-char			*ft_remove(char *str, char c);
+char			*file_ext(char *fname);
 double			get_angle(char dir);
 bool			ft_isnum(char *str);
 long			currtime(void);

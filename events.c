@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: phartman <phartman@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/27 20:07:36 by wpepping          #+#    #+#             */
-/*   Updated: 2024/10/14 15:18:48 by phartman         ###   ########.fr       */
+/*   Created: 2024/10/14 18:29:48 by wpepping          #+#    #+#             */
+/*   Updated: 2024/10/15 17:54:47 by phartman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,10 +94,14 @@ int	handle_key_release(int keycode, t_data *data)
 
 int	handle_mouse_move(int x, int y, t_data *data)
 {
+	int	dx;
+
 	(void)y;
+	dx = x - WINDOW_WIDTH / 2;
+	data->mouse_x = x;
 	if (x != WINDOW_WIDTH / 2)
 	{
-		rotate_player(data, x < WINDOW_WIDTH / 2, MOUSE_SENSITIVITY);
+		rotate_player(data, false, MOUSE_SENSITIVITY * dx);
 		render_frame(data);
 		mlx_mouse_move(data->mlx_ptr, data->win_ptr,
 			WINDOW_WIDTH / 2, WINDOW_HEIGHT / 2);
