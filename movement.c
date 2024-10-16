@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   movement.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wpepping <wpepping@student.42berlin.de>    +#+  +:+       +#+        */
+/*   By: phartman <phartman@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/15 20:14:38 by wpepping          #+#    #+#             */
-/*   Updated: 2024/10/15 20:14:39 by wpepping         ###   ########.fr       */
+/*   Updated: 2024/10/16 16:29:33 by phartman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,14 +24,13 @@ bool	is_wall(t_coord pos, t_map *map)
 
 int	angle_to_index(double angle)
 {
-	int	n_angle;
+	double	n_angle;
 	int	index;
 
 	n_angle = norm_angle(angle);
 	index = (int)(n_angle * 3600 / (2 * M_PI));
 	return (index % 3600);
 }
-
 
 bool	move_player(t_data *data, bool rev)
 {
