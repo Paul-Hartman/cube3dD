@@ -6,7 +6,7 @@
 /*   By: phartman <phartman@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/14 18:29:21 by wpepping          #+#    #+#             */
-/*   Updated: 2024/10/15 17:54:21 by phartman         ###   ########.fr       */
+/*   Updated: 2024/10/16 14:47:20 by phartman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,38 @@ void init_trig_tables(double *sin_table, double *cos_table)
 	}
 }
 
+t_enemy *init_enemy(t_map *map)
+{
+	t_enemy *enemy;
+	enemy = (t_enemy *)malloc(sizeof(t_enemy));
+	int x;
+	int y;
+
+	x = 0;
+	y = 0;
+	while(y < map->height)
+	{
+		while(x < map->width)
+		{
+			if (map->grid[y][x] == 'X')
+			{
+				enemy->x = x;
+				enemy->y = y;
+				enemy->width = 68;
+				enemy->height = 70;
+				enemy->target = (t_coord){0, 0};
+				enemy->pos = (t_coord){x * CUBE_SIZE, y * CUBE_SIZE};
+				enemy->point_a = (t_coord){0, 0};
+				enemy->point_b = (t_coord){0, 0};
+				enemy->dir = 'E';
+				return(enemy);
+			}
+			x++;
+		}
+		y++;
+	}
+	return (NULL);
+}
 
 static int	init(t_data *data, char *fname)
 {
@@ -42,6 +74,7 @@ static int	init(t_data *data, char *fname)
 	data->win_ptr = NULL;
 	data->img_ptr = NULL;
 	data->map->grid = NULL;
+	data->enemy = init_enemy(data->map);
 	init_trig_tables(data->sin_table, data->cos_table);
 	init_textures(data->textures);
 	data->focal_len = (WINDOW_WIDTH / 2.0) / (tan(FOV / 2.0));

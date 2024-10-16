@@ -6,7 +6,7 @@
 /*   By: phartman <phartman@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/14 18:29:37 by wpepping          #+#    #+#             */
-/*   Updated: 2024/10/15 18:26:07 by phartman         ###   ########.fr       */
+/*   Updated: 2024/10/16 14:41:19 by phartman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,7 @@
 # define SOUTH 83
 # define WEST 87
 # define SPACE 32
+# define ENEMY 88
 
 # define WINDOW_NAME "Cub3d"
 
