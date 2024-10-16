@@ -6,7 +6,7 @@
 /*   By: wpepping <wpepping@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/03 19:09:39 by wpepping          #+#    #+#             */
-/*   Updated: 2024/10/15 18:35:05 by wpepping         ###   ########.fr       */
+/*   Updated: 2024/10/16 18:16:38 by wpepping         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,14 +47,13 @@ static int	get_width(char *line)
 	len = 0;
 	while (*line && *line != '\n')
 	{
-		if (*line != ' ')
-		{
-			if (*line != EMPTY && *line != WALL && *line != NORTH
-				&& *line != SOUTH && *line != EAST && *line != WEST
-				&& *line != SPACE && *line != DOOR)
-				return (-1);
-			len++;
-		}
+		if (*line != EMPTY && *line != WALL && *line != NORTH
+			&& *line != SOUTH && *line != EAST && *line != WEST
+			&& *line != SPACE && *line != DOOR && *line != ENEMY)
+			return (-1);
+		if ((*line == DOOR || *line == ENEMY) && !BONUS)
+			return (-1);
+		len++;
 		line++;
 	}
 	return (len);

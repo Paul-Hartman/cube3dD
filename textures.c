@@ -6,7 +6,7 @@
 /*   By: wpepping <wpepping@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/14 16:21:55 by wpepping          #+#    #+#             */
-/*   Updated: 2024/10/15 20:07:28 by wpepping         ###   ########.fr       */
+/*   Updated: 2024/10/16 15:41:40 by wpepping         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,17 +23,6 @@ static int	load_image(void *mlx_ptr, t_image *img, char *fname)
 	img->buff = mlx_get_data_addr(img->img_ptr, &img->bpp,
 			&img->lsize, &img->endian);
 	return (0);
-}
-
-void	init_textures(t_textures *textures)
-{
-	textures->north.img_ptr = NULL;
-	textures->east.img_ptr = NULL;
-	textures->south.img_ptr = NULL;
-	textures->west.img_ptr = NULL;
-	textures->floor.img_ptr = NULL;
-	textures->ceiling.img_ptr = NULL;
-	textures->door.img_ptr = NULL;
 }
 
 int	load_textures(t_data *data, t_config *cfg)

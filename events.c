@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   events.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: phartman <phartman@student.42berlin.de>    +#+  +:+       +#+        */
+/*   By: wpepping <wpepping@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/14 18:29:48 by wpepping          #+#    #+#             */
-/*   Updated: 2024/10/15 17:54:47 by phartman         ###   ########.fr       */
+/*   Updated: 2024/10/16 17:22:49 by wpepping         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,8 @@ int	handle_loop(t_data *data)
 		moved = rotate_player(data, false, ROTATE_SPEED);
 	if (data->key_state.rot_l)
 		moved = rotate_player(data, true, ROTATE_SPEED);
+	if (data->active_door)
+		move_door(data, data->active_door);
 	if (moved)
 		render_frame(data);
 	return (0);

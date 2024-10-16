@@ -6,7 +6,7 @@
 /*   By: wpepping <wpepping@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/15 18:36:33 by wpepping          #+#    #+#             */
-/*   Updated: 2024/10/15 20:15:03 by wpepping         ###   ########.fr       */
+/*   Updated: 2024/10/16 16:03:42 by wpepping         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,7 +83,7 @@ void draw_ceiling(t_data *data, int i, int j, bool is_texture)
 		put_pixel_from_img(data, &data->textures->north, (t_coord){tex_x, tex_y}, (t_coord){i, j});
 	}
 	else
-		set_pixel(data, data->floor, i, j);
+		set_pixel(data, data->ceiling, i, j);
 }
 
 
@@ -105,7 +105,7 @@ void	draw_walls(t_ray *rays, t_data *data)
 		wall_top = WINDOW_HEIGHT / 2 - height / 2;
 		j = 0;
 		while (j < wall_top && j < WINDOW_HEIGHT)
-			draw_ceiling(data, i, j++, data->textures->south.img_ptr != NULL);
+			draw_ceiling(data, i, j++, data->textures->ceiling.img_ptr != NULL);
 		while (j < wall_top + height && j < WINDOW_HEIGHT)
 		{
 			tex_x = get_tex_offset(rays[i]);
@@ -115,7 +115,7 @@ void	draw_walls(t_ray *rays, t_data *data)
 			j++;
 		}
 		while (j >= wall_top + height && j < WINDOW_HEIGHT)
-		 	draw_floor(data, i, j++, data->textures->south.img_ptr != NULL);
+		 	draw_floor(data, i, j++, data->textures->floor.img_ptr != NULL);
 		i++;
 	}
 	free(rays);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   render.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: phartman <phartman@student.42berlin.de>    +#+  +:+       +#+        */
+/*   By: wpepping <wpepping@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/27 18:07:22 by wpepping          #+#    #+#             */
-/*   Updated: 2024/10/15 17:53:32 by phartman         ###   ########.fr       */
+/*   Updated: 2024/10/16 15:05:24 by wpepping         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,6 @@ void	put_pixel_from_img(t_data *data, t_image *src_img,
 	int		offset_dest;
 	int		offset_src;
 
-
 	offset_dest = dest_coord.y * data->lsize + dest_coord.x * data->bpp / 8;
 	pixel_dest = data->imgbuff + offset_dest;
 
@@ -46,7 +45,7 @@ void	put_pixel_from_img(t_data *data, t_image *src_img,
 void	render_frame(t_data *data)
 {
 	t_ray	*rays;
-	
+
 	rays = cast_rays(data->map, *data->player);
 	if (currtime() - data->last_render > MS_BETWEEN_FRAMES)
 	{
@@ -118,7 +117,7 @@ void draw_player(t_data *data, t_ray *rays, t_coord offset)
 	t_coord end_line;
 	int i;
 	i=0;
-	
+
 	p.x = data->player->pos.x / CUBE_SIZE * MINI_TILE_SZ - offset.x;
 	p.y = data->player->pos.y / CUBE_SIZE * MINI_TILE_SZ - offset.y;
 	draw_square(data, (t_coord){p.x - 2.5, p.y - 2.5}, 5, (int[3]){0, 255, 0});
@@ -130,7 +129,7 @@ void draw_player(t_data *data, t_ray *rays, t_coord offset)
 			end_line.y = rays[i].coll.y / CUBE_SIZE * MINI_TILE_SZ - offset.y;
 			draw_line(data, p, end_line);
 		}
-		i++;	
+		i++;
 	}
 }
 
@@ -140,7 +139,7 @@ void	draw_minimap(t_data *data, t_ray *rays)
 	int	x;
 	t_coord offset;
 
-	
+
 	offset.y = (data->player->pos.y/ CUBE_SIZE)*MINI_TILE_SZ - MINI_SIZE / 2;
 	offset.x = (data->player->pos.x/ CUBE_SIZE)* MINI_TILE_SZ - MINI_SIZE / 2;
 	if (offset.y < 0)

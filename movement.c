@@ -6,7 +6,7 @@
 /*   By: wpepping <wpepping@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/15 20:14:38 by wpepping          #+#    #+#             */
-/*   Updated: 2024/10/15 20:14:39 by wpepping         ###   ########.fr       */
+/*   Updated: 2024/10/16 16:12:01 by wpepping         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,9 +52,6 @@ bool	move_player(t_data *data, bool rev)
 	}
 	return (true);
 }
-
-
-
 
 bool	strafe_player(t_data *data, bool left)
 {
