@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: wpepping <wpepping@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/15 20:14:38 by wpepping          #+#    #+#             */
-/*   Updated: 2024/10/16 16:12:01 by wpepping         ###   ########.fr       */
+/*   Created: 2024/10/16 18:19:31 by wpepping          #+#    #+#             */
+/*   Updated: 2024/10/16 18:19:32 by wpepping         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,14 +24,13 @@ bool	is_wall(t_coord pos, t_map *map)
 
 int	angle_to_index(double angle)
 {
-	int	n_angle;
+	double	n_angle;
 	int	index;
 
 	n_angle = norm_angle(angle);
 	index = (int)(n_angle * 3600 / (2 * M_PI));
 	return (index % 3600);
 }
-
 
 bool	move_player(t_data *data, bool rev)
 {
