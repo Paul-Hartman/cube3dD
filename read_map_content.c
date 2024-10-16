@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   read_map_content.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wpepping <wpepping@student.42berlin.de>    +#+  +:+       +#+        */
+/*   By: phartman <phartman@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/03 19:09:39 by wpepping          #+#    #+#             */
-/*   Updated: 2024/10/10 15:58:36 by wpepping         ###   ########.fr       */
+/*   Updated: 2024/10/16 17:41:00 by phartman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,14 +47,11 @@ static int	get_width(char *line)
 	len = 0;
 	while (*line && *line != '\n')
 	{
-		if (*line != ' ')
-		{
 			if (*line != EMPTY && *line != WALL && *line != NORTH
 				&& *line != SOUTH && *line != EAST && *line != WEST
-				&& *line != SPACE)
+				&& *line != SPACE && *line != ENEMY)
 				return (-1);
 			len++;
-		}
 		line++;
 	}
 	return (len);

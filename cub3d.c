@@ -6,7 +6,7 @@
 /*   By: phartman <phartman@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/14 18:29:21 by wpepping          #+#    #+#             */
-/*   Updated: 2024/10/16 14:47:20 by phartman         ###   ########.fr       */
+/*   Updated: 2024/10/16 17:13:15 by phartman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,33 +36,33 @@ void init_trig_tables(double *sin_table, double *cos_table)
 
 t_enemy *init_enemy(t_map *map)
 {
+
+	t_coord	coord;
 	t_enemy *enemy;
 	enemy = (t_enemy *)malloc(sizeof(t_enemy));
-	int x;
-	int y;
 
-	x = 0;
-	y = 0;
-	while(y < map->height)
+	coord.y = 0;
+	while (coord.y < map->height)
 	{
-		while(x < map->width)
+		coord.x = 0;
+		while (coord.x < map->width)
 		{
-			if (map->grid[y][x] == 'X')
+			if(map->grid[(int)coord.y][(int)coord.x] == ENEMY)
 			{
-				enemy->x = x;
-				enemy->y = y;
+				enemy->x = coord.x;
+				enemy->y = coord.y;
 				enemy->width = 68;
 				enemy->height = 70;
-				enemy->target = (t_coord){0, 0};
-				enemy->pos = (t_coord){x * CUBE_SIZE, y * CUBE_SIZE};
+				enemy->pos = (t_coord){coord.x * CUBE_SIZE + 0.5 * CUBE_SIZE, coord.y * CUBE_SIZE + 0.5 * CUBE_SIZE};
 				enemy->point_a = (t_coord){0, 0};
 				enemy->point_b = (t_coord){0, 0};
+				enemy->target = (t_coord){0, 0};
 				enemy->dir = 'E';
 				return(enemy);
 			}
-			x++;
+			coord.x++;
 		}
-		y++;
+		coord.y++;
 	}
 	return (NULL);
 }
@@ -74,7 +74,7 @@ static int	init(t_data *data, char *fname)
 	data->win_ptr = NULL;
 	data->img_ptr = NULL;
 	data->map->grid = NULL;
-	data->enemy = init_enemy(data->map);
+	
 	init_trig_tables(data->sin_table, data->cos_table);
 	init_textures(data->textures);
 	data->focal_len = (WINDOW_WIDTH / 2.0) / (tan(FOV / 2.0));
@@ -94,6 +94,7 @@ static int	init(t_data *data, char *fname)
 			&(data->lsize), &(data->endian));
 	data->last_render = currtime();
 	data->mouse_x = WINDOW_WIDTH / 2;
+	data->enemy = init_enemy(data->map);
 	return (0);
 }
 

@@ -1,25 +1,34 @@
 #include "cub3d.h"
 
-
-
-void put_sprite(t_data *data, t_enemy enemy, t_image tex)
+void put_sprite(t_data *data)
 {
 	int i;
 	int j;
 	double dist;
 	double scale;
-
+	int screen_x;
+	int screen_y;
+	int draw_x;
+	int draw_y;
 	
-	dist = sqrt(pow(data->player->pos.x - enemy.x, 2) + pow(data->player->pos.y - enemy.y, 2));
-
-	scale = ((enemy.height / dist) * data->focal_len)/ enemy.height;
+	dist = sqrt(pow(data->player->pos.x - data->enemy->pos.x, 2) + pow(data->player->pos.y - data->enemy->pos.y, 2));
+	scale =data->focal_len / dist;
+	screen_x = (data->enemy->pos.x - data->player->pos.x) * scale + WINDOW_WIDTH / 2;
+	screen_y = (data->enemy->pos.y - data->player->pos.y) * scale + WINDOW_HEIGHT / 2;
+	
 	i = 0;
-	while(i < (int)(enemy.width * scale))
+	while(i < (int)(data->enemy->width) * scale)
 	{
 		j = 0;
-		while(j < (int)(enemy.height * scale))
+		while(j < (int)(data->enemy->height) * scale)
 		{
-			put_pixel_from_img(data, &tex, (t_coord){(int)(i / scale), (int)(j / scale)}, (t_coord){enemy.x + i, enemy.y + j});
+			if((int)(i/ scale) >= 0 && (int)(i/ scale) < data->enemy->width && (int)(j/scale) >= 0 && (int)(j/scale) < data->enemy->height)
+			{
+				draw_x = screen_x + i - (data->enemy->width * scale) / 2;
+				draw_y = screen_y + j - (data->enemy->height * scale) / 2;
+				put_pixel_from_img(data, &data->textures->enemy, (t_coord){(int)(i/ scale), (int)(j/scale)}, (t_coord){draw_x, draw_y});
+			}
+				
 			j++;
 		}
 		i++;

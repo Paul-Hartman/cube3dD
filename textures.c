@@ -6,7 +6,7 @@
 /*   By: phartman <phartman@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/14 16:21:55 by wpepping          #+#    #+#             */
-/*   Updated: 2024/10/15 18:14:13 by phartman         ###   ########.fr       */
+/*   Updated: 2024/10/16 18:09:16 by phartman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,14 @@ void	init_textures(t_textures *textures)
 	textures->enemy.img_ptr = NULL;
 }
 
+void load_enemy_texture(t_data *data)
+{
+	load_image(data->mlx_ptr, &data->textures->enemy,
+			"textures/enemy.xpm");
+	
+}
+
+
 int	load_textures(t_data *data, t_config *cfg)
 {
 	bool	xpm;
@@ -44,7 +52,8 @@ int	load_textures(t_data *data, t_config *cfg)
 		load_image(data->mlx_ptr, &data->textures->north, cfg->north) == -1
 		|| load_image(data->mlx_ptr, &data->textures->east, cfg->east) == -1
 		|| load_image(data->mlx_ptr, &data->textures->south, cfg->south) == -1
-		|| load_image(data->mlx_ptr, &data->textures->west, cfg->west) == -1)
+		|| load_image(data->mlx_ptr, &data->textures->west, cfg->west) == -1
+		)
 		
 		return (-1);
 	xpm = BONUS && !strncmp(file_ext(cfg->floor), ".xpm", 4);
@@ -60,10 +69,10 @@ int	load_textures(t_data *data, t_config *cfg)
 		return (-1);
 	else if (!xpm && save_rgbs(cfg->ceiling, data->ceiling) == -1)
 		return (-1);
-	if (xpm && load_image(data->mlx_ptr, &data->textures->enemy, cfg->enemy) == -1)
-		return (-1);
+	load_enemy_texture(data);
 	return (0);
 }
+
 
 void	unload_textures(void *mlx_ptr, t_textures *textures)
 {

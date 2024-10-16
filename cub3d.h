@@ -6,7 +6,7 @@
 /*   By: phartman <phartman@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/14 18:29:37 by wpepping          #+#    #+#             */
-/*   Updated: 2024/10/16 14:41:19 by phartman         ###   ########.fr       */
+/*   Updated: 2024/10/16 17:40:02 by phartman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,7 @@
 # define WEST 87
 # define SPACE 32
 # define ENEMY 88
+# define DOOR 68
 
 # define WINDOW_NAME "Cub3d"
 
@@ -205,6 +206,7 @@ void			put_pixel_from_img(t_data *data, t_image *src_img,
 void			render_frame(t_data *data);
 void	draw_minimap(t_data *data, t_ray *rays);
 void 			draw_line(t_data *data, t_coord p1, t_coord p2);
+void put_sprite(t_data *data);
 //void draw_player(t_data data);
 
 //movement

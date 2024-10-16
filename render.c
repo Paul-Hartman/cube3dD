@@ -6,7 +6,7 @@
 /*   By: phartman <phartman@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/27 18:07:22 by wpepping          #+#    #+#             */
-/*   Updated: 2024/10/15 17:53:32 by phartman         ###   ########.fr       */
+/*   Updated: 2024/10/16 17:23:54 by phartman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,7 @@ void	render_frame(t_data *data)
 	{
 		draw_walls(rays, data);
 		draw_minimap(data, rays);
+		put_sprite(data);
 		mlx_put_image_to_window(data->mlx_ptr,
 			data->win_ptr, data->img_ptr, 0, 0);
 		data->last_render = currtime();
@@ -115,20 +116,28 @@ void draw_line(t_data *data, t_coord p1, t_coord p2)
 void draw_player(t_data *data, t_ray *rays, t_coord offset)
 {
 	t_coord p;
+	t_coord e;
 	t_coord end_line;
 	int i;
 	i=0;
 	
 	p.x = data->player->pos.x / CUBE_SIZE * MINI_TILE_SZ - offset.x;
 	p.y = data->player->pos.y / CUBE_SIZE * MINI_TILE_SZ - offset.y;
+	e.x = data->enemy->pos.x / CUBE_SIZE * MINI_TILE_SZ - offset.x;
+	e.y = data->enemy->pos.y / CUBE_SIZE * MINI_TILE_SZ - offset.y;
 	draw_square(data, (t_coord){p.x - 2.5, p.y - 2.5}, 5, (int[3]){0, 255, 0});
+	draw_square(data, (t_coord){e.x - 2.5, e.y - 2.5}, 5, (int[3]){255, 0, 0});
 	while(i < WINDOW_WIDTH)
 	{
 		if (i % 20 == 0)
 		{
 			end_line.x = rays[i].coll.x / CUBE_SIZE * MINI_TILE_SZ - offset.x;
 			end_line.y = rays[i].coll.y / CUBE_SIZE * MINI_TILE_SZ - offset.y;
-			draw_line(data, p, end_line);
+			if(end_line.x > MINI_SIZE)
+				end_line.x = MINI_SIZE + MINI_TILE_SZ;
+			if(end_line.y > MINI_SIZE)
+				end_line.y = MINI_SIZE + MINI_TILE_SZ;
+            draw_line(data, p, end_line);
 		}
 		i++;	
 	}
@@ -161,5 +170,7 @@ void	draw_minimap(t_data *data, t_ray *rays)
 		}
 		y+= MINI_TILE_SZ/5;
 	}
+	
+	
 	draw_player(data, rays, offset);
 }

@@ -3,8 +3,9 @@
 int angle_to_index(double angle)
 {
     angle = norm_angle(angle);
+	int index;
 
-    int index = (int)(angle * 3600 / (2 * M_PI));
+    index = (int)(angle * 3600 / (2 * M_PI));
     return index % 3600;
 }
 

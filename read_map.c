@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   read_map.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wpepping <wpepping@student.42berlin.de>    +#+  +:+       +#+        */
+/*   By: phartman <phartman@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/28 20:03:56 by wpepping          #+#    #+#             */
-/*   Updated: 2024/10/14 16:18:33 by wpepping         ###   ########.fr       */
+/*   Updated: 2024/10/16 17:53:29 by phartman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,6 +79,7 @@ static int	read_config(t_config *config, int fd)
 	config->east = NULL;
 	config->south = NULL;
 	config->west = NULL;
+	config->enemy = NULL;
 	config->map_start = 0;
 	i = 0;
 	while (i < 6)
