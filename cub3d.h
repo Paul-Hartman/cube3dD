@@ -38,7 +38,7 @@
 # define TEXTURE_HEIGHT 180
 # define WINDOW_WIDTH 800
 # define WINDOW_HEIGHT 600
-# define MOVE_SPEED 1.5
+# define MOVE_SPEED 3
 # define MOUSE_SENSITIVITY 0.0025
 # define ROTATE_SPEED 0.02
 # define MS_BETWEEN_FRAMES 20
@@ -170,6 +170,7 @@ typedef struct s_sprite_hit
 {
 	t_coord pos;
 	int screen_x;
+	bool is_horiz;
 	bool is_enemy;
 	bool is_collect;
 }				t_sprite_hit;
@@ -254,6 +255,6 @@ int angle_to_index(double angle);
 
 //enemy
  t_list *get_sprite_coll(t_data *data, t_ray *rays);
- void put_sprite(t_data *data, t_list *sprite_hits);
+void put_sprite(t_data *data, t_list *sprite_hits);
 
 #endif
