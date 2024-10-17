@@ -168,8 +168,7 @@ typedef struct s_config
 
 typedef struct s_sprite_hit
 {
-	t_coord pos;
-	double dist;
+	t_coord *pos;
 	bool is_enemy;
 	bool is_collect;
 }				t_sprite_hit;
@@ -251,5 +250,8 @@ char			*ft_strdup2(char *s, size_t n);
 double norm_angle(double angle);
 double	deg_to_rad(double degrees);
 int angle_to_index(double angle);
+
+//enemy
+ t_list *get_sprite_coll(t_data *data, t_ray *rays);
 
 #endif

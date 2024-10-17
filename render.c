@@ -48,6 +48,7 @@ void	render_frame(t_data *data)
 	t_ray	*rays;
 	
 	rays = cast_rays(data->map, *data->player);
+	get_sprite_coll(data, rays);
 	if (currtime() - data->last_render > MS_BETWEEN_FRAMES)
 	{
 		draw_walls(rays, data);

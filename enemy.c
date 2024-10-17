@@ -35,25 +35,6 @@ void put_sprite(t_data *data)
 	}
 }
 
-//  t_sprite_hit *get_sprite_coll(t_data *data, t_ray *rays)
-//  {
-// 	int i;
-// 	i= 0;
-// 	double dist;
-// 	double scale;
-// 	dist = sqrt(pow(data->player->pos.x - data->enemy->pos.x, 2) + pow(data->player->pos.y - data->enemy->pos.y, 2));
-// 	scale = data->focal_len / dist;
-
-// 	while(i < SCREEN_WIDTH)
-// 	{
-// 		if(ray_hit_enemy(&rays[i], data->enemy, scale) == true)
-// 		{
-// 			return (rays[i].sprite_coll);
-// 		}
-// 		i++;
-// 	}
-//  }
-
 bool ray_hit_enemy(t_ray *r, t_enemy *enemy, double scale, double dist)
 {
 	double max_bound;
@@ -76,6 +57,43 @@ bool ray_hit_enemy(t_ray *r, t_enemy *enemy, double scale, double dist)
 	}
 	return(false);
 }
+
+
+ t_list *get_sprite_coll(t_data *data, t_ray *rays)
+ {
+	int i;
+	i= 0;
+	bool is_visible;
+	is_visible = false;
+	double dist;
+	double scale;
+	t_sprite_hit *sprite_hit;
+	t_list *sprite_colls;
+	sprite_colls = malloc(sizeof(t_list));
+	sprite_hit = malloc(sizeof(t_sprite_hit));
+	dist = sqrt(pow(data->player->pos.x - data->enemy->pos.x, 2) + pow(data->player->pos.y - data->enemy->pos.y, 2));
+	scale = data->focal_len / dist;
+
+	while(i < WINDOW_WIDTH)
+	{
+		if(ray_hit_enemy(&rays[i], data->enemy, scale, dist))
+		{
+			sprite_hit->pos = &rays[i].coll;
+			sprite_hit->is_enemy = true;
+			ft_lstadd_back(&sprite_colls, ft_lstnew(sprite_hit));
+			is_visible = true;
+		}
+		i++;
+	}
+	if(is_visible)
+	{
+		printf("hit number %d\n", ft_lstsize(sprite_colls));
+		return (sprite_colls);
+	}
+		
+	return (NULL);
+ }
+
 
 
 // t_coord	pick_enemy_spaces(t_vars *vars, int direction)
