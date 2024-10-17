@@ -1,6 +1,53 @@
 #include "cub3d.h"
 
-void put_sprite(t_data *data)
+// void put_sprite(t_data *data, t_list *sprite_hits)
+// {
+// 	int i;
+// 	int j;
+// 	double dist;
+// 	double scale;
+// 	int screen_x;
+// 	int screen_y;
+// 	int draw_x;
+// 	int draw_y;
+	
+// 	dist = sqrt(pow(data->player->pos.x - data->enemy->pos.x, 2) + pow(data->player->pos.y - data->enemy->pos.y, 2));
+// 	scale =data->focal_len / dist;
+// 	screen_x = (data->enemy->pos.x - data->player->pos.x) * scale + WINDOW_WIDTH / 2;
+// 	screen_y = (data->enemy->pos.y - data->player->pos.y) * scale + WINDOW_HEIGHT / 2;
+	
+// 	i = 0;
+// 	while(i < (int)(data->enemy->width) * scale)
+// 	{
+// 		j = 0;
+// 		while(j < (int)(data->enemy->height) * scale)
+// 		{
+// 			if((int)(i/ scale) >= 0 && (int)(i/ scale) < data->enemy->width && (int)(j/scale) >= 0 && (int)(j/scale) < data->enemy->height)
+// 			{
+// 				draw_x = screen_x + i - (data->enemy->width * scale) / 2;
+// 				draw_y = screen_y + j - (data->enemy->height * scale) / 2;
+// 				put_pixel_from_img(data, &data->textures->enemy, (t_coord){(int)(i/ scale), (int)(j/scale)}, (t_coord){draw_x, draw_y});
+// 			}
+				
+// 			j++;
+// 		}
+// 		i++;
+// 	}
+// }
+
+
+// wall_top = WINDOW_HEIGHT / 2 - height / 2;
+// 		j = 0;
+// 		while (j < wall_top && j < WINDOW_HEIGHT)
+// 			draw_ceiling(data, i, j++, data->textures->south.img_ptr != NULL);
+// 		while (j < wall_top + height && j < WINDOW_HEIGHT)
+// 		{
+// 			tex_x = get_tex_offset(rays[i]);
+// 			tex_y = ((j - wall_top) * TEXTURE_HEIGHT) / height;
+// 			put_pixel_from_img(data, &data->textures->north, (t_coord){tex_x, tex_y}, (t_coord){i, j});
+// 			j++;
+
+void put_sprite(t_data *data, t_list *sprite_hits)
 {
 	int i;
 	int j;
@@ -10,30 +57,38 @@ void put_sprite(t_data *data)
 	int screen_y;
 	int draw_x;
 	int draw_y;
-	
+
 	dist = sqrt(pow(data->player->pos.x - data->enemy->pos.x, 2) + pow(data->player->pos.y - data->enemy->pos.y, 2));
 	scale =data->focal_len / dist;
-	screen_x = (data->enemy->pos.x - data->player->pos.x) * scale + WINDOW_WIDTH / 2;
+	int height = (int)(data->enemy->height * scale);
+	t_list *lst_iter;
+	lst_iter = sprite_hits;
+	
+	
+	
 	screen_y = (data->enemy->pos.y - data->player->pos.y) * scale + WINDOW_HEIGHT / 2;
 	
 	i = 0;
-	while(i < (int)(data->enemy->width) * scale)
+	while(lst_iter->next)
 	{
 		j = 0;
-		while(j < (int)(data->enemy->height) * scale)
+		screen_x = ((t_sprite_hit *)lst_iter->content)->screen_x;
+		screen_y = WINDOW_HEIGHT / 2 - height / 2;
+		while(j < height)
 		{
-			if((int)(i/ scale) >= 0 && (int)(i/ scale) < data->enemy->width && (int)(j/scale) >= 0 && (int)(j/scale) < data->enemy->height)
-			{
-				draw_x = screen_x + i - (data->enemy->width * scale) / 2;
-				draw_y = screen_y + j - (data->enemy->height * scale) / 2;
-				put_pixel_from_img(data, &data->textures->enemy, (t_coord){(int)(i/ scale), (int)(j/scale)}, (t_coord){draw_x, draw_y});
-			}
+			//if((int)(i/ scale) >= 0 && (int)(i/ scale) < data->enemy->width && (int)(j/scale) >= 0 && (int)(j/scale) < data->enemy->height)
+			
+			draw_x = screen_x - (data->enemy->width * scale) / 2;
+			draw_y = screen_y + j;
+			put_pixel_from_img(data, &data->textures->enemy, (t_coord){(int)(i/ scale), (int)(j/scale)}, (t_coord){draw_x, draw_y});
+			
 				
 			j++;
 		}
-		i++;
+		lst_iter = lst_iter->next;
 	}
 }
+
 
 bool ray_hit_enemy(t_ray *r, t_enemy *enemy, double scale, double dist)
 {
@@ -69,8 +124,8 @@ bool ray_hit_enemy(t_ray *r, t_enemy *enemy, double scale, double dist)
 	double scale;
 	t_sprite_hit *sprite_hit;
 	t_list *sprite_colls;
-	sprite_colls = malloc(sizeof(t_list));
-	sprite_hit = malloc(sizeof(t_sprite_hit));
+	sprite_colls = NULL;
+	
 	dist = sqrt(pow(data->player->pos.x - data->enemy->pos.x, 2) + pow(data->player->pos.y - data->enemy->pos.y, 2));
 	scale = data->focal_len / dist;
 
@@ -78,8 +133,16 @@ bool ray_hit_enemy(t_ray *r, t_enemy *enemy, double scale, double dist)
 	{
 		if(ray_hit_enemy(&rays[i], data->enemy, scale, dist))
 		{
-			sprite_hit->pos = &rays[i].coll;
+			sprite_hit = malloc(sizeof(t_sprite_hit));
+			sprite_hit->is_collect = false;
+			if(sprite_hit == NULL)
+			{
+				ft_lstclear(&sprite_colls, free);
+				return (NULL);
+			}
+			sprite_hit->pos = rays[i].coll;
 			sprite_hit->is_enemy = true;
+			sprite_hit->screen_x = i;
 			ft_lstadd_back(&sprite_colls, ft_lstnew(sprite_hit));
 			is_visible = true;
 		}

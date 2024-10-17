@@ -46,14 +46,16 @@ void	put_pixel_from_img(t_data *data, t_image *src_img,
 void	render_frame(t_data *data)
 {
 	t_ray	*rays;
+	t_list	*sprite_hits;
 	
 	rays = cast_rays(data->map, *data->player);
-	get_sprite_coll(data, rays);
+	sprite_hits =get_sprite_coll(data, rays);
 	if (currtime() - data->last_render > MS_BETWEEN_FRAMES)
 	{
 		draw_walls(rays, data);
 		draw_minimap(data, rays);
-		put_sprite(data);
+		if (sprite_hits)
+			put_sprite(data, sprite_hits);
 		mlx_put_image_to_window(data->mlx_ptr,
 			data->win_ptr, data->img_ptr, 0, 0);
 		data->last_render = currtime();

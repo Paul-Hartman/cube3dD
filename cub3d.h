@@ -168,7 +168,8 @@ typedef struct s_config
 
 typedef struct s_sprite_hit
 {
-	t_coord *pos;
+	t_coord pos;
+	int screen_x;
 	bool is_enemy;
 	bool is_collect;
 }				t_sprite_hit;
@@ -215,7 +216,7 @@ void			put_pixel_from_img(t_data *data, t_image *src_img,
 void			render_frame(t_data *data);
 void	draw_minimap(t_data *data, t_ray *rays);
 void 			draw_line(t_data *data, t_coord p1, t_coord p2);
-void put_sprite(t_data *data);
+
 //void draw_player(t_data data);
 
 //movement
@@ -253,5 +254,6 @@ int angle_to_index(double angle);
 
 //enemy
  t_list *get_sprite_coll(t_data *data, t_ray *rays);
+ void put_sprite(t_data *data, t_list *sprite_hits);
 
 #endif
