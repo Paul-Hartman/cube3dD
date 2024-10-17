@@ -89,7 +89,7 @@ void put_sprite(t_data *data, t_list *sprite_hits)
 	double scale;
 	int screen_x;
 	int screen_y;
-	int draw_x;
+	//int draw_x;
 	int draw_y;
 	i = 0;
 	dist = sqrt(pow(data->player->pos.x - data->enemy->pos.x, 2) + pow(data->player->pos.y - data->enemy->pos.y, 2));
@@ -97,14 +97,15 @@ void put_sprite(t_data *data, t_list *sprite_hits)
 	int height =(int)data->enemy->height * scale;
 	int width = (int)data->enemy->width * scale;
 	screen_y = WINDOW_HEIGHT / 2 - height/2;
+	
 	while(i < width && sprite_hits)
 	{
 		
 		
 		
 		screen_x = ((t_sprite_hit *)sprite_hits->content)->screen_x;
-		draw_x = screen_x;
-		ft_printf("screen_x: %d\n", screen_x);
+		
+		//ft_printf("list size: %d\n", screen_x);
 			j = 0;
 			while(j < height) 
 			{
@@ -114,7 +115,7 @@ void put_sprite(t_data *data, t_list *sprite_hits)
 				
 		
 				
-				put_pixel_from_img(data, &data->textures->enemy, (t_coord){(int)i/scale, (int)j/scale}, (t_coord){draw_x, draw_y});
+				put_pixel_from_img(data, &data->textures->enemy, (t_coord){(int)i/scale, (int)j/scale}, (t_coord){screen_x, draw_y});
 				j++;
 			}
 			i++;
@@ -123,17 +124,70 @@ void put_sprite(t_data *data, t_list *sprite_hits)
 	}
 }
 
-bool is_facing_enemy(t_data *data)
-{
-	double angle_to_enemy = atan2(data->enemy->pos.y - data->player->pos.y, data->enemy->pos.x - data->player->pos.x);
+// bool is_facing_enemy(t_data *data)
+// {
+// 	double angle_to_enemy = atan2(data->enemy->pos.y - data->player->pos.y, data->enemy->pos.x - data->player->pos.x);
 	
-	angle_to_enemy = norm_angle(angle_to_enemy);
-	double fov_left = norm_angle(data->player->dir - (FOV / 2.0));
-    double fov_right = norm_angle(data->player->dir + (FOV / 2.0));
-	if (fov_left < fov_right)
-        return (angle_to_enemy >= fov_left && angle_to_enemy <= fov_right);
-    else
-        return (angle_to_enemy >= fov_left || angle_to_enemy <= fov_right);
+// 	angle_to_enemy = norm_angle(angle_to_enemy);
+// 	double fov_left = norm_angle(data->player->dir - (FOV / 2.0));
+//     double fov_right = norm_angle(data->player->dir + (FOV / 2.0));
+// 	if (fov_left < fov_right)
+//         return (angle_to_enemy >= fov_left && angle_to_enemy <= fov_right);
+//     else
+//         return (angle_to_enemy >= fov_left || angle_to_enemy <= fov_right);
+// }
+
+bool hits_enemy(t_ray r, t_data *data, double scale)
+{
+	double half_width_scaled = (data->enemy->width * scale) / 2.0;
+	double left_x, right_x, left_y, right_y;
+	double left_angle;
+	double right_angle;
+	if (check_dir(r, r.is_horiz) == SOUTH)
+	{
+		
+		left_x = data->enemy->pos.x - half_width_scaled;
+		right_x = data->enemy->pos.x + half_width_scaled;
+		left_angle = -atan2(data->enemy->pos.y - data->player->pos.y, left_x - data->player->pos.x);
+		right_angle = -atan2(data->enemy->pos.y - data->player->pos.y, right_x - data->player->pos.x);
+		
+	}
+	else if (check_dir(r, r.is_horiz) == NORTH)
+	{
+		left_x = data->enemy->pos.x + half_width_scaled;
+		right_x = data->enemy->pos.x - half_width_scaled;
+		left_angle =  -atan2(data->enemy->pos.y - data->player->pos.y, left_x - data->player->pos.x);
+		right_angle = -atan2(data->enemy->pos.y - data->player->pos.y, right_x - data->player->pos.x);
+			
+	}
+	else if (check_dir(r, r.is_horiz) == EAST)
+	{
+		left_y = data->enemy->pos.y - half_width_scaled;
+		right_y = data->enemy->pos.y + half_width_scaled;
+		left_angle = atan2(left_y - data->player->pos.y, data->enemy->pos.x - data->player->pos.x);
+		right_angle = atan2(right_y - data->player->pos.y, data->enemy->pos.x - data->player->pos.x);
+			
+	}
+	else if (check_dir(r, r.is_horiz) == WEST)
+	{ 
+		left_y = data->enemy->pos.y + half_width_scaled;
+		right_y = data->enemy->pos.y - half_width_scaled;
+		left_angle = atan2(left_y - data->player->pos.y, data->enemy->pos.x - data->player->pos.x);
+		right_angle = atan2(right_y - data->player->pos.y, data->enemy->pos.x - data->player->pos.x);
+			
+	}
+	left_angle = norm_angle(left_angle);
+	right_angle = norm_angle(right_angle);
+	if (r.dir >= left_angle && r.dir <= right_angle)
+	{
+		printf("left_angle: %f\n", left_angle);
+		printf("right_angle: %f\n", right_angle);
+		
+		return (true);
+	}
+	
+	return (false);
+	
 }
 
 
@@ -141,15 +195,15 @@ bool ray_hit_enemy(t_ray *r, t_data *data, double scale, double dist)
 {
 	double max_bound;
 	double min_bound;
-	double angle_to_enemy;
-	angle_to_enemy = norm_angle(-atan2(data->enemy->pos.y - data->player->pos.y, data->enemy->pos.x - data->player->pos.x));
-	double min_ang =  norm_angle(norm_angle(data->player->dir) - FOV / 2.0);
-	double max_ang =  norm_angle(norm_angle(data->player->dir) + FOV / 2.0);
+	//double angle_to_enemy;
+	//angle_to_enemy = norm_angle(-atan2(data->enemy->pos.y - data->player->pos.y, data->enemy->pos.x - data->player->pos.x));
+	// double min_ang =  norm_angle(data->player->dir - FOV / 2.0);
+	// double max_ang =  norm_angle(data->player->dir + FOV / 2.0);
 	
 	
 	
 
-	if(r->dist < dist || angle_to_enemy <= min_ang || angle_to_enemy >= max_ang)
+	if(r->dist < dist)
 		return (false);
 	if (r->is_horiz)
 	{
@@ -191,7 +245,7 @@ bool ray_hit_enemy(t_ray *r, t_data *data, double scale, double dist)
 	while(i < WINDOW_WIDTH)
 	{	
 		
-		if((ray_hit_enemy(&rays[i], data, scale, dist)))
+		if(hits_enemy(rays[i], data, scale))
 		{
 			sprite_hit = malloc(sizeof(t_sprite_hit));
 			sprite_hit->is_collect = false;

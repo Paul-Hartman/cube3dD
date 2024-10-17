@@ -252,6 +252,7 @@ char			*ft_strdup2(char *s, size_t n);
 double norm_angle(double angle);
 double	deg_to_rad(double degrees);
 int angle_to_index(double angle);
+int	check_dir(t_ray r, bool is_horiz);
 
 //enemy
  t_list *get_sprite_coll(t_data *data, t_ray *rays);
