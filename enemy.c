@@ -35,6 +35,49 @@ void put_sprite(t_data *data)
 	}
 }
 
+//  t_sprite_hit *get_sprite_coll(t_data *data, t_ray *rays)
+//  {
+// 	int i;
+// 	i= 0;
+// 	double dist;
+// 	double scale;
+// 	dist = sqrt(pow(data->player->pos.x - data->enemy->pos.x, 2) + pow(data->player->pos.y - data->enemy->pos.y, 2));
+// 	scale = data->focal_len / dist;
+
+// 	while(i < SCREEN_WIDTH)
+// 	{
+// 		if(ray_hit_enemy(&rays[i], data->enemy, scale) == true)
+// 		{
+// 			return (rays[i].sprite_coll);
+// 		}
+// 		i++;
+// 	}
+//  }
+
+bool ray_hit_enemy(t_ray *r, t_enemy *enemy, double scale, double dist)
+{
+	double max_bound;
+	double min_bound;
+	if(r->dist < dist)
+		return (false);
+	if (r->is_horiz)
+	{
+		min_bound = fmin(enemy->pos.x + (enemy->width * scale) / 2, enemy->pos.x - (enemy->width * scale) / 2);
+		max_bound = fmax(enemy->pos.x + (enemy->width * scale) / 2, enemy->pos.x - (enemy->width * scale) / 2);
+		if (r->coll.x >= min_bound && r->coll.x <= max_bound)
+            return true;
+	}
+	else
+	{
+		min_bound = fmin(enemy->pos.y + (enemy->width * scale) / 2, enemy->pos.y - (enemy->width * scale) / 2);
+		max_bound = fmax(enemy->pos.y + (enemy->width * scale) / 2, enemy->pos.y - (enemy->width * scale) / 2);
+		if (r->coll.y >= min_bound && r->coll.y <= max_bound)
+            return true;
+	}
+	return(false);
+}
+
+
 // t_coord	pick_enemy_spaces(t_vars *vars, int direction)
 // {
 // 	t_coord	coord;

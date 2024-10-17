@@ -113,6 +113,7 @@ t_ray	init_ray(double dir, int i)
 	r.dir = dir + (FOV / 2) - (FOV / WINDOW_WIDTH) * i;
 	r.dir = norm_angle(r.dir);
 	r.is_horiz = false;
+	
 	return (r);
 }
 
@@ -239,6 +240,7 @@ t_coord	get_wall_coll(t_coord coll, t_ray r, t_map *map, bool is_horiz)
 	while (!(map_x < 0 || map_y < 0 || map_x > map->width - 1
 			|| map_y > map->height - 1))
 	{
+		
 		if (is_wall(coll, map))
 			return (coll);
 		coll.x += delta.x;
@@ -248,6 +250,7 @@ t_coord	get_wall_coll(t_coord coll, t_ray r, t_map *map, bool is_horiz)
 	}
 	return ((t_coord){-1.0, -1.0});
 }
+
 
 double	get_vert_coll(t_player p, t_ray *r, t_map *map)
 {

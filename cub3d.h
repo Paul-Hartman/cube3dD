@@ -166,6 +166,14 @@ typedef struct s_config
 	int		map_start;
 }				t_config;
 
+typedef struct s_sprite_hit
+{
+	t_coord pos;
+	double dist;
+	bool is_enemy;
+	bool is_collect;
+}				t_sprite_hit;
+
 typedef struct s_ray
 {
 	t_coord	coll;
@@ -173,6 +181,8 @@ typedef struct s_ray
 	double	dist;
 	double	dir;
 }				t_ray;
+
+
 
 // typedef struct s_vars
 // {
