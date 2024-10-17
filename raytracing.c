@@ -6,7 +6,7 @@
 /*   By: wpepping <wpepping@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/15 18:36:33 by wpepping          #+#    #+#             */
-/*   Updated: 2024/10/16 16:03:42 by wpepping         ###   ########.fr       */
+/*   Updated: 2024/10/17 14:45:35 by wpepping         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -261,7 +261,7 @@ t_coord	get_wall_coll(t_coord coll, t_ray *r, t_map *map, bool is_horiz)
 			|| map_y > map->height - 1))
 	{
 		r->map_item = get_map_item(coll, map);
-		r->is_door = (r->map_item == DOOR);
+		r->is_door = (r->map_item == DOOR && is_door(map, coll));
 		if (r->is_door || r->map_item == WALL)
 			return (coll);
 		coll.x += delta.x;

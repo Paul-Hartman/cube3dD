@@ -6,7 +6,7 @@
 /*   By: wpepping <wpepping@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/16 18:19:31 by wpepping          #+#    #+#             */
-/*   Updated: 2024/10/16 18:19:32 by wpepping         ###   ########.fr       */
+/*   Updated: 2024/10/17 14:53:20 by wpepping         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,11 @@
 bool	is_wall(t_coord pos, t_map *map)
 {
 	char	map_item;
+	bool	isdoor;
 
 	map_item = get_map_item(pos, map);
-	if (map_item == DOOR || map_item == WALL)
+	isdoor = (map_item == DOOR && is_door(map, pos));
+	if (isdoor || map_item == WALL)
 		return (true);
 	return (false);
 }

@@ -6,7 +6,7 @@
 /*   By: wpepping <wpepping@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/16 16:12:57 by wpepping          #+#    #+#             */
-/*   Updated: 2024/10/16 17:29:06 by wpepping         ###   ########.fr       */
+/*   Updated: 2024/10/17 16:27:13 by wpepping         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,24 +26,49 @@ static t_door	*get_door(t_map *map, t_coord coord)
 	return (NULL);
 }
 
-void	activate_door(t_data *data, t_coord coord, int state)
+bool	is_door(t_map *map, t_coord coord)
+{
+	t_coord grid_coord;
+	t_door	*door;
+
+	grid_coord = pixel2grid(coord);
+	if (map->grid[(int)grid_coord.y][(int)grid_coord.x] != DOOR)
+		return (false);
+	door = get_door(map, grid_coord);
+	if (door->pos == 0.0)
+		return (true);
+	return (false);
+}
+
+void	activate_door(t_data *data, t_coord c)
 {
 	t_door	*door;
 
-	door = get_door(data->map, coord);
-	door->state = state;
-	data->active_door = door;
+	if (!data->active_door && data->map->grid[(int)c.y][(int)c.x] == DOOR)
+	{
+		door = get_door(data->map, c);
+		if (door->pos == 0.0)
+			door->state = OPENING;
+		else
+			door->state = CLOSING;
+		door->last_move = currtime();
+		data->active_door = door;
+	}
 }
 
-void	move_door(t_data *data, t_door *door)
+bool	move_door(t_data *data, t_door *door)
 {
+	if (currtime() - door->last_move < 20)
+		return (false);
 	if (door->state == OPENING)
 		door->pos += DOOR_STEP;
 	else if (door->state == CLOSING)
 		door->pos -= DOOR_STEP;
-	if (door->pos == 0.0 || door->pos == 1.0)
+	door->last_move = currtime();
+	if (door->pos == 0 || door->pos == 100)
 	{
 		door->state = IDLE;
 		data->active_door = NULL;
 	}
+	return (true);
 }

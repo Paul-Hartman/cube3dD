@@ -6,7 +6,7 @@
 /*   By: wpepping <wpepping@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/15 20:13:31 by wpepping          #+#    #+#             */
-/*   Updated: 2024/10/16 17:37:09 by wpepping         ###   ########.fr       */
+/*   Updated: 2024/10/17 16:52:36 by wpepping         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,11 +38,11 @@
 # define TEXTURE_HEIGHT 180
 # define WINDOW_WIDTH 800
 # define WINDOW_HEIGHT 600
-# define MOVE_SPEED 1.5
-# define MOUSE_SENSITIVITY 0.0025
+# define MOVE_SPEED 0.1
+# define MOUSE_SENSITIVITY 0.001
 # define ROTATE_SPEED 0.02
-# define MS_BETWEEN_FRAMES 20
-# define DOOR_STEP 0.05
+# define MS_BETWEEN_FRAMES 10
+# define DOOR_STEP 5
 # define EPSILON 1e-6
 # define M_PI 3.14159265358979323846
 # define WINDOW_NAME "Cub3d"
@@ -84,7 +84,8 @@ typedef struct s_door
 {
 	t_coord	coord;
 	int		state;
-	double	pos;
+	int		pos;
+	long	last_move;
 }				t_door;
 
 typedef struct s_map
@@ -148,7 +149,7 @@ typedef struct s_data
 	int			floor[3];
 	int			ceiling[3];
 	double		focal_len;
-	int			last_render;
+	long		last_render;
 	int			mouse_x;
 	t_key_state	key_state;
 	double		sin_table[3600];
@@ -216,8 +217,9 @@ bool 	strafe_player(t_data *data, bool left);
 bool	rotate_player(t_data *data, bool left, double rotate_speed);
 
 // Doors
-void			move_door(t_data *data, t_door *door);
-void			activate_door(t_data *data, t_coord coord, int state);
+bool			move_door(t_data *data, t_door *door);
+void			activate_door(t_data *data, t_coord coord);
+bool			is_door(t_map *map, t_coord coord);
 
 // Events
 int				handle_loop(t_data *data);
@@ -252,7 +254,11 @@ long			currtime(void);
 bool			is_wall(t_coord pos, t_map *map);
 char			*ft_strdup2(char *s, size_t n);
 int				get_map_item(t_coord pos, t_map *map);
+int				get_dir(double angle);
 bool			coord_equals(t_coord c, t_coord d);
+t_coord			coord_add(t_coord c, t_coord d);
+t_coord			pixel2grid(t_coord pixel_pos);
+t_coord			get_gridpos_in_front(t_player *player);
 
 // render utils
 double norm_angle(double angle);
