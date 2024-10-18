@@ -6,7 +6,7 @@
 /*   By: wpepping <wpepping@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/16 16:44:03 by wpepping          #+#    #+#             */
-/*   Updated: 2024/10/18 14:22:47 by wpepping         ###   ########.fr       */
+/*   Updated: 2024/10/18 15:19:24 by wpepping         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,7 @@ int	init_doors(t_map *map)
 		j = 0;
 		while (j < map->height)
 			if (map->grid[j++][i] == DOOR)
-				map->doors[n] = (t_door){(t_coord){i, j - 1}, IDLE, 0, 0};
+				map->doors[n++] = (t_door){(t_coord){i, j - 1}, IDLE, 0, 0};
 		i++;
 	}
 	return (0);

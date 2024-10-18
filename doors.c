@@ -6,7 +6,7 @@
 /*   By: wpepping <wpepping@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/16 16:12:57 by wpepping          #+#    #+#             */
-/*   Updated: 2024/10/18 14:52:13 by wpepping         ###   ########.fr       */
+/*   Updated: 2024/10/18 15:28:59 by wpepping         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ static t_door	*get_door(t_map *map, t_coord coord)
 	{
 		if (coord_equals(map->doors[i].coord, coord))
 			return (&map->doors[i]);
-		map->doors++;
+		i++;
 	}
 	return (NULL);
 }
@@ -35,12 +35,12 @@ bool	is_door(t_map *map, t_coord coord)
 	if (map->grid[(int)grid_coord.y][(int)grid_coord.x] != DOOR)
 		return (false);
 	door = get_door(map, grid_coord);
-	if (door->pos == 0.0)
+	if (door->pos == 0)
 		return (true);
 	return (false);
 }
 
-bool	is_door_visible(t_map *map, t_coord coll, bool is_horiz)
+bool	is_door_coll(t_map *map, t_coord coll, bool is_horiz)
 {
 	t_coord	grid_coord;
 	t_door	*door;

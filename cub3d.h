@@ -6,7 +6,7 @@
 /*   By: wpepping <wpepping@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/15 20:13:31 by wpepping          #+#    #+#             */
-/*   Updated: 2024/10/18 14:44:48 by wpepping         ###   ########.fr       */
+/*   Updated: 2024/10/18 15:10:22 by wpepping         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -220,7 +220,7 @@ bool	rotate_player(t_data *data, bool left, double rotate_speed);
 bool			move_door(t_data *data, t_door *door);
 void			activate_door(t_data *data, t_coord coord);
 bool			is_door(t_map *map, t_coord coord);
-bool			is_door_visible(t_map *map, t_coord coll, bool is_horiz);
+bool			is_door_coll(t_map *map, t_coord coll, bool is_horiz);
 
 // Events
 int				handle_loop(t_data *data);
