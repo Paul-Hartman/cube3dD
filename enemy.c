@@ -17,12 +17,14 @@ void	put_sprite(t_data *data, t_sprite *sprite)
 	int 	offset;
 
 	i = 0;
-	dist = sqrt(pow(data->player->pos.x - data->enemy->pos.x, 2)
-			+ pow(data->player->pos.y - data->enemy->pos.y, 2));
+	offset = 0;
+	double angle = norm_angle(-atan2(sprite->pos.y - data->player->pos.y,
+				sprite->pos.x - data->player->pos.x));
+	dist = get_dist(angle, sprite->pos, *data->player);
 	scale = data->focal_len / dist;
 	screen_y = (WINDOW_HEIGHT / 2 - (int)(sprite->pos.y / dist)) + (int)(sprite->height * scale)/2;
 	
-	printf("width: %d len %d middle %d\n", (int)(sprite->width * scale), sprite->info->len, sprite->info->middle);
+	//printf("width: %d len %d middle %d\n", (int)(sprite->width * scale), sprite->info->len, sprite->info->middle);
 	if (sprite->info->middle <= sprite->info->len / 2
 		&& sprite->info->len < sprite->width * scale)
 	{
@@ -31,12 +33,13 @@ void	put_sprite(t_data *data, t_sprite *sprite)
 	while (i < (int)(sprite->width * scale) && i < sprite->info->len)
 	{
 		j = 0;
+
 		while (j < (int)(sprite->height * scale) && j < WINDOW_HEIGHT - screen_y)
 		{
 			if ((int)(i / scale) >= 0 && i / scale < sprite->width && (int)(j / scale) >= 0
 				&& (int)(j / scale) < sprite->height)
 				put_pixel_from_img(data, &data->textures->enemy,
-					(t_coord){(int)(i + offset  / scale), (int)(j / scale)}, (t_coord){sprite->info->min_x + i, screen_y + j});
+					(t_coord){(int)((i + offset)  / scale), (int)(j / scale)}, (t_coord){sprite->info->min_x + i, screen_y + j});
 			j++;
 		}
 		i++;
