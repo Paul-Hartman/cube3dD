@@ -170,9 +170,11 @@ typedef struct s_sprite_hit
 {
 	//t_coord pos;
 	//int wall_bottom;
+	double dir;
 	int screen_x;
 	bool is_enemy;
 	bool is_collect;
+	int middle;
 }				t_sprite_hit;
 
 typedef struct s_ray
