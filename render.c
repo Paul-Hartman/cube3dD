@@ -6,7 +6,7 @@
 /*   By: phartman <phartman@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/27 18:07:22 by wpepping          #+#    #+#             */
-/*   Updated: 2024/10/18 14:56:03 by phartman         ###   ########.fr       */
+/*   Updated: 2024/10/18 19:06:54 by phartman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,19 +43,21 @@ void	put_pixel_from_img(t_data *data, t_image *src_img,
 	ft_memcpy(pixel_dest, pixel_src, 4);
 }
 
+
+
 void	render_frame(t_data *data)
 {
 	t_ray	*rays;
-	t_list	*sprite_hits;
-	
+	t_sprite	*sprite;
+	t_sprite enemy_sprite = ((t_sprite){data->enemy->pos, data->enemy->height, data->enemy->width, true, false, NULL});
 	rays = cast_rays(data->map, *data->player);
-	sprite_hits =get_sprite_coll(data, rays);
+	sprite = get_sprite_coll(data, rays, &enemy_sprite);
 	if (currtime() - data->last_render > MS_BETWEEN_FRAMES)
 	{
 		draw_walls(rays, data);
 		draw_minimap(data, rays);
-		if (sprite_hits)
-			put_sprite(data, sprite_hits, (t_sprite){data->enemy->pos, data->enemy->height, data->enemy->height});
+		if (sprite != NULL)
+			put_sprite(data, sprite);
 		mlx_put_image_to_window(data->mlx_ptr,
 			data->win_ptr, data->img_ptr, 0, 0);
 		data->last_render = currtime();
