@@ -6,11 +6,22 @@
 /*   By: wpepping <wpepping@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/16 16:44:03 by wpepping          #+#    #+#             */
-/*   Updated: 2024/10/17 15:03:54 by wpepping         ###   ########.fr       */
+/*   Updated: 2024/10/18 14:22:47 by wpepping         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
+
+void	init_textures(t_textures *textures)
+{
+	textures->north.img_ptr = NULL;
+	textures->east.img_ptr = NULL;
+	textures->south.img_ptr = NULL;
+	textures->west.img_ptr = NULL;
+	textures->floor.img_ptr = NULL;
+	textures->ceiling.img_ptr = NULL;
+	textures->door.img_ptr = NULL;
+}
 
 void	init_trig_tables(double *sin_table, double *cos_table)
 {

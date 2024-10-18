@@ -6,7 +6,7 @@
 /*   By: wpepping <wpepping@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/15 20:13:31 by wpepping          #+#    #+#             */
-/*   Updated: 2024/10/17 16:52:36 by wpepping         ###   ########.fr       */
+/*   Updated: 2024/10/18 14:44:48 by wpepping         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,9 +36,9 @@
 # define CHAR_HEIGHT 32
 # define CUBE_SIZE 180
 # define TEXTURE_HEIGHT 180
-# define WINDOW_WIDTH 800
-# define WINDOW_HEIGHT 600
-# define MOVE_SPEED 0.1
+# define WINDOW_WIDTH 1024
+# define WINDOW_HEIGHT 640
+# define MOVE_SPEED 0.2
 # define MOUSE_SENSITIVITY 0.001
 # define ROTATE_SPEED 0.02
 # define MS_BETWEEN_FRAMES 10
@@ -220,6 +220,7 @@ bool	rotate_player(t_data *data, bool left, double rotate_speed);
 bool			move_door(t_data *data, t_door *door);
 void			activate_door(t_data *data, t_coord coord);
 bool			is_door(t_map *map, t_coord coord);
+bool			is_door_visible(t_map *map, t_coord coll, bool is_horiz);
 
 // Events
 int				handle_loop(t_data *data);

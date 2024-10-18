@@ -6,7 +6,7 @@
 /*   By: wpepping <wpepping@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/16 18:19:31 by wpepping          #+#    #+#             */
-/*   Updated: 2024/10/17 14:53:20 by wpepping         ###   ########.fr       */
+/*   Updated: 2024/10/18 14:22:18 by wpepping         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ bool	is_wall(t_coord pos, t_map *map)
 int	angle_to_index(double angle)
 {
 	double	n_angle;
-	int	index;
+	int		index;
 
 	n_angle = norm_angle(angle);
 	index = (int)(n_angle * 3600 / (2 * M_PI));
@@ -44,7 +44,6 @@ bool	move_player(t_data *data, bool rev)
 		move_speed *= -1;
 	move.x = move_speed * data->cos_table[angle_to_index(data->player->dir)];
 	move.y = move_speed * data->sin_table[angle_to_index(data->player->dir)];
-
 	if (!is_wall((t_coord){data->player->pos.x + move.x, data->player->pos.y
 			- move.y}, data->map))
 	{

@@ -6,7 +6,7 @@
 /*   By: wpepping <wpepping@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/16 16:12:57 by wpepping          #+#    #+#             */
-/*   Updated: 2024/10/17 16:27:13 by wpepping         ###   ########.fr       */
+/*   Updated: 2024/10/18 14:52:13 by wpepping         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ static t_door	*get_door(t_map *map, t_coord coord)
 
 bool	is_door(t_map *map, t_coord coord)
 {
-	t_coord grid_coord;
+	t_coord	grid_coord;
 	t_door	*door;
 
 	grid_coord = pixel2grid(coord);
@@ -36,6 +36,25 @@ bool	is_door(t_map *map, t_coord coord)
 		return (false);
 	door = get_door(map, grid_coord);
 	if (door->pos == 0.0)
+		return (true);
+	return (false);
+}
+
+bool	is_door_visible(t_map *map, t_coord coll, bool is_horiz)
+{
+	t_coord	grid_coord;
+	t_door	*door;
+	int		door_coll;
+
+	grid_coord = pixel2grid(coll);
+	if (map->grid[(int)grid_coord.y][(int)grid_coord.x] != DOOR)
+		return (false);
+	door = get_door(map, grid_coord);
+	if (is_horiz)
+		door_coll = (int)coll.x % CUBE_SIZE * 100 / CUBE_SIZE;
+	else
+		door_coll = 100 - (int)coll.y % CUBE_SIZE * 100 / CUBE_SIZE;
+	if (door_coll <= 5 || door_coll <= (100 - door->pos))
 		return (true);
 	return (false);
 }

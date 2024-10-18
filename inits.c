@@ -6,7 +6,7 @@
 /*   By: wpepping <wpepping@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/16 15:39:28 by wpepping          #+#    #+#             */
-/*   Updated: 2024/10/16 18:13:52 by wpepping         ###   ########.fr       */
+/*   Updated: 2024/10/18 14:23:39 by wpepping         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,17 +42,6 @@ void	init_config(t_config *config)
 	config->map_start = 0;
 }
 
-void	init_textures(t_textures *textures)
-{
-	textures->north.img_ptr = NULL;
-	textures->east.img_ptr = NULL;
-	textures->south.img_ptr = NULL;
-	textures->west.img_ptr = NULL;
-	textures->floor.img_ptr = NULL;
-	textures->ceiling.img_ptr = NULL;
-	textures->door.img_ptr = NULL;
-}
-
 int	init_window(t_data *data)
 {
 	data->win_ptr = mlx_new_window(data->mlx_ptr, WINDOW_WIDTH, WINDOW_HEIGHT,
@@ -70,9 +59,8 @@ int	init_window(t_data *data)
 void	init_events(t_data *data)
 {
 	mlx_hook(data->win_ptr, KeyPress, KeyPressMask, &handle_key_press, data);
-	mlx_hook(data->win_ptr, KeyRelease, KeyReleaseMask, &handle_key_release, data);
-	//mlx_key_hook(data->win_ptr, &handle_input, data);
-	//mlx_mouse_hook(data->win_ptr, &handle_mouse, data);
+	mlx_hook(data->win_ptr, KeyRelease, KeyReleaseMask,
+		&handle_key_release, data);
 	mlx_hook(data->win_ptr, DestroyNotify, StructureNotifyMask,
 		&handle_close, data);
 	mlx_hook(data->win_ptr, MotionNotify, PointerMotionMask,
