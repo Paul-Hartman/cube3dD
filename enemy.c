@@ -1,9 +1,9 @@
 #include "cub3d.h"
 
-double get_dir_to(t_coord pos, t_coord target)
-{
-	return (norm_angle(-atan2(target.y - pos.y, target.x - pos.x)));
-}
+// double get_dir_to(t_coord pos, t_coord target)
+// {
+// 	return (norm_angle(-atan2(target.y - pos.y, target.x - pos.x)));
+// }
 
 
 
@@ -14,33 +14,32 @@ void	put_sprite(t_data *data, t_sprite *sprite)
 	double	dist;
 	double	scale;
 	int		screen_y;
+	int 	offset;
 
 	i = 0;
 	dist = sqrt(pow(data->player->pos.x - data->enemy->pos.x, 2)
 			+ pow(data->player->pos.y - data->enemy->pos.y, 2));
 	scale = data->focal_len / dist;
 	screen_y = (WINDOW_HEIGHT / 2 - (int)(sprite->pos.y / dist)) + (int)(sprite->height * scale)/2;
-		
+	
 	printf("width: %d len %d middle %d\n", (int)(sprite->width * scale), sprite->info->len, sprite->info->middle);
 	if (sprite->info->middle <= sprite->info->len / 2
 		&& sprite->info->len < sprite->width * scale)
 	{
-		i = (int)(sprite->width * scale) - sprite->info->len;
+		offset = (int)(sprite->width * scale) - sprite->info->len;
 	}
-	while (i < (int)(sprite->width * scale) && i < sprite->info->max_x)
+	while (i < (int)(sprite->width * scale) && i < sprite->info->len)
 	{
 		j = 0;
-		
 		while (j < (int)(sprite->height * scale) && j < WINDOW_HEIGHT - screen_y)
 		{
 			if ((int)(i / scale) >= 0 && i / scale < sprite->width && (int)(j / scale) >= 0
 				&& (int)(j / scale) < sprite->height)
 				put_pixel_from_img(data, &data->textures->enemy,
-					(t_coord){(int)(i / scale)% sprite->height, (int)(j / scale)% sprite->height}, (t_coord){sprite->info->min_x + i, screen_y + j});
+					(t_coord){(int)(i + offset  / scale), (int)(j / scale)}, (t_coord){sprite->info->min_x + i, screen_y + j});
 			j++;
 		}
 		i++;
-		
 	}
 	free(sprite->info);
 	
@@ -63,7 +62,9 @@ bool	hit_enemy(t_ray *r, t_data *data, double scale)
 	if ((r->dir >= left_angle && r->dir <= right_angle)
 		|| (left_angle > right_angle && (r->dir >= left_angle
 				|| r->dir <= right_angle)))
+	{
 		return (true);
+	}
 	return (false);
 }
 
@@ -77,7 +78,7 @@ t_sprite_info	*set_sprite_info(t_data *data, t_list *info_lst)
 
 	i = 0;
 	middle = 100;
-	dir_to_enemy = get_dir_to(data->player->pos, data->enemy->pos);
+	dir_to_enemy  = norm_angle(-atan2(data->enemy->pos.y - data->player->pos.y, data->enemy->pos.x - data->player->pos.x));
 	
 	info = (t_sprite_info *)malloc(sizeof(t_sprite_info));
 	info->min_x = ((t_sprite_info *)info_lst->content)->screen_x;
@@ -124,6 +125,7 @@ t_sprite *get_sprite_coll(t_data *data, t_ray *rays, t_sprite *sprite)
 			sprite_info = malloc(sizeof(t_sprite_info));
 			sprite_info->dir = rays[i].dir;
 			sprite_info->screen_x = i;
+			printf("screen_x: %d\n", sprite_info->screen_x);
 			ft_lstadd_back(&info_lst, ft_lstnew(sprite_info));
 		}
 		i++;
