@@ -6,7 +6,7 @@
 /*   By: phartman <phartman@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/14 18:29:37 by wpepping          #+#    #+#             */
-/*   Updated: 2024/10/18 15:13:16 by phartman         ###   ########.fr       */
+/*   Updated: 2024/10/18 19:06:42 by phartman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -166,22 +166,26 @@ typedef struct s_config
 	int		map_start;
 }				t_config;
 
-typedef struct s_sprite_hit
+typedef struct s_sprite_info
 {
 	//t_coord pos;
 	//int wall_bottom;
-	double dir;
 	int screen_x;
-	bool is_enemy;
-	bool is_collect;
+	double dir;
+	int min_x;
+	int max_x;
+	int len;
 	int middle;
-}				t_sprite_hit;
+}				t_sprite_info;
 
 typedef struct s_sprite
 {
 	t_coord pos;
 	int height;
 	int width;
+	bool is_enemy;
+	bool is_collect;
+	t_sprite_info *info;
 }				t_sprite;
 
 typedef struct s_ray
@@ -266,7 +270,7 @@ double	projected_wall_height(int focal_len, double dist);
 double	get_dist(double angle, t_coord coll, t_player p);
 
 //enemy
- t_list *get_sprite_coll(t_data *data, t_ray *rays);
-void put_sprite(t_data *data, t_list *sprite_hits, t_sprite sprite);
+t_sprite *get_sprite_coll(t_data *data, t_ray *rays, t_sprite *sprite);
+void	put_sprite(t_data *data, t_sprite *sprite);
 
 #endif
