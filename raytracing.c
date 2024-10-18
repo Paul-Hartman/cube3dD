@@ -1,6 +1,6 @@
 #include "cub3d.h"
 
-double	get_dist(t_ray r, t_coord coll, t_player p);
+double	get_dist(double angle, t_coord coll, t_player p);
 double	get_horiz_coll(t_player p, t_ray *r, t_map *map);
 t_coord	get_ray_delta(t_ray r, bool is_horiz);
 t_coord	get_wall_coll(t_coord coll, t_ray r, t_map *map, bool is_horiz);
@@ -168,16 +168,17 @@ double	radians_to_degrees(double radians)
 	return (radians * (180.0 / M_PI));
 }
 
-double	get_dist(t_ray r, t_coord coll, t_player p)
+double	get_dist(double angle, t_coord coll, t_player p)
 {
-	double	dist;
-	double	angle_diff;
+	 double	dist;
+	 double	angle_diff;
 
 	if (coll.x == -1.0 && coll.y == -1.0)
 		return (INFINITY);
-	dist = sqrt(pow(p.pos.x - coll.x, 2) + pow(p.pos.y - coll.y, 2));
-	angle_diff = r.dir - norm_angle(p.dir);
-	dist = dist * cos(norm_angle(angle_diff));
+	dist = sqrt(pow(p.pos.x - coll.x, 2)
+			+ pow(p.pos.y - coll.y, 2));
+	angle_diff = angle - p.dir;
+	dist = dist * cos(angle_diff);
 	return (dist);
 }
 
@@ -268,7 +269,7 @@ double	get_vert_coll(t_player p, t_ray *r, t_map *map)
 	else
 		coll.y = p.pos.y + fabs(p.pos.x - coll.x) * tan_val;
 	r->coll = get_wall_coll(coll, *r, map, false);
-	dist = get_dist(*r, r->coll, p);
+	dist = get_dist(r->dir, r->coll, p);
 	return (dist);
 }
 
@@ -289,7 +290,7 @@ double	get_horiz_coll(t_player p, t_ray *r, t_map *map)
 	else
 		coll.x = p.pos.x + fabs(p.pos.y - coll.y) / tan_val;
 	r->coll = get_wall_coll(coll, *r, map, true);
-	return (get_dist(*r, r->coll, p));
+	return (get_dist(r->dir, r->coll, p));
 }
 
 

@@ -6,7 +6,7 @@
 /*   By: phartman <phartman@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/14 18:29:37 by wpepping          #+#    #+#             */
-/*   Updated: 2024/10/16 17:40:02 by phartman         ###   ########.fr       */
+/*   Updated: 2024/10/18 15:13:16 by phartman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -177,6 +177,13 @@ typedef struct s_sprite_hit
 	int middle;
 }				t_sprite_hit;
 
+typedef struct s_sprite
+{
+	t_coord pos;
+	int height;
+	int width;
+}				t_sprite;
+
 typedef struct s_ray
 {
 	t_coord	coll;
@@ -256,9 +263,10 @@ double	deg_to_rad(double degrees);
 int angle_to_index(double angle);
 int	check_dir(t_ray r, bool is_horiz);
 double	projected_wall_height(int focal_len, double dist);
+double	get_dist(double angle, t_coord coll, t_player p);
 
 //enemy
  t_list *get_sprite_coll(t_data *data, t_ray *rays);
-void put_sprite(t_data *data, t_list *sprite_hits);
+void put_sprite(t_data *data, t_list *sprite_hits, t_sprite sprite);
 
 #endif

@@ -1,210 +1,138 @@
 #include "cub3d.h"
 
-// void put_sprite(t_data *data, t_list *sprite_hits)
-// {
-// 	int i;
-// 	int j;
-// 	double dist;
-// 	double scale;
-// 	int screen_x;
-// 	int screen_y;
-// 	int draw_x;
-// 	int draw_y;
-	
-// 	dist = sqrt(pow(data->player->pos.x - data->enemy->pos.x, 2) + pow(data->player->pos.y - data->enemy->pos.y, 2));
-// 	scale =data->focal_len / dist;
-// 	screen_x = (data->enemy->pos.x - data->player->pos.x) * scale + WINDOW_WIDTH / 2;
-// 	screen_y = (data->enemy->pos.y - data->player->pos.y) * scale + WINDOW_HEIGHT / 2;
-	
-// 	i = 0;
-// 	while(i < (int)(data->enemy->width) * scale)
-// 	{
-// 		j = 0;
-// 		while(j < (int)(data->enemy->height) * scale)
-// 		{
-// 			if((int)(i/ scale) >= 0 && (int)(i/ scale) < data->enemy->width && (int)(j/scale) >= 0 && (int)(j/scale) < data->enemy->height)
-// 			{
-// 				draw_x = screen_x + i - (data->enemy->width * scale) / 2;
-// 				draw_y = screen_y + j - (data->enemy->height * scale) / 2;
-// 				put_pixel_from_img(data, &data->textures->enemy, (t_coord){(int)(i/ scale), (int)(j/scale)}, (t_coord){draw_x, draw_y});
-// 			}
-				
-// 			j++;
-// 		}
-// 		i++;
-// 	}
-// }
-
-
-// wall_top = WINDOW_HEIGHT / 2 - height / 2;
-// 		j = 0;
-// 		while (j < wall_top && j < WINDOW_HEIGHT)
-// 			draw_ceiling(data, i, j++, data->textures->south.img_ptr != NULL);
-// 		while (j < wall_top + height && j < WINDOW_HEIGHT)
-// 		{
-// 			tex_x = get_tex_offset(rays[i]);
-// 			tex_y = ((j - wall_top) * TEXTURE_HEIGHT) / height;
-// 			put_pixel_from_img(data, &data->textures->north, (t_coord){tex_x, tex_y}, (t_coord){i, j});
-// 			j++;
-
-// void	draw_walls(t_ray *rays, t_data *data)
-// {
-// 	int		i;
-// 	int		height;
-// 	int		wall_top;
-// 	double	tex_x;
-// 	double	tex_y;
-// 	int		j;
-
-// 	i = 0;
-// 	while (i < WINDOW_WIDTH)
-// 	{
-// 		height = (int)projected_wall_height(data->focal_len, rays[i].dist);
-// 		wall_top = WINDOW_HEIGHT / 2 - height / 2;
-// 		j = 0;
-// 		while (j < wall_top && j < WINDOW_HEIGHT)
-// 			draw_ceiling(data, i, j++, data->textures->south.img_ptr != NULL);
-// 		while (j < wall_top + height && j < WINDOW_HEIGHT)
-// 		{
-// 			tex_x = get_tex_offset(rays[i]);
-// 			tex_y = ((j - wall_top) * TEXTURE_HEIGHT) / height;
-// 			put_pixel_from_img(data, &data->textures->north, (t_coord){tex_x, tex_y}, (t_coord){i, j});
-// 			j++;
-// 		}
-// 		while (j >= wall_top + height && j < WINDOW_HEIGHT)
-// 		 	draw_floor(data, i, j++, data->textures->south.img_ptr != NULL);
-// 		i++;
-// 	}
-// 	free(rays);
-// }
-
-
-
-
-void put_sprite(t_data *data, t_list *sprite_hits)
+double get_dir_to(t_coord pos, t_coord target)
 {
-	int i;
-	int j;
-	double dist;
-	double scale;
-	int screen_x;
-	int screen_y;
-	int draw_y;
-	i = 0;
-	dist = sqrt(pow(data->player->pos.x - data->enemy->pos.x, 2) + pow(data->player->pos.y - data->enemy->pos.y, 2));
-	double angle_diff = norm_angle(-atan2(data->enemy->pos.y - data->player->pos.y, data->enemy->pos.x - data->player->pos.x) - data->player->dir);
-	dist = dist * cos(angle_diff);
-	scale = data->focal_len / dist;
-	int height =(int)data->enemy->height * scale;
-	int width = (int)data->enemy->width * scale;
-	
+	return (norm_angle(-atan2(target.y - pos.y, target.x - pos.x)));
+}
 
-	screen_y = (WINDOW_HEIGHT / 2 - (int)(data->enemy->pos.y / dist)) + height /2;
-	
-	//t_sprite_hit *last = (t_sprite_hit *)ft_lstlast(sprite_hits)->content;
-	printf("width %d\n", width);
-	int size = ft_lstsize(sprite_hits);
-	printf("size %d   middle %d\n", size/2, ((t_sprite_hit *)sprite_hits->content)->middle);
-	if(((t_sprite_hit *)sprite_hits->content)->middle <= size/2 && size < width)
+
+void	put_sprite(t_data *data, t_list *sprite_hits, t_sprite sprite)
+{
+	int		i;
+	int		j;
+	double	dist;
+	double	scale;
+	int		screen_x;
+	int		screen_y;
+	int		draw_y;
+	int		height;
+	int		width;
+	int		size;
+	int		tex_x;
+	int		tex_y;
+
+	i = 0;
+	//double angle = norm_angle(-atan2(data->enemy->pos.y - data->player->pos.y,
+			//	data->enemy->pos.x - data->player->pos.x));
+	double angle = norm_angle(-atan2(sprite.pos.y - data->player->pos.y,
+				sprite.pos.x - data->player->pos.x));
+	dist = get_dist(angle, sprite.pos, *data->player);
+	scale = data->focal_len / dist;
+	height = (int)sprite.height * scale;
+	width = (int)sprite.width * scale;
+	screen_y = (WINDOW_HEIGHT / 2 - (int)(sprite.pos.y / dist)) + height
+		/ 2;
+	size = ft_lstsize(sprite_hits);
+
+	if (((t_sprite_hit *)sprite_hits->content)->middle <= size / 2
+		&& size < width)
 		i = width - size;
-	while(i < width && sprite_hits)
+	while (i < width && sprite_hits)
 	{
 		screen_x = ((t_sprite_hit *)sprite_hits->content)->screen_x;
 		j = 0;
-		while(j < height && j < WINDOW_HEIGHT - screen_y) 
+		while (j < height && j < WINDOW_HEIGHT - screen_y)
 		{
 			draw_y = screen_y + j;
-			int tex_x = (int)(i / scale)% data->enemy->width;
-			
-			int tex_y = (int)(j / scale) % data->enemy->height;
-			if(tex_x >= 0 && tex_x < data->enemy->width && tex_y >= 0 && tex_y < data->enemy->height)
-				put_pixel_from_img(data, &data->textures->enemy, (t_coord){tex_x, tex_y}, (t_coord){screen_x, draw_y});
+			tex_x = (int)(i / scale) % sprite.width;
+			tex_y = (int)(j / scale) % sprite.height;
+			if (tex_x >= 0 && tex_x < sprite.width && tex_y >= 0
+				&& tex_y < sprite.height)
+				put_pixel_from_img(data, &data->textures->enemy,
+					(t_coord){tex_x, tex_y}, (t_coord){screen_x, draw_y});
 			j++;
 		}
-			i++;
-			sprite_hits = sprite_hits->next;
+		i++;
+		sprite_hits = sprite_hits->next;
 	}
 	ft_lstclear(&sprite_hits, free);
 	sprite_hits = NULL;
 }
 
-
-
-bool hit_enemy(t_ray *r, t_data *data, double scale)
+bool	hit_enemy(t_ray *r, t_data *data, double scale)
 {
-
-	int scaled_width;
-	double dir_to_enemy;
-	double left_angle;
-	double right_angle;
-	double screen_width;
+	int		scaled_width;
+	double	dir_to_enemy;
+	double	left_angle;
+	double	right_angle;
+	double	screen_width;
 
 	scaled_width = (int)(data->enemy->width * scale);
 	screen_width = scaled_width * FOV / WINDOW_WIDTH;
-	dir_to_enemy = norm_angle(-atan2(data->enemy->pos.y - data->player->pos.y, data->enemy->pos.x - data->player->pos.x));
+	dir_to_enemy = norm_angle(-atan2(data->enemy->pos.y - data->player->pos.y,
+				data->enemy->pos.x - data->player->pos.x));
 	left_angle = norm_angle(dir_to_enemy - (screen_width / 2.0));
- 	right_angle = norm_angle(dir_to_enemy + (screen_width / 2.0));
-	if ((r->dir >= left_angle && r->dir <= right_angle) || (left_angle > right_angle && (r->dir >= left_angle || r->dir <= right_angle)))
+	right_angle = norm_angle(dir_to_enemy + (screen_width / 2.0));
+	if ((r->dir >= left_angle && r->dir <= right_angle)
+		|| (left_angle > right_angle && (r->dir >= left_angle
+				|| r->dir <= right_angle)))
 		return (true);
 	return (false);
 }
 
-int set_middle(t_data *data, t_list *sprite_colls)
+int	set_middle(t_data *data, t_list *sprite_colls)
 {
-	int i;
+	int		i;
+	double	middle;
+	int		closest;
+	double	dir_to_enemy;
+
 	i = 0;
-	double middle;
-	int closest;
 	middle = 100;
-	double dir_to_enemy;
-	dir_to_enemy = norm_angle(-atan2(data->enemy->pos.y - data->player->pos.y, data->enemy->pos.x - data->player->pos.x));
-	while(sprite_colls)
+	dir_to_enemy = norm_angle(-atan2(data->enemy->pos.y - data->player->pos.y,
+				data->enemy->pos.x - data->player->pos.x));
+	while (sprite_colls)
 	{
-		if(fabs(((t_sprite_hit *)sprite_colls->content)->dir - dir_to_enemy) < middle)
+		if (fabs(((t_sprite_hit *)sprite_colls->content)->dir
+				- dir_to_enemy) < middle)
 		{
-			middle = fabs(((t_sprite_hit *)sprite_colls->content)->dir -dir_to_enemy);
+			middle = fabs(((t_sprite_hit *)sprite_colls->content)->dir
+					- dir_to_enemy);
 			closest = i;
 		}
-		
 		i++;
 		sprite_colls = sprite_colls->next;
-		
 	}
-	
 	return (closest);
-
 }
 
+t_list	*get_sprite_coll(t_data *data, t_ray *rays)
+{
+	int				i;
+	bool			is_visible;
+	double			dist;
+	double			scale;
+	t_sprite_hit	*sprite_hit;
+	t_list			*sprite_colls;
 
-
- t_list *get_sprite_coll(t_data *data, t_ray *rays)
- {
-	int i;
-	bool is_visible;
-	double dist;
-	double scale;
-
-	i= 0;
-	t_sprite_hit *sprite_hit;
-	t_list *sprite_colls;
+	i = 0;
 	sprite_colls = NULL;
 	is_visible = false;
-	dist = sqrt(pow(data->player->pos.x - data->enemy->pos.x, 2) + pow(data->player->pos.y - data->enemy->pos.y, 2));
+	dist = sqrt(pow(data->player->pos.x - data->enemy->pos.x, 2)
+			+ pow(data->player->pos.y - data->enemy->pos.y, 2));
 	scale = data->focal_len / dist;
-
-	while(i < WINDOW_WIDTH)
-	{	
-		
-		if(hit_enemy(&rays[i], data, scale) && rays[i].dist > dist)
+	while (i < WINDOW_WIDTH)
+	{
+		if (hit_enemy(&rays[i], data, scale) && rays[i].dist > dist)
 		{
 			sprite_hit = malloc(sizeof(t_sprite_hit));
 			sprite_hit->is_collect = false;
-			if(sprite_hit == NULL)
+			if (sprite_hit == NULL)
 			{
 				ft_lstclear(&sprite_colls, free);
 				return (NULL);
 			}
-			//sprite_hit->dist = rays[i].dist;
+			// sprite_hit->dist = rays[i].dist;
 			sprite_hit->middle = -1;
 			sprite_hit->dir = rays[i].dir;
 			sprite_hit->is_enemy = true;
@@ -214,16 +142,14 @@ int set_middle(t_data *data, t_list *sprite_colls)
 		}
 		i++;
 	}
-	if(is_visible)
+	if (is_visible)
 	{
-		((t_sprite_hit *)sprite_colls->content)->middle = set_middle(data, sprite_colls);
+		((t_sprite_hit *)sprite_colls->content)->middle = set_middle(data,
+				sprite_colls);
 		return (sprite_colls);
 	}
-		
 	return (NULL);
- }
-
-
+}
 
 // t_coord	pick_enemy_spaces(t_vars *vars, int direction)
 // {

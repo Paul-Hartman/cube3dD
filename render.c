@@ -6,7 +6,7 @@
 /*   By: phartman <phartman@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/27 18:07:22 by wpepping          #+#    #+#             */
-/*   Updated: 2024/10/16 17:23:54 by phartman         ###   ########.fr       */
+/*   Updated: 2024/10/18 14:56:03 by phartman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ void	render_frame(t_data *data)
 		draw_walls(rays, data);
 		draw_minimap(data, rays);
 		if (sprite_hits)
-			put_sprite(data, sprite_hits);
+			put_sprite(data, sprite_hits, (t_sprite){data->enemy->pos, data->enemy->height, data->enemy->height});
 		mlx_put_image_to_window(data->mlx_ptr,
 			data->win_ptr, data->img_ptr, 0, 0);
 		data->last_render = currtime();
