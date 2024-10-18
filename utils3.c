@@ -6,7 +6,7 @@
 /*   By: wpepping <wpepping@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/17 13:58:17 by wpepping          #+#    #+#             */
-/*   Updated: 2024/10/18 15:40:17 by wpepping         ###   ########.fr       */
+/*   Updated: 2024/10/18 15:59:51 by wpepping         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,4 +26,11 @@ t_coord	get_gridpos_in_front(t_player *player)
 	if (player_dir == WEST)
 		return (coord_add(pixel2grid(player->pos), (t_coord){-1, 0}));
 	return ((t_coord){-1, -1});
+}
+
+int	max(int a, int b)
+{
+	if (b > a)
+		return (b);
+	return (a);
 }

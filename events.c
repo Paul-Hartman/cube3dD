@@ -6,7 +6,7 @@
 /*   By: wpepping <wpepping@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/14 18:29:48 by wpepping          #+#    #+#             */
-/*   Updated: 2024/10/17 16:39:20 by wpepping         ###   ########.fr       */
+/*   Updated: 2024/10/18 15:45:51 by wpepping         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,6 +74,8 @@ int	handle_key_press(int keycode, t_data *data)
 		data->key_state.rot_r = true;
 	if (keycode == XK_Left)
 		data->key_state.rot_l = true;
+	if (keycode == XK_Shift_L || keycode == XK_Shift_R)
+		data->key_state.run = true;
 	if (keycode == XK_space)
 		activate_door(data, get_gridpos_in_front(data->player));
 	return (0);
@@ -93,6 +95,8 @@ int	handle_key_release(int keycode, t_data *data)
 		data->key_state.rot_r = false;
 	if (keycode == XK_Left)
 		data->key_state.rot_l = false;
+	if (keycode == XK_Shift_L || keycode == XK_Shift_R)
+		data->key_state.run = false;
 	return (0);
 }
 

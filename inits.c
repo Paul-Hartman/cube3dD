@@ -6,7 +6,7 @@
 /*   By: wpepping <wpepping@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/16 15:39:28 by wpepping          #+#    #+#             */
-/*   Updated: 2024/10/18 14:23:39 by wpepping         ###   ########.fr       */
+/*   Updated: 2024/10/18 15:47:01 by wpepping         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	init_data(t_data *data)
 {
-	data->key_state = (t_key_state){0, 0, 0, 0, 0, 0};
+	data->key_state = (t_key_state){0, 0, 0, 0, 0, 0, 0};
 	data->mlx_ptr = NULL;
 	data->win_ptr = NULL;
 	data->img_ptr = NULL;

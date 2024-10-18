@@ -9,8 +9,8 @@ CC := cc
 CFLAGS := -Wall -Wextra -Werror -g
 
 SRCS := raytracing.c events.c cleanup.c cub3d.c doors.c inits.c inits2.c movement.c\
-		read_map.c read_map_utils.c read_map_content.c render.c textures.c utils.c\
-		utils2.c utils3.c validate_map.c get_next_line.c get_next_line_utils.c
+		read_map.c read_map_utils.c read_map_content.c render.c textures.c trig_utils.c\
+		utils.c utils2.c utils3.c validate_map.c get_next_line.c get_next_line_utils.c
 
 OBJS := $(SRCS:%.c=$(OBJDIR)/%.o)
 OBJS_BONUS := $(SRCS:%.c=$(OBJDIR_BONUS)/%.o)

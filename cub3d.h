@@ -6,7 +6,7 @@
 /*   By: wpepping <wpepping@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/15 20:13:31 by wpepping          #+#    #+#             */
-/*   Updated: 2024/10/18 15:10:22 by wpepping         ###   ########.fr       */
+/*   Updated: 2024/10/18 16:14:39 by wpepping         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,6 +111,7 @@ typedef struct s_key_state
 	bool	mv_l;
 	bool	rot_r;
 	bool	rot_l;
+	bool	run;
 }				t_key_state;
 
 typedef struct s_image
@@ -260,6 +261,10 @@ bool			coord_equals(t_coord c, t_coord d);
 t_coord			coord_add(t_coord c, t_coord d);
 t_coord			pixel2grid(t_coord pixel_pos);
 t_coord			get_gridpos_in_front(t_player *player);
+int				max(int a, int b);
+double			norm_angle(double angle);
+double			deg_to_rad(double degrees);
+double			radians_to_degrees(double radians);
 
 // render utils
 double norm_angle(double angle);

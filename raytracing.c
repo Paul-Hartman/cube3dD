@@ -6,7 +6,7 @@
 /*   By: wpepping <wpepping@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/15 18:36:33 by wpepping          #+#    #+#             */
-/*   Updated: 2024/10/18 15:10:22 by wpepping         ###   ########.fr       */
+/*   Updated: 2024/10/18 16:13:42 by wpepping         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -161,25 +161,6 @@ t_ray	*cast_rays(t_map *map, t_player p)
 		i++;
 	}
 	return (rays);
-}
-
-double	norm_angle(double angle)
-{
-	while (angle >= 2 * M_PI)
-		angle -= 2 * M_PI;
-	if (angle < 0)
-		angle += 2 * M_PI;
-	return (angle);
-}
-
-double	deg_to_rad(double degrees)
-{
-	return (degrees * (M_PI / 180.0));
-}
-
-double	radians_to_degrees(double radians)
-{
-	return (radians * (180.0 / M_PI));
 }
 
 double	get_dist(t_ray *r, t_coord coll, t_player p)
