@@ -129,7 +129,7 @@ void draw_player(t_data *data, t_ray *rays, t_coord offset)
 	e.x = data->enemy->pos.x / CUBE_SIZE * MINI_TILE_SZ - offset.x;
 	e.y = data->enemy->pos.y / CUBE_SIZE * MINI_TILE_SZ - offset.y;
 	draw_square(data, (t_coord){p.x - 2.5, p.y - 2.5}, 5, (int[3]){0, 255, 0});
-	draw_square(data, (t_coord){e.x - 2.5, e.y - 2.5}, 5, (int[3]){255, 0, 0});
+	
 	while(i < WINDOW_WIDTH)
 	{
 		if (i % 20 == 0)
@@ -144,6 +144,7 @@ void draw_player(t_data *data, t_ray *rays, t_coord offset)
 		}
 		i++;	
 	}
+	draw_square(data, (t_coord){e.x - 2.5, e.y - 2.5}, 5, (int[3]){255, 0, 0});
 }
 
 void	draw_minimap(t_data *data, t_ray *rays)

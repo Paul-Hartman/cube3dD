@@ -168,9 +168,9 @@ typedef struct s_config
 
 typedef struct s_sprite_hit
 {
-	t_coord pos;
+	//t_coord pos;
+	//int wall_bottom;
 	int screen_x;
-	bool is_horiz;
 	bool is_enemy;
 	bool is_collect;
 }				t_sprite_hit;
@@ -253,6 +253,7 @@ double norm_angle(double angle);
 double	deg_to_rad(double degrees);
 int angle_to_index(double angle);
 int	check_dir(t_ray r, bool is_horiz);
+double	projected_wall_height(int focal_len, double dist);
 
 //enemy
  t_list *get_sprite_coll(t_data *data, t_ray *rays);
