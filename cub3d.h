@@ -6,7 +6,7 @@
 /*   By: wpepping <wpepping@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/15 20:13:31 by wpepping          #+#    #+#             */
-/*   Updated: 2024/10/18 16:14:39 by wpepping         ###   ########.fr       */
+/*   Updated: 2024/10/18 17:51:47 by wpepping         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,7 @@
 # define DOOR_STEP 5
 # define EPSILON 1e-6
 # define M_PI 3.14159265358979323846
+# define SQRT_2 1.4142
 # define WINDOW_NAME "Cub3d"
 # define MAP_ERROR "Map error"
 # define OOM_ERROR "Out of memory error"

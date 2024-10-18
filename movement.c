@@ -6,7 +6,7 @@
 /*   By: wpepping <wpepping@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/16 18:19:31 by wpepping          #+#    #+#             */
-/*   Updated: 2024/10/18 16:16:54 by wpepping         ###   ########.fr       */
+/*   Updated: 2024/10/18 17:51:48 by wpepping         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,8 @@ bool	move_player(t_data *data, bool rev)
 		move_speed *= -1;
 	if (data->key_state.run)
 		move_speed *= 2;
+	if (data->key_state.mv_l || data->key_state.mv_r)
+		move_speed /= SQRT_2;
 	move.x = move_speed * data->cos_table[angle_to_index(data->player->dir)];
 	move.y = move_speed * data->sin_table[angle_to_index(data->player->dir)];
 	if (is_wall((t_coord){player->pos.x + move.x, player->pos.y}, data->map))
@@ -68,6 +70,8 @@ bool	strafe_player(t_data *data, bool left)
 	move_speed = MOVE_SPEED;
 	if (data->key_state.run)
 		move_speed *= 2;
+	if (data->key_state.mv_up || data->key_state.mv_dn)
+		move_speed /= SQRT_2;
 	if (left)
 		strafe_dir = norm_angle(data->player->dir + M_PI / 2);
 	else
