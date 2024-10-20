@@ -30,8 +30,9 @@ int	handle_loop(t_data *data)
 		moved = rotate_player(data, false, ROTATE_SPEED);
 	if (data->key_state.rot_l)
 		moved = rotate_player(data, true, ROTATE_SPEED);
-	if (moved)
-		render_frame(data);
+	(void)moved;
+	render_frame(data);
+	move_enemy(data);
 	return (0);
 }
 

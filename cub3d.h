@@ -87,10 +87,19 @@ typedef struct s_player
 	double	dir;
 }				t_player;
 
+typedef enum e_state
+{
+	WALK,
+	ATTACK,
+	DIE
+}				t_state;
+
+
 typedef struct s_enemy
 {
 	t_coord	pos;
 	double dir;
+	t_state state;
 	int frame;
 	double last_frame_time;
 	t_coord		point_a;
@@ -274,5 +283,6 @@ double	get_dist(double angle, t_coord coll, t_player p);
 //enemy
 t_sprite *get_sprite_coll(t_data *data, t_ray *rays, t_sprite *sprite);
 void	put_sprite(t_data *data, t_sprite *sprite);
+void move_enemy(t_data *data);
 
 #endif

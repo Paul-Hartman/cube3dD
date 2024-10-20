@@ -134,34 +134,89 @@ t_sprite	*get_sprite_coll(t_data *data, t_ray *rays, t_sprite *sprite)
 	return (NULL);
 }
 
-t_coord	pick_enemy_spaces(t_vars *vars, int direction)
+void move_enemy(t_data *data)
 {
-	t_coord	coord;
-
-	if (direction == 1)
+	double		dir;
+	double		fire_dist;
+	t_coord		move;
+	double distance;
+	dir = get_dir_to(data->enemy->pos, data->player->pos);
+	distance = get_dist(dir, data->enemy->pos,
+		*data->player);
+	fire_dist = 200;
+	if (distance <=  fire_dist)
 	{
-		coord.x = 0;
-		coord.y = 0;
-		while (vars->map[coord.y][coord.x] != '0' && coord.x <= vars->leg.col
-			- 1 && coord.y <= vars->leg.row - 1)
-		{
-			coord.x++;
-			coord.y++;
-		}
+		data->enemy->state = ATTACK;
+		return;
 	}
-	else
+	data->enemy->state = WALK;
+	move.x = MOVE_SPEED * data->cos_table[angle_to_index(dir)];
+	move.y = MOVE_SPEED * data->sin_table[angle_to_index(dir)];
+	if (!is_wall((t_coord){data->enemy->pos.x + move.x, data->enemy->pos.y + move.y}, data->map))
 	{
-		coord.x = vars->leg.col - 1;
-		coord.y = vars->leg.row - 1;
-		while (vars->map[coord.y][coord.x] != '0' && coord.x >= 0
-			&& coord.y >= 0)
-		{
-			coord.x--;
-			coord.y--;
-		}
+		data->enemy->pos.x += move.x;
+		data->enemy->pos.y -= move.y;
 	}
-	return (coord);
+		
 }
+
+// void	move_enemy(t_enemy *enemy, t_vars *vars, int new_x, int new_y)
+// {
+// 	int	grid_x;
+// 	int	grid_y;
+
+// 	grid_x = new_x + enemy->pos.x;
+// 	grid_y = new_y + enemy->pos.y;
+// 	if (grid_x >= 0 && grid_x < vars->leg.col && grid_y >= 0
+// 		&& grid_y < vars->leg.row && vars->map[grid_y][grid_x] != '1')
+// 	{
+// 		enemy->x = grid_x * CHAR_HEIGHT;
+// 		enemy->y = grid_y * CHAR_HEIGHT;
+// 		enemy->pos = assign_coord(grid_x, grid_y);
+// 	}
+// 	else
+// 	{
+// 		if (!new_x && vars->map[grid_y][grid_x + new_y] == '0')
+// 			move_enemy(enemy, vars, new_y, 0);
+// 		else if (!new_y && vars->map[grid_y + new_x][grid_x] == '0')
+// 			move_enemy(enemy, vars, 0, new_x);
+// 		else if (!new_y && vars->map[grid_y + -new_x][grid_x] == '0')
+// 			move_enemy(enemy, vars, 0, -new_x);
+// 		else if (!new_x && vars->map[grid_y][grid_x + -new_y] == '0')
+// 			move_enemy(enemy, vars, -new_y, 0);
+// 		else
+// 			switch_targets(enemy);
+// 	}
+// }
+
+// t_coord	pick_enemy_spaces(t_vars *vars, int direction)
+// {
+// 	t_coord	coord;
+
+// 	if (direction == 1)
+// 	{
+// 		coord.x = 0;
+// 		coord.y = 0;
+// 		while (vars->map[coord.y][coord.x] != '0' && coord.x <= vars->leg.col
+// 			- 1 && coord.y <= vars->leg.row - 1)
+// 		{
+// 			coord.x++;
+// 			coord.y++;
+// 		}
+// 	}
+// 	else
+// 	{
+// 		coord.x = vars->leg.col - 1;
+// 		coord.y = vars->leg.row - 1;
+// 		while (vars->map[coord.y][coord.x] != '0' && coord.x >= 0
+// 			&& coord.y >= 0)
+// 		{
+// 			coord.x--;
+// 			coord.y--;
+// 		}
+// 	}
+// 	return (coord);
+// }
 
 // int	enemy_init(t_vars *vars)
 // {
@@ -208,31 +263,3 @@ t_coord	pick_enemy_spaces(t_vars *vars, int direction)
 // 	}
 // }
 
-void	move_enemy(t_enemy *enemy, t_vars *vars, int new_x, int new_y)
-{
-	int	grid_x;
-	int	grid_y;
-
-	grid_x = new_x + enemy->pos.x;
-	grid_y = new_y + enemy->pos.y;
-	if (grid_x >= 0 && grid_x < vars->leg.col && grid_y >= 0
-		&& grid_y < vars->leg.row && vars->map[grid_y][grid_x] != '1')
-	{
-		enemy->x = grid_x * CHAR_HEIGHT;
-		enemy->y = grid_y * CHAR_HEIGHT;
-		enemy->pos = assign_coord(grid_x, grid_y);
-	}
-	else
-	{
-		if (!new_x && vars->map[grid_y][grid_x + new_y] == '0')
-			move_enemy(enemy, vars, new_y, 0);
-		else if (!new_y && vars->map[grid_y + new_x][grid_x] == '0')
-			move_enemy(enemy, vars, 0, new_x);
-		else if (!new_y && vars->map[grid_y + -new_x][grid_x] == '0')
-			move_enemy(enemy, vars, 0, -new_x);
-		else if (!new_x && vars->map[grid_y][grid_x + -new_y] == '0')
-			move_enemy(enemy, vars, -new_y, 0);
-		else
-			switch_targets(enemy);
-	}
-}

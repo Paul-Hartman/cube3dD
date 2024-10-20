@@ -34,7 +34,7 @@ void init_trig_tables(double *sin_table, double *cos_table)
 	}
 }
 
-t_enemy *init_enemy(t_map *map)
+t_enemy *init_enemy(t_data *data)
 {
 
 	t_coord	coord;
@@ -42,12 +42,12 @@ t_enemy *init_enemy(t_map *map)
 	enemy = (t_enemy *)malloc(sizeof(t_enemy));
 
 	coord.y = 0;
-	while (coord.y < map->height)
+	while (coord.y < data->map->height)
 	{
 		coord.x = 0;
-		while (coord.x < map->width)
+		while (coord.x < data->map->width)
 		{
-			if(map->grid[(int)coord.y][(int)coord.x] == ENEMY)
+			if(data->map->grid[(int)coord.y][(int)coord.x] == ENEMY)
 			{
 				enemy->x = coord.x;
 				enemy->y = coord.y;
@@ -56,8 +56,9 @@ t_enemy *init_enemy(t_map *map)
 				enemy->pos = (t_coord){coord.x * CUBE_SIZE + 0.5 * CUBE_SIZE, coord.y * CUBE_SIZE + 0.5 * CUBE_SIZE};
 				enemy->point_a = (t_coord){enemy->x + 30, enemy->y + 30};
 				enemy->point_b = (t_coord){enemy->x + 30, enemy->y + 30};
-				enemy->target = point_b;
+				enemy->target = data->player->pos;
 				enemy->dir = 'E';
+				enemy->state = WALK;
 				enemy->frame = 0;
 				enemy->last_frame_time = currtime();
 				return(enemy);
@@ -96,7 +97,7 @@ static int	init(t_data *data, char *fname)
 			&(data->lsize), &(data->endian));
 	data->last_render = currtime();
 	data->mouse_x = WINDOW_WIDTH / 2;
-	data->enemy = init_enemy(data->map);
+	data->enemy = init_enemy(data);
 	return (0);
 }
 

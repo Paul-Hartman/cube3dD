@@ -48,13 +48,18 @@ void	put_pixel_from_img(t_data *data, t_image *src_img,
 
 void update_enemy_frame(t_enemy *enemy)
 {
-    double current_time = currtime();
+	double current_time = currtime();
 
-    if (current_time - enemy->last_frame_time >= MS_BETWEEN_FRAMES *5)
-    {
-        enemy->frame = (enemy->frame + 1) % 10;
-        enemy->last_frame_time = current_time;
-    }
+	if (current_time - enemy->last_frame_time >= MS_BETWEEN_FRAMES *5)
+	{
+		if (enemy->state == ATTACK)
+			enemy->frame = 0 + (enemy->frame + 1) % 4;
+		else if (enemy->state == WALK)
+			enemy->frame = 4 + (enemy->frame + 1 - 4) % 4;
+		else if (enemy->state == DIE)
+			enemy->frame = 8 + (enemy->frame + 1 - 8) % 3;
+		enemy->last_frame_time = current_time;
+	}
 }
 
 

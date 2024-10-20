@@ -179,7 +179,7 @@ double	get_dist(double angle, t_coord coll, t_player p)
 			+ pow(p.pos.y - coll.y, 2));
 	angle_diff = angle - p.dir;
 	dist = dist * cos(angle_diff);
-	return (dist);
+	return (fabs(dist));
 }
 
 t_coord	get_ray_delta(t_ray r, bool is_horiz)
