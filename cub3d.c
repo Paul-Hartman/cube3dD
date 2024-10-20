@@ -54,10 +54,12 @@ t_enemy *init_enemy(t_map *map)
 				enemy->width = 128;
 				enemy->height = 128;
 				enemy->pos = (t_coord){coord.x * CUBE_SIZE + 0.5 * CUBE_SIZE, coord.y * CUBE_SIZE + 0.5 * CUBE_SIZE};
-				enemy->point_a = (t_coord){0, 0};
-				enemy->point_b = (t_coord){0, 0};
-				enemy->target = (t_coord){0, 0};
+				enemy->point_a = (t_coord){enemy->x + 30, enemy->y + 30};
+				enemy->point_b = (t_coord){enemy->x + 30, enemy->y + 30};
+				enemy->target = point_b;
 				enemy->dir = 'E';
+				enemy->frame = 0;
+				enemy->last_frame_time = currtime();
 				return(enemy);
 			}
 			coord.x++;

@@ -27,7 +27,6 @@ void	put_sprite(t_data *data, t_sprite *sprite)
 	if (sprite->info->middle <= sprite->info->len / 2
 		&& sprite->info->len < sprite->width * scale)
 		offset = (int)(sprite->width * scale) - sprite->info->len;
-		
 	while (++i < (int)(sprite->width * scale) && i < sprite->info->len)
 	{
 		j = -1;
@@ -36,7 +35,7 @@ void	put_sprite(t_data *data, t_sprite *sprite)
 		{
 			if ((int)(i / scale) >= 0 && i / scale < sprite->width && (int)(j
 					/ scale) >= 0 && (int)(j / scale) < sprite->height)
-				put_pixel_from_img(data, &data->textures->enemy[i%10],
+				put_pixel_from_img(data, &data->textures->enemy[data->enemy->frame],
 					(t_coord){(int)((i + offset) / scale), (int)(j / scale)},
 					(t_coord){sprite->info->min_x + i, screen_y + j});
 		}
@@ -135,34 +134,34 @@ t_sprite	*get_sprite_coll(t_data *data, t_ray *rays, t_sprite *sprite)
 	return (NULL);
 }
 
-// t_coord	pick_enemy_spaces(t_vars *vars, int direction)
-// {
-// 	t_coord	coord;
+t_coord	pick_enemy_spaces(t_vars *vars, int direction)
+{
+	t_coord	coord;
 
-// 	if (direction == 1)
-// 	{
-// 		coord.x = 0;
-// 		coord.y = 0;
-// 		while (vars->map[coord.y][coord.x] != '0' && coord.x <= vars->leg.col
-// 			- 1 && coord.y <= vars->leg.row - 1)
-// 		{
-// 			coord.x++;
-// 			coord.y++;
-// 		}
-// 	}
-// 	else
-// 	{
-// 		coord.x = vars->leg.col - 1;
-// 		coord.y = vars->leg.row - 1;
-// 		while (vars->map[coord.y][coord.x] != '0' && coord.x >= 0
-// 			&& coord.y >= 0)
-// 		{
-// 			coord.x--;
-// 			coord.y--;
-// 		}
-// 	}
-// 	return (coord);
-// }
+	if (direction == 1)
+	{
+		coord.x = 0;
+		coord.y = 0;
+		while (vars->map[coord.y][coord.x] != '0' && coord.x <= vars->leg.col
+			- 1 && coord.y <= vars->leg.row - 1)
+		{
+			coord.x++;
+			coord.y++;
+		}
+	}
+	else
+	{
+		coord.x = vars->leg.col - 1;
+		coord.y = vars->leg.row - 1;
+		while (vars->map[coord.y][coord.x] != '0' && coord.x >= 0
+			&& coord.y >= 0)
+		{
+			coord.x--;
+			coord.y--;
+		}
+	}
+	return (coord);
+}
 
 // int	enemy_init(t_vars *vars)
 // {
@@ -209,31 +208,31 @@ t_sprite	*get_sprite_coll(t_data *data, t_ray *rays, t_sprite *sprite)
 // 	}
 // }
 
-// void	move_enemy(t_enemy *enemy, t_vars *vars, int new_x, int new_y)
-// {
-// 	int	grid_x;
-// 	int	grid_y;
+void	move_enemy(t_enemy *enemy, t_vars *vars, int new_x, int new_y)
+{
+	int	grid_x;
+	int	grid_y;
 
-// 	grid_x = new_x + enemy->pos.x;
-// 	grid_y = new_y + enemy->pos.y;
-// 	if (grid_x >= 0 && grid_x < vars->leg.col && grid_y >= 0
-// 		&& grid_y < vars->leg.row && vars->map[grid_y][grid_x] != '1')
-// 	{
-// 		enemy->x = grid_x * CHAR_HEIGHT;
-// 		enemy->y = grid_y * CHAR_HEIGHT;
-// 		enemy->pos = assign_coord(grid_x, grid_y);
-// 	}
-// 	else
-// 	{
-// 		if (!new_x && vars->map[grid_y][grid_x + new_y] == '0')
-// 			move_enemy(enemy, vars, new_y, 0);
-// 		else if (!new_y && vars->map[grid_y + new_x][grid_x] == '0')
-// 			move_enemy(enemy, vars, 0, new_x);
-// 		else if (!new_y && vars->map[grid_y + -new_x][grid_x] == '0')
-// 			move_enemy(enemy, vars, 0, -new_x);
-// 		else if (!new_x && vars->map[grid_y][grid_x + -new_y] == '0')
-// 			move_enemy(enemy, vars, -new_y, 0);
-// 		else
-// 			switch_targets(enemy);
-// 	}
-// }
+	grid_x = new_x + enemy->pos.x;
+	grid_y = new_y + enemy->pos.y;
+	if (grid_x >= 0 && grid_x < vars->leg.col && grid_y >= 0
+		&& grid_y < vars->leg.row && vars->map[grid_y][grid_x] != '1')
+	{
+		enemy->x = grid_x * CHAR_HEIGHT;
+		enemy->y = grid_y * CHAR_HEIGHT;
+		enemy->pos = assign_coord(grid_x, grid_y);
+	}
+	else
+	{
+		if (!new_x && vars->map[grid_y][grid_x + new_y] == '0')
+			move_enemy(enemy, vars, new_y, 0);
+		else if (!new_y && vars->map[grid_y + new_x][grid_x] == '0')
+			move_enemy(enemy, vars, 0, new_x);
+		else if (!new_y && vars->map[grid_y + -new_x][grid_x] == '0')
+			move_enemy(enemy, vars, 0, -new_x);
+		else if (!new_x && vars->map[grid_y][grid_x + -new_y] == '0')
+			move_enemy(enemy, vars, -new_y, 0);
+		else
+			switch_targets(enemy);
+	}
+}

@@ -91,6 +91,8 @@ typedef struct s_enemy
 {
 	t_coord	pos;
 	double dir;
+	int frame;
+	double last_frame_time;
 	t_coord		point_a;
 	t_coord		point_b;
 	t_coord		prev_pos;

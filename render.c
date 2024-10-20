@@ -46,6 +46,18 @@ void	put_pixel_from_img(t_data *data, t_image *src_img,
 }
 
 
+void update_enemy_frame(t_enemy *enemy)
+{
+    double current_time = currtime();
+
+    if (current_time - enemy->last_frame_time >= MS_BETWEEN_FRAMES *5)
+    {
+        enemy->frame = (enemy->frame + 1) % 10;
+        enemy->last_frame_time = current_time;
+    }
+}
+
+
 
 void	render_frame(t_data *data)
 {
@@ -53,6 +65,7 @@ void	render_frame(t_data *data)
 	t_sprite	*sprite;
 	t_sprite enemy_sprite = ((t_sprite){data->enemy->pos, data->enemy->height, data->enemy->width, true, false, NULL});
 	rays = cast_rays(data->map, *data->player);
+	update_enemy_frame(data->enemy);
 	sprite = get_sprite_coll(data, rays, &enemy_sprite);
 	if (currtime() - data->last_render > MS_BETWEEN_FRAMES)
 	{
