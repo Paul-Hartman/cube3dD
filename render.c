@@ -40,6 +40,9 @@ void	put_pixel_from_img(t_data *data, t_image *src_img,
 
 	offset_src = src_coord.y * src_img->lsize + src_coord.x * src_img->bpp / 8;
 	pixel_src = src_img->buff + offset_src;
+	int color = *(int *)pixel_src;
+	if (color == (int)0xFF000000)
+		return;
 	ft_memcpy(pixel_dest, pixel_src, 4);
 }
 
