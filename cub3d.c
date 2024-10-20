@@ -51,8 +51,8 @@ t_enemy *init_enemy(t_map *map)
 			{
 				enemy->x = coord.x;
 				enemy->y = coord.y;
-				enemy->width = 68;
-				enemy->height = 70;
+				enemy->width = 128;
+				enemy->height = 128;
 				enemy->pos = (t_coord){coord.x * CUBE_SIZE + 0.5 * CUBE_SIZE, coord.y * CUBE_SIZE + 0.5 * CUBE_SIZE};
 				enemy->point_a = (t_coord){0, 0};
 				enemy->point_b = (t_coord){0, 0};

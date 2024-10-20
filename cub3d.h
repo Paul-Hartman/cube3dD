@@ -128,7 +128,7 @@ typedef struct s_textures
 	t_image	west;
 	t_image	floor;
 	t_image	ceiling;
-	t_image enemy;
+	t_image enemy[11];
 }				t_textures;
 
 typedef struct s_data

@@ -27,20 +27,33 @@ static int	load_image(void *mlx_ptr, t_image *img, char *fname)
 
 void	init_textures(t_textures *textures)
 {
+	int i;
+	i = 0;
 	textures->north.img_ptr = NULL;
 	textures->east.img_ptr = NULL;
 	textures->south.img_ptr = NULL;
 	textures->west.img_ptr = NULL;
 	textures->floor.img_ptr = NULL;
 	textures->ceiling.img_ptr = NULL;
-	textures->enemy.img_ptr = NULL;
+	while (i < 11)
+		textures->enemy[i++].img_ptr = NULL;
 }
 
 void load_enemy_texture(t_data *data)
 {
-	load_image(data->mlx_ptr, &data->textures->enemy,
-			"textures/enemy.xpm");
-	
+	int i;
+	i= 0;
+	char *filename;
+	while(i < 11)
+	{
+		filename = ft_strjoin("textures/sprite_", ft_itoa(i));
+		filename = ft_strjoin(filename, ".xpm");
+		if (load_image(data->mlx_ptr, &data->textures->enemy[i],
+			filename) == -1)
+			break;
+		free(filename);
+		i++;
+	}
 }
 
 
@@ -73,6 +86,18 @@ int	load_textures(t_data *data, t_config *cfg)
 	return (0);
 }
 
+void unload_enemy_textures(void *mlx_ptr, t_textures *textures)
+{
+	int i;
+	i = 0;
+	while (i < 11)
+	{
+		if (textures->enemy[i].img_ptr)
+			mlx_destroy_image(mlx_ptr, textures->enemy[i].img_ptr);
+		i++;
+	}
+}
+
 
 void	unload_textures(void *mlx_ptr, t_textures *textures)
 {
@@ -88,6 +113,5 @@ void	unload_textures(void *mlx_ptr, t_textures *textures)
 		mlx_destroy_image(mlx_ptr, textures->floor.img_ptr);
 	if (textures->ceiling.img_ptr)
 		mlx_destroy_image(mlx_ptr, textures->ceiling.img_ptr);
-	if (textures->enemy.img_ptr)
-		mlx_destroy_image(mlx_ptr, textures->enemy.img_ptr);
+	unload_enemy_textures(mlx_ptr, textures);
 }

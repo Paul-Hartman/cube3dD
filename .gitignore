@@ -10,3 +10,4 @@ mlx/obj/*
 *.a
 *.txt
 map.cub
+*.xpm

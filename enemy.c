@@ -23,8 +23,7 @@ void	put_sprite(t_data *data, t_sprite *sprite)
 					sprite->pos), sprite->pos, *data->player));
 	screen_y = (WINDOW_HEIGHT / 2 - (int)(sprite->pos.y
 				/ get_dist(get_dir_to(data->player->pos, sprite->pos),
-					sprite->pos, *data->player))) + (int)(sprite->height
-			* scale) / 2;
+					sprite->pos, *data->player)));
 	if (sprite->info->middle <= sprite->info->len / 2
 		&& sprite->info->len < sprite->width * scale)
 		offset = (int)(sprite->width * scale) - sprite->info->len;
@@ -37,7 +36,7 @@ void	put_sprite(t_data *data, t_sprite *sprite)
 		{
 			if ((int)(i / scale) >= 0 && i / scale < sprite->width && (int)(j
 					/ scale) >= 0 && (int)(j / scale) < sprite->height)
-				put_pixel_from_img(data, &data->textures->enemy,
+				put_pixel_from_img(data, &data->textures->enemy[i%10],
 					(t_coord){(int)((i + offset) / scale), (int)(j / scale)},
 					(t_coord){sprite->info->min_x + i, screen_y + j});
 		}
