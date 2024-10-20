@@ -39,21 +39,25 @@ void	init_textures(t_textures *textures)
 		textures->enemy[i++].img_ptr = NULL;
 }
 
-void load_enemy_texture(t_data *data)
+int load_enemy_texture(t_data *data)
 {
 	int i;
 	i= 0;
-	char *filename;
+	char *index;
+	char filename[30];
 	while(i < 11)
 	{
-		filename = ft_strjoin("textures/sprite_", ft_itoa(i));
-		filename = ft_strjoin(filename, ".xpm");
+		ft_strlcpy(filename, "textures/sprite_", 17);
+		index = ft_itoa(i);
+		ft_strlcat(filename, index, 30);
+		ft_strlcat(filename, ".xpm", 30);
 		if (load_image(data->mlx_ptr, &data->textures->enemy[i],
 			filename) == -1)
-			break;
-		free(filename);
+			return (-1);
+		free(index);
 		i++;
 	}
+	return (0);
 }
 
 
