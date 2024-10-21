@@ -35,7 +35,7 @@ static int	init(t_data *data, char *fname)
 		return (err_handl(MAP_ERROR, data));
 	if (init_doors(data->map) < 0)
 		return (err_handl(OOM_ERROR, data));
-	if(init_enemys(data) < 0)
+	if(init_enemies(data) < 0)
 		return (err_handl(OOM_ERROR, data));
 	if (init_window(data) < 0)
 		return (err_handl(OOM_ERROR, data));

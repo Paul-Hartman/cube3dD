@@ -298,7 +298,7 @@ int				init_window(t_data *data);
 void			init_map(t_map *map);
 int				init_doors(t_map *map);
 void			init_events(t_data *data);
-int init_enemys(t_data *data);
+int init_enemies(t_data *data);
 
 // Utils
 char			*file_ext(char *fname);
@@ -329,7 +329,7 @@ double	get_dist(double angle, t_coord coll, t_player p);
 //enemy
 t_sprite *get_sprite_coll(t_data *data, t_ray *rays, t_sprite *sprite);
 void	put_sprite(t_data *data, t_sprite *sprite);
-int move_enemy(t_data *data);
+int move_enemies(t_data *data);
 void render_sprites(t_data data, t_ray	*rays;);
 
 #endif

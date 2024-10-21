@@ -70,11 +70,13 @@ void render_sprites(t_data *data, t_ray *rays)
 		i= 0;
 		while(i < data->nr_of_enemies)
 		{
+			
+			update_enemy_frame(&data->enemies[i]);
 			enemy_sprite = ((t_sprite){data->enemies[i].pos, data->enemies[i].frame, data->enemies[i].size, data->enemies[i].size, true, false, NULL});
-			update_enemy_frame(&data->enemies[i++]);
 			sprite = get_sprite_coll(data, rays, &enemy_sprite);
 			if (sprite != NULL)
 				put_sprite(data, sprite);
+			i++;
 		}
 }
 
@@ -195,8 +197,9 @@ void	draw_minimap(t_data *data, t_ray *rays)
 {
 	int	y;
 	int	x;
+	//int door;
 	t_coord offset;
-
+	//door = 0;
 
 	offset.y = (data->player->pos.y/ CUBE_SIZE)*MINI_TILE_SZ - MINI_SIZE / 2;
 	offset.x = (data->player->pos.x/ CUBE_SIZE)* MINI_TILE_SZ - MINI_SIZE / 2;
@@ -210,6 +213,8 @@ void	draw_minimap(t_data *data, t_ray *rays)
 		{
 			if (data->map->grid[y/ MINI_TILE_SZ][x/ MINI_TILE_SZ] == WALL)
 				draw_square(data, (t_coord){x- offset.x, y - offset.y},MINI_TILE_SZ, (int[3]){95, 95, 95});
+			else if (data->map->grid[y/ MINI_TILE_SZ][x/ MINI_TILE_SZ] == DOOR)
+				draw_square(data, (t_coord){x- offset.x, y - offset.y}, MINI_TILE_SZ, (int[3]){0, 0, 255});
 			else if (data->map->grid[y/ MINI_TILE_SZ][x/ MINI_TILE_SZ] != SPACE)
 				draw_square(data, (t_coord){x- offset.x, y - offset.y}, MINI_TILE_SZ, (int[3]){195, 195, 195});
 			x += MINI_TILE_SZ/5;

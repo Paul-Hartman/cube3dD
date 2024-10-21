@@ -26,6 +26,9 @@ int	get_map_item(t_coord pos, t_map *map)
 	t_coord	grid_pos;
 
 	grid_pos = pixel2grid(pos);
+	if (grid_pos.x < 0 || grid_pos.x >= map->width
+		|| grid_pos.y < 0 || grid_pos.y >= map->height)
+		return (-1);
 	return (map->grid[(int)grid_pos.y][(int)grid_pos.x]);
 }
 

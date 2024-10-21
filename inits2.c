@@ -92,7 +92,6 @@ int init_enemies(t_data *data)
 	int	i;
 	int	j;
 	int	n;
-	t_enemy *enemy;
 
 	data->enemies = NULL;
 	data->nr_of_enemies = nr_of_thing(data->map, ENEMY);
@@ -108,15 +107,15 @@ int init_enemies(t_data *data)
 	{
 		j = 0;
 		while (j < data->map->height)
-			if (data->map->grid[j++][i] == ENEMY)
+			if (data->map->grid[j++][i] == ENEMY && n < data->nr_of_enemies)
 			{
-				enemy = &data->enemies[n++];
-				enemy->size = 128;
-				enemy->pos = (t_coord){j * CUBE_SIZE + 0.5 * CUBE_SIZE, i * CUBE_SIZE + 0.5 * CUBE_SIZE};
-				enemy->target = data->player->pos;
-				enemy->state = WALK;
-				enemy->frame = 4;
-				enemy->last_frame_time = currtime();
+				data->enemies[n].size = 128;
+				data->enemies[n].pos = (t_coord){i* CUBE_SIZE + 0.5 * CUBE_SIZE, j* CUBE_SIZE - 0.5 * CUBE_SIZE};
+				data->enemies[n].target = data->player->pos;
+				data->enemies[n].state = WALK;
+				data->enemies[n].frame = 4;
+				data->enemies[n].last_frame_time = currtime();
+				n++;
 			}
 		i++;
 	}
