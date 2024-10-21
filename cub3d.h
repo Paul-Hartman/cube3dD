@@ -200,8 +200,6 @@ typedef struct s_config
 
 typedef struct s_sprite_info
 {
-	//t_coord pos;
-	//int wall_bottom;
 	int screen_x;
 	double dir;
 	int min_x;
@@ -209,6 +207,12 @@ typedef struct s_sprite_info
 	int len;
 	int middle;
 }				t_sprite_info;
+
+typedef struct s_hit
+{
+	double dir;
+	int screen_x; 
+}	t_hit;
 
 typedef struct s_sprite
 {

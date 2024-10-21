@@ -1,12 +1,10 @@
 #include "cub3d.h"
 
-static t_sprite_info	*set_sprite_info(t_data *data, t_list *info_lst,
-							t_sprite *sprite);
-static bool				hit_sprite(t_ray *r, t_data *data, double scale,
-							t_sprite *sprite);
+static void	set_sprite_info(t_data *data, t_hit *info_arr, t_sprite *sprite,
+				int len);
+static bool	hit_sprite(t_ray *r, t_data *data, double scale, t_sprite *sprite);
 static int	calculate_sprite_parameters(t_data *data, t_sprite *sprite,
-	double *scale, int *screen_y);
-
+				double *scale, int *screen_y);
 
 void	put_sprite(t_data *data, t_sprite *sprite)
 {
@@ -31,43 +29,35 @@ void	put_sprite(t_data *data, t_sprite *sprite)
 					(t_coord){sprite->info->min_x + i, screen_y + j});
 		}
 	}
+	free(sprite->info);
 }
 
 t_sprite	*get_sprite_coll(t_data *data, t_ray *rays, t_sprite *sprite)
 {
-	int				i;
-	double			dist;
-	double			scale;
-	t_sprite_info	*sprite_info;
-	t_list			*info_lst;
+	int		i;
+	double	dist;
+	t_hit	info_arr[WINDOW_WIDTH];
+	int		info_len;
 
 	i = -1;
 	dist = get_dist(get_dir_to(data->player->pos, sprite->pos), sprite->pos,
 			*data->player);
-	scale = data->focal_len / dist;
-	info_lst = NULL;
+	info_len = 0;
+	ft_bzero(info_arr, sizeof(t_hit) * WINDOW_WIDTH);
 	while (++i < WINDOW_WIDTH)
+		if (hit_sprite(&rays[i], data, data->focal_len / dist, sprite)
+			&& rays[i].dist > dist)
+			info_arr[info_len++] = (t_hit){rays[i].dir, i};
+	if (info_len > 0)
 	{
-		if (hit_sprite(&rays[i], data, scale, sprite) && rays[i].dist > dist)
-		{
-			sprite_info = malloc(sizeof(t_sprite_info));
-			sprite_info->dir = rays[i].dir;
-			sprite_info->screen_x = i;
-			ft_lstadd_back(&info_lst, ft_lstnew(sprite_info));
-		}
-	}
-	if (info_lst)
-	{
-		sprite_info = set_sprite_info(data, info_lst, sprite);
-		ft_lstclear(&info_lst, free);
-		sprite->info = sprite_info;
+		set_sprite_info(data, info_arr, sprite, info_len);
 		return (sprite);
 	}
 	return (NULL);
 }
 
-static t_sprite_info	*set_sprite_info(t_data *data, t_list *info_lst,
-		t_sprite *sprite)
+static void	set_sprite_info(t_data *data, t_hit *info_arr, t_sprite *sprite,
+		int len)
 {
 	int				i;
 	double			middle;
@@ -76,29 +66,25 @@ static t_sprite_info	*set_sprite_info(t_data *data, t_list *info_lst,
 	t_sprite_info	*info;
 
 	i = 0;
-	middle = 100;
+	middle = 10000;
+	info = malloc(sizeof(t_sprite_info));
 	dir_to_sprite = get_dir_to(data->player->pos, sprite->pos);
-	info = (t_sprite_info *)malloc(sizeof(t_sprite_info));
-	info->min_x = ((t_sprite_info *)info_lst->content)->screen_x;
-	info->len = ft_lstsize(info_lst);
-	while (info_lst)
+	info->min_x = info_arr[i].screen_x;
+	while (i < len)
 	{
-		if (fabs(((t_sprite_info *)info_lst->content)->dir
-				- dir_to_sprite) < middle)
+		if (fabs(info_arr[i].dir - dir_to_sprite) < middle)
 		{
-			middle = fabs(((t_sprite_info *)info_lst->content)->dir
-					- dir_to_sprite);
+			middle = fabs(info_arr[i].dir - dir_to_sprite);
 			closest = i;
 		}
 		i++;
-		info_lst = info_lst->next;
 	}
+	info->len = i;
 	info->dir = dir_to_sprite;
 	info->middle = closest;
 	info->max_x = info->min_x + info->len;
-	return (info);
+	sprite->info = info;
 }
-
 
 static bool	hit_sprite(t_ray *r, t_data *data, double scale, t_sprite *sprite)
 {
@@ -120,7 +106,6 @@ static bool	hit_sprite(t_ray *r, t_data *data, double scale, t_sprite *sprite)
 	return (false);
 }
 
-
 static int	calculate_sprite_parameters(t_data *data, t_sprite *sprite,
 		double *scale, int *screen_y)
 {
@@ -140,4 +125,3 @@ static int	calculate_sprite_parameters(t_data *data, t_sprite *sprite,
 		offset = width - sprite->info->len;
 	return (offset);
 }
-
