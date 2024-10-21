@@ -154,7 +154,7 @@ void draw_player(t_data *data, t_ray *rays, t_coord offset)
 	
 	while(i < WINDOW_WIDTH)
 	{
-		if (i % 20 == 0)
+		if (i % 20 == 0 && i !=0)
 		{
 			end_line.x = rays[i].coll.x / CUBE_SIZE * MINI_TILE_SZ - offset.x;
 			end_line.y = rays[i].coll.y / CUBE_SIZE * MINI_TILE_SZ - offset.y;
