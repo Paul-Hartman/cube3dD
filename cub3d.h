@@ -302,6 +302,7 @@ int				init_window(t_data *data);
 void			init_map(t_map *map);
 int				init_doors(t_map *map);
 void			init_events(t_data *data);
+int init_enemys(t_data *data);
 
 // Utils
 char			*file_ext(char *fname);
@@ -325,13 +326,14 @@ double			radians_to_degrees(double radians);
 double norm_angle(double angle);
 double	deg_to_rad(double degrees);
 int angle_to_index(double angle);
-int	check_dir(t_ray r, bool is_horiz);
+int	check_dir(double angle, bool is_horiz);
 double	projected_wall_height(int focal_len, double dist);
 double	get_dist(double angle, t_coord coll, t_player p);
 
 //enemy
 t_sprite *get_sprite_coll(t_data *data, t_ray *rays, t_sprite *sprite);
 void	put_sprite(t_data *data, t_sprite *sprite);
-void move_enemy(t_data *data);
+int move_enemy(t_data *data);
+int render_sprites(t_data data, t_ray	*rays;);
 
 #endif

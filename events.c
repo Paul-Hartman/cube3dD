@@ -14,7 +14,6 @@
 
 int	handle_loop(t_data *data)
 {
-	//t_ray	*rays;
 	bool	moved;
 
 	moved = false;
@@ -32,8 +31,10 @@ int	handle_loop(t_data *data)
 		moved = rotate_player(data, true, ROTATE_SPEED) || moved;
 	if (data->active_door)
 		moved = move_door(data, data->active_door) || moved;
-	if (moved)
+	if (move_enemy(data) ||moved)
 		render_frame(data);
+	
+	
 	return (0);
 }
 

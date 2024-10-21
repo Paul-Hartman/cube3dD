@@ -25,19 +25,7 @@ static int	load_image(void *mlx_ptr, t_image *img, char *fname)
 	return (0);
 }
 
-void	init_textures(t_textures *textures)
-{
-	int i;
-	i = 0;
-	textures->north.img_ptr = NULL;
-	textures->east.img_ptr = NULL;
-	textures->south.img_ptr = NULL;
-	textures->west.img_ptr = NULL;
-	textures->floor.img_ptr = NULL;
-	textures->ceiling.img_ptr = NULL;
-	while (i < 11)
-		textures->enemy[i++].img_ptr = NULL;
-}
+
 
 int load_enemy_texture(t_data *data)
 {

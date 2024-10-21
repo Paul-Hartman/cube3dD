@@ -17,8 +17,6 @@ double	get_horiz_coll(t_player p, t_ray *r, t_map *map);
 t_coord	get_ray_delta(t_ray *r, bool is_horiz);
 t_coord	get_wall_coll(t_coord coll, t_ray *r, t_map *map, bool is_horiz);
 double	get_vert_coll(t_player p, t_ray *r, t_map *map);
-double	deg_to_rad(double degrees);
-double	radians_to_degrees(double radians);
 int		check_dir(double angle, bool is_horiz);
 t_image	*get_texture(t_textures *textures, t_ray *r);
 
@@ -164,25 +162,6 @@ t_ray	*cast_rays(t_map *map, t_player p)
 	return (rays);
 }
 
-double	norm_angle(double angle)
-{
-	while (angle >= 2 * M_PI)
-		angle -= 2 * M_PI;
-	if (angle < 0)
-		angle += 2 * M_PI;
-	return (angle);
-}
-
-double	deg_to_rad(double degrees)
-{
-	return (degrees * (M_PI / 180.0));
-}
-
-double	radians_to_degrees(double radians)
-{
-	return (radians * (180.0 / M_PI));
-}
-
 double	get_dist(double angle, t_coord coll, t_player p)
 {
 	 double	dist;
@@ -291,7 +270,7 @@ double	get_vert_coll(t_player p, t_ray *r, t_map *map)
 	else
 		coll.y = p.pos.y + fabs(p.pos.x - coll.x) * tan_val;
 	r->coll = get_wall_coll(coll, r, map, false);
-	dist = get_dist(r, r->coll, p);
+	dist = get_dist(r->dir, r->coll, p);
 	return (dist);
 }
 
@@ -312,7 +291,7 @@ double	get_horiz_coll(t_player p, t_ray *r, t_map *map)
 	else
 		coll.x = p.pos.x + fabs(p.pos.y - coll.y) / tan_val;
 	r->coll = get_wall_coll(coll, r, map, true);
-	return (get_dist(r, r->coll, p));
+	return (get_dist(r->dir, r->coll, p));
 }
 
 int	check_dir(double angle, bool is_horiz)

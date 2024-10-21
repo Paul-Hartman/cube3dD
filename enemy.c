@@ -134,7 +134,7 @@ t_sprite	*get_sprite_coll(t_data *data, t_ray *rays, t_sprite *sprite)
 	return (NULL);
 }
 
-void move_enemy(t_data *data)
+int move_enemy(t_data *data)
 {
 	double		dir;
 	double		fire_dist;
@@ -147,7 +147,7 @@ void move_enemy(t_data *data)
 	if (distance <=  fire_dist)
 	{
 		data->enemy->state = ATTACK;
-		return;
+		return(1);
 	}
 	data->enemy->state = WALK;
 	move.x = MOVE_SPEED * data->cos_table[angle_to_index(dir)];
@@ -156,8 +156,9 @@ void move_enemy(t_data *data)
 	{
 		data->enemy->pos.x += move.x;
 		data->enemy->pos.y -= move.y;
+		return (1);
 	}
-		
+	return (0);
 }
 
 // void	move_enemy(t_enemy *enemy, t_vars *vars, int new_x, int new_y)

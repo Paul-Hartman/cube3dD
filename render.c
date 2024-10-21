@@ -49,7 +49,7 @@ void update_enemy_frame(t_enemy *enemy)
 {
 	double current_time = currtime();
 
-	if (current_time - enemy->last_frame_time >= MS_BETWEEN_FRAMES *5)
+	if (current_time - enemy->last_frame_time >= MS_BETWEEN_FRAMES *10)
 	{
 		if (enemy->state == ATTACK)
 			enemy->frame = 0 + (enemy->frame + 1) % 4;
@@ -62,24 +62,34 @@ void update_enemy_frame(t_enemy *enemy)
 }
 
 
+int render_sprites(t_data *data, t_ray *rays)
+{
+		t_sprite	*sprite;
+		t_sprite enemy_sprite = ((t_sprite){data->enemy->pos, data->enemy->height, data->enemy->width, true, false, NULL});
+		
+		update_enemy_frame(data->enemy);
+		sprite = get_sprite_coll(data, rays, &enemy_sprite);
+		if (sprite != NULL)
+			put_sprite(data, sprite);
+		else
+			return(0);
+		return (1);
+}
+
 
 void	render_frame(t_data *data)
 {
 	t_ray	*rays;
-	t_sprite	*sprite;
-	t_sprite enemy_sprite = ((t_sprite){data->enemy->pos, data->enemy->height, data->enemy->width, true, false, NULL});
+
 	rays = cast_rays(data->map, *data->player);
-	update_enemy_frame(data->enemy);
-	sprite = get_sprite_coll(data, rays, &enemy_sprite);
 	if (currtime() - data->last_render > MS_BETWEEN_FRAMES)
 	{
 		draw_walls(rays, data);
 		draw_minimap(data, rays);
-		if (sprite != NULL)
-			put_sprite(data, sprite);
+		render_sprites(data, rays);
+		data->last_render = currtime();
 		mlx_put_image_to_window(data->mlx_ptr,
 			data->win_ptr, data->img_ptr, 0, 0);
-		data->last_render = currtime();
 	}
 }
 

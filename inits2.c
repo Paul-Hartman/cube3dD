@@ -14,6 +14,10 @@
 
 void	init_textures(t_textures *textures)
 {
+	int i;
+	i = 0;
+	while (i < 11)
+		textures->enemy[i++].img_ptr = NULL;
 	textures->north.img_ptr = NULL;
 	textures->east.img_ptr = NULL;
 	textures->south.img_ptr = NULL;
@@ -82,3 +86,41 @@ int	init_doors(t_map *map)
 	}
 	return (0);
 }
+
+int init_enemys(t_data *data)
+{
+
+	t_coord	coord;
+	t_enemy *enemy;
+	enemy = (t_enemy *)malloc(sizeof(t_enemy));
+	if (!enemy)
+		return (-1);
+	coord.y = 0;
+	while (coord.y < data->map->height)
+	{
+		coord.x = 0;
+		while (coord.x < data->map->width)
+		{
+			if(data->map->grid[(int)coord.y][(int)coord.x] == ENEMY)
+			{
+				enemy->x = coord.x;
+				enemy->y = coord.y;
+				enemy->width = 128;
+				enemy->height = 128;
+				enemy->pos = (t_coord){coord.x * CUBE_SIZE + 0.5 * CUBE_SIZE, coord.y * CUBE_SIZE + 0.5 * CUBE_SIZE};
+				enemy->point_a = (t_coord){enemy->x + 30, enemy->y + 30};
+				enemy->point_b = (t_coord){enemy->x + 30, enemy->y + 30};
+				enemy->target = data->player->pos;
+				enemy->dir = 'E';
+				enemy->state = WALK;
+				enemy->frame = 0;
+				enemy->last_frame_time = currtime();
+				data->enemy = enemy;
+			}
+			coord.x++;
+		}
+		coord.y++;
+	}
+	return (0);
+}
+

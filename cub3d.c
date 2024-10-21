@@ -19,56 +19,7 @@ static int	err_handl(char *error_msg, t_data *data)
 	return (-1);
 }
 
-void init_trig_tables(double *sin_table, double *cos_table)
-{
-	double angle;
-	int i;
 
-	i = 0;
-	while (i < 3600)
-	{
-		angle = deg_to_rad(i * 0.1);
-		sin_table[i] = sin(angle);
-		cos_table[i] = cos(angle);
-		i++;
-	}
-}
-
-t_enemy *init_enemy(t_data *data)
-{
-
-	t_coord	coord;
-	t_enemy *enemy;
-	enemy = (t_enemy *)malloc(sizeof(t_enemy));
-
-	coord.y = 0;
-	while (coord.y < data->map->height)
-	{
-		coord.x = 0;
-		while (coord.x < data->map->width)
-		{
-			if(data->map->grid[(int)coord.y][(int)coord.x] == ENEMY)
-			{
-				enemy->x = coord.x;
-				enemy->y = coord.y;
-				enemy->width = 128;
-				enemy->height = 128;
-				enemy->pos = (t_coord){coord.x * CUBE_SIZE + 0.5 * CUBE_SIZE, coord.y * CUBE_SIZE + 0.5 * CUBE_SIZE};
-				enemy->point_a = (t_coord){enemy->x + 30, enemy->y + 30};
-				enemy->point_b = (t_coord){enemy->x + 30, enemy->y + 30};
-				enemy->target = data->player->pos;
-				enemy->dir = 'E';
-				enemy->state = WALK;
-				enemy->frame = 0;
-				enemy->last_frame_time = currtime();
-				return(enemy);
-			}
-			coord.x++;
-		}
-		coord.y++;
-	}
-	return (NULL);
-}
 
 
 static int	init(t_data *data, char *fname)
@@ -83,6 +34,8 @@ static int	init(t_data *data, char *fname)
 	if (read_map(data, fname) < 0)
 		return (err_handl(MAP_ERROR, data));
 	if (init_doors(data->map) < 0)
+		return (err_handl(OOM_ERROR, data));
+	if(init_enemys(data) < 0)
 		return (err_handl(OOM_ERROR, data));
 	if (init_window(data) < 0)
 		return (err_handl(OOM_ERROR, data));
