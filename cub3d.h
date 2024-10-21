@@ -6,7 +6,7 @@
 /*   By: wpepping <wpepping@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/15 20:13:31 by wpepping          #+#    #+#             */
-/*   Updated: 2024/10/18 17:51:47 by wpepping         ###   ########.fr       */
+/*   Updated: 2024/10/21 18:44:10 by wpepping         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,8 @@
 # define CHAR_HEIGHT 32
 # define CUBE_SIZE 180
 # define TEXTURE_HEIGHT 180
+# define GUN_WIDTH 310
+# define GUN_HEIGHT 280
 # define WINDOW_WIDTH 1024
 # define WINDOW_HEIGHT 640
 # define MOVE_SPEED 0.2
@@ -49,7 +51,8 @@
 # define WINDOW_NAME "Cub3d"
 # define MAP_ERROR "Map error"
 # define OOM_ERROR "Out of memory error"
-
+# define GUN_TEXTURE_BASE_NAME "textures/gun"
+# define XPM_EXT ".xpm"
 
 # define EMPTY 48
 # define WALL 49
@@ -152,7 +155,8 @@ typedef struct s_textures
 	t_image	west;
 	t_image	floor;
 	t_image	ceiling;
-	t_image enemy[11];
+	t_image	enemy[11];
+	t_image	gun[3];
 	t_image	door;
 }				t_textures;
 

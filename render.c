@@ -6,7 +6,7 @@
 /*   By: wpepping <wpepping@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/27 18:07:22 by wpepping          #+#    #+#             */
-/*   Updated: 2024/10/18 15:59:45 by wpepping         ###   ########.fr       */
+/*   Updated: 2024/10/21 18:33:41 by wpepping         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,19 +28,14 @@ void	put_pixel_from_img(t_data *data, t_image *src_img,
 {
 	char	*pixel_src;
 	char	*pixel_dest;
-	int		offset_dest;
-	int		offset_src;
+	int		offset;
 
-	offset_dest = dest_coord.y * data->lsize + dest_coord.x * data->bpp / 8;
-	pixel_dest = data->imgbuff + offset_dest;
-
-	src_coord.x = (int)src_coord.x;
-	src_coord.y = (int)src_coord.y;
-
-	offset_src = src_coord.y * src_img->lsize + src_coord.x * src_img->bpp / 8;
-	pixel_src = src_img->buff + offset_src;
-	if (*(int *)pixel_src == (int)0xFF000000)
-		return;
+	offset = src_coord.y * src_img->lsize + src_coord.x * src_img->bpp / 8;
+	pixel_src = src_img->buff + offset;
+	if (pixel_src[3] == -1)
+		return ;
+	offset = dest_coord.y * data->lsize + dest_coord.x * data->bpp / 8;
+	pixel_dest = data->imgbuff + offset;
 	ft_memcpy(pixel_dest, pixel_src, 4);
 }
 
@@ -86,6 +81,30 @@ void render_sprites(t_data *data, t_ray *rays)
 		}
 }
 
+void	draw_gun(t_data *data)
+{
+	int	img_start_x;
+	int	img_start_y;
+	int	i;
+	int	j;
+
+	img_start_x = (WINDOW_WIDTH - GUN_WIDTH) / 2;
+	img_start_y = WINDOW_HEIGHT - GUN_HEIGHT;
+	i = 0;
+	j = 0;
+	while (i < GUN_HEIGHT)
+	{
+		j = 0;
+		while (j < GUN_WIDTH)
+		{
+			(void)data;
+			put_pixel_from_img(data, &data->textures->gun[0],
+				(t_coord){j, i}, (t_coord){img_start_x + j, img_start_y + i});
+			j++;
+		}
+		i++;
+	}
+}
 
 void	render_frame(t_data *data)
 {
@@ -100,6 +119,7 @@ void	render_frame(t_data *data)
 		data->last_render = currtime();
 		mlx_put_image_to_window(data->mlx_ptr,
 			data->win_ptr, data->img_ptr, 0, 0);
+		draw_gun(data);
 	}
 }
 
@@ -168,7 +188,7 @@ void draw_player(t_data *data, t_ray *rays, t_coord offset)
 	p.y = data->player->pos.y / CUBE_SIZE * MINI_TILE_SZ - offset.y;
 	
 	draw_square(data, (t_coord){p.x - 2.5, p.y - 2.5}, 5, (int[3]){0, 255, 0});
-	
+
 	while(i < WINDOW_WIDTH)
 	{
 		if (i % 20 == 0 && i !=0)
@@ -227,8 +247,8 @@ void	draw_minimap(t_data *data, t_ray *rays)
 		}
 		y+= MINI_TILE_SZ/5;
 	}
-	
-	
+
+
 	draw_player(data, rays, offset);
 	draw_enemies(data, offset);
 }
