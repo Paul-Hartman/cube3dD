@@ -322,6 +322,7 @@ double			norm_angle(double angle);
 double			deg_to_rad(double degrees);
 double			radians_to_degrees(double radians);
 
+
 // render utils
 double norm_angle(double angle);
 double	deg_to_rad(double degrees);
@@ -329,11 +330,16 @@ int angle_to_index(double angle);
 int	check_dir(double angle, bool is_horiz);
 double	projected_wall_height(int focal_len, double dist);
 double	get_dist(double angle, t_coord coll, t_player p);
+double	get_dir_to(t_coord pos, t_coord target);
+double	get_scale(double focal_len, double dist);;
 
 //enemy
-t_sprite *get_sprite_coll(t_data *data, t_ray *rays, t_sprite *sprite);
-void	put_sprite(t_data *data, t_sprite *sprite);
+
 int move_enemies(t_data *data);
 void kill_enemy(t_data *data, t_coord pos);
+
+//sprites
+t_sprite *get_sprite_coll(t_data *data, t_ray *rays, t_sprite *sprite);
+void	put_sprite(t_data *data, t_sprite *sprite);
 
 #endif

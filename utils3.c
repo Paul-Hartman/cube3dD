@@ -34,3 +34,13 @@ int	max(int a, int b)
 		return (b);
 	return (a);
 }
+
+double	get_dir_to(t_coord pos, t_coord target)
+{
+	return (norm_angle(-atan2(target.y - pos.y, target.x - pos.x)));
+}
+double	get_scale(double focal_len, double dist)
+{
+	return (focal_len / dist);
+}
+

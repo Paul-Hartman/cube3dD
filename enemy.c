@@ -1,192 +1,62 @@
 #include "cub3d.h"
 
-double	get_dir_to(t_coord pos, t_coord target)
+bool	enemy_hit_wall(t_coord pos, t_coord move, t_data *data)
 {
-	return (norm_angle(-atan2(target.y - pos.y, target.x - pos.x)));
-}
-double	get_scale(double focal_len, double dist)
-{
-	return (focal_len / dist);
-}
-
-void	put_sprite(t_data *data, t_sprite *sprite)
-{
-	int		i;
-	int		j;
-	double	scale;
-	int		screen_y;
-	int		offset;
-
-	i = -1;
-	offset = 0;
-	scale = get_scale(data->focal_len, get_dist(get_dir_to(data->player->pos,
-					sprite->pos), sprite->pos, *data->player));
-	screen_y = (WINDOW_HEIGHT / 2 - (int)(sprite->pos.y
-				/ get_dist(get_dir_to(data->player->pos, sprite->pos),
-					sprite->pos, *data->player)));
-	if (sprite->info->middle <= sprite->info->len / 2
-		&& sprite->info->len < sprite->width * scale)
-		offset = (int)(sprite->width * scale) - sprite->info->len;
-	while (++i < (int)(sprite->width * scale) && i < sprite->info->len)
-	{
-		j = -1;
-		while (++j < (int)(sprite->height * scale) && j < WINDOW_HEIGHT
-			- screen_y)
-		{
-			if ((int)(i / scale) >= 0 && i / scale < sprite->width && (int)(j
-					/ scale) >= 0 && (int)(j / scale) < sprite->height)
-				put_pixel_from_img(data, &data->textures->enemy[sprite->frame],
-					(t_coord){(int)((i + offset) / scale), (int)(j / scale)},
-					(t_coord){sprite->info->min_x + i, screen_y + j});
-		}
-	}
-}
-
-bool	hit_enemy(t_ray *r, t_data *data, double scale, t_sprite *sprite)
-{
-	int		scaled_width;
-	double	dir_to_sprite;
-	double	left_angle;
-	double	right_angle;
-	double	screen_width;
-	scaled_width = (int)(sprite->width * scale);
-	screen_width = scaled_width * FOV / WINDOW_WIDTH;
-	dir_to_sprite = get_dir_to(data->player->pos, sprite->pos);
-	left_angle = norm_angle(dir_to_sprite - (screen_width / 2.0));
-	right_angle = norm_angle(dir_to_sprite + (screen_width / 2.0));
-	if ((r->dir >= left_angle && r->dir <= right_angle)
-		|| (left_angle > right_angle && (r->dir >= left_angle
-				|| r->dir <= right_angle)))
+	if (is_wall((t_coord){pos.x + move.x, pos.y}, data->map))
+		return (true);
+	if (is_wall((t_coord){pos.x, pos.y - move.y}, data->map))
 		return (true);
 	return (false);
 }
 
-t_sprite_info	*set_sprite_info(t_data *data, t_list *info_lst, t_sprite *sprite)
+int	move_enemies(t_data *data)
 {
-	int				i;
-	double			middle;
-	int				closest;
-	double			dir_to_sprite;
-	t_sprite_info	*info;
+	double	dir;
+	double	fire_dist;
+	t_coord	move;
+	double	distance;
+	int		i;
 
-	i = 0;
-	middle = 100;
-	dir_to_sprite = get_dir_to(data->player->pos, sprite->pos);
-	info = (t_sprite_info *)malloc(sizeof(t_sprite_info));
-	info->min_x = ((t_sprite_info *)info_lst->content)->screen_x;
-	info->len = ft_lstsize(info_lst);
-	while (info_lst)
-	{
-		if (fabs(((t_sprite_info *)info_lst->content)->dir
-				- dir_to_sprite) < middle)
-		{
-			middle = fabs(((t_sprite_info *)info_lst->content)->dir
-					- dir_to_sprite);
-			closest = i;
-		}
-		i++;
-		info_lst = info_lst->next;
-	}
-	info->dir = dir_to_sprite;
-	info->middle = closest;
-	info->max_x = info->min_x + info->len;
-	return (info);
-}
-
-
-
-
-t_sprite	*get_sprite_coll(t_data *data, t_ray *rays, t_sprite *sprite)
-{
-	int				i;
-	double			dist;
-	double			scale;
-	t_sprite_info	*sprite_info;
-	t_list			*info_lst;
-
-	i = -1;
-	dist =	get_dist(get_dir_to(data->player->pos, sprite->pos), sprite->pos, *data->player);
-	scale = data->focal_len / dist;
-	info_lst = NULL;
-	while (++i < WINDOW_WIDTH)
-	{
-		if (hit_enemy(&rays[i], data, scale, sprite) && rays[i].dist > dist)
-		{
-			sprite_info = malloc(sizeof(t_sprite_info));
-			sprite_info->dir = rays[i].dir;
-			sprite_info->screen_x = i;
-			ft_lstadd_back(&info_lst, ft_lstnew(sprite_info));
-		}
-	}
-	if (info_lst)
-	{
-		sprite_info = set_sprite_info(data, info_lst, sprite);
-		ft_lstclear(&info_lst, free);
-		sprite->info = sprite_info;
-		return (sprite);
-	}
-	return (NULL);
-}
-
-bool enemy_hit_wall(t_coord pos, t_coord move, t_data *data)
-{
-
-
-
-	if (is_wall((t_coord){pos.x + move.x, pos.y}, data->map))
-		return(true);
-	if (is_wall((t_coord){pos.x, pos.y - move.y}, data->map))
-		return(true);
-	return (false);
-}
-
-int move_enemies(t_data *data)
-{
-	double		dir;
-	double		fire_dist;
-	t_coord		move;
-	double distance;
-	int i;
 	i = 0;
 	fire_dist = 200;
-	while(i < data->nr_of_enemies)
+	while (i < data->nr_of_enemies)
 	{
 		dir = get_dir_to(data->enemies[i].pos, data->player->pos);
-		distance = get_dist(dir, data->enemies[i].pos,
-				*data->player);
-				
-		if (distance <=  fire_dist && data->enemies[i].state != DIE)
+		distance = get_dist(dir, data->enemies[i].pos, *data->player);
+		if (distance <= fire_dist && data->enemies[i].state != DIE)
 			data->enemies[i].state = ATTACK;
-		else if(data->enemies[i].state != DIE)
+		else if (data->enemies[i].state != DIE)
 		{
 			data->enemies[i].state = WALK;
 			move.x = MOVE_SPEED * data->cos_table[angle_to_index(dir)];
 			move.y = MOVE_SPEED * data->sin_table[angle_to_index(dir)];
-			if(enemy_hit_wall(data->enemies[i].pos, (t_coord){move.x, 0}, data))
-   				 move.x = 0;
-			if(enemy_hit_wall(data->enemies[i].pos, (t_coord){0, move.y}, data))
-   				 move.y = 0;
+			if (enemy_hit_wall(data->enemies[i].pos, (t_coord){move.x, 0},
+					data))
+				move.x = 0;
+			if (enemy_hit_wall(data->enemies[i].pos, (t_coord){0, move.y},
+					data))
+				move.y = 0;
 			data->enemies[i].pos.x += move.x;
 			data->enemies[i].pos.y -= move.y;
 		}
 		i++;
 	}
 	return (1);
-
 }
 
-
-void kill_enemy(t_data *data, t_coord pos)
+void	kill_enemy(t_data *data, t_coord pos)
 {
-	int i;
+	int	i;
+
 	i = 0;
-	while(i < data->nr_of_enemies)
+	while (i < data->nr_of_enemies)
 	{
-		if ((int)(data->enemies[i].pos.x / CUBE_SIZE) == (int)pos.x &&
-		(int)(data->enemies[i].pos.y / CUBE_SIZE) == (int)pos.y && data->enemies[i].state != DIE)
+		if ((int)(data->enemies[i].pos.x / CUBE_SIZE) == (int)pos.x
+			&& (int)(data->enemies[i].pos.y / CUBE_SIZE) == (int)pos.y
+			&& data->enemies[i].state != DIE)
 		{
 			data->enemies[i].state = DIE;
-			return;
+			return ;
 		}
 		i++;
 	}
