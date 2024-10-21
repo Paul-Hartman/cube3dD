@@ -212,9 +212,12 @@ void draw_enemies(t_data *data, t_coord offset)
 	i = 0;
 	while(i < data->nr_of_enemies)
 	{
-		e.x = data->enemies[i].pos.x / CUBE_SIZE * MINI_TILE_SZ - offset.x;
-		e.y = data->enemies[i].pos.y / CUBE_SIZE * MINI_TILE_SZ - offset.y;
-		draw_square(data, (t_coord){e.x - 2.5, e.y - 2.5}, 5, (int[3]){255, 0, 0});
+		if(data->enemies[i].state != DIE)
+		{
+			e.x = data->enemies[i].pos.x / CUBE_SIZE * MINI_TILE_SZ - offset.x;
+			e.y = data->enemies[i].pos.y / CUBE_SIZE * MINI_TILE_SZ - offset.y;
+			draw_square(data, (t_coord){e.x - 2.5, e.y - 2.5}, 5, (int[3]){255, 0, 0});
+		}
 		i++;
 	}
 }
@@ -223,9 +226,7 @@ void	draw_minimap(t_data *data, t_ray *rays)
 {
 	int	y;
 	int	x;
-	//int door;
 	t_coord offset;
-	//door = 0;
 
 	offset.y = (data->player->pos.y/ CUBE_SIZE)*MINI_TILE_SZ - MINI_SIZE / 2;
 	offset.x = (data->player->pos.x/ CUBE_SIZE)* MINI_TILE_SZ - MINI_SIZE / 2;
