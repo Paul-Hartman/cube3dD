@@ -38,8 +38,8 @@ void	cleanup(t_data *data)
 		free_map(data->map->grid);
 	if (data->mlx_ptr != NULL)
 	{
-		if(data->enemy != NULL)
-			free(data->enemy);
+		if(data->enemies != NULL)
+			free(data->enemies);
 		if (data->win_ptr != NULL)
 			mlx_destroy_window(data->mlx_ptr, data->win_ptr);
 		if (data->img_ptr != NULL)

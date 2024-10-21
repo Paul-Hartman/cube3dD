@@ -35,64 +35,59 @@ void	put_sprite(t_data *data, t_sprite *sprite)
 		{
 			if ((int)(i / scale) >= 0 && i / scale < sprite->width && (int)(j
 					/ scale) >= 0 && (int)(j / scale) < sprite->height)
-				put_pixel_from_img(data, &data->textures->enemy[data->enemy->frame],
+				put_pixel_from_img(data, &data->textures->enemy[sprite->frame],
 					(t_coord){(int)((i + offset) / scale), (int)(j / scale)},
 					(t_coord){sprite->info->min_x + i, screen_y + j});
 		}
 	}
 }
 
-bool	hit_enemy(t_ray *r, t_data *data, double scale)
+bool	hit_enemy(t_ray *r, t_data *data, double scale, t_sprite *sprite)
 {
 	int		scaled_width;
-	double	dir_to_enemy;
+	double	dir_to_sprite;
 	double	left_angle;
 	double	right_angle;
 	double	screen_width;
-
-	scaled_width = (int)(data->enemy->width * scale);
+	scaled_width = (int)(sprite->width * scale);
 	screen_width = scaled_width * FOV / WINDOW_WIDTH;
-	dir_to_enemy = norm_angle(-atan2(data->enemy->pos.y - data->player->pos.y,
-				data->enemy->pos.x - data->player->pos.x));
-	left_angle = norm_angle(dir_to_enemy - (screen_width / 2.0));
-	right_angle = norm_angle(dir_to_enemy + (screen_width / 2.0));
+	dir_to_sprite = get_dir_to(data->player->pos, sprite->pos);
+	left_angle = norm_angle(dir_to_sprite - (screen_width / 2.0));
+	right_angle = norm_angle(dir_to_sprite + (screen_width / 2.0));
 	if ((r->dir >= left_angle && r->dir <= right_angle)
 		|| (left_angle > right_angle && (r->dir >= left_angle
 				|| r->dir <= right_angle)))
-	{
 		return (true);
-	}
 	return (false);
 }
 
-t_sprite_info	*set_sprite_info(t_data *data, t_list *info_lst)
+t_sprite_info	*set_sprite_info(t_data *data, t_list *info_lst, t_sprite *sprite)
 {
 	int				i;
 	double			middle;
 	int				closest;
-	double			dir_to_enemy;
+	double			dir_to_sprite;
 	t_sprite_info	*info;
 
 	i = 0;
 	middle = 100;
-	dir_to_enemy = norm_angle(-atan2(data->enemy->pos.y - data->player->pos.y,
-				data->enemy->pos.x - data->player->pos.x));
+	dir_to_sprite = get_dir_to(data->player->pos, sprite->pos);
 	info = (t_sprite_info *)malloc(sizeof(t_sprite_info));
 	info->min_x = ((t_sprite_info *)info_lst->content)->screen_x;
 	info->len = ft_lstsize(info_lst);
 	while (info_lst)
 	{
 		if (fabs(((t_sprite_info *)info_lst->content)->dir
-				- dir_to_enemy) < middle)
+				- dir_to_sprite) < middle)
 		{
 			middle = fabs(((t_sprite_info *)info_lst->content)->dir
-					- dir_to_enemy);
+					- dir_to_sprite);
 			closest = i;
 		}
 		i++;
 		info_lst = info_lst->next;
 	}
-	info->dir = dir_to_enemy;
+	info->dir = dir_to_sprite;
 	info->middle = closest;
 	info->max_x = info->min_x + info->len;
 	return (info);
@@ -110,13 +105,12 @@ t_sprite	*get_sprite_coll(t_data *data, t_ray *rays, t_sprite *sprite)
 	t_list			*info_lst;
 
 	i = -1;
-	dist = sqrt(pow(data->player->pos.x - data->enemy->pos.x, 2)
-			+ pow(data->player->pos.y - data->enemy->pos.y, 2));
+	dist =	get_dist(get_dir_to(data->player->pos, sprite->pos), sprite->pos, *data->player);
 	scale = data->focal_len / dist;
 	info_lst = NULL;
 	while (++i < WINDOW_WIDTH)
 	{
-		if (hit_enemy(&rays[i], data, scale) && rays[i].dist > dist)
+		if (hit_enemy(&rays[i], data, scale, sprite) && rays[i].dist > dist)
 		{
 			sprite_info = malloc(sizeof(t_sprite_info));
 			sprite_info->dir = rays[i].dir;
@@ -126,7 +120,7 @@ t_sprite	*get_sprite_coll(t_data *data, t_ray *rays, t_sprite *sprite)
 	}
 	if (info_lst)
 	{
-		sprite_info = set_sprite_info(data, info_lst);
+		sprite_info = set_sprite_info(data, info_lst, sprite);
 		ft_lstclear(&info_lst, free);
 		sprite->info = sprite_info;
 		return (sprite);
@@ -143,7 +137,7 @@ int move_enemy(t_data *data)
 	dir = get_dir_to(data->enemy->pos, data->player->pos);
 	distance = get_dist(dir, data->enemy->pos,
 		*data->player);
-	fire_dist = 200;
+	fire_dist = 300;
 	if (distance <=  fire_dist)
 	{
 		data->enemy->state = ATTACK;

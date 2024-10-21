@@ -116,18 +116,12 @@ typedef enum e_state
 typedef struct s_enemy
 {
 	t_coord	pos;
-	double dir;
 	t_state state;
 	int frame;
 	double last_frame_time;
-	t_coord		point_a;
-	t_coord		point_b;
 	t_coord		prev_pos;
-	int			x;
-	int			y;
 	t_coord		target;
-	int 		height;
-	int 		width;
+	int size;
 }				t_enemy;
 
 typedef struct s_key_state
@@ -166,7 +160,8 @@ typedef struct s_data
 {
 	t_map		*map;
 	t_player	*player;
-	t_enemy		*enemy;
+	t_enemy		*enemies;
+	int			nr_of_enemies;
 	t_textures	*textures;
 	t_door		*active_door;
 	void		*mlx_ptr;
@@ -214,6 +209,7 @@ typedef struct s_sprite_info
 typedef struct s_sprite
 {
 	t_coord pos;
+	int frame;
 	int height;
 	int width;
 	bool is_enemy;
@@ -334,6 +330,6 @@ double	get_dist(double angle, t_coord coll, t_player p);
 t_sprite *get_sprite_coll(t_data *data, t_ray *rays, t_sprite *sprite);
 void	put_sprite(t_data *data, t_sprite *sprite);
 int move_enemy(t_data *data);
-int render_sprites(t_data data, t_ray	*rays;);
+void render_sprites(t_data data, t_ray	*rays;);
 
 #endif

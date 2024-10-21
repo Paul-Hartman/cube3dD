@@ -42,7 +42,7 @@ void	init_trig_tables(double *sin_table, double *cos_table)
 	}
 }
 
-static int	nr_of_doors(t_map *map)
+static int	nr_of_thing(t_map *map, int thing)
 {
 	int	i;
 	int	j;
@@ -54,7 +54,7 @@ static int	nr_of_doors(t_map *map)
 	{
 		j = 0;
 		while (j < map->height)
-			if (map->grid[j++][i] == DOOR)
+			if (map->grid[j++][i] == thing)
 				result++;
 		i++;
 	}
@@ -67,7 +67,7 @@ int	init_doors(t_map *map)
 	int	j;
 	int	n;
 
-	map->nr_of_doors = nr_of_doors(map);
+	map->nr_of_doors = nr_of_thing(map, DOOR);
 	if (map->nr_of_doors != 0)
 	{
 		map->doors = malloc(map->nr_of_doors * sizeof(t_door));
@@ -87,39 +87,38 @@ int	init_doors(t_map *map)
 	return (0);
 }
 
-int init_enemys(t_data *data)
+int init_enemies(t_data *data)
 {
-
-	t_coord	coord;
+	int	i;
+	int	j;
+	int	n;
 	t_enemy *enemy;
-	enemy = (t_enemy *)malloc(sizeof(t_enemy));
-	if (!enemy)
-		return (-1);
-	coord.y = 0;
-	while (coord.y < data->map->height)
+
+	data->enemies = NULL;
+	data->nr_of_enemies = nr_of_thing(data->map, ENEMY);
+	if (data->nr_of_enemies != 0)
 	{
-		coord.x = 0;
-		while (coord.x < data->map->width)
-		{
-			if(data->map->grid[(int)coord.y][(int)coord.x] == ENEMY)
+		data->enemies = malloc(data->nr_of_enemies * sizeof(t_enemy));
+		if (data->enemies == NULL)
+			return (-1);
+	}
+	n = 0;
+	i = 0;
+	while (i < data->map->width)
+	{
+		j = 0;
+		while (j < data->map->height)
+			if (data->map->grid[j++][i] == ENEMY)
 			{
-				enemy->x = coord.x;
-				enemy->y = coord.y;
-				enemy->width = 128;
-				enemy->height = 128;
-				enemy->pos = (t_coord){coord.x * CUBE_SIZE + 0.5 * CUBE_SIZE, coord.y * CUBE_SIZE + 0.5 * CUBE_SIZE};
-				enemy->point_a = (t_coord){enemy->x + 30, enemy->y + 30};
-				enemy->point_b = (t_coord){enemy->x + 30, enemy->y + 30};
+				enemy = &data->enemies[n++];
+				enemy->size = 128;
+				enemy->pos = (t_coord){j * CUBE_SIZE + 0.5 * CUBE_SIZE, i * CUBE_SIZE + 0.5 * CUBE_SIZE};
 				enemy->target = data->player->pos;
-				enemy->dir = 'E';
 				enemy->state = WALK;
-				enemy->frame = 0;
+				enemy->frame = 4;
 				enemy->last_frame_time = currtime();
-				data->enemy = enemy;
 			}
-			coord.x++;
-		}
-		coord.y++;
+		i++;
 	}
 	return (0);
 }

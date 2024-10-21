@@ -62,18 +62,20 @@ void update_enemy_frame(t_enemy *enemy)
 }
 
 
-int render_sprites(t_data *data, t_ray *rays)
+void render_sprites(t_data *data, t_ray *rays)
 {
+		int i;
 		t_sprite	*sprite;
-		t_sprite enemy_sprite = ((t_sprite){data->enemy->pos, data->enemy->height, data->enemy->width, true, false, NULL});
-		
-		update_enemy_frame(data->enemy);
-		sprite = get_sprite_coll(data, rays, &enemy_sprite);
-		if (sprite != NULL)
-			put_sprite(data, sprite);
-		else
-			return(0);
-		return (1);
+		t_sprite enemy_sprite;
+		i= 0;
+		while(i < data->nr_of_enemies)
+		{
+			enemy_sprite = ((t_sprite){data->enemies[i].pos, data->enemies[i].frame, data->enemies[i].size, data->enemies[i].size, true, false, NULL});
+			update_enemy_frame(&data->enemies[i++]);
+			sprite = get_sprite_coll(data, rays, &enemy_sprite);
+			if (sprite != NULL)
+				put_sprite(data, sprite);
+		}
 }
 
 
@@ -150,15 +152,13 @@ void draw_line(t_data *data, t_coord p1, t_coord p2)
 void draw_player(t_data *data, t_ray *rays, t_coord offset)
 {
 	t_coord p;
-	t_coord e;
 	t_coord end_line;
 	int i;
 	i=0;
 
 	p.x = data->player->pos.x / CUBE_SIZE * MINI_TILE_SZ - offset.x;
 	p.y = data->player->pos.y / CUBE_SIZE * MINI_TILE_SZ - offset.y;
-	e.x = data->enemy->pos.x / CUBE_SIZE * MINI_TILE_SZ - offset.x;
-	e.y = data->enemy->pos.y / CUBE_SIZE * MINI_TILE_SZ - offset.y;
+	
 	draw_square(data, (t_coord){p.x - 2.5, p.y - 2.5}, 5, (int[3]){0, 255, 0});
 	
 	while(i < WINDOW_WIDTH)
@@ -175,7 +175,20 @@ void draw_player(t_data *data, t_ray *rays, t_coord offset)
 		}
 		i++;
 	}
-	draw_square(data, (t_coord){e.x - 2.5, e.y - 2.5}, 5, (int[3]){255, 0, 0});
+
+}
+void draw_enemies(t_data *data, t_coord offset)
+{
+	int i;
+	t_coord e;
+	i = 0;
+	while(i < data->nr_of_enemies)
+	{
+		e.x = data->enemies[i].pos.x / CUBE_SIZE * MINI_TILE_SZ - offset.x;
+		e.y = data->enemies[i].pos.y / CUBE_SIZE * MINI_TILE_SZ - offset.y;
+		draw_square(data, (t_coord){e.x - 2.5, e.y - 2.5}, 5, (int[3]){255, 0, 0});
+		i++;
+	}
 }
 
 void	draw_minimap(t_data *data, t_ray *rays)
@@ -206,4 +219,5 @@ void	draw_minimap(t_data *data, t_ray *rays)
 	
 	
 	draw_player(data, rays, offset);
+	draw_enemies(data, offset);
 }
