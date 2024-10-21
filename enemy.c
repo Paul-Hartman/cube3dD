@@ -9,6 +9,19 @@ bool	enemy_hit_wall(t_coord pos, t_coord move, t_data *data)
 	return (false);
 }
 
+static void	move_enemy(t_data *data, int i, t_coord move, double dir)
+{
+	data->enemies[i].state = WALK;
+	move.x = MOVE_SPEED * data->cos_table[angle_to_index(dir)];
+	move.y = MOVE_SPEED * data->sin_table[angle_to_index(dir)];
+	if (enemy_hit_wall(data->enemies[i].pos, (t_coord){move.x, 0}, data))
+		move.x = 0;
+	if (enemy_hit_wall(data->enemies[i].pos, (t_coord){0, move.y}, data))
+		move.y = 0;
+	data->enemies[i].pos.x += move.x;
+	data->enemies[i].pos.y -= move.y;
+}
+
 int	move_enemies(t_data *data)
 {
 	double	dir;
@@ -26,19 +39,7 @@ int	move_enemies(t_data *data)
 		if (distance <= fire_dist && data->enemies[i].state != DIE)
 			data->enemies[i].state = ATTACK;
 		else if (data->enemies[i].state != DIE)
-		{
-			data->enemies[i].state = WALK;
-			move.x = MOVE_SPEED * data->cos_table[angle_to_index(dir)];
-			move.y = MOVE_SPEED * data->sin_table[angle_to_index(dir)];
-			if (enemy_hit_wall(data->enemies[i].pos, (t_coord){move.x, 0},
-					data))
-				move.x = 0;
-			if (enemy_hit_wall(data->enemies[i].pos, (t_coord){0, move.y},
-					data))
-				move.y = 0;
-			data->enemies[i].pos.x += move.x;
-			data->enemies[i].pos.y -= move.y;
-		}
+			move_enemy(data, i, move, dir);
 		i++;
 	}
 	return (1);
