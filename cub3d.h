@@ -6,7 +6,7 @@
 /*   By: wpepping <wpepping@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/15 20:13:31 by wpepping          #+#    #+#             */
-/*   Updated: 2024/10/21 18:38:46 by wpepping         ###   ########.fr       */
+/*   Updated: 2024/10/21 18:44:10 by wpepping         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@
 # define CUBE_SIZE 180
 # define TEXTURE_HEIGHT 180
 # define GUN_WIDTH 310
-# define GUN_HEIGHT 320
+# define GUN_HEIGHT 280
 # define WINDOW_WIDTH 1024
 # define WINDOW_HEIGHT 640
 # define MOVE_SPEED 0.2
