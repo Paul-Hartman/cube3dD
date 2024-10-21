@@ -6,7 +6,7 @@
 /*   By: wpepping <wpepping@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/16 16:12:57 by wpepping          #+#    #+#             */
-/*   Updated: 2024/10/18 15:28:59 by wpepping         ###   ########.fr       */
+/*   Updated: 2024/10/21 15:51:15 by wpepping         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ bool	is_door(t_map *map, t_coord coord)
 	if (map->grid[(int)grid_coord.y][(int)grid_coord.x] != DOOR)
 		return (false);
 	door = get_door(map, grid_coord);
-	if (door->pos == 0)
+	if (door->pos == 0 || (door->pos < 100 && door->state == CLOSING))
 		return (true);
 	return (false);
 }
