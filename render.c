@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   render.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: phartman <phartman@student.42berlin.de>    +#+  +:+       +#+        */
+/*   By: wpepping <wpepping@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/27 18:07:22 by wpepping          #+#    #+#             */
-/*   Updated: 2024/10/18 19:06:54 by phartman         ###   ########.fr       */
+/*   Updated: 2024/10/18 15:59:45 by wpepping         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,6 @@ void	put_pixel_from_img(t_data *data, t_image *src_img,
 	char	*pixel_dest;
 	int		offset_dest;
 	int		offset_src;
-
 
 	offset_dest = dest_coord.y * data->lsize + dest_coord.x * data->bpp / 8;
 	pixel_dest = data->imgbuff + offset_dest;
@@ -145,7 +144,7 @@ void draw_player(t_data *data, t_ray *rays, t_coord offset)
 	t_coord end_line;
 	int i;
 	i=0;
-	
+
 	p.x = data->player->pos.x / CUBE_SIZE * MINI_TILE_SZ - offset.x;
 	p.y = data->player->pos.y / CUBE_SIZE * MINI_TILE_SZ - offset.y;
 	e.x = data->enemy->pos.x / CUBE_SIZE * MINI_TILE_SZ - offset.x;
@@ -164,7 +163,7 @@ void draw_player(t_data *data, t_ray *rays, t_coord offset)
 				end_line.y = MINI_SIZE + MINI_TILE_SZ;
             draw_line(data, p, end_line);
 		}
-		i++;	
+		i++;
 	}
 	draw_square(data, (t_coord){e.x - 2.5, e.y - 2.5}, 5, (int[3]){255, 0, 0});
 }
@@ -175,13 +174,11 @@ void	draw_minimap(t_data *data, t_ray *rays)
 	int	x;
 	t_coord offset;
 
-	
+
 	offset.y = (data->player->pos.y/ CUBE_SIZE)*MINI_TILE_SZ - MINI_SIZE / 2;
 	offset.x = (data->player->pos.x/ CUBE_SIZE)* MINI_TILE_SZ - MINI_SIZE / 2;
-	if (offset.y < 0)
-		offset.y = 0;
-	if (offset.x < 0)
-		offset.x = 0;
+	offset.y = max(offset.y, 0);
+	offset.x = max(offset.x, 0);
 	y = offset.y;
 	while (y / MINI_TILE_SZ < data->map->height && y< MINI_SIZE + offset.y)
 	{
@@ -190,7 +187,7 @@ void	draw_minimap(t_data *data, t_ray *rays)
 		{
 			if (data->map->grid[y/ MINI_TILE_SZ][x/ MINI_TILE_SZ] == WALL)
 				draw_square(data, (t_coord){x- offset.x, y - offset.y},MINI_TILE_SZ, (int[3]){95, 95, 95});
-			else
+			else if (data->map->grid[y/ MINI_TILE_SZ][x/ MINI_TILE_SZ] != SPACE)
 				draw_square(data, (t_coord){x- offset.x, y - offset.y}, MINI_TILE_SZ, (int[3]){195, 195, 195});
 			x += MINI_TILE_SZ/5;
 		}

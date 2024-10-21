@@ -6,7 +6,7 @@
 /*   By: phartman <phartman@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/14 16:21:55 by wpepping          #+#    #+#             */
-/*   Updated: 2024/10/16 18:09:16 by phartman         ###   ########.fr       */
+/*   Updated: 2024/10/16 15:41:40 by wpepping         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,7 +86,12 @@ int	load_textures(t_data *data, t_config *cfg)
 		return (-1);
 	else if (!xpm && save_rgbs(cfg->ceiling, data->ceiling) == -1)
 		return (-1);
-	load_enemy_texture(data);
+	if (BONUS
+		&& load_enemy_texture(data) == -1)
+		return (-1);
+	if (BONUS
+		&& load_image(data->mlx_ptr, &data->textures->door, cfg->door) == -1)
+		return (-1);
 	return (0);
 }
 
@@ -118,4 +123,6 @@ void	unload_textures(void *mlx_ptr, t_textures *textures)
 	if (textures->ceiling.img_ptr)
 		mlx_destroy_image(mlx_ptr, textures->ceiling.img_ptr);
 	unload_enemy_textures(mlx_ptr, textures);
+	if (textures->door.img_ptr)
+		mlx_destroy_image(mlx_ptr, textures->door.img_ptr);
 }

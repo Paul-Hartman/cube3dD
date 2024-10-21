@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   events.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: phartman <phartman@student.42berlin.de>    +#+  +:+       +#+        */
+/*   By: wpepping <wpepping@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/14 18:29:48 by wpepping          #+#    #+#             */
-/*   Updated: 2024/10/15 17:54:47 by phartman         ###   ########.fr       */
+/*   Updated: 2024/10/18 15:45:51 by wpepping         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,20 +19,21 @@ int	handle_loop(t_data *data)
 
 	moved = false;
 	if (data->key_state.mv_up)
-		moved = move_player(data, false);
+		moved = move_player(data, false) || moved;
 	if (data->key_state.mv_dn)
-		moved = move_player(data, true);
+		moved = move_player(data, true) || moved;
 	if (data->key_state.mv_r)
-		moved = strafe_player(data, false);
+		moved = strafe_player(data, false) || moved;
 	if (data->key_state.mv_l)
-		moved = strafe_player(data, true);
+		moved = strafe_player(data, true) || moved;
 	if (data->key_state.rot_r)
-		moved = rotate_player(data, false, ROTATE_SPEED);
+		moved = rotate_player(data, false, ROTATE_SPEED) || moved;
 	if (data->key_state.rot_l)
-		moved = rotate_player(data, true, ROTATE_SPEED);
-	(void)moved;
-	render_frame(data);
-	move_enemy(data);
+		moved = rotate_player(data, true, ROTATE_SPEED) || moved;
+	if (data->active_door)
+		moved = move_door(data, data->active_door) || moved;
+	if (moved)
+		render_frame(data);
 	return (0);
 }
 
@@ -73,6 +74,10 @@ int	handle_key_press(int keycode, t_data *data)
 		data->key_state.rot_r = true;
 	if (keycode == XK_Left)
 		data->key_state.rot_l = true;
+	if (keycode == XK_Shift_L || keycode == XK_Shift_R)
+		data->key_state.run = true;
+	if (keycode == XK_space)
+		activate_door(data, get_gridpos_in_front(data->player));
 	return (0);
 }
 
@@ -90,6 +95,8 @@ int	handle_key_release(int keycode, t_data *data)
 		data->key_state.rot_r = false;
 	if (keycode == XK_Left)
 		data->key_state.rot_l = false;
+	if (keycode == XK_Shift_L || keycode == XK_Shift_R)
+		data->key_state.run = false;
 	return (0);
 }
 

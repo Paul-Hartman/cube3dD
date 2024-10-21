@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: phartman <phartman@student.42berlin.de>    +#+  +:+       +#+        */
+/*   By: wpepping <wpepping@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/14 18:29:37 by wpepping          #+#    #+#             */
-/*   Updated: 2024/10/18 19:06:42 by phartman         ###   ########.fr       */
+/*   Created: 2024/10/15 20:13:31 by wpepping          #+#    #+#             */
+/*   Updated: 2024/10/18 17:51:47 by wpepping         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,14 +36,19 @@
 # define CHAR_HEIGHT 32
 # define CUBE_SIZE 180
 # define TEXTURE_HEIGHT 180
-# define WINDOW_WIDTH 800
-# define WINDOW_HEIGHT 600
-# define MOVE_SPEED 3
-# define MOUSE_SENSITIVITY 0.0025
+# define WINDOW_WIDTH 1024
+# define WINDOW_HEIGHT 640
+# define MOVE_SPEED 0.2
+# define MOUSE_SENSITIVITY 0.001
 # define ROTATE_SPEED 0.02
-# define MS_BETWEEN_FRAMES 20
+# define MS_BETWEEN_FRAMES 10
+# define DOOR_STEP 5
 # define EPSILON 1e-6
 # define M_PI 3.14159265358979323846
+# define SQRT_2 1.4142
+# define WINDOW_NAME "Cub3d"
+# define MAP_ERROR "Map error"
+# define OOM_ERROR "Out of memory error"
 
 
 # define EMPTY 48
@@ -53,12 +58,8 @@
 # define SOUTH 83
 # define WEST 87
 # define SPACE 32
-# define ENEMY 88
 # define DOOR 68
-
-# define WINDOW_NAME "Cub3d"
-
-# define MAP_ERROR "Map error"
+# define ENEMY 88
 
 # ifndef REQUIRE_SPACE
 #  define REQUIRE_SPACE false
@@ -68,17 +69,34 @@
 #  define BONUS false
 # endif
 
+typedef enum e_door_state
+{
+	IDLE,
+	OPENING,
+	CLOSING
+}				t_door_state;
+
 typedef struct s_coord
 {
 	double	x;
 	double	y;
 }				t_coord;
 
+typedef struct s_door
+{
+	t_coord	coord;
+	int		state;
+	int		pos;
+	long	last_move;
+}				t_door;
+
 typedef struct s_map
 {
 	char	**grid;
 	int		width;
 	int		height;
+	int		nr_of_doors;
+	t_door	*doors;
 }				t_map;
 
 typedef struct s_player
@@ -120,6 +138,7 @@ typedef struct s_key_state
 	bool	mv_l;
 	bool	rot_r;
 	bool	rot_l;
+	bool	run;
 }				t_key_state;
 
 typedef struct s_image
@@ -140,6 +159,7 @@ typedef struct s_textures
 	t_image	floor;
 	t_image	ceiling;
 	t_image enemy[11];
+	t_image	door;
 }				t_textures;
 
 typedef struct s_data
@@ -148,6 +168,7 @@ typedef struct s_data
 	t_player	*player;
 	t_enemy		*enemy;
 	t_textures	*textures;
+	t_door		*active_door;
 	void		*mlx_ptr;
 	void		*win_ptr;
 	void		*img_ptr;
@@ -158,7 +179,7 @@ typedef struct s_data
 	int			floor[3];
 	int			ceiling[3];
 	double		focal_len;
-	int			last_render;
+	long		last_render;
 	int			mouse_x;
 	t_key_state	key_state;
 	double		sin_table[3600];
@@ -174,6 +195,7 @@ typedef struct s_config
 	char	*floor;
 	char	*ceiling;
 	char 	*enemy;
+	char	*door;
 	int		map_start;
 }				t_config;
 
@@ -203,6 +225,8 @@ typedef struct s_ray
 {
 	t_coord	coll;
 	bool	is_horiz;
+	bool	is_door;
+	int		map_item;
 	double	dist;
 	double	dir;
 }				t_ray;
@@ -232,7 +256,6 @@ int				find_player(t_map *map, t_player *player);
 int				is_valid_map(t_map *map, t_player *player);
 
 // Render
-void			init_textures(t_textures *textures);
 int				load_textures(t_data *data, t_config *config);
 void			unload_textures(void *mlx_ptr, t_textures *textures);
 void			set_pixel(t_data *data, int c[3], int x, int y);
@@ -249,6 +272,12 @@ bool	move_player(t_data *data, bool rev);
 bool 	strafe_player(t_data *data, bool left);
 bool	rotate_player(t_data *data, bool left, double rotate_speed);
 
+// Doors
+bool			move_door(t_data *data, t_door *door);
+void			activate_door(t_data *data, t_coord coord);
+bool			is_door(t_map *map, t_coord coord);
+bool			is_door_coll(t_map *map, t_coord coll, bool is_horiz);
+
 // Events
 int				handle_loop(t_data *data);
 int				handle_close(t_data *data);
@@ -264,6 +293,16 @@ void			cleanup(t_data *data);
 void			free_map(char **map);
 void			free_config(t_config *config);
 
+// Inits
+void			init_data(t_data *data);
+void			init_textures(t_textures *textures);
+void			init_config(t_config *config);
+void			init_trig_tables(double *sin_table, double *cos_table);
+int				init_window(t_data *data);
+void			init_map(t_map *map);
+int				init_doors(t_map *map);
+void			init_events(t_data *data);
+
 // Utils
 char			*file_ext(char *fname);
 double			get_angle(char dir);
@@ -271,6 +310,16 @@ bool			ft_isnum(char *str);
 long			currtime(void);
 bool			is_wall(t_coord pos, t_map *map);
 char			*ft_strdup2(char *s, size_t n);
+int				get_map_item(t_coord pos, t_map *map);
+int				get_dir(double angle);
+bool			coord_equals(t_coord c, t_coord d);
+t_coord			coord_add(t_coord c, t_coord d);
+t_coord			pixel2grid(t_coord pixel_pos);
+t_coord			get_gridpos_in_front(t_player *player);
+int				max(int a, int b);
+double			norm_angle(double angle);
+double			deg_to_rad(double degrees);
+double			radians_to_degrees(double radians);
 
 // render utils
 double norm_angle(double angle);

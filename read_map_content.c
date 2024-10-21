@@ -6,7 +6,7 @@
 /*   By: phartman <phartman@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/03 19:09:39 by wpepping          #+#    #+#             */
-/*   Updated: 2024/10/16 17:41:00 by phartman         ###   ########.fr       */
+/*   Updated: 2024/10/17 14:32:34 by wpepping         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,11 +47,13 @@ static int	get_width(char *line)
 	len = 0;
 	while (*line && *line != '\n')
 	{
-			if (*line != EMPTY && *line != WALL && *line != NORTH
-				&& *line != SOUTH && *line != EAST && *line != WEST
-				&& *line != SPACE && *line != ENEMY)
-				return (-1);
-			len++;
+		if (*line != EMPTY && *line != WALL && *line != NORTH
+			&& *line != SOUTH && *line != EAST && *line != WEST
+			&& *line != SPACE && *line != DOOR && *line != ENEMY)
+			return (-1);
+		if ((*line == DOOR || *line == ENEMY) && !BONUS)
+			return (-1);
+		len++;
 		line++;
 	}
 	return (len);
@@ -103,7 +105,7 @@ int	read_map_content(t_map *map, int fd, int start)
 		i++;
 		map->grid[i] = ft_strdup2(get_next_line(fd), map->width + 1);
 	}
- 	get_next_line(-1);
+	get_next_line(-1);
 	close(fd);
 	return (0);
 }

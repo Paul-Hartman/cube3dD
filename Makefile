@@ -8,8 +8,9 @@ CC := cc
 
 CFLAGS := -Wall -Wextra -Werror -g
 
-SRCS := raytracing.c events.c read_map.c cleanup.c cub3d.c read_map_utils.c read_map_content.c render.c\
-		textures.c utils.c validate_map.c get_next_line.c get_next_line_utils.c movement.c enemy.c
+SRCS := raytracing.c events.c cleanup.c cub3d.c doors.c inits.c inits2.c movement.c\
+		read_map.c read_map_utils.c read_map_content.c render.c textures.c trig_utils.c\
+		utils.c utils2.c utils3.c validate_map.c get_next_line.c get_next_line_utils.c enemy.c
 
 OBJS := $(SRCS:%.c=$(OBJDIR)/%.o)
 OBJS_BONUS := $(SRCS:%.c=$(OBJDIR_BONUS)/%.o)
@@ -42,7 +43,7 @@ $(NAME): $(OBJS) $(LIBFT) $(MLX_LIB)
 	$(CC) $(CFLAGS) $(OBJS) $(LIBFT) $(MLX_PATH) $(MLX_FLAGS) -o $(NAME)
 
 $(NAME_BONUS): $(OBJS_BONUS) $(LIBFT) $(MLX_LIB)
-	$(CC) $(CFLAGS) $(BONUS_FLAGS) $(OBJS) $(LIBFT) $(MLX_PATH) $(MLX_FLAGS) -o $(NAME_BONUS)
+	$(CC) $(CFLAGS) $(BONUS_FLAGS) $(OBJS_BONUS) $(LIBFT) $(MLX_PATH) $(MLX_FLAGS) -o $(NAME_BONUS)
 
 all: $(NAME)
 
