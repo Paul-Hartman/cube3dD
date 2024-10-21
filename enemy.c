@@ -155,9 +155,9 @@ int move_enemies(t_data *data)
 		distance = get_dist(dir, data->enemies[i].pos,
 				*data->player);
 				
-		if (distance <=  fire_dist)
+		if (distance <=  fire_dist && data->enemies[i].state != DIE)
 			data->enemies[i].state = ATTACK;
-		else
+		else if(data->enemies[i].state != DIE)
 		{
 			data->enemies[i].state = WALK;
 			move.x = MOVE_SPEED * data->cos_table[angle_to_index(dir)];
@@ -173,6 +173,26 @@ int move_enemies(t_data *data)
 	}
 	return (1);
 
+}
+
+void kill_enemy(t_data *data, t_coord pos)
+{
+	int i;
+	i = 0;
+	printf("grid ahead x= %f y =%f\n", pos.x, pos.y);
+	while(i < data->nr_of_enemies)
+	{
+		if ((int)(data->enemies[i].pos.x / CUBE_SIZE) == (int)pos.x &&
+		(int)(data->enemies[i].pos.y / CUBE_SIZE) == (int)pos.y && data->enemies[i].state != DIE)
+		{
+			
+			data->enemies[i].state = DIE;
+			printf("enemy %d killed\n", i);
+			return;
+			
+		}
+		i++;
+	}
 }
 
 // void	move_enemy(t_enemy *enemy, t_vars *vars, int new_x, int new_y)

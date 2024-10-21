@@ -330,6 +330,6 @@ double	get_dist(double angle, t_coord coll, t_player p);
 t_sprite *get_sprite_coll(t_data *data, t_ray *rays, t_sprite *sprite);
 void	put_sprite(t_data *data, t_sprite *sprite);
 int move_enemies(t_data *data);
-void render_sprites(t_data data, t_ray	*rays;);
+void kill_enemy(t_data *data, t_coord pos);
 
 #endif
