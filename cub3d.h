@@ -248,7 +248,6 @@ typedef struct s_ray
 
 // raycasting
 t_ray *cast_rays(t_map *map, t_player p);
-void			draw_walls(t_ray *rays, t_data *data);
 
 // Read map
 int				read_map(t_data *data, char *fname);
@@ -263,9 +262,7 @@ int				is_valid_map(t_map *map, t_player *player);
 // Render
 int				load_textures(t_data *data, t_config *config);
 void			unload_textures(void *mlx_ptr, t_textures *textures);
-void			set_pixel(t_data *data, int c[3], int x, int y);
-void			put_pixel_from_img(t_data *data, t_image *src_img,
-					t_coord src_coord, t_coord dest_coord);
+
 void			render_frame(t_data *data);
 
 
@@ -341,7 +338,7 @@ double	get_dir_to(t_coord pos, t_coord target);
 
 
 //enemy
-
+void	update_enemy_frame(t_enemy *enemy);
 int move_enemies(t_data *data);
 void kill_enemy(t_data *data, t_coord pos);
 
@@ -351,5 +348,19 @@ void	put_sprite(t_data *data, t_sprite *sprite);
 
 //minimap
 void	draw_minimap(t_data *data, t_ray *rays);
+
+//render
+void	render_frame(t_data *data);
+
+//render utils
+void			set_pixel(t_data *data, int c[3], int x, int y);
+void			put_pixel_from_img(t_data *data, t_image *src_img,
+					t_coord src_coord, t_coord dest_coord);
+t_image	*get_texture(t_textures *textures, t_ray *r);
+int	get_tex_offset(t_ray r);
+
+//floor and ceiling
+void draw_ceiling(t_data *data, int i, int j, bool is_texture);
+void draw_floor(t_data *data, int i, int j, bool is_texture);
 
 #endif

@@ -40,9 +40,10 @@ double	get_dir_to(t_coord pos, t_coord target)
 	return (norm_angle(-atan2(target.y - pos.y, target.x - pos.x)));
 }
 
-int init_line_vars(t_coord p1, t_coord p2, t_coord *dist, t_coord *step)
+int	init_line_vars(t_coord p1, t_coord p2, t_coord *dist, t_coord *step)
 {
-	int err;
+	int	err;
+
 	dist->x = abs((int)p2.x - (int)p1.x);
 	dist->y = abs((int)p2.y - (int)p1.y);
 	err = dist->x - dist->y;
@@ -57,18 +58,16 @@ int init_line_vars(t_coord p1, t_coord p2, t_coord *dist, t_coord *step)
 	return (err);
 }
 
-t_coord get_offset(t_data *data)
+t_coord	get_offset(t_data *data)
 {
-	int player_tile_x;
-	int player_tile_y;
-	int offset_x;
-	int offset_y;
+	int	player_tile_x;
+	int	player_tile_y;
+	int	offset_x;
+	int	offset_y;
 
 	player_tile_x = (data->player->pos.x / CUBE_SIZE) * TILE_SZ;
 	player_tile_y = (data->player->pos.y / CUBE_SIZE) * TILE_SZ;
 	offset_x = max(player_tile_x - MINI_SIZE / 2, 0);
 	offset_y = max(player_tile_y - MINI_SIZE / 2, 0);
 	return ((t_coord){offset_x, offset_y});
-} 
-
-
+}

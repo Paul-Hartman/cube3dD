@@ -12,112 +12,17 @@
 
 #include "cub3d.h"
 
-double	get_dist(double angle, t_coord coll, t_player p);
 double	get_horiz_coll(t_player p, t_ray *r, t_map *map);
 t_coord	get_ray_delta(t_ray *r, bool is_horiz);
 t_coord	get_wall_coll(t_coord coll, t_ray *r, t_map *map, bool is_horiz);
 double	get_vert_coll(t_player p, t_ray *r, t_map *map);
 int		check_dir(double angle, bool is_horiz);
-t_image	*get_texture(t_textures *textures, t_ray *r);
 
 double	projected_wall_height(int focal_len, double dist)
 {
 	return ((CUBE_SIZE / dist) * focal_len);
 }
 
-int	get_tex_offset(t_ray r)
-{
-	int	tex_x;
-
-	if (r.is_horiz)
-		tex_x = (int)r.coll.x % CUBE_SIZE;
-	else
-		tex_x = (int)r.coll.y % CUBE_SIZE;
-
-	return (tex_x);
-}
-
-void draw_floor(t_data *data, int i, int j, bool is_texture)
-{
-	t_ray r;
-	int tex_x;
-	int tex_y;
-
-	if(is_texture)
-	{
-		r.dist = CHAR_HEIGHT * data->focal_len /  ((double)j - (double)WINDOW_HEIGHT / 2.0) ;
-		r.dir = norm_angle(data->player->dir + (FOV / 2.0) - (FOV / WINDOW_WIDTH) * i);
-		r.dist = r.dist/ data->cos_table[angle_to_index(r.dir - data->player->dir)];
-		r.coll.x = data->player->pos.x + r.dist * data->cos_table[angle_to_index(r.dir)] * 3;
-		r.coll.y = data->player->pos.y - r.dist * data->sin_table[angle_to_index(r.dir)] * 3;
-		r.coll.x = ((int)(r.coll.x * 1000) % (CUBE_SIZE * 1000)) / 1000.0 / CUBE_SIZE;
-		r.coll.y = ((int)(r.coll.y * 1000) % (CUBE_SIZE * 1000)) / 1000.0 / CUBE_SIZE;
-		tex_x = (int)(r.coll.x  * (TEXTURE_HEIGHT));
-		tex_y = (int)(r.coll.y  * (TEXTURE_HEIGHT));
-		put_pixel_from_img(data, &data->textures->north, (t_coord){tex_x, tex_y}, (t_coord){i, j});
-	}
-	else
-		set_pixel(data, data->floor, i, j);
-}
-
-
-void draw_ceiling(t_data *data, int i, int j, bool is_texture)
-{
-	t_ray r;
-	int tex_x;
-	int tex_y;
-
-	if(is_texture)
-	{
-		r.dist = CHAR_HEIGHT * data->focal_len /  ((double)j - (double)WINDOW_HEIGHT / 2.0) ;
-		r.dir = norm_angle(data->player->dir + (FOV / 2.0) - (FOV / WINDOW_WIDTH) * i);
-		r.dist = r.dist/ data->cos_table[angle_to_index(r.dir - data->player->dir)];
-		r.coll.x = data->player->pos.x - r.dist * data->cos_table[angle_to_index(r.dir)] * 3;
-		r.coll.y = data->player->pos.y + r.dist * data->sin_table[angle_to_index(r.dir)] * 3;
-		r.coll.x = ((int)(r.coll.x * 1000) % (CUBE_SIZE * 1000)) / 1000.0 / CUBE_SIZE;
-		r.coll.y = ((int)(r.coll.y * 1000) % (CUBE_SIZE * 1000)) / 1000.0 / CUBE_SIZE;
-		tex_x = (int)(r.coll.x  * (TEXTURE_HEIGHT));
-		tex_y = (int)(r.coll.y  * (TEXTURE_HEIGHT));
-		put_pixel_from_img(data, &data->textures->north, (t_coord){tex_x, tex_y}, (t_coord){i, j});
-	}
-	else
-		set_pixel(data, data->ceiling, i, j);
-}
-
-
-void	draw_walls(t_ray *rays, t_data *data)
-{
-	int		i;
-	int		j;
-	int		height;
-	int		wall_top;
-	double	tex_x;
-	double	tex_y;
-	t_image	*texture;
-
-	i = 0;
-	while (i < WINDOW_WIDTH)
-	{
-		height = (int)projected_wall_height(data->focal_len, rays[i].dist);
-		texture = get_texture(data->textures, &rays[i]);
-		wall_top = WINDOW_HEIGHT / 2 - height / 2;
-		j = 0;
-		while (j < wall_top && j < WINDOW_HEIGHT)
-			draw_ceiling(data, i, j++, data->textures->ceiling.img_ptr != NULL);
-		while (j < wall_top + height && j < WINDOW_HEIGHT)
-		{
-			tex_x = get_tex_offset(rays[i]);
-			tex_y = ((j - wall_top) * TEXTURE_HEIGHT) / height;
-			put_pixel_from_img(data, texture, (t_coord){tex_x, tex_y},
-				(t_coord){i, j});
-			j++;
-		}
-		while (j >= wall_top + height && j < WINDOW_HEIGHT)
-		 	draw_floor(data, i, j++, data->textures->floor.img_ptr != NULL);
-		i++;
-	}
-	free(rays);
-}
 
 t_ray	init_ray(double dir, int i)
 {
@@ -211,23 +116,6 @@ t_coord	get_ray_delta(t_ray *r, bool is_horiz)
 	return (delta);
 }
 
-t_image	*get_texture(t_textures *textures, t_ray *r)
-{
-	int	side;
-
-	if (r->is_door)
-		return (&textures->door);
-	side = check_dir(r->dir, r->is_horiz);
-	if (side == NORTH)
-		return (&textures->south);
-	if (side == SOUTH)
-		return (&textures->north);
-	if (side == EAST)
-		return (&textures->west);
-	if (side == WEST)
-		return (&textures->east);
-	return (NULL);
-}
 
 t_coord	get_wall_coll(t_coord coll, t_ray *r, t_map *map, bool is_horiz)
 {

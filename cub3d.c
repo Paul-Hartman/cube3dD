@@ -71,8 +71,9 @@ int	main(int argc, char **argv)
 		return (1);
 	}
 	init_events(&data);
-	draw_walls(cast_rays(data.map, *data.player), &data);
-	draw_minimap(&data, cast_rays(data.map, *data.player));
+	render_frame(&data);
+	//draw_walls(cast_rays(data.map, *data.player), &data);
+	//draw_minimap(&data, cast_rays(data.map, *data.player));
 	mlx_put_image_to_window(data.mlx_ptr, data.win_ptr, data.img_ptr, 0, 0);
 	mlx_loop(data.mlx_ptr);
 	cleanup(&data);

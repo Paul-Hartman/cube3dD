@@ -12,56 +12,63 @@
 
 #include "cub3d.h"
 
-void	set_pixel(t_data *data, int c[3], int x, int y)
+
+static void	draw_gun(t_data *data);
+static void	draw_walls(t_ray *rays, t_data *data);
+static void	render_sprites(t_data *data, t_ray *rays);
+
+void	render_frame(t_data *data)
 {
-	int		color;
-	char	*pixel;
+	t_ray	*rays;
 
-	color = (c[0] * 256 * 256 + c[1] * 256 + c[2]);
-	color = mlx_get_color_value(data->mlx_ptr, color);
-	pixel = data->imgbuff + y * data->lsize + x * data->bpp / 8;
-	ft_memcpy(pixel, &color, 4);
-}
-
-void	put_pixel_from_img(t_data *data, t_image *src_img, t_coord src_coord,
-		t_coord dest_coord)
-{
-	char	*pixel_src;
-	char	*pixel_dest;
-	int		offset;
-
-	offset = src_coord.y * src_img->lsize + src_coord.x * src_img->bpp / 8;
-	pixel_src = src_img->buff + offset;
-	if (pixel_src[3] == -1)
-		return ;
-	offset = dest_coord.y * data->lsize + dest_coord.x * data->bpp / 8;
-	pixel_dest = data->imgbuff + offset;
-	ft_memcpy(pixel_dest, pixel_src, 4);
-}
-
-void	update_enemy_frame(t_enemy *enemy)
-{
-	double	current_time;
-
-	current_time = currtime();
-	if (current_time - enemy->last_frame_time >= MS_BETWEEN_FRAMES * 10)
+	rays = cast_rays(data->map, *data->player);
+	if (currtime() - data->last_render > MS_BETWEEN_FRAMES)
 	{
-		if (enemy->state == ATTACK)
-			enemy->frame = 0 + (enemy->frame + 1) % 4;
-		else if (enemy->state == WALK)
-			enemy->frame = 4 + (enemy->frame + 1 - 4) % 4;
-		else if (enemy->state == DIE)
-		{
-			if (enemy->frame < 8)
-				enemy->frame = 8;
-			else if (enemy->frame >= 8 && enemy->frame < 10)
-				enemy->frame++;
-		}
-		enemy->last_frame_time = current_time;
+		draw_walls(rays, data);
+		draw_minimap(data, rays);
+		render_sprites(data, rays);
+		data->last_render = currtime();
+		mlx_put_image_to_window(data->mlx_ptr, data->win_ptr, data->img_ptr, 0,
+			0);
+		draw_gun(data);
 	}
 }
 
-void	render_sprites(t_data *data, t_ray *rays)
+static void	draw_walls(t_ray *rays, t_data *data)
+{
+	int		i;
+	int		j;
+	int		height;
+	int		wall_top;
+	double	tex_x;
+	double	tex_y;
+	t_image	*texture;
+
+	i = 0;
+	while (i < WINDOW_WIDTH)
+	{
+		height = (int)projected_wall_height(data->focal_len, rays[i].dist);
+		texture = get_texture(data->textures, &rays[i]);
+		wall_top = WINDOW_HEIGHT / 2 - height / 2;
+		j = 0;
+		while (j < wall_top && j < WINDOW_HEIGHT)
+			draw_ceiling(data, i, j++, data->textures->ceiling.img_ptr != NULL);
+		while (j < wall_top + height && j < WINDOW_HEIGHT)
+		{
+			tex_x = get_tex_offset(rays[i]);
+			tex_y = ((j - wall_top) * TEXTURE_HEIGHT) / height;
+			put_pixel_from_img(data, texture, (t_coord){tex_x, tex_y},
+				(t_coord){i, j});
+			j++;
+		}
+		while (j >= wall_top + height && j < WINDOW_HEIGHT)
+		 	draw_floor(data, i, j++, data->textures->floor.img_ptr != NULL);
+		i++;
+	}
+	free(rays);
+}
+
+static void	render_sprites(t_data *data, t_ray *rays)
 {
 	int			i;
 	t_sprite	*sprite;
@@ -81,7 +88,7 @@ void	render_sprites(t_data *data, t_ray *rays)
 	}
 }
 
-void	draw_gun(t_data *data)
+static void	draw_gun(t_data *data)
 {
 	int	img_start_x;
 	int	img_start_y;
@@ -108,19 +115,8 @@ void	draw_gun(t_data *data)
 
 
 
-void	render_frame(t_data *data)
-{
-	t_ray	*rays;
 
-	rays = cast_rays(data->map, *data->player);
-	if (currtime() - data->last_render > MS_BETWEEN_FRAMES)
-	{
-		draw_walls(rays, data);
-		draw_minimap(data, rays);
-		render_sprites(data, rays);
-		data->last_render = currtime();
-		mlx_put_image_to_window(data->mlx_ptr, data->win_ptr, data->img_ptr, 0,
-			0);
-		draw_gun(data);
-	}
-}
+
+
+
+

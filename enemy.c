@@ -62,3 +62,26 @@ void	kill_enemy(t_data *data, t_coord pos)
 		i++;
 	}
 }
+
+void	update_enemy_frame(t_enemy *enemy)
+{
+	double	current_time;
+
+	current_time = currtime();
+	if (current_time - enemy->last_frame_time >= MS_BETWEEN_FRAMES * 10)
+	{
+		if (enemy->state == ATTACK)
+			enemy->frame = 0 + (enemy->frame + 1) % 4;
+		else if (enemy->state == WALK)
+			enemy->frame = 4 + (enemy->frame + 1 - 4) % 4;
+		else if (enemy->state == DIE)
+		{
+			if (enemy->frame < 8)
+				enemy->frame = 8;
+			else if (enemy->frame >= 8 && enemy->frame < 10)
+				enemy->frame++;
+		}
+		enemy->last_frame_time = current_time;
+	}
+}
+
