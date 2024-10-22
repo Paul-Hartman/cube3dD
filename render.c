@@ -12,10 +12,9 @@
 
 #include "cub3d.h"
 
-
 static void	draw_gun(t_data *data);
-static void	draw_walls(t_ray *rays, t_data *data);
 static void	render_sprites(t_data *data, t_ray *rays);
+static void	draw_env(t_ray *rays, t_data *data);
 
 void	render_frame(t_data *data)
 {
@@ -24,7 +23,7 @@ void	render_frame(t_data *data)
 	rays = cast_rays(data->map, *data->player);
 	if (currtime() - data->last_render > MS_BETWEEN_FRAMES)
 	{
-		draw_walls(rays, data);
+		draw_env(rays, data);
 		draw_minimap(data, rays);
 		render_sprites(data, rays);
 		data->last_render = currtime();
@@ -34,36 +33,25 @@ void	render_frame(t_data *data)
 	}
 }
 
-static void	draw_walls(t_ray *rays, t_data *data)
+static void	draw_env(t_ray *rays, t_data *data)
 {
-	int		i;
-	int		j;
-	int		height;
-	int		wall_top;
-	double	tex_x;
-	double	tex_y;
-	t_image	*texture;
+	int	i;
+	int	j;
+	int	height;
+	int	wall_top;
 
-	i = 0;
-	while (i < WINDOW_WIDTH)
+	i = -1;
+	while (i++ < WINDOW_WIDTH)
 	{
 		height = (int)projected_wall_height(data->focal_len, rays[i].dist);
-		texture = get_texture(data->textures, &rays[i]);
 		wall_top = WINDOW_HEIGHT / 2 - height / 2;
 		j = 0;
 		while (j < wall_top && j < WINDOW_HEIGHT)
 			draw_ceiling(data, i, j++, data->textures->ceiling.img_ptr != NULL);
 		while (j < wall_top + height && j < WINDOW_HEIGHT)
-		{
-			tex_x = get_tex_offset(rays[i]);
-			tex_y = ((j - wall_top) * TEXTURE_HEIGHT) / height;
-			put_pixel_from_img(data, texture, (t_coord){tex_x, tex_y},
-				(t_coord){i, j});
-			j++;
-		}
+			draw_walls(data, rays, i, j++);
 		while (j >= wall_top + height && j < WINDOW_HEIGHT)
-		 	draw_floor(data, i, j++, data->textures->floor.img_ptr != NULL);
-		i++;
+			draw_floor(data, i, j++, data->textures->floor.img_ptr != NULL);
 	}
 	free(rays);
 }
@@ -112,11 +100,3 @@ static void	draw_gun(t_data *data)
 		i++;
 	}
 }
-
-
-
-
-
-
-
-

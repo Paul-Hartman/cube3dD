@@ -359,7 +359,8 @@ void			put_pixel_from_img(t_data *data, t_image *src_img,
 t_image	*get_texture(t_textures *textures, t_ray *r);
 int	get_tex_offset(t_ray r);
 
-//floor and ceiling
+//environment
+void draw_walls(t_data *data, t_ray *rays, int i, int j);
 void draw_ceiling(t_data *data, int i, int j, bool is_texture);
 void draw_floor(t_data *data, int i, int j, bool is_texture);
 

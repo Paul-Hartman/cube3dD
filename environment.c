@@ -1,6 +1,22 @@
 
 #include "cub3d.h"
 
+void draw_walls(t_data *data, t_ray *rays, int i, int j)
+{
+	t_coord tex;
+	t_image	*texture;
+	int		height;
+	int		wall_top;
+
+	height = (int)projected_wall_height(data->focal_len, rays[i].dist);
+	wall_top = WINDOW_HEIGHT / 2 - height / 2;
+	texture = get_texture(data->textures, &rays[i]);
+	tex.x = get_tex_offset(rays[i]);
+	tex.y = ((j - wall_top) * TEXTURE_HEIGHT) / height;
+	put_pixel_from_img(data, texture, tex, (t_coord){i, j});
+}
+
+
 void draw_floor(t_data *data, int i, int j, bool is_texture)
 {
 	t_ray r;
