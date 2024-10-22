@@ -1,6 +1,5 @@
 #include "cub3d.h"
 
-
 void	set_pixel(t_data *data, int c[3], int x, int y)
 {
 	int		color;
@@ -54,9 +53,18 @@ int	get_tex_offset(t_ray r)
 		tex_x = (int)r.coll.x % CUBE_SIZE;
 	else
 		tex_x = (int)r.coll.y % CUBE_SIZE;
-
 	return (tex_x);
 }
 
+double	get_dist(double angle, t_coord coll, t_player p)
+{
+	double	dist;
+	double	angle_diff;
 
-
+	if (coll.x == -1.0 && coll.y == -1.0)
+		return (INFINITY);
+	dist = sqrt(pow(p.pos.x - coll.x, 2) + pow(p.pos.y - coll.y, 2));
+	angle_diff = angle - p.dir;
+	dist = dist * cos(angle_diff);
+	return (fabs(dist));
+}

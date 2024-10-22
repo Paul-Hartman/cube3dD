@@ -246,7 +246,7 @@ typedef struct s_ray
 // 	int		screenheight;
 // }				t_vars;
 
-// raycasting
+// raytracing
 t_ray *cast_rays(t_map *map, t_player p);
 
 // Read map
@@ -358,10 +358,19 @@ void			put_pixel_from_img(t_data *data, t_image *src_img,
 					t_coord src_coord, t_coord dest_coord);
 t_image	*get_texture(t_textures *textures, t_ray *r);
 int	get_tex_offset(t_ray r);
+double	get_dist(double angle, t_coord coll, t_player p);
 
 //environment
 void draw_walls(t_data *data, t_ray *rays, int i, int j);
 void draw_ceiling(t_data *data, int i, int j, bool is_texture);
 void draw_floor(t_data *data, int i, int j, bool is_texture);
+
+//raytrace_utils
+int		check_dir(double angle, bool is_horiz);
+t_coord	get_ray_delta(t_ray *r, bool is_horiz);
+t_coord	get_ray_delta_hori(t_ray *r);
+t_coord	get_ray_delta_vert(t_ray *r);
+double	projected_wall_height(int focal_len, double dist);
+t_ray	update_ray(t_ray *r, double dist, bool is_horiz);
 
 #endif
