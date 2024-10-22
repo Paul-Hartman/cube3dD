@@ -23,8 +23,8 @@ void	set_pixel(t_data *data, int c[3], int x, int y)
 	ft_memcpy(pixel, &color, 4);
 }
 
-void	put_pixel_from_img(t_data *data, t_image *src_img,
-	t_coord src_coord, t_coord dest_coord)
+void	put_pixel_from_img(t_data *data, t_image *src_img, t_coord src_coord,
+		t_coord dest_coord)
 {
 	char	*pixel_src;
 	char	*pixel_dest;
@@ -39,13 +39,12 @@ void	put_pixel_from_img(t_data *data, t_image *src_img,
 	ft_memcpy(pixel_dest, pixel_src, 4);
 }
 
-
-void update_enemy_frame(t_enemy *enemy)
+void	update_enemy_frame(t_enemy *enemy)
 {
-	double current_time;
-	current_time = currtime();
+	double	current_time;
 
-	if (current_time - enemy->last_frame_time >= MS_BETWEEN_FRAMES *10)
+	current_time = currtime();
+	if (current_time - enemy->last_frame_time >= MS_BETWEEN_FRAMES * 10)
 	{
 		if (enemy->state == ATTACK)
 			enemy->frame = 0 + (enemy->frame + 1) % 4;
@@ -53,32 +52,33 @@ void update_enemy_frame(t_enemy *enemy)
 			enemy->frame = 4 + (enemy->frame + 1 - 4) % 4;
 		else if (enemy->state == DIE)
 		{
-			if(enemy->frame < 8)
+			if (enemy->frame < 8)
 				enemy->frame = 8;
-			else if(enemy->frame >= 8 && enemy->frame < 10)
+			else if (enemy->frame >= 8 && enemy->frame < 10)
 				enemy->frame++;
 		}
 		enemy->last_frame_time = current_time;
 	}
 }
 
-
-void render_sprites(t_data *data, t_ray *rays)
+void	render_sprites(t_data *data, t_ray *rays)
 {
-		int i;
-		t_sprite	*sprite;
-		t_sprite enemy_sprite;
-		i= 0;
-		while(i < data->nr_of_enemies)
-		{
-			
-			update_enemy_frame(&data->enemies[i]);
-			enemy_sprite = ((t_sprite){data->enemies[i].pos, data->enemies[i].frame, data->enemies[i].size, data->enemies[i].size, true, false, NULL});
-			sprite = get_sprite_coll(data, rays, &enemy_sprite);
-			if (sprite != NULL)
-				put_sprite(data, sprite);
-			i++;
-		}
+	int			i;
+	t_sprite	*sprite;
+	t_sprite	enemy_sprite;
+
+	i = 0;
+	while (i < data->nr_of_enemies)
+	{
+		update_enemy_frame(&data->enemies[i]);
+		enemy_sprite = ((t_sprite){data->enemies[i].pos, data->enemies[i].frame,
+				data->enemies[i].size, data->enemies[i].size, true, false,
+				NULL});
+		sprite = get_sprite_coll(data, rays, &enemy_sprite);
+		if (sprite != NULL)
+			put_sprite(data, sprite);
+		i++;
+	}
 }
 
 void	draw_gun(t_data *data)
@@ -98,13 +98,27 @@ void	draw_gun(t_data *data)
 		while (j < GUN_WIDTH)
 		{
 			(void)data;
-			put_pixel_from_img(data, &data->textures->gun[0],
-				(t_coord){j, i}, (t_coord){img_start_x + j, img_start_y + i});
+			put_pixel_from_img(data, &data->textures->gun[0], (t_coord){j, i},
+				(t_coord){img_start_x + j, img_start_y + i});
 			j++;
 		}
 		i++;
 	}
 }
+
+t_coord get_offset(t_data *data)
+{
+	int player_tile_x;
+	int player_tile_y;
+	int offset_x;
+	int offset_y;
+
+	player_tile_x = (data->player->pos.x / CUBE_SIZE) * TILE_SZ;
+	player_tile_y = (data->player->pos.y / CUBE_SIZE) * TILE_SZ;
+	offset_x = max(player_tile_x - MINI_SIZE / 2, 0);
+	offset_y = max(player_tile_y - MINI_SIZE / 2, 0);
+	return ((t_coord){offset_x, offset_y});
+} 
 
 void	render_frame(t_data *data)
 {
@@ -117,139 +131,8 @@ void	render_frame(t_data *data)
 		draw_minimap(data, rays);
 		render_sprites(data, rays);
 		data->last_render = currtime();
-		mlx_put_image_to_window(data->mlx_ptr,
-			data->win_ptr, data->img_ptr, 0, 0);
+		mlx_put_image_to_window(data->mlx_ptr, data->win_ptr, data->img_ptr, 0,
+			0);
 		draw_gun(data);
 	}
-}
-
-void	draw_square(t_data *data, t_coord pos, int size, int c[3])
-{
-	int	i;
-	int	j;
-	i = 0;
-
-	while (i < size)
-	{
-		j = 0;
-		while (j < size)
-		{
-			set_pixel(data, c, pos.x + i, pos.y + j);
-			j++;
-		}
-		i++;
-	}
-}
-
-void draw_line(t_data *data, t_coord p1, t_coord p2)
-{
-	int distx;
-	int disty;
-	int stepx;
-	int stepy;
-	int err;
-	distx = abs((int)p2.x - (int)p1.x);
-	disty = abs((int)p2.y - (int)p1.y);
-	err = distx - disty;
-	if(p1.x < p2.x)
-		stepx = 1;
-	else
-		stepx = -1;
-	if(p1.y < p2.y)
-		stepy = 1;
-	else
-		stepy = -1;
-	while (p1.x < data->map->width * MINI_TILE_SZ && p1.y < data->map->height * MINI_TILE_SZ && p1.x >= 0 && p1.y >= 0)
-	{
-		set_pixel(data, (int[3]){255, 255, 255}, (int)p1.x, (int)p1.y);
-		if (fabs(p1.x - p2.x) < 2 && fabs(p1.y - p2.y) < 2)
-			break;
-		if(2 * err > -disty)
-		{
-			p1.x += stepx;
-			err -= disty;
-		}
-		if(2 * err < distx)
-		{
-			p1.y += stepy;
-			err += distx;
-		}
-	}
-}
-
-void draw_player(t_data *data, t_ray *rays, t_coord offset)
-{
-	t_coord p;
-	t_coord end_line;
-	int i;
-	i=0;
-
-	p.x = data->player->pos.x / CUBE_SIZE * MINI_TILE_SZ - offset.x;
-	p.y = data->player->pos.y / CUBE_SIZE * MINI_TILE_SZ - offset.y;
-	
-	draw_square(data, (t_coord){p.x - 2.5, p.y - 2.5}, 5, (int[3]){0, 255, 0});
-
-	while(i < WINDOW_WIDTH)
-	{
-		if (i % 20 == 0 && i !=0)
-		{
-			end_line.x = rays[i].coll.x / CUBE_SIZE * MINI_TILE_SZ - offset.x;
-			end_line.y = rays[i].coll.y / CUBE_SIZE * MINI_TILE_SZ - offset.y;
-			if(end_line.x > MINI_SIZE)
-				end_line.x = MINI_SIZE + MINI_TILE_SZ;
-			if(end_line.y > MINI_SIZE)
-				end_line.y = MINI_SIZE + MINI_TILE_SZ;
-            draw_line(data, p, end_line);
-		}
-		i++;
-	}
-
-}
-void draw_enemies(t_data *data, t_coord offset)
-{
-	int i;
-	t_coord e;
-	i = 0;
-	while(i < data->nr_of_enemies)
-	{
-		if(data->enemies[i].state != DIE)
-		{
-			e.x = data->enemies[i].pos.x / CUBE_SIZE * MINI_TILE_SZ - offset.x;
-			e.y = data->enemies[i].pos.y / CUBE_SIZE * MINI_TILE_SZ - offset.y;
-			draw_square(data, (t_coord){e.x - 2.5, e.y - 2.5}, 5, (int[3]){255, 0, 0});
-		}
-		i++;
-	}
-}
-
-void	draw_minimap(t_data *data, t_ray *rays)
-{
-	int	y;
-	int	x;
-	t_coord offset;
-
-	offset.y = (data->player->pos.y/ CUBE_SIZE)*MINI_TILE_SZ - MINI_SIZE / 2;
-	offset.x = (data->player->pos.x/ CUBE_SIZE)* MINI_TILE_SZ - MINI_SIZE / 2;
-	offset.y = max(offset.y, 0);
-	offset.x = max(offset.x, 0);
-	y = offset.y;
-	while (y / MINI_TILE_SZ < data->map->height && y< MINI_SIZE + offset.y)
-	{
-		x = offset.x;
-		while (x/MINI_TILE_SZ  < data->map->width && x < MINI_SIZE + offset.x)
-		{
-			if (data->map->grid[y/ MINI_TILE_SZ][x/ MINI_TILE_SZ] == WALL)
-				draw_square(data, (t_coord){x- offset.x, y - offset.y},MINI_TILE_SZ, (int[3]){95, 95, 95});
-			else if (data->map->grid[y/ MINI_TILE_SZ][x/ MINI_TILE_SZ] == DOOR)
-				draw_square(data, (t_coord){x- offset.x, y - offset.y}, MINI_TILE_SZ, (int[3]){0, 0, 255});
-			else if (data->map->grid[y/ MINI_TILE_SZ][x/ MINI_TILE_SZ] != SPACE)
-				draw_square(data, (t_coord){x- offset.x, y - offset.y}, MINI_TILE_SZ, (int[3]){195, 195, 195});
-			x += MINI_TILE_SZ/5;
-		}
-		y+= MINI_TILE_SZ/5;
-	}
-
-
-	draw_player(data, rays, offset);
-	draw_enemies(data, offset);
 }

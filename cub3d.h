@@ -31,7 +31,7 @@
 
 # define FOV 1.047198 //60 degrees in radians
 //# define FOCAL_LEN 277
-# define MINI_TILE_SZ 20
+# define TILE_SZ 20
 # define MINI_SIZE 250
 # define CHAR_HEIGHT 32
 # define CUBE_SIZE 180
@@ -53,6 +53,7 @@
 # define OOM_ERROR "Out of memory error"
 # define GUN_TEXTURE_BASE_NAME "textures/gun"
 # define XPM_EXT ".xpm"
+
 
 # define EMPTY 48
 # define WALL 49
@@ -266,8 +267,7 @@ void			set_pixel(t_data *data, int c[3], int x, int y);
 void			put_pixel_from_img(t_data *data, t_image *src_img,
 					t_coord src_coord, t_coord dest_coord);
 void			render_frame(t_data *data);
-void	draw_minimap(t_data *data, t_ray *rays);
-void 			draw_line(t_data *data, t_coord p1, t_coord p2);
+
 
 //void draw_player(t_data data);
 
@@ -326,6 +326,8 @@ double			norm_angle(double angle);
 double			deg_to_rad(double degrees);
 double			radians_to_degrees(double radians);
 
+t_coord get_offset();
+
 
 // render utils
 double norm_angle(double angle);
@@ -345,5 +347,8 @@ void kill_enemy(t_data *data, t_coord pos);
 //sprites
 t_sprite *get_sprite_coll(t_data *data, t_ray *rays, t_sprite *sprite);
 void	put_sprite(t_data *data, t_sprite *sprite);
+
+//minimap
+void	draw_minimap(t_data *data, t_ray *rays);
 
 #endif
