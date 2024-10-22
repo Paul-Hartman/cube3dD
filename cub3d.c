@@ -6,7 +6,7 @@
 /*   By: phartman <phartman@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/14 18:29:21 by wpepping          #+#    #+#             */
-/*   Updated: 2024/10/22 18:04:25 by phartman         ###   ########.fr       */
+/*   Updated: 2024/10/22 19:27:30 by phartman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ int	main(int argc, char **argv)
 	data.textures = &textures;
 	if (check_input(argc, argv) < 0 || init(&data, argv[1]) < 0)
 		return (1);
-	if (find_player(&map, &player) < 0 || !is_valid_map(&map, &player))
+	if (init_player(&map, &player) < 0 || !is_valid_map(&map, &player))
 	{
 		ft_putendl_fd(MAP_ERROR, STDERR_FILENO);
 		cleanup(&data);

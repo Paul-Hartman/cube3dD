@@ -6,7 +6,7 @@
 /*   By: phartman <phartman@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/28 22:28:35 by wpepping          #+#    #+#             */
-/*   Updated: 2024/10/22 18:03:55 by phartman         ###   ########.fr       */
+/*   Updated: 2024/10/22 19:28:07 by phartman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,33 +77,4 @@ int	try_save(char **dest, char *src)
 		return (-1);
 	*dest = ft_strdup(src);
 	return (0);
-}
-
-int	find_player(t_map *map, t_player *player)
-{
-	t_coord	coord;
-	int		n;
-	char	c;
-
-	coord.y = 0;
-	n = -1;
-	while (coord.y < map->height)
-	{
-		coord.x = 0;
-		while (coord.x < map->width)
-		{
-			c = map->grid[(int)coord.y][(int)coord.x];
-			if (c == NORTH || c == EAST || c == SOUTH || c == WEST)
-			{
-				if (n++ > -1)
-					return (-1);
-				player->pos.x = coord.x * CUBE_SIZE + 0.5 * CUBE_SIZE;
-				player->pos.y = coord.y * CUBE_SIZE + 0.5 * CUBE_SIZE;
-				player->dir = get_angle(c);
-			}
-			coord.x++;
-		}
-		coord.y++;
-	}
-	return (n);
 }

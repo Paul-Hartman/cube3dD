@@ -6,7 +6,7 @@
 /*   By: phartman <phartman@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/15 20:13:31 by wpepping          #+#    #+#             */
-/*   Updated: 2024/10/22 18:43:51 by phartman         ###   ########.fr       */
+/*   Updated: 2024/10/22 19:27:49 by phartman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@
 # define WINDOW_NAME "Cub3d"
 # define MAP_ERROR "Map error"
 # define OOM_ERROR "Out of memory error"
-# define GUN_TEXTURE_BASE_NAME "textures/gun"
+# define GUN_TEXTURE_BASE_NAME "textures/gun0.xpm"
 # define XPM_EXT ".xpm"
 
 # define EMPTY 48
@@ -107,6 +107,9 @@ typedef struct s_player
 	t_coord			pos;
 	double			dir;
 	int				health;
+	bool			is_shooting;
+	int				gun_texture;
+	long			gun_last_updated;
 }					t_player;
 
 typedef enum e_state
@@ -250,7 +253,6 @@ int					get_map_dimensions(t_map *map, int fd);
 int					read_to_eoln(int fd, char *value);
 int					try_save(char **dest, char *src);
 int					save_rgbs(char *str, int dest[3]);
-int					find_player(t_map *map, t_player *player);
 int					is_valid_map(t_map *map, t_player *player);
 
 // Render
@@ -264,6 +266,9 @@ void				unload_textures(void *mlx_ptr, t_textures *textures);
 bool				move_player(t_data *data, bool rev);
 bool				strafe_player(t_data *data, bool left);
 bool				rotate_player(t_data *data, bool left, double rotate_speed);
+
+// Gun
+bool				update_gun(t_player *player);
 
 // Doors
 bool				move_door(t_data *data, t_door *door);
@@ -295,6 +300,7 @@ void				init_map(t_map *map);
 int					init_doors(t_map *map);
 void				init_events(t_data *data);
 int					init_enemies(t_data *data);
+int					init_player(t_map *map, t_player *player);
 
 // Utils
 char				*file_ext(char *fname);

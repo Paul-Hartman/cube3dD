@@ -6,7 +6,7 @@
 /*   By: phartman <phartman@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/15 18:36:33 by wpepping          #+#    #+#             */
-/*   Updated: 2024/10/22 17:07:43 by phartman         ###   ########.fr       */
+/*   Updated: 2024/10/22 19:28:03 by phartman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ t_ray	*cast_rays(t_map *map, t_player p)
 
 	i = 0;
 	rays = malloc(sizeof(t_ray) * WINDOW_WIDTH);
-	if(!rays)
+	if (!rays)
 		return (NULL);
 	while (i < WINDOW_WIDTH)
 	{

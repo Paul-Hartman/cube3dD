@@ -6,7 +6,7 @@
 /*   By: phartman <phartman@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/27 18:07:22 by wpepping          #+#    #+#             */
-/*   Updated: 2024/10/22 19:07:05 by phartman         ###   ########.fr       */
+/*   Updated: 2024/10/22 19:28:26 by phartman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -129,8 +129,9 @@ static void	draw_gun(t_data *data)
 		while (j < GUN_WIDTH)
 		{
 			(void)data;
-			put_pixel_from_img(data, &data->textures->gun[0], (t_coord){j, i},
-				(t_coord){img_start_x + j, img_start_y + i});
+			put_pixel_from_img(data,
+				&data->textures->gun[data->player->gun_texture],
+				(t_coord){j, i}, (t_coord){img_start_x + j, img_start_y + i});
 			j++;
 		}
 		i++;
