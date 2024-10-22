@@ -6,7 +6,7 @@
 /*   By: phartman <phartman@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/27 20:07:24 by wpepping          #+#    #+#             */
-/*   Updated: 2024/10/22 13:47:06 by phartman         ###   ########.fr       */
+/*   Updated: 2024/10/22 15:14:54 by phartman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,12 +30,16 @@ void	free_config(t_config *config)
 	free(config->west);
 	free(config->floor);
 	free(config->ceiling);
+	if(BONUS)
+		free(config->door);
 }
 
 void	cleanup(t_data *data)
 {
 	if (data->map->grid != NULL)
 		free_map(data->map->grid);
+	if(data->map->doors != NULL)
+		free(data->map->doors);
 	if (data->mlx_ptr != NULL)
 	{
 		if (data->enemies != NULL)

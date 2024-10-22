@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   inits.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wpepping <wpepping@student.42berlin.de>    +#+  +:+       +#+        */
+/*   By: phartman <phartman@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/16 15:39:28 by wpepping          #+#    #+#             */
-/*   Updated: 2024/10/18 15:47:01 by wpepping         ###   ########.fr       */
+/*   Updated: 2024/10/22 15:14:21 by phartman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ void	init_config(t_config *config)
 	config->floor = NULL;
 	config->ceiling = NULL;
 	config->door = NULL;
+	config->enemy = NULL;
 	config->north = NULL;
 	config->east = NULL;
 	config->south = NULL;

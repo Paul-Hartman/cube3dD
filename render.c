@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   render.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wpepping <wpepping@student.42berlin.de>    +#+  +:+       +#+        */
+/*   By: phartman <phartman@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/27 18:07:22 by wpepping          #+#    #+#             */
-/*   Updated: 2024/10/21 18:33:41 by wpepping         ###   ########.fr       */
+/*   Updated: 2024/10/22 14:57:05 by phartman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,9 @@ void	render_frame(t_data *data)
 		data->last_render = currtime();
 		mlx_put_image_to_window(data->mlx_ptr, data->win_ptr, data->img_ptr, 0,
 			0);
-		draw_gun(data);
+		if(BONUS)
+			draw_gun(data);
+		free(rays);
 	}
 }
 
@@ -41,7 +43,7 @@ static void	draw_env(t_ray *rays, t_data *data)
 	int	wall_top;
 
 	i = -1;
-	while (i++ < WINDOW_WIDTH)
+	while (++i < WINDOW_WIDTH)
 	{
 		height = (int)projected_wall_height(data->focal_len, rays[i].dist);
 		wall_top = WINDOW_HEIGHT / 2 - height / 2;
@@ -53,7 +55,6 @@ static void	draw_env(t_ray *rays, t_data *data)
 		while (j >= wall_top + height && j < WINDOW_HEIGHT)
 			draw_floor(data, i, j++, data->textures->floor.img_ptr != NULL);
 	}
-	free(rays);
 }
 
 static void	render_sprites(t_data *data, t_ray *rays)

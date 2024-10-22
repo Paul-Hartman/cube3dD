@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wpepping <wpepping@student.42berlin.de>    +#+  +:+       +#+        */
+/*   By: phartman <phartman@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/30 19:54:58 by wpepping          #+#    #+#             */
-/*   Updated: 2024/10/14 16:16:33 by wpepping         ###   ########.fr       */
+/*   Updated: 2024/10/22 14:46:06 by phartman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ char	*ft_strdup2(char *s, size_t n)
 	if (s == NULL)
 		return (NULL);
 	i = 0;
-	dup = malloc(n);
+	dup = malloc(n +1);
 	if (!dup)
 		return (NULL);
 	while (s[i])

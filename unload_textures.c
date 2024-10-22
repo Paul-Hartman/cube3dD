@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   unload_textures.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wpepping <wpepping@student.42berlin.de>    +#+  +:+       +#+        */
+/*   By: phartman <phartman@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/21 17:25:26 by wpepping          #+#    #+#             */
-/*   Updated: 2024/10/21 17:25:34 by wpepping         ###   ########.fr       */
+/*   Updated: 2024/10/22 15:00:33 by phartman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,5 +48,6 @@ void	unload_textures(void *mlx_ptr, t_textures *textures)
 		mlx_destroy_image(mlx_ptr, textures->ceiling.img_ptr);
 	if (textures->door.img_ptr)
 		mlx_destroy_image(mlx_ptr, textures->door.img_ptr);
-	unload_bonus_textures(mlx_ptr, textures);
+	if (BONUS)
+		unload_bonus_textures(mlx_ptr, textures);
 }
