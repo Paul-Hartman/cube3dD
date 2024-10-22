@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   inits2.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: phartman <phartman@student.42berlin.de>    +#+  +:+       +#+        */
+/*   By: wpepping <wpepping@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/16 16:44:03 by wpepping          #+#    #+#             */
-/*   Updated: 2024/10/22 16:24:55 by phartman         ###   ########.fr       */
+/*   Updated: 2024/10/22 17:12:27 by wpepping         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,9 @@ void	init_textures(t_textures *textures)
 	i = 0;
 	while (i < 11)
 		textures->enemy[i++].img_ptr = NULL;
+	i = 0;
+	while (i < 3)
+		textures->gun[i++].img_ptr = NULL;
 	textures->north.img_ptr = NULL;
 	textures->east.img_ptr = NULL;
 	textures->south.img_ptr = NULL;

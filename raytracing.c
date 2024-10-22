@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   raytracing.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: phartman <phartman@student.42berlin.de>    +#+  +:+       +#+        */
+/*   By: wpepping <wpepping@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/15 18:36:33 by wpepping          #+#    #+#             */
-/*   Updated: 2024/10/22 14:49:24 by phartman         ###   ########.fr       */
+/*   Updated: 2024/10/22 18:07:34 by wpepping         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ t_ray	*cast_rays(t_map *map, t_player p)
 
 	i = 0;
 	rays = malloc(sizeof(t_ray) * WINDOW_WIDTH);
-	if(!rays)
+	if (!rays)
 		return (NULL);
 	while (i < WINDOW_WIDTH)
 	{

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   render.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: phartman <phartman@student.42berlin.de>    +#+  +:+       +#+        */
+/*   By: wpepping <wpepping@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/27 18:07:22 by wpepping          #+#    #+#             */
-/*   Updated: 2024/10/22 16:17:49 by phartman         ###   ########.fr       */
+/*   Updated: 2024/10/22 18:07:21 by wpepping         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ void	render_frame(t_data *data)
 		data->last_render = currtime();
 		mlx_put_image_to_window(data->mlx_ptr, data->win_ptr, data->img_ptr, 0,
 			0);
-		if(BONUS)
+		if (BONUS)
 			draw_gun(data);
 		free(rays);
 	}
@@ -97,8 +97,9 @@ static void	draw_gun(t_data *data)
 		while (j < GUN_WIDTH)
 		{
 			(void)data;
-			put_pixel_from_img(data, &data->textures->gun[0], (t_coord){j, i},
-				(t_coord){img_start_x + j, img_start_y + i});
+			put_pixel_from_img(data,
+				&data->textures->gun[data->player->gun_texture],
+				(t_coord){j, i}, (t_coord){img_start_x + j, img_start_y + i});
 			j++;
 		}
 		i++;

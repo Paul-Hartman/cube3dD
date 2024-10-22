@@ -1,28 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   events2.c                                          :+:      :+:    :+:   */
+/*   gun.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: wpepping <wpepping@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/22 15:38:26 by phartman          #+#    #+#             */
-/*   Updated: 2024/10/22 17:58:40 by wpepping         ###   ########.fr       */
+/*   Created: 2024/10/22 17:07:43 by wpepping          #+#    #+#             */
+/*   Updated: 2024/10/22 17:32:04 by wpepping         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-int handle_mouse_click(int button, int x, int y, t_data *data)
+bool	update_gun(t_player *player)
 {
-	(void)x;
-	(void)y;
-	if (button == Button1)
-		kill_enemy(data, get_gridpos_in_front(data->player));
-	if (!data->player->is_shooting)
-	{
+	long	ctime;
 
-		data->player->is_shooting = true;
-		data->player->gun_last_updated = currtime();
+	ctime = currtime();
+	if (ctime - player->gun_last_updated < 20)
+		return (false);
+	player->gun_last_updated = ctime;
+	if (player->gun_texture == 2)
+	{
+		player->is_shooting = false;
+		player->gun_texture = 0;
 	}
-	return (0);
+	else
+		player->gun_texture++;
+	return (true);
 }

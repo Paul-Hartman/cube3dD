@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   load_textures.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: phartman <phartman@student.42berlin.de>    +#+  +:+       +#+        */
+/*   By: wpepping <wpepping@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/14 16:21:55 by wpepping          #+#    #+#             */
-/*   Updated: 2024/10/22 13:52:29 by phartman         ###   ########.fr       */
+/*   Updated: 2024/10/22 17:48:34 by wpepping         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,20 +27,16 @@ static int	load_image(void *mlx_ptr, t_image *img, char *fname)
 static int	load_gun_textures(t_data *data)
 {
 	int		i;
-	char	c[2];
 	char	filename[18];
 
 	i = 0;
+	ft_strlcpy(filename, GUN_TEXTURE_BASE_NAME, 18);
 	while (i < 3)
 	{
-		ft_strlcpy(c, "0", 18);
-		ft_strlcpy(filename, GUN_TEXTURE_BASE_NAME, 18);
-		ft_strlcat(filename, c, 18);
-		ft_strlcat(filename, XPM_EXT, 18);
 		if (load_image(data->mlx_ptr, &data->textures->gun[i], filename) == -1)
 			return (-1);
+		filename[12]++;
 		i++;
-		c[0]++;
 	}
 	return (0);
 }
