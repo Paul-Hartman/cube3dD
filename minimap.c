@@ -21,11 +21,11 @@ void	draw_minimap(t_data *data, t_ray *rays)
 		{
 			pos = (t_coord){x - offset.x, y - offset.y};
 			if (data->map->grid[y / TILE_SZ][x / TILE_SZ] == WALL)
-				draw_square(data, pos, TILE_SZ, (int[3]){95, 95, 95});
+				draw_square(data, pos, TILE_SZ, (int [3]){95, 95, 95});
 			else if (data->map->grid[y / TILE_SZ][x / TILE_SZ] == DOOR)
-				draw_square(data, pos, TILE_SZ, (int[3]){0, 0, 255});
+				draw_square(data, pos, TILE_SZ, (int [3]){0, 0, 255});
 			else if (data->map->grid[y / TILE_SZ][x / TILE_SZ] != SPACE)
-				draw_square(data, pos, TILE_SZ, (int[3]){195, 195, 195});
+				draw_square(data, pos, TILE_SZ, (int [3]){195, 195, 195});
 			x += TILE_SZ / 5;
 		}
 		y += TILE_SZ / 5;
@@ -54,38 +54,26 @@ static void	draw_square(t_data *data, t_coord pos, int size, int c[3])
 
 static void	draw_line(t_data *data, t_coord p1, t_coord p2)
 {
-	int	distx;
-	int	disty;
-	int	stepx;
-	int	stepy;
-	int	err;
+	t_coord	dist;
+	t_coord	step;
+	int		err;
 
-	distx = abs((int)p2.x - (int)p1.x);
-	disty = abs((int)p2.y - (int)p1.y);
-	err = distx - disty;
-	if (p1.x < p2.x)
-		stepx = 1;
-	else
-		stepx = -1;
-	if (p1.y < p2.y)
-		stepy = 1;
-	else
-		stepy = -1;
+	err = init_line_vars(p1, p2, &dist, &step);
 	while (p1.x < data->map->width * TILE_SZ && p1.y < data->map->height
 		* TILE_SZ && p1.x >= 0 && p1.y >= 0)
 	{
-		set_pixel(data, (int[3]){255, 255, 255}, (int)p1.x, (int)p1.y);
+		set_pixel(data, (int [3]){255, 255, 255}, (int)p1.x, (int)p1.y);
 		if (fabs(p1.x - p2.x) < 2 && fabs(p1.y - p2.y) < 2)
 			break ;
-		if (2 * err > -disty)
+		if (2 * err > -dist.y)
 		{
-			p1.x += stepx;
-			err -= disty;
+			p1.x += step.x;
+			err -= dist.y;
 		}
-		if (2 * err < distx)
+		if (2 * err < dist.x)
 		{
-			p1.y += stepy;
-			err += distx;
+			p1.y += step.y;
+			err += dist.x;
 		}
 	}
 }
@@ -99,7 +87,7 @@ static void	draw_player(t_data *data, t_ray *rays, t_coord offset)
 	i = 0;
 	p.x = data->player->pos.x / CUBE_SIZE * TILE_SZ - offset.x;
 	p.y = data->player->pos.y / CUBE_SIZE * TILE_SZ - offset.y;
-	draw_square(data, (t_coord){p.x - 2.5, p.y - 2.5}, 5, (int[3]){0, 255, 0});
+	draw_square(data, (t_coord){p.x - 2.5, p.y - 2.5}, 5, (int [3]){0, 255, 0});
 	while (i < WINDOW_WIDTH)
 	{
 		if (i % 20 == 0 && i != 0)
@@ -128,7 +116,7 @@ static void	draw_enemies(t_data *data, t_coord offset)
 		{
 			e.x = data->enemies[i].pos.x / CUBE_SIZE * TILE_SZ - offset.x;
 			e.y = data->enemies[i].pos.y / CUBE_SIZE * TILE_SZ - offset.y;
-			draw_square(data, (t_coord){e.x - 2.5, e.y - 2.5}, 5, (int[3]){255,
+			draw_square(data, (t_coord){e.x - 2.5, e.y - 2.5}, 5, (int [3]){255,
 				0, 0});
 		}
 		i++;

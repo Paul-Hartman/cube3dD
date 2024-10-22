@@ -106,19 +106,7 @@ void	draw_gun(t_data *data)
 	}
 }
 
-t_coord get_offset(t_data *data)
-{
-	int player_tile_x;
-	int player_tile_y;
-	int offset_x;
-	int offset_y;
 
-	player_tile_x = (data->player->pos.x / CUBE_SIZE) * TILE_SZ;
-	player_tile_y = (data->player->pos.y / CUBE_SIZE) * TILE_SZ;
-	offset_x = max(player_tile_x - MINI_SIZE / 2, 0);
-	offset_y = max(player_tile_y - MINI_SIZE / 2, 0);
-	return ((t_coord){offset_x, offset_y});
-} 
 
 void	render_frame(t_data *data)
 {

@@ -327,6 +327,7 @@ double			deg_to_rad(double degrees);
 double			radians_to_degrees(double radians);
 
 t_coord get_offset();
+int init_line_vars(t_coord p1, t_coord p2, t_coord *dist, t_coord *step);
 
 
 // render utils
@@ -337,7 +338,7 @@ int	check_dir(double angle, bool is_horiz);
 double	projected_wall_height(int focal_len, double dist);
 double	get_dist(double angle, t_coord coll, t_player p);
 double	get_dir_to(t_coord pos, t_coord target);
-double	get_scale(double focal_len, double dist);;
+
 
 //enemy
 
