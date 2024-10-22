@@ -6,7 +6,7 @@
 /*   By: phartman <phartman@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/22 13:56:50 by phartman          #+#    #+#             */
-/*   Updated: 2024/10/22 13:56:59 by phartman         ###   ########.fr       */
+/*   Updated: 2024/10/22 16:53:01 by phartman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,19 @@ int	move_enemies(t_data *data)
 	}
 	return (1);
 }
+
+// bool ray_to_enemy(t_data *data, int i)
+// {
+// 	t_ray	ray;
+// 	t_coord delta;
+// 	ray->dir = get_dir_to(data->enemies[i].pos, data->player->pos);
+// 	ray->coll = data->enemies[i].pos;
+// 	if (is_horiz)
+// 		delta = get_ray_delta_hori(r);
+// 	else
+// 		delta = get_ray_delta_vert(r);
+	
+// }
 
 void	kill_enemy(t_data *data, t_coord pos)
 {

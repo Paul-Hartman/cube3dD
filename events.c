@@ -6,7 +6,7 @@
 /*   By: phartman <phartman@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/14 18:29:48 by wpepping          #+#    #+#             */
-/*   Updated: 2024/10/22 14:01:47 by phartman         ###   ########.fr       */
+/*   Updated: 2024/10/22 15:42:19 by phartman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,8 +62,6 @@ int	handle_key_press(int keycode, t_data *data)
 		data->key_state.run = true;
 	if (keycode == XK_space)
 		activate_door(data, get_gridpos_in_front(data->player));
-	if (keycode == XK_Return)
-		kill_enemy(data, get_gridpos_in_front(data->player));
 	return (0);
 }
 

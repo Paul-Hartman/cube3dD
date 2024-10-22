@@ -6,7 +6,7 @@
 /*   By: phartman <phartman@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/15 20:13:31 by wpepping          #+#    #+#             */
-/*   Updated: 2024/10/22 14:20:44 by phartman         ###   ########.fr       */
+/*   Updated: 2024/10/22 16:18:00 by phartman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -121,6 +121,7 @@ typedef struct s_enemy
 	double			last_frame_time;
 	t_coord			prev_pos;
 	t_coord			target;
+	bool			visible;
 	int				size;
 }					t_enemy;
 
@@ -247,12 +248,11 @@ int					find_player(t_map *map, t_player *player);
 int					is_valid_map(t_map *map, t_player *player);
 
 // Render
-int					load_textures(t_data *data, t_config *config);
-void				unload_textures(void *mlx_ptr, t_textures *textures);
-
 void				render_frame(t_data *data);
 
-// void draw_player(t_data data);
+//textures
+int					load_textures(t_data *data, t_config *config);
+void				unload_textures(void *mlx_ptr, t_textures *textures);
 
 // movement
 bool				move_player(t_data *data, bool rev);
@@ -268,12 +268,11 @@ bool				is_door_coll(t_map *map, t_coord coll, bool is_horiz);
 // Events
 int					handle_loop(t_data *data);
 int					handle_close(t_data *data);
-// int				handle_input(int keycode, t_data *data);
 int					handle_mouse(void *data);
 int					handle_mouse_move(int x, int y, t_data *data);
-
 int					handle_key_press(int keycode, t_data *data);
 int					handle_key_release(int keycode, t_data *data);
+int handle_mouse_click(int button, int x, int y, t_data *data);
 
 // Clean up
 void				cleanup(t_data *data);

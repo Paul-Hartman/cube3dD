@@ -6,7 +6,7 @@
 /*   By: phartman <phartman@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/16 16:44:03 by wpepping          #+#    #+#             */
-/*   Updated: 2024/10/22 14:14:41 by phartman         ###   ########.fr       */
+/*   Updated: 2024/10/22 16:24:55 by phartman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,6 +78,7 @@ void	init_enemy(t_data *data, int i, int j, int n)
 	data->enemies[n].state = WALK;
 	data->enemies[n].frame = 4;
 	data->enemies[n++].last_frame_time = currtime();
+	data->enemies[i].visible = false;
 }
 
 int	init_enemies(t_data *data)

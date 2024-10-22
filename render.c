@@ -6,7 +6,7 @@
 /*   By: phartman <phartman@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/27 18:07:22 by wpepping          #+#    #+#             */
-/*   Updated: 2024/10/22 14:57:05 by phartman         ###   ########.fr       */
+/*   Updated: 2024/10/22 16:17:49 by phartman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,10 @@ static void	render_sprites(t_data *data, t_ray *rays)
 				NULL});
 		sprite = get_sprite_coll(data, rays, &enemy_sprite);
 		if (sprite != NULL)
+		{
+			data->enemies[i].visible = true;
 			put_sprite(data, sprite);
+		}
 		i++;
 	}
 }
