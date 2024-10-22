@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   enemy.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: phartman <phartman@student.42berlin.de>    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/10/22 13:56:50 by phartman          #+#    #+#             */
+/*   Updated: 2024/10/22 13:56:59 by phartman         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "cub3d.h"
 
 bool	enemy_hit_wall(t_coord pos, t_coord move, t_data *data)
@@ -9,8 +21,10 @@ bool	enemy_hit_wall(t_coord pos, t_coord move, t_data *data)
 	return (false);
 }
 
-static void	move_enemy(t_data *data, int i, t_coord move, double dir)
+static void	move_enemy(t_data *data, int i, double dir)
 {
+	t_coord	move;
+
 	data->enemies[i].state = WALK;
 	move.x = MOVE_SPEED * data->cos_table[angle_to_index(dir)];
 	move.y = MOVE_SPEED * data->sin_table[angle_to_index(dir)];
@@ -26,7 +40,6 @@ int	move_enemies(t_data *data)
 {
 	double	dir;
 	double	fire_dist;
-	t_coord	move;
 	double	distance;
 	int		i;
 
@@ -39,7 +52,7 @@ int	move_enemies(t_data *data)
 		if (distance <= fire_dist && data->enemies[i].state != DIE)
 			data->enemies[i].state = ATTACK;
 		else if (data->enemies[i].state != DIE)
-			move_enemy(data, i, move, dir);
+			move_enemy(data, i, dir);
 		i++;
 	}
 	return (1);
@@ -84,4 +97,3 @@ void	update_enemy_frame(t_enemy *enemy)
 		enemy->last_frame_time = current_time;
 	}
 }
-

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   inits2.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wpepping <wpepping@student.42berlin.de>    +#+  +:+       +#+        */
+/*   By: phartman <phartman@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/16 16:44:03 by wpepping          #+#    #+#             */
-/*   Updated: 2024/10/18 15:19:24 by wpepping         ###   ########.fr       */
+/*   Updated: 2024/10/22 13:54:46 by phartman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,8 @@
 
 void	init_textures(t_textures *textures)
 {
-	int i;
+	int	i;
+
 	i = 0;
 	while (i < 11)
 		textures->enemy[i++].img_ptr = NULL;
@@ -87,7 +88,7 @@ int	init_doors(t_map *map)
 	return (0);
 }
 
-int init_enemies(t_data *data)
+int	init_enemies(t_data *data)
 {
 	int	i;
 	int	j;
@@ -110,7 +111,8 @@ int init_enemies(t_data *data)
 			if (data->map->grid[j++][i] == ENEMY && n < data->nr_of_enemies)
 			{
 				data->enemies[n].size = 128;
-				data->enemies[n].pos = (t_coord){i* CUBE_SIZE + 0.5 * CUBE_SIZE, j* CUBE_SIZE - 0.5 * CUBE_SIZE};
+				data->enemies[n].pos = (t_coord){i * CUBE_SIZE + 0.5
+					* CUBE_SIZE, j * CUBE_SIZE - 0.5 * CUBE_SIZE};
 				data->enemies[n].target = data->player->pos;
 				data->enemies[n].state = WALK;
 				data->enemies[n].frame = 4;
@@ -121,4 +123,3 @@ int init_enemies(t_data *data)
 	}
 	return (0);
 }
-

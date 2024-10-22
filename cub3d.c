@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wpepping <wpepping@student.42berlin.de>    +#+  +:+       +#+        */
+/*   By: phartman <phartman@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/14 18:29:21 by wpepping          #+#    #+#             */
-/*   Updated: 2024/10/16 16:56:01 by wpepping         ###   ########.fr       */
+/*   Updated: 2024/10/22 13:47:23 by phartman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,6 @@ static int	err_handl(char *error_msg, t_data *data)
 	cleanup(data);
 	return (-1);
 }
-
-
-
 
 static int	init(t_data *data, char *fname)
 {
@@ -35,7 +32,7 @@ static int	init(t_data *data, char *fname)
 		return (err_handl(MAP_ERROR, data));
 	if (init_doors(data->map) < 0)
 		return (err_handl(OOM_ERROR, data));
-	if(init_enemies(data) < 0)
+	if (init_enemies(data) < 0)
 		return (err_handl(OOM_ERROR, data));
 	if (init_window(data) < 0)
 		return (err_handl(OOM_ERROR, data));
@@ -72,8 +69,6 @@ int	main(int argc, char **argv)
 	}
 	init_events(&data);
 	render_frame(&data);
-	//draw_walls(cast_rays(data.map, *data.player), &data);
-	//draw_minimap(&data, cast_rays(data.map, *data.player));
 	mlx_put_image_to_window(data.mlx_ptr, data.win_ptr, data.img_ptr, 0, 0);
 	mlx_loop(data.mlx_ptr);
 	cleanup(&data);

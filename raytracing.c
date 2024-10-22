@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   raytracing.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wpepping <wpepping@student.42berlin.de>    +#+  +:+       +#+        */
+/*   By: phartman <phartman@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/15 18:36:33 by wpepping          #+#    #+#             */
-/*   Updated: 2024/10/18 16:13:42 by wpepping         ###   ########.fr       */
+/*   Updated: 2024/10/22 13:48:34 by phartman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 static double	get_horiz_coll(t_player p, t_ray *r, t_map *map);
 static double	get_vert_coll(t_player p, t_ray *r, t_map *map);
-static t_coord	get_wall_coll(t_coord coll, t_ray *r, t_map *map, bool is_horiz);
+static t_coord	get_wall_coll(t_coord coll, t_ray *r, t_map *map,
+					bool is_horiz);
 static t_ray	init_ray(double dir, int i);
-
 
 t_ray	*cast_rays(t_map *map, t_player p)
 {
@@ -91,8 +91,10 @@ static t_coord	get_wall_coll(t_coord coll, t_ray *r, t_map *map, bool is_horiz)
 
 	map_x = ((int)floor((coll.x / CUBE_SIZE)));
 	map_y = ((int)floor((coll.y / CUBE_SIZE)));
-	//if(r->is)
-	delta = get_ray_delta(r, is_horiz);
+	if (is_horiz)
+		delta = get_ray_delta_hori(r);
+	else
+		delta = get_ray_delta_vert(r);
 	while (!(map_x < 0 || map_y < 0 || map_x > map->width - 1
 			|| map_y > map->height - 1))
 	{
@@ -117,4 +119,3 @@ static t_ray	init_ray(double dir, int i)
 	r.is_horiz = false;
 	return (r);
 }
-
