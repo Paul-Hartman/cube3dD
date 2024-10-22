@@ -6,7 +6,7 @@
 /*   By: phartman <phartman@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/14 16:21:55 by wpepping          #+#    #+#             */
-/*   Updated: 2024/10/22 13:52:29 by phartman         ###   ########.fr       */
+/*   Updated: 2024/10/22 18:54:50 by phartman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,6 +67,29 @@ static int	load_enemy_texture(t_data *data)
 	return (0);
 }
 
+static int	load_healthbar_texture(t_data *data)
+{
+	int		i;
+	char	*index;
+	char	filename[30];
+
+	i = 0;
+	while (i < 9)
+	{
+		ft_strlcpy(filename, "textures/healthbar_", 20);
+		index = ft_itoa(i);
+		ft_strlcat(filename, index, 30);
+		ft_strlcat(filename, ".xpm", 30);
+		if (load_image(data->mlx_ptr, &data->textures->healthbar[i], filename)
+			== -1)
+			return (-1);
+		free(index);
+		printf("loaded healthbar %s\n", filename);
+		i++;
+	}
+	return (0);
+}
+
 static int	load_bonus_textures(t_data *data, t_config *cfg)
 {
 	if (load_image(data->mlx_ptr, &data->textures->door, cfg->door) == -1)
@@ -75,6 +98,12 @@ static int	load_bonus_textures(t_data *data, t_config *cfg)
 		return (-1);
 	if (load_gun_textures(data) == -1)
 		return (-1);
+	if (load_healthbar_texture(data) == -1)
+	{
+		printf("Error\nFailed to load healthbar textures\n");
+		return (-1);
+	}
+		
 	return (0);
 }
 

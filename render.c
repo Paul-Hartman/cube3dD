@@ -6,7 +6,7 @@
 /*   By: phartman <phartman@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/27 18:07:22 by wpepping          #+#    #+#             */
-/*   Updated: 2024/10/22 16:17:49 by phartman         ###   ########.fr       */
+/*   Updated: 2024/10/22 19:07:05 by phartman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 static void	draw_gun(t_data *data);
 static void	render_sprites(t_data *data, t_ray *rays);
 static void	draw_env(t_ray *rays, t_data *data);
+static void	draw_healthbar(t_data *data);
 
 void	render_frame(t_data *data)
 {
@@ -30,7 +31,10 @@ void	render_frame(t_data *data)
 		mlx_put_image_to_window(data->mlx_ptr, data->win_ptr, data->img_ptr, 0,
 			0);
 		if(BONUS)
+		{
+			draw_healthbar(data);
 			draw_gun(data);
+		}
 		free(rays);
 	}
 }
@@ -79,6 +83,34 @@ static void	render_sprites(t_data *data, t_ray *rays)
 		i++;
 	}
 }
+
+static void	draw_healthbar(t_data *data)
+{
+	int	img_start_x;
+	int	img_start_y;
+	int	i;
+	int	j;
+	int health;
+
+	health = (data->player->health/10) -2;
+	img_start_x = WINDOW_WIDTH - HEALTHBAR_WIDTH;
+	img_start_y = 10;
+	i = 0;
+	j = 0;
+	while (i < HEALTHBAR_HEIGHT)
+	{
+		j = 0;
+		while (j < HEALTHBAR_HEIGHT)
+		{
+			(void)data;
+			put_pixel_from_img(data, &data->textures->healthbar[health], (t_coord){j, i},
+				(t_coord){img_start_x + j, img_start_y + i});
+			j++;
+		}
+		i++;
+	}
+}
+
 
 static void	draw_gun(t_data *data)
 {

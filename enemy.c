@@ -6,7 +6,7 @@
 /*   By: phartman <phartman@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/22 13:56:50 by phartman          #+#    #+#             */
-/*   Updated: 2024/10/22 16:53:01 by phartman         ###   ########.fr       */
+/*   Updated: 2024/10/22 19:26:52 by phartman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,8 @@ static void	move_enemy(t_data *data, int i, double dir)
 	t_coord	move;
 
 	data->enemies[i].state = WALK;
-	move.x = MOVE_SPEED * data->cos_table[angle_to_index(dir)];
-	move.y = MOVE_SPEED * data->sin_table[angle_to_index(dir)];
+	move.x = MOVE_SPEED / 2 * data->cos_table[angle_to_index(dir)];
+	move.y = MOVE_SPEED / 2 * data->sin_table[angle_to_index(dir)];
 	if (enemy_hit_wall(data->enemies[i].pos, (t_coord){move.x, 0}, data))
 		move.x = 0;
 	if (enemy_hit_wall(data->enemies[i].pos, (t_coord){0, move.y}, data))
@@ -36,40 +36,65 @@ static void	move_enemy(t_data *data, int i, double dir)
 	data->enemies[i].pos.y -= move.y;
 }
 
+bool	enemy_obstructed(t_data *data, int i, double distance)
+{
+	t_ray	*ray;
+	double	horiz_coll;
+	double	vert_coll;
+
+	ray = malloc(sizeof(t_ray));
+	ray->dir = get_dir_to(data->enemies[i].pos, data->player->pos);
+	ray->coll = data->enemies[i].pos;
+	horiz_coll = get_horiz_coll(*data->player, ray, data->map);
+	vert_coll = get_vert_coll(*data->player, ray, data->map);
+	free(ray);
+	if (horiz_coll < vert_coll)
+		return (horiz_coll <= distance);
+	else
+		return (vert_coll <= distance);
+	return (false);
+}
+
+void attack(t_data *data, int i)
+{
+	data->enemies[i].state = ATTACK;
+	double current_time;
+	current_time = currtime();
+	static double last_attacked;
+	if (current_time - last_attacked >= 2000)
+	{
+		data->player->health -= 10;
+		printf("Player health: %d\n", data->player->health);
+		printf("Enemy attacking %d\n", i);
+		last_attacked = current_time;
+	}
+}
+
+
 int	move_enemies(t_data *data)
 {
 	double	dir;
 	double	fire_dist;
 	double	distance;
 	int		i;
+	bool	obstructed;
 
 	i = 0;
 	fire_dist = 200;
+	obstructed = false;
 	while (i < data->nr_of_enemies)
 	{
 		dir = get_dir_to(data->enemies[i].pos, data->player->pos);
 		distance = get_dist(dir, data->enemies[i].pos, *data->player);
-		if (distance <= fire_dist && data->enemies[i].state != DIE)
-			data->enemies[i].state = ATTACK;
+		obstructed = enemy_obstructed(data, i, distance);
+		if (distance <= fire_dist && data->enemies[i].state != DIE && !obstructed)
+			attack(data, i);
 		else if (data->enemies[i].state != DIE)
 			move_enemy(data, i, dir);
 		i++;
 	}
 	return (1);
 }
-
-// bool ray_to_enemy(t_data *data, int i)
-// {
-// 	t_ray	ray;
-// 	t_coord delta;
-// 	ray->dir = get_dir_to(data->enemies[i].pos, data->player->pos);
-// 	ray->coll = data->enemies[i].pos;
-// 	if (is_horiz)
-// 		delta = get_ray_delta_hori(r);
-// 	else
-// 		delta = get_ray_delta_vert(r);
-	
-// }
 
 void	kill_enemy(t_data *data, t_coord pos)
 {
@@ -88,6 +113,7 @@ void	kill_enemy(t_data *data, t_coord pos)
 		i++;
 	}
 }
+
 
 void	update_enemy_frame(t_enemy *enemy)
 {

@@ -6,7 +6,7 @@
 /*   By: phartman <phartman@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/15 20:13:31 by wpepping          #+#    #+#             */
-/*   Updated: 2024/10/22 16:18:00 by phartman         ###   ########.fr       */
+/*   Updated: 2024/10/22 18:43:51 by phartman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,8 @@
 # define TEXTURE_HEIGHT 180
 # define GUN_WIDTH 310
 # define GUN_HEIGHT 280
+# define HEALTHBAR_WIDTH 100
+# define HEALTHBAR_HEIGHT 100
 # define WINDOW_WIDTH 1024
 # define WINDOW_HEIGHT 640
 # define MOVE_SPEED 0.2
@@ -104,6 +106,7 @@ typedef struct s_player
 {
 	t_coord			pos;
 	double			dir;
+	int				health;
 }					t_player;
 
 typedef enum e_state
@@ -154,6 +157,7 @@ typedef struct s_textures
 	t_image			floor;
 	t_image			ceiling;
 	t_image			enemy[11];
+	t_image			healthbar[9];
 	t_image			gun[3];
 	t_image			door;
 }					t_textures;
@@ -236,6 +240,8 @@ typedef struct s_ray
 
 // raytracing
 t_ray				*cast_rays(t_map *map, t_player p);
+double	get_horiz_coll(t_player p, t_ray *r, t_map *map);
+double	get_vert_coll(t_player p, t_ray *r, t_map *map);
 
 // Read map
 int					read_map(t_data *data, char *fname);

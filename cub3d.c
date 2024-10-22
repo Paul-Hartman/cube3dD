@@ -6,7 +6,7 @@
 /*   By: phartman <phartman@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/14 18:29:21 by wpepping          #+#    #+#             */
-/*   Updated: 2024/10/22 13:47:23 by phartman         ###   ########.fr       */
+/*   Updated: 2024/10/22 18:04:25 by phartman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,7 @@ int	main(int argc, char **argv)
 	t_textures	textures;
 
 	data.map = &map;
+	player.health = 100;
 	data.player = &player;
 	data.textures = &textures;
 	if (check_input(argc, argv) < 0 || init(&data, argv[1]) < 0)

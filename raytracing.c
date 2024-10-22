@@ -6,14 +6,12 @@
 /*   By: phartman <phartman@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/15 18:36:33 by wpepping          #+#    #+#             */
-/*   Updated: 2024/10/22 14:49:24 by phartman         ###   ########.fr       */
+/*   Updated: 2024/10/22 17:07:43 by phartman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-static double	get_horiz_coll(t_player p, t_ray *r, t_map *map);
-static double	get_vert_coll(t_player p, t_ray *r, t_map *map);
 static t_coord	get_wall_coll(t_coord coll, t_ray *r, t_map *map,
 					bool is_horiz);
 static t_ray	init_ray(double dir, int i);
@@ -45,7 +43,7 @@ t_ray	*cast_rays(t_map *map, t_player p)
 	return (rays);
 }
 
-static double	get_vert_coll(t_player p, t_ray *r, t_map *map)
+double	get_vert_coll(t_player p, t_ray *r, t_map *map)
 {
 	t_coord	coll;
 	double	tan_val;
@@ -65,7 +63,7 @@ static double	get_vert_coll(t_player p, t_ray *r, t_map *map)
 	return (dist);
 }
 
-static double	get_horiz_coll(t_player p, t_ray *r, t_map *map)
+double	get_horiz_coll(t_player p, t_ray *r, t_map *map)
 {
 	t_coord	coll;
 	double	tan_val;
