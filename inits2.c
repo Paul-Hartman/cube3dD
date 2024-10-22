@@ -6,7 +6,7 @@
 /*   By: phartman <phartman@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/16 16:44:03 by wpepping          #+#    #+#             */
-/*   Updated: 2024/10/22 13:54:46 by phartman         ###   ########.fr       */
+/*   Updated: 2024/10/22 14:14:41 by phartman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,25 +43,6 @@ void	init_trig_tables(double *sin_table, double *cos_table)
 	}
 }
 
-static int	nr_of_thing(t_map *map, int thing)
-{
-	int	i;
-	int	j;
-	int	result;
-
-	result = 0;
-	i = 0;
-	while (i < map->width)
-	{
-		j = 0;
-		while (j < map->height)
-			if (map->grid[j++][i] == thing)
-				result++;
-		i++;
-	}
-	return (result);
-}
-
 int	init_doors(t_map *map)
 {
 	int	i;
@@ -88,6 +69,17 @@ int	init_doors(t_map *map)
 	return (0);
 }
 
+void	init_enemy(t_data *data, int i, int j, int n)
+{
+	data->enemies[n].size = 128;
+	data->enemies[n].pos = (t_coord){i * CUBE_SIZE + 0.5
+		* CUBE_SIZE, j * CUBE_SIZE - 0.5 * CUBE_SIZE};
+	data->enemies[n].target = data->player->pos;
+	data->enemies[n].state = WALK;
+	data->enemies[n].frame = 4;
+	data->enemies[n++].last_frame_time = currtime();
+}
+
 int	init_enemies(t_data *data)
 {
 	int	i;
@@ -103,23 +95,13 @@ int	init_enemies(t_data *data)
 			return (-1);
 	}
 	n = 0;
-	i = 0;
-	while (i < data->map->width)
+	i = -1;
+	while (++i < data->map->width)
 	{
-		j = 0;
-		while (j < data->map->height)
-			if (data->map->grid[j++][i] == ENEMY && n < data->nr_of_enemies)
-			{
-				data->enemies[n].size = 128;
-				data->enemies[n].pos = (t_coord){i * CUBE_SIZE + 0.5
-					* CUBE_SIZE, j * CUBE_SIZE - 0.5 * CUBE_SIZE};
-				data->enemies[n].target = data->player->pos;
-				data->enemies[n].state = WALK;
-				data->enemies[n].frame = 4;
-				data->enemies[n].last_frame_time = currtime();
-				n++;
-			}
-		i++;
+		j = -1;
+		while (++j < data->map->height)
+			if (data->map->grid[j][i] == ENEMY && n < data->nr_of_enemies)
+				init_enemy(data, i, j, n++);
 	}
 	return (0);
 }

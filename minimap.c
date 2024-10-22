@@ -6,7 +6,7 @@
 /*   By: phartman <phartman@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/22 13:32:47 by phartman          #+#    #+#             */
-/*   Updated: 2024/10/22 13:32:48 by phartman         ###   ########.fr       */
+/*   Updated: 2024/10/22 14:18:34 by phartman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -128,8 +128,9 @@ static void	draw_enemies(t_data *data, t_coord offset)
 		{
 			e.x = data->enemies[i].pos.x / CUBE_SIZE * TILE_SZ - offset.x;
 			e.y = data->enemies[i].pos.y / CUBE_SIZE * TILE_SZ - offset.y;
-			draw_square(data, (t_coord){e.x - 2.5, e.y - 2.5}, 5, (int [3]){255,
-				0, 0});
+			if (e.x >= 0 && e.y >= 0 && e.x < MINI_SIZE && e.y < MINI_SIZE)
+				draw_square(data, (t_coord){e.x - 2.5, e.y - 2.5}, 5,
+					(int [3]){255, 0, 0});
 		}
 		i++;
 	}

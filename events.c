@@ -6,7 +6,7 @@
 /*   By: phartman <phartman@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/14 18:29:48 by wpepping          #+#    #+#             */
-/*   Updated: 2024/10/22 13:58:34 by phartman         ###   ########.fr       */
+/*   Updated: 2024/10/22 14:01:47 by phartman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,21 +41,6 @@ int	handle_close(t_data *data)
 	mlx_loop_end(data->mlx_ptr);
 	return (0);
 }
-
-// int	handle_input(int keycode, t_data *data)
-// {
-// 	if (keycode == XK_Escape)
-// 		mlx_loop_end(data->mlx_ptr);
-// 	if (keycode == XK_w || keycode == XK_W || keycode == XK_Up)
-// 		move_player(data, false);
-// 	if (keycode == XK_s || keycode == XK_S || keycode == XK_Down)
-// 		move_player(data, true);
-// 	if (keycode == XK_a || keycode == XK_A || keycode == XK_Left)
-// 		rotate_player(data, -0.1);
-// 	if (keycode == XK_d || keycode == XK_D || keycode == XK_Right)
-// 		rotate_player(data, 0.1);
-// 	return (0);
-// }
 
 int	handle_key_press(int keycode, t_data *data)
 {
