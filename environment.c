@@ -6,7 +6,7 @@
 /*   By: phartman <phartman@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/22 13:55:27 by phartman          #+#    #+#             */
-/*   Updated: 2024/10/22 13:55:29 by phartman         ###   ########.fr       */
+/*   Updated: 2024/10/23 19:22:26 by phartman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void	draw_walls(t_data *data, t_ray *rays, int i, int j)
 	wall_top = WINDOW_HEIGHT / 2 - height / 2;
 	texture = get_texture(data->textures, &rays[i]);
 	tex.x = get_tex_offset(rays[i]);
-	tex.y = ((j - wall_top) * TEXTURE_HEIGHT) / height;
+	tex.y = ((j - wall_top) * texture->height) / height;
 	put_pixel_from_img(data, texture, tex, (t_coord){i, j});
 }
 
@@ -48,9 +48,9 @@ void	draw_floor(t_data *data, int i, int j, bool is_texture)
 			/ CUBE_SIZE;
 		r.coll.y = ((int)(r.coll.y * 1000) % (CUBE_SIZE * 1000)) / 1000.0
 			/ CUBE_SIZE;
-		tex.x = (int)(r.coll.x * (TEXTURE_HEIGHT));
-		tex.y = (int)(r.coll.y * (TEXTURE_HEIGHT));
-		put_pixel_from_img(data, &data->textures->north, tex, (t_coord){i, j});
+		tex.x = (int)(r.coll.x * (180));
+		tex.y = (int)(r.coll.y * (180));
+		put_pixel_from_img(data, &data->textures->floor, tex, (t_coord){i, j});
 	}
 	else
 		set_pixel(data, data->floor, i, j);
@@ -77,9 +77,9 @@ void	draw_ceiling(t_data *data, int i, int j, bool is_texture)
 			/ CUBE_SIZE;
 		r.coll.y = ((int)(r.coll.y * 1000) % (CUBE_SIZE * 1000)) / 1000.0
 			/ CUBE_SIZE;
-		tex.x = (int)(r.coll.x * (TEXTURE_HEIGHT));
-		tex.y = (int)(r.coll.y * (TEXTURE_HEIGHT));
-		put_pixel_from_img(data, &data->textures->north, tex, (t_coord){i, j});
+		tex.x = (int)(r.coll.x * 180);
+		tex.y = (int)(r.coll.y * 180);
+		put_pixel_from_img(data, &data->textures->ceiling, tex, (t_coord){i, j});
 	}
 	else
 		set_pixel(data, data->ceiling, i, j);
