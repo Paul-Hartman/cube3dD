@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   events2.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: phartman <phartman@student.42berlin.de>    +#+  +:+       +#+        */
+/*   By: wpepping <wpepping@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/22 15:38:26 by phartman          #+#    #+#             */
-/*   Updated: 2024/10/23 17:31:55 by phartman         ###   ########.fr       */
+/*   Created: 2024/10/23 19:14:01 by wpepping          #+#    #+#             */
+/*   Updated: 2024/10/23 19:14:02 by wpepping         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
