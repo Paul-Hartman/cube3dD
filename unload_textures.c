@@ -6,7 +6,7 @@
 /*   By: phartman <phartman@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/21 17:25:26 by wpepping          #+#    #+#             */
-/*   Updated: 2024/10/22 15:00:33 by phartman         ###   ########.fr       */
+/*   Updated: 2024/10/23 15:34:50 by phartman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,17 +17,14 @@ static void	unload_bonus_textures(void *mlx_ptr, t_textures *textures)
 	int	i;
 
 	i = 0;
-	while (i < 11)
+	while(i<11)
 	{
+		if (textures->gun[i].img_ptr && i < 3)
+			mlx_destroy_image(mlx_ptr, textures->gun[i].img_ptr);
+		if (textures->healthbar[i].img_ptr && i < 9)
+			mlx_destroy_image(mlx_ptr, textures->healthbar[i].img_ptr);
 		if (textures->enemy[i].img_ptr)
 			mlx_destroy_image(mlx_ptr, textures->enemy[i].img_ptr);
-		i++;
-	}
-	i = 0;
-	while (i < 3)
-	{
-		if (textures->gun[i].img_ptr)
-			mlx_destroy_image(mlx_ptr, textures->gun[i].img_ptr);
 		i++;
 	}
 }

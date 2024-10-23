@@ -6,7 +6,7 @@
 /*   By: phartman <phartman@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/22 13:56:50 by phartman          #+#    #+#             */
-/*   Updated: 2024/10/22 19:26:52 by phartman         ###   ########.fr       */
+/*   Updated: 2024/10/23 15:48:48 by phartman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,9 +63,13 @@ void attack(t_data *data, int i)
 	static double last_attacked;
 	if (current_time - last_attacked >= 2000)
 	{
-		data->player->health -= 10;
-		printf("Player health: %d\n", data->player->health);
-		printf("Enemy attacking %d\n", i);
+		if(data->player->health > 0)
+		{
+			data->player->health--;
+			printf("health %d\n", data->player->health);
+		}
+			
+			
 		last_attacked = current_time;
 	}
 }

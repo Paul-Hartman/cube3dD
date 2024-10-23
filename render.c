@@ -6,7 +6,7 @@
 /*   By: phartman <phartman@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/27 18:07:22 by wpepping          #+#    #+#             */
-/*   Updated: 2024/10/22 19:28:26 by phartman         ###   ########.fr       */
+/*   Updated: 2024/10/23 15:54:36 by phartman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,10 +76,7 @@ static void	render_sprites(t_data *data, t_ray *rays)
 				NULL});
 		sprite = get_sprite_coll(data, rays, &enemy_sprite);
 		if (sprite != NULL)
-		{
-			data->enemies[i].visible = true;
 			put_sprite(data, sprite);
-		}
 		i++;
 	}
 }
@@ -92,7 +89,7 @@ static void	draw_healthbar(t_data *data)
 	int	j;
 	int health;
 
-	health = (data->player->health/10) -2;
+	health = data->player->health;
 	img_start_x = WINDOW_WIDTH - HEALTHBAR_WIDTH;
 	img_start_y = 10;
 	i = 0;
