@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   events.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wpepping <wpepping@student.42berlin.de>    +#+  +:+       +#+        */
+/*   By: phartman <phartman@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/14 18:29:48 by wpepping          #+#    #+#             */
-/*   Updated: 2024/10/22 17:49:37 by wpepping         ###   ########.fr       */
+/*   Updated: 2024/10/23 17:10:34 by phartman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,8 +33,10 @@ int	handle_loop(t_data *data)
 		moved = move_door(data, data->active_door) || moved;
 	if (data->player->is_shooting)
 		moved = update_gun(data->player) || moved;
-	if (move_enemies(data) || moved)
+	
+	if ((move_enemies(data) || moved))
 		render_frame(data);
+	set_game_state(data);
 	return (0);
 }
 

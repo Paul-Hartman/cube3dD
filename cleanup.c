@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cleanup.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wpepping <wpepping@student.42berlin.de>    +#+  +:+       +#+        */
+/*   By: phartman <phartman@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/27 20:07:24 by wpepping          #+#    #+#             */
-/*   Updated: 2024/10/22 18:08:25 by wpepping         ###   ########.fr       */
+/*   Updated: 2024/10/23 16:34:54 by phartman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,10 +40,10 @@ void	cleanup(t_data *data)
 		free_map(data->map->grid);
 	if (data->map->doors != NULL)
 		free(data->map->doors);
+	if (data->enemies != NULL)
+			free(data->enemies);
 	if (data->mlx_ptr != NULL)
 	{
-		if (data->enemies != NULL)
-			free(data->enemies);
 		if (data->win_ptr != NULL)
 			mlx_destroy_window(data->mlx_ptr, data->win_ptr);
 		if (data->img_ptr != NULL)

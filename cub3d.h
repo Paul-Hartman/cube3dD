@@ -6,7 +6,7 @@
 /*   By: phartman <phartman@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/15 20:13:31 by wpepping          #+#    #+#             */
-/*   Updated: 2024/10/22 19:27:49 by phartman         ###   ########.fr       */
+/*   Updated: 2024/10/23 16:42:57 by phartman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,6 @@
 # include "mlx/mlx.h"
 # include <X11/Xlib.h>
 # include <X11/keysym.h>
-# include <float.h>
 # include <linux/limits.h>
 # include <math.h>
 # include <stdbool.h>
@@ -119,6 +118,13 @@ typedef enum e_state
 	DIE
 }					t_state;
 
+typedef enum e_game_state
+{
+	PLAYING,
+	PAUSED,
+	GAME_OVER
+}	t_game_state;
+
 typedef struct s_enemy
 {
 	t_coord			pos;
@@ -169,6 +175,7 @@ typedef struct s_data
 {
 	t_map			*map;
 	t_player		*player;
+	t_game_state	game_state;
 	t_enemy			*enemies;
 	int				nr_of_enemies;
 	t_textures		*textures;
@@ -240,11 +247,10 @@ typedef struct s_ray
 	double			dir;
 }					t_ray;
 
-
 // raytracing
 t_ray				*cast_rays(t_map *map, t_player p);
-double	get_horiz_coll(t_player p, t_ray *r, t_map *map);
-double	get_vert_coll(t_player p, t_ray *r, t_map *map);
+double				get_horiz_coll(t_player p, t_ray *r, t_map *map);
+double				get_vert_coll(t_player p, t_ray *r, t_map *map);
 
 // Read map
 int					read_map(t_data *data, char *fname);
@@ -258,7 +264,7 @@ int					is_valid_map(t_map *map, t_player *player);
 // Render
 void				render_frame(t_data *data);
 
-//textures
+// textures
 int					load_textures(t_data *data, t_config *config);
 void				unload_textures(void *mlx_ptr, t_textures *textures);
 
@@ -283,7 +289,7 @@ int					handle_mouse(void *data);
 int					handle_mouse_move(int x, int y, t_data *data);
 int					handle_key_press(int keycode, t_data *data);
 int					handle_key_release(int keycode, t_data *data);
-int handle_mouse_click(int button, int x, int y, t_data *data);
+int					handle_mouse_click(int button, int x, int y, t_data *data);
 
 // Clean up
 void				cleanup(t_data *data);
@@ -321,7 +327,7 @@ double				deg_to_rad(double degrees);
 double				radians_to_degrees(double radians);
 int					nr_of_thing(t_map *map, int thing);
 
-t_coord	get_offset(t_data *data);
+t_coord				get_offset(t_data *data);
 int					init_line_vars(t_coord p1, t_coord p2, t_coord *dist,
 						t_coord *step);
 
@@ -370,5 +376,8 @@ t_coord				get_ray_delta_hori(t_ray *r);
 t_coord				get_ray_delta_vert(t_ray *r);
 double				projected_wall_height(int focal_len, double dist);
 t_ray				update_ray(t_ray *r, double dist, bool is_horiz);
+
+//game logic
+void set_game_state(t_data *data);
 
 #endif

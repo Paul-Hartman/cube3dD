@@ -6,7 +6,7 @@
 /*   By: phartman <phartman@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/16 15:39:28 by wpepping          #+#    #+#             */
-/*   Updated: 2024/10/22 15:34:48 by phartman         ###   ########.fr       */
+/*   Updated: 2024/10/23 16:27:08 by phartman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ void	init_data(t_data *data)
 	data->last_render = currtime();
 	data->mouse_x = WINDOW_WIDTH / 2;
 	data->focal_len = (WINDOW_WIDTH / 2.0) / (tan(FOV / 2.0));
+	data->game_state = PLAYING;
 }
 
 void	init_map(t_map *map)
