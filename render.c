@@ -6,11 +6,7 @@
 /*   By: phartman <phartman@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/27 18:07:22 by wpepping          #+#    #+#             */
-<<<<<<< HEAD
-/*   Updated: 2024/10/23 16:18:50 by wpepping         ###   ########.fr       */
-=======
-/*   Updated: 2024/10/23 18:13:00 by phartman         ###   ########.fr       */
->>>>>>> c142046e610a2943e6371a728c65fb59281c4806
+/*   Updated: 2024/10/23 20:00:33 by phartman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,13 +21,9 @@ void	render_frame(t_data *data)
 {
 	t_ray	*rays;
 
-<<<<<<< HEAD
-	if (currtime() - data->last_render > MS_BETWEEN_FRAMES)
-=======
 	rays = cast_rays(data->map, *data->player);
 	if (currtime() - data->last_render > MS_BETWEEN_FRAMES
 		&& data->game_state == PLAYING)
->>>>>>> c142046e610a2943e6371a728c65fb59281c4806
 	{
 		rays = cast_rays(data->map, *data->player);
 		draw_env(rays, data);
