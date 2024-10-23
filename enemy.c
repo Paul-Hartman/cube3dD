@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   enemy.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: phartman <phartman@student.42berlin.de>    +#+  +:+       +#+        */
+/*   By: wpepping <wpepping@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/22 13:56:50 by phartman          #+#    #+#             */
-/*   Updated: 2024/10/22 16:53:01 by phartman         ###   ########.fr       */
+/*   Updated: 2024/10/23 19:02:21 by wpepping         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,7 @@ int	move_enemies(t_data *data)
 // 		delta = get_ray_delta_hori(r);
 // 	else
 // 		delta = get_ray_delta_vert(r);
-	
+
 // }
 
 void	kill_enemy(t_data *data, t_coord pos)

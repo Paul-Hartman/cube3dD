@@ -6,7 +6,7 @@
 /*   By: wpepping <wpepping@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/30 18:15:24 by wpepping          #+#    #+#             */
-/*   Updated: 2024/10/23 18:23:31 by wpepping         ###   ########.fr       */
+/*   Updated: 2024/10/23 18:59:29 by wpepping         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,22 @@
 
 static bool	is_valid_door(t_map *map, int x, int y)
 {
+	int	west;
+	int	east;
+	int	north;
+	int	south;
+
+	west = map->grid[y][x - 1];
+	east = map->grid[y][x + 1];
+	north = map->grid[y - 1][x];
+	south = map->grid[y + 1][x];
 	if (x == 0 || x == map->width - 1 || y == 0 || y == map->height - 1)
 		return (false);
-	if (map->grid[y][x - 1] == WALL && map->grid[y][x + 1] == WALL)
+	if (west == WALL && east == WALL && north != WALL && south != WALL
+		&& north != DOOR && south != DOOR)
 		return (true);
-	if (map->grid[y - 1][x] == WALL && map->grid[y + 1][x] == WALL)
+	if (north == WALL && south == WALL && west != WALL && east != WALL
+		&& west != DOOR && east != DOOR)
 		return (true);
 	return (false);
 }
