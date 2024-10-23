@@ -6,7 +6,7 @@
 /*   By: phartman <phartman@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/27 18:07:22 by wpepping          #+#    #+#             */
-/*   Updated: 2024/10/23 19:54:58 by phartman         ###   ########.fr       */
+/*   Updated: 2024/10/23 19:56:33 by phartman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,6 @@ void	render_frame(t_data *data)
 	if (currtime() - data->last_render > MS_BETWEEN_FRAMES
 		&& data->game_state == PLAYING)
 	{
-		rays = cast_rays(data->map, *data->player);
 		draw_env(rays, data);
 		draw_minimap(data, rays);
 		render_sprites(data, rays);
