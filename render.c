@@ -3,10 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   render.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wpepping <wpepping@student.42berlin.de>    +#+  +:+       +#+        */
+/*   By: phartman <phartman@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/27 18:07:22 by wpepping          #+#    #+#             */
+<<<<<<< HEAD
 /*   Updated: 2024/10/23 16:18:50 by wpepping         ###   ########.fr       */
+=======
+/*   Updated: 2024/10/23 18:13:00 by phartman         ###   ########.fr       */
+>>>>>>> c142046e610a2943e6371a728c65fb59281c4806
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,12 +19,19 @@
 static void	draw_gun(t_data *data);
 static void	render_sprites(t_data *data, t_ray *rays);
 static void	draw_env(t_ray *rays, t_data *data);
+static void	draw_healthbar(t_data *data);
 
 void	render_frame(t_data *data)
 {
 	t_ray	*rays;
 
+<<<<<<< HEAD
 	if (currtime() - data->last_render > MS_BETWEEN_FRAMES)
+=======
+	rays = cast_rays(data->map, *data->player);
+	if (currtime() - data->last_render > MS_BETWEEN_FRAMES
+		&& data->game_state == PLAYING)
+>>>>>>> c142046e610a2943e6371a728c65fb59281c4806
 	{
 		rays = cast_rays(data->map, *data->player);
 		draw_env(rays, data);
@@ -30,8 +41,17 @@ void	render_frame(t_data *data)
 		mlx_put_image_to_window(data->mlx_ptr, data->win_ptr, data->img_ptr, 0,
 			0);
 		if (BONUS)
+		{
+			draw_healthbar(data);
 			draw_gun(data);
+		}
 		free(rays);
+	}
+	if (data->game_state == GAME_OVER)
+	{
+		draw_gameover(data);
+		mlx_put_image_to_window(data->mlx_ptr, data->win_ptr, data->img_ptr, 0,
+			0);
 	}
 }
 
@@ -72,9 +92,32 @@ static void	render_sprites(t_data *data, t_ray *rays)
 				NULL});
 		sprite = get_sprite_coll(data, rays, &enemy_sprite);
 		if (sprite != NULL)
-		{
-			data->enemies[i].visible = true;
 			put_sprite(data, sprite);
+		i++;
+	}
+}
+
+static void	draw_healthbar(t_data *data)
+{
+	int	img_start_x;
+	int	img_start_y;
+	int	i;
+	int	j;
+	int	health;
+
+	health = data->player->health;
+	img_start_x = WINDOW_WIDTH - HEALTHBAR_WIDTH;
+	img_start_y = 10;
+	i = 0;
+	j = 0;
+	while (i < HEALTHBAR_HEIGHT)
+	{
+		j = 0;
+		while (j < HEALTHBAR_HEIGHT)
+		{
+			put_pixel_from_img(data, &data->textures->healthbar[health - 1],
+				(t_coord){j, i}, (t_coord){img_start_x + j, img_start_y + i});
+			j++;
 		}
 		i++;
 	}
@@ -98,8 +141,8 @@ static void	draw_gun(t_data *data)
 		{
 			(void)data;
 			put_pixel_from_img(data,
-				&data->textures->gun[data->player->gun_texture],
-				(t_coord){j, i}, (t_coord){img_start_x + j, img_start_y + i});
+				&data->textures->gun[data->player->gun_texture], (t_coord){j,
+				i}, (t_coord){img_start_x + j, img_start_y + i});
 			j++;
 		}
 		i++;

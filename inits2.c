@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: wpepping <wpepping@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/16 16:44:03 by wpepping          #+#    #+#             */
-/*   Updated: 2024/10/23 17:47:11 by wpepping         ###   ########.fr       */
+/*   Created: 2024/10/23 19:14:16 by wpepping          #+#    #+#             */
+/*   Updated: 2024/10/23 19:14:18 by wpepping         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,13 +75,11 @@ int	init_doors(t_map *map)
 void	init_enemy(t_data *data, int i, int j, int n)
 {
 	data->enemies[n].size = 128;
-	data->enemies[n].pos = (t_coord){i * CUBE_SIZE + 0.5
-		* CUBE_SIZE, j * CUBE_SIZE - 0.5 * CUBE_SIZE};
+	data->enemies[n].pos = (t_coord){i * CUBE_SIZE, j * CUBE_SIZE};
 	data->enemies[n].target = data->player->pos;
 	data->enemies[n].state = WALK;
 	data->enemies[n].frame = 4;
 	data->enemies[n++].last_frame_time = currtime();
-	data->enemies[i].visible = false;
 }
 
 int	init_enemies(t_data *data)

@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: wpepping <wpepping@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/14 18:29:48 by wpepping          #+#    #+#             */
-/*   Updated: 2024/10/23 18:30:16 by wpepping         ###   ########.fr       */
+/*   Created: 2024/10/23 19:13:53 by wpepping          #+#    #+#             */
+/*   Updated: 2024/10/23 19:13:54 by wpepping         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,8 +35,9 @@ int	handle_loop(t_data *data)
 		moved = move_door(data, data->active_door) || moved;
 	if (data->player->is_shooting)
 		moved = update_gun(data->player) || moved;
-	if (move_enemies(data) || moved)
+	if ((move_enemies(data) || moved))
 		render_frame(data);
+	set_game_state(data);
 	return (0);
 }
 

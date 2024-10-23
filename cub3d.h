@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: wpepping <wpepping@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/15 20:13:31 by wpepping          #+#    #+#             */
-/*   Updated: 2024/10/23 18:27:20 by wpepping         ###   ########.fr       */
+/*   Created: 2024/10/23 19:13:24 by wpepping          #+#    #+#             */
+/*   Updated: 2024/10/23 19:13:25 by wpepping         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,10 @@
 # define TEXTURE_HEIGHT 180
 # define GUN_WIDTH 310
 # define GUN_HEIGHT 280
+# define HEALTHBAR_WIDTH 100
+# define HEALTHBAR_HEIGHT 100
+# define GAMEOVER_WIDTH 256
+# define GAMEOVER_HEIGHT 224
 # define WINDOW_WIDTH 1024
 # define WINDOW_HEIGHT 640
 # define MOVE_SPEED 5
@@ -103,6 +107,7 @@ typedef struct s_player
 {
 	t_coord			pos;
 	double			dir;
+	int				health;
 	bool			is_shooting;
 	int				gun_texture;
 	long			gun_last_updated;
@@ -114,6 +119,13 @@ typedef enum e_state
 	ATTACK,
 	DIE
 }					t_state;
+
+typedef enum e_game_state
+{
+	PLAYING,
+	PAUSED,
+	GAME_OVER
+}					t_game_state;
 
 typedef struct s_enemy
 {
@@ -156,14 +168,17 @@ typedef struct s_textures
 	t_image			floor;
 	t_image			ceiling;
 	t_image			enemy[11];
+	t_image			healthbar[9];
 	t_image			gun[3];
 	t_image			door;
+	t_image			gameover;
 }					t_textures;
 
 typedef struct s_data
 {
 	t_map			*map;
 	t_player		*player;
+	t_game_state	game_state;
 	t_enemy			*enemies;
 	int				nr_of_enemies;
 	t_textures		*textures;
@@ -237,9 +252,10 @@ typedef struct s_ray
 	double			dir;
 }					t_ray;
 
-
 // raytracing
 t_ray				*cast_rays(t_map *map, t_player p);
+double				get_horiz_coll(t_player p, t_ray *r, t_map *map);
+double				get_vert_coll(t_player p, t_ray *r, t_map *map);
 
 // Read map
 int					read_map(t_data *data, char *fname);
@@ -253,8 +269,10 @@ int					is_valid_map(t_map *map, t_player *player);
 // Render
 void				render_frame(t_data *data);
 
-//textures
+// textures
 int					load_textures(t_data *data, t_config *config);
+int					load_bonus_textures(t_data *data, t_config *cfg);
+int					load_image(void *mlx_ptr, t_image *img, char *fname);
 void				unload_textures(void *mlx_ptr, t_textures *textures);
 
 // movement
@@ -279,7 +297,7 @@ int					handle_mouse(void *data);
 int					handle_mouse_move(int x, int y, t_data *data);
 int					handle_key_press(int keycode, t_data *data);
 int					handle_key_release(int keycode, t_data *data);
-int handle_mouse_click(int button, int x, int y, t_data *data);
+int					handle_mouse_click(int button, int x, int y, t_data *data);
 
 // Clean up
 void				cleanup(t_data *data);
@@ -317,7 +335,7 @@ double				deg_to_rad(double degrees);
 double				radians_to_degrees(double radians);
 int					nr_of_thing(t_map *map, int thing);
 
-t_coord	get_offset(t_data *data);
+t_coord				get_offset(t_data *data);
 int					init_line_vars(t_coord p1, t_coord p2, t_coord *dist,
 						t_coord *step);
 
@@ -366,5 +384,11 @@ t_coord				get_ray_delta_hori(t_ray *r);
 t_coord				get_ray_delta_vert(t_ray *r);
 double				projected_wall_height(int focal_len, double dist);
 t_ray				update_ray(t_ray *r, double dist, bool is_horiz);
+
+// game logic
+void				set_game_state(t_data *data);
+bool				enemy_obstructed(t_data *data, int i, double distance);
+void				attack(t_data *data, int i);
+void				draw_gameover(t_data *data);
 
 #endif

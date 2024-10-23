@@ -5,14 +5,14 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: wpepping <wpepping@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/14 16:21:55 by wpepping          #+#    #+#             */
-/*   Updated: 2024/10/23 15:40:18 by wpepping         ###   ########.fr       */
+/*   Created: 2024/10/23 19:14:28 by wpepping          #+#    #+#             */
+/*   Updated: 2024/10/23 19:14:29 by wpepping         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-static int	load_image(void *mlx_ptr, t_image *img, char *fname)
+int	load_image(void *mlx_ptr, t_image *img, char *fname)
 {
 	int	dummy;
 
@@ -21,56 +21,6 @@ static int	load_image(void *mlx_ptr, t_image *img, char *fname)
 		return (-1);
 	img->buff = mlx_get_data_addr(img->img_ptr, &img->bpp, &img->lsize,
 			&img->endian);
-	return (0);
-}
-
-static int	load_gun_textures(t_data *data)
-{
-	int		i;
-	char	filename[18];
-
-	i = 0;
-	ft_strlcpy(filename, GUN_TEXTURE_BASE_NAME, 18);
-	while (i < 3)
-	{
-		if (load_image(data->mlx_ptr, &data->textures->gun[i], filename) == -1)
-			return (-1);
-		filename[12]++;
-		i++;
-	}
-	return (0);
-}
-
-static int	load_enemy_texture(t_data *data)
-{
-	int		i;
-	char	*index;
-	char	filename[30];
-
-	i = 0;
-	while (i < 11)
-	{
-		ft_strlcpy(filename, "textures/sprite_", 17);
-		index = ft_itoa(i);
-		ft_strlcat(filename, index, 30);
-		ft_strlcat(filename, ".xpm", 30);
-		if (load_image(data->mlx_ptr, &data->textures->enemy[i], filename)
-			== -1)
-			return (-1);
-		free(index);
-		i++;
-	}
-	return (0);
-}
-
-static int	load_bonus_textures(t_data *data, t_config *cfg)
-{
-	if (load_image(data->mlx_ptr, &data->textures->door, cfg->door) == -1)
-		return (-1);
-	if (load_enemy_texture(data) == -1)
-		return (-1);
-	if (load_gun_textures(data) == -1)
-		return (-1);
 	return (0);
 }
 

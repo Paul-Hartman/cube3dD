@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: wpepping <wpepping@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/14 18:29:21 by wpepping          #+#    #+#             */
-/*   Updated: 2024/10/23 17:44:07 by wpepping         ###   ########.fr       */
+/*   Created: 2024/10/23 19:13:16 by wpepping          #+#    #+#             */
+/*   Updated: 2024/10/23 19:13:17 by wpepping         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,7 @@ int	main(int argc, char **argv)
 	t_textures	textures;
 
 	data.map = &map;
+	player.health = 9;
 	data.player = &player;
 	data.textures = &textures;
 	if (check_input(argc, argv) < 0 || init(&data, argv[1]) < 0)

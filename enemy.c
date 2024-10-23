@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: wpepping <wpepping@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/22 13:56:50 by phartman          #+#    #+#             */
-/*   Updated: 2024/10/23 19:02:21 by wpepping         ###   ########.fr       */
+/*   Created: 2024/10/23 19:13:35 by wpepping          #+#    #+#             */
+/*   Updated: 2024/10/23 19:13:47 by wpepping         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,8 @@ static void	move_enemy(t_data *data, int i, double dir)
 	t_coord	move;
 
 	data->enemies[i].state = WALK;
-	move.x = MOVE_SPEED * data->cos_table[angle_to_index(dir)];
-	move.y = MOVE_SPEED * data->sin_table[angle_to_index(dir)];
+	move.x = MOVE_SPEED / 2 * data->cos_table[angle_to_index(dir)];
+	move.y = MOVE_SPEED / 2 * data->sin_table[angle_to_index(dir)];
 	if (enemy_hit_wall(data->enemies[i].pos, (t_coord){move.x, 0}, data))
 		move.x = 0;
 	if (enemy_hit_wall(data->enemies[i].pos, (t_coord){0, move.y}, data))
@@ -42,34 +42,25 @@ int	move_enemies(t_data *data)
 	double	fire_dist;
 	double	distance;
 	int		i;
+	bool	obstructed;
 
 	i = 0;
 	fire_dist = 200;
+	obstructed = false;
 	while (i < data->nr_of_enemies)
 	{
 		dir = get_dir_to(data->enemies[i].pos, data->player->pos);
 		distance = get_dist(dir, data->enemies[i].pos, *data->player);
-		if (distance <= fire_dist && data->enemies[i].state != DIE)
-			data->enemies[i].state = ATTACK;
+		obstructed = enemy_obstructed(data, i, distance);
+		if (distance <= fire_dist && data->enemies[i].state != DIE
+			&& !obstructed)
+			attack(data, i);
 		else if (data->enemies[i].state != DIE)
 			move_enemy(data, i, dir);
 		i++;
 	}
 	return (1);
 }
-
-// bool ray_to_enemy(t_data *data, int i)
-// {
-// 	t_ray	ray;
-// 	t_coord delta;
-// 	ray->dir = get_dir_to(data->enemies[i].pos, data->player->pos);
-// 	ray->coll = data->enemies[i].pos;
-// 	if (is_horiz)
-// 		delta = get_ray_delta_hori(r);
-// 	else
-// 		delta = get_ray_delta_vert(r);
-
-// }
 
 void	kill_enemy(t_data *data, t_coord pos)
 {

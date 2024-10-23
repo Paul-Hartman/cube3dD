@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: wpepping <wpepping@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/16 15:39:28 by wpepping          #+#    #+#             */
-/*   Updated: 2024/10/23 18:10:01 by wpepping         ###   ########.fr       */
+/*   Created: 2024/10/23 19:14:07 by wpepping          #+#    #+#             */
+/*   Updated: 2024/10/23 19:14:10 by wpepping         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ void	init_data(t_data *data)
 	data->last_strafe_time = currtime();
 	data->mouse_x = WINDOW_WIDTH / 2;
 	data->focal_len = (WINDOW_WIDTH / 2.0) / (tan(FOV / 2.0));
+	data->game_state = PLAYING;
 }
 
 void	init_map(t_map *map)
