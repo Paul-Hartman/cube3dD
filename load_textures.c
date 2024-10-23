@@ -6,7 +6,7 @@
 /*   By: phartman <phartman@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/14 16:21:55 by wpepping          #+#    #+#             */
-/*   Updated: 2024/10/23 17:27:01 by phartman         ###   ########.fr       */
+/*   Updated: 2024/10/23 19:42:00 by phartman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,8 @@
 
 int	load_image(void *mlx_ptr, t_image *img, char *fname)
 {
-	int	dummy;
-
-	img->img_ptr = mlx_xpm_file_to_image(mlx_ptr, fname, &dummy, &dummy);
+	img->img_ptr = mlx_xpm_file_to_image(mlx_ptr, fname, &img->width,
+			&img->height);
 	if (img->img_ptr == NULL)
 		return (-1);
 	img->buff = mlx_get_data_addr(img->img_ptr, &img->bpp, &img->lsize,
