@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   events.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: phartman <phartman@student.42berlin.de>    +#+  +:+       +#+        */
+/*   By: wpepping <wpepping@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/14 18:29:48 by wpepping          #+#    #+#             */
-/*   Updated: 2024/10/23 17:31:47 by phartman         ###   ########.fr       */
+/*   Created: 2024/10/23 19:13:53 by wpepping          #+#    #+#             */
+/*   Updated: 2024/10/23 19:13:54 by wpepping         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,16 +14,18 @@
 
 int	handle_loop(t_data *data)
 {
-	bool	moved;
+	bool		moved;
+	t_key_state	key_state;
 
+	key_state = data->key_state;
 	moved = false;
-	if (data->key_state.mv_up)
+	if (move_ready(key_state.mv_up, key_state.mv_dn, &data->last_move_time))
 		moved = move_player(data, false) || moved;
-	if (data->key_state.mv_dn)
+	if (move_ready(key_state.mv_dn, key_state.mv_up, &data->last_move_time))
 		moved = move_player(data, true) || moved;
-	if (data->key_state.mv_r)
+	if (move_ready(key_state.mv_r, key_state.mv_l, &data->last_strafe_time))
 		moved = strafe_player(data, false) || moved;
-	if (data->key_state.mv_l)
+	if (move_ready(key_state.mv_l, key_state.mv_r, &data->last_strafe_time))
 		moved = strafe_player(data, true) || moved;
 	if (data->key_state.rot_r)
 		moved = rotate_player(data, false, ROTATE_SPEED) || moved;
@@ -49,9 +51,9 @@ int	handle_key_press(int keycode, t_data *data)
 {
 	if (keycode == XK_Escape)
 		mlx_loop_end(data->mlx_ptr);
-	if (keycode == XK_w || keycode == XK_W || keycode == XK_Up)
+	if (keycode == XK_w || keycode == XK_W)
 		data->key_state.mv_up = true;
-	if (keycode == XK_s || keycode == XK_S || keycode == XK_Down)
+	if (keycode == XK_s || keycode == XK_S)
 		data->key_state.mv_dn = true;
 	if (keycode == XK_a || keycode == XK_A)
 		data->key_state.mv_l = true;

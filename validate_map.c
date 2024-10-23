@@ -6,11 +6,33 @@
 /*   By: wpepping <wpepping@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/30 18:15:24 by wpepping          #+#    #+#             */
-/*   Updated: 2024/10/08 18:51:19 by wpepping         ###   ########.fr       */
+/*   Updated: 2024/10/23 18:59:29 by wpepping         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
+
+static bool	is_valid_door(t_map *map, int x, int y)
+{
+	int	west;
+	int	east;
+	int	north;
+	int	south;
+
+	west = map->grid[y][x - 1];
+	east = map->grid[y][x + 1];
+	north = map->grid[y - 1][x];
+	south = map->grid[y + 1][x];
+	if (x == 0 || x == map->width - 1 || y == 0 || y == map->height - 1)
+		return (false);
+	if (west == WALL && east == WALL && north != WALL && south != WALL
+		&& north != DOOR && south != DOOR)
+		return (true);
+	if (north == WALL && south == WALL && west != WALL && east != WALL
+		&& west != DOOR && east != DOOR)
+		return (true);
+	return (false);
+}
 
 static int	chk_tile(t_map *map, int x, int y, char **is_checked)
 {
@@ -22,6 +44,8 @@ static int	chk_tile(t_map *map, int x, int y, char **is_checked)
 		return (0);
 	if (map->grid[y][x] == SPACE || x == 0 || x == map->width - 1 || y == 0
 		|| y == map->height - 1)
+		return (-1);
+	if (map->grid[y][x] == DOOR && !is_valid_door(map, x, y))
 		return (-1);
 	result = 0;
 	is_checked[y][x] = 1;

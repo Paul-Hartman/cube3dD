@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   inits2.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: phartman <phartman@student.42berlin.de>    +#+  +:+       +#+        */
+/*   By: wpepping <wpepping@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/16 16:44:03 by wpepping          #+#    #+#             */
-/*   Updated: 2024/10/23 17:31:33 by phartman         ###   ########.fr       */
+/*   Created: 2024/10/23 19:14:16 by wpepping          #+#    #+#             */
+/*   Updated: 2024/10/23 19:14:18 by wpepping         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
