@@ -6,7 +6,7 @@
 /*   By: phartman <phartman@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/27 18:07:22 by wpepping          #+#    #+#             */
-/*   Updated: 2024/10/23 17:15:55 by phartman         ###   ########.fr       */
+/*   Updated: 2024/10/23 17:21:00 by phartman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,8 @@ void	render_frame(t_data *data)
 	t_ray	*rays;
 
 	rays = cast_rays(data->map, *data->player);
-	if (currtime() - data->last_render > MS_BETWEEN_FRAMES && data->game_state == PLAYING)
+	if (currtime() - data->last_render > MS_BETWEEN_FRAMES
+		&& data->game_state == PLAYING)
 	{
 		draw_env(rays, data);
 		draw_minimap(data, rays);
@@ -30,7 +31,7 @@ void	render_frame(t_data *data)
 		data->last_render = currtime();
 		mlx_put_image_to_window(data->mlx_ptr, data->win_ptr, data->img_ptr, 0,
 			0);
-		if(BONUS)
+		if (BONUS)
 		{
 			draw_healthbar(data);
 			draw_gun(data);
@@ -87,7 +88,7 @@ static void	draw_healthbar(t_data *data)
 	int	img_start_y;
 	int	i;
 	int	j;
-	int health;
+	int	health;
 
 	health = data->player->health;
 	img_start_x = WINDOW_WIDTH - HEALTHBAR_WIDTH;
@@ -100,14 +101,13 @@ static void	draw_healthbar(t_data *data)
 		while (j < HEALTHBAR_HEIGHT)
 		{
 			(void)data;
-			put_pixel_from_img(data, &data->textures->healthbar[health-1], (t_coord){j, i},
-				(t_coord){img_start_x + j, img_start_y + i});
+			put_pixel_from_img(data, &data->textures->healthbar[health - 1],
+				(t_coord){j, i}, (t_coord){img_start_x + j, img_start_y + i});
 			j++;
 		}
 		i++;
 	}
 }
-
 
 static void	draw_gun(t_data *data)
 {
@@ -127,8 +127,8 @@ static void	draw_gun(t_data *data)
 		{
 			(void)data;
 			put_pixel_from_img(data,
-				&data->textures->gun[data->player->gun_texture],
-				(t_coord){j, i}, (t_coord){img_start_x + j, img_start_y + i});
+				&data->textures->gun[data->player->gun_texture], (t_coord){j,
+				i}, (t_coord){img_start_x + j, img_start_y + i});
 			j++;
 		}
 		i++;

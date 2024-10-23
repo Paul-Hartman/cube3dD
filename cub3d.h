@@ -6,7 +6,7 @@
 /*   By: phartman <phartman@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/15 20:13:31 by wpepping          #+#    #+#             */
-/*   Updated: 2024/10/23 16:42:57 by phartman         ###   ########.fr       */
+/*   Updated: 2024/10/23 17:33:38 by phartman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -123,7 +123,7 @@ typedef enum e_game_state
 	PLAYING,
 	PAUSED,
 	GAME_OVER
-}	t_game_state;
+}					t_game_state;
 
 typedef struct s_enemy
 {
@@ -266,6 +266,8 @@ void				render_frame(t_data *data);
 
 // textures
 int					load_textures(t_data *data, t_config *config);
+int					load_bonus_textures(t_data *data, t_config *cfg);
+int					load_image(void *mlx_ptr, t_image *img, char *fname);
 void				unload_textures(void *mlx_ptr, t_textures *textures);
 
 // movement
@@ -377,7 +379,9 @@ t_coord				get_ray_delta_vert(t_ray *r);
 double				projected_wall_height(int focal_len, double dist);
 t_ray				update_ray(t_ray *r, double dist, bool is_horiz);
 
-//game logic
-void set_game_state(t_data *data);
+// game logic
+void				set_game_state(t_data *data);
+bool				enemy_obstructed(t_data *data, int i, double distance);
+void				attack(t_data *data, int i);
 
 #endif

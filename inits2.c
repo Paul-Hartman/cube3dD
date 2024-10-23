@@ -6,7 +6,7 @@
 /*   By: phartman <phartman@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/16 16:44:03 by wpepping          #+#    #+#             */
-/*   Updated: 2024/10/23 16:37:04 by phartman         ###   ########.fr       */
+/*   Updated: 2024/10/23 17:31:33 by phartman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,7 @@ int	init_doors(t_map *map)
 void	init_enemy(t_data *data, int i, int j, int n)
 {
 	data->enemies[n].size = 128;
-	data->enemies[n].pos = (t_coord){i * CUBE_SIZE , j * CUBE_SIZE};
+	data->enemies[n].pos = (t_coord){i * CUBE_SIZE, j * CUBE_SIZE};
 	data->enemies[n].target = data->player->pos;
 	data->enemies[n].state = WALK;
 	data->enemies[n].frame = 4;

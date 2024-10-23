@@ -6,7 +6,7 @@
 /*   By: phartman <phartman@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/21 17:25:26 by wpepping          #+#    #+#             */
-/*   Updated: 2024/10/23 16:38:37 by phartman         ###   ########.fr       */
+/*   Updated: 2024/10/23 17:20:38 by phartman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ static void	unload_bonus_textures(void *mlx_ptr, t_textures *textures)
 	int	i;
 
 	i = 0;
-	while(i<11)
+	while (i < 11)
 	{
 		if (i < 3 && textures->gun[i].img_ptr)
 			mlx_destroy_image(mlx_ptr, textures->gun[i].img_ptr);

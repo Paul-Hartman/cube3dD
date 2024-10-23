@@ -6,7 +6,7 @@
 /*   By: phartman <phartman@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/23 16:12:35 by phartman          #+#    #+#             */
-/*   Updated: 2024/10/23 17:18:11 by phartman         ###   ########.fr       */
+/*   Updated: 2024/10/23 17:23:53 by phartman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,13 +23,12 @@ void	set_game_state(t_data *data)
 
 static void	heal(t_data *data)
 {
-	int i;
-	bool being_attacked;
-	static double last_healed;
-	double current_time;
+	int				i;
+	bool			being_attacked;
+	static double	last_healed;
+	double			current_time;
 
 	current_time = currtime();
-
 	being_attacked = false;
 	i = -1;
 	while (++i < data->nr_of_enemies)
@@ -46,4 +45,38 @@ static void	heal(t_data *data)
 			data->player->health++;
 		last_healed = current_time;
 	}
+}
+
+void	attack(t_data *data, int i)
+{
+	double			current_time;
+	static double	last_attacked;
+
+	data->enemies[i].state = ATTACK;
+	current_time = currtime();
+	if (current_time - last_attacked >= 1000)
+	{
+		if (data->player->health > 0)
+			data->player->health--;
+		last_attacked = current_time;
+	}
+}
+
+bool	enemy_obstructed(t_data *data, int i, double distance)
+{
+	t_ray	*ray;
+	double	horiz_coll;
+	double	vert_coll;
+
+	ray = malloc(sizeof(t_ray));
+	ray->dir = get_dir_to(data->enemies[i].pos, data->player->pos);
+	ray->coll = data->enemies[i].pos;
+	horiz_coll = get_horiz_coll(*data->player, ray, data->map);
+	vert_coll = get_vert_coll(*data->player, ray, data->map);
+	free(ray);
+	if (horiz_coll < vert_coll)
+		return (horiz_coll <= distance);
+	else
+		return (vert_coll <= distance);
+	return (false);
 }

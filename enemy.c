@@ -6,7 +6,7 @@
 /*   By: phartman <phartman@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/22 13:56:50 by phartman          #+#    #+#             */
-/*   Updated: 2024/10/23 17:00:33 by phartman         ###   ########.fr       */
+/*   Updated: 2024/10/23 17:30:36 by phartman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,40 +36,6 @@ static void	move_enemy(t_data *data, int i, double dir)
 	data->enemies[i].pos.y -= move.y;
 }
 
-bool	enemy_obstructed(t_data *data, int i, double distance)
-{
-	t_ray	*ray;
-	double	horiz_coll;
-	double	vert_coll;
-
-	ray = malloc(sizeof(t_ray));
-	ray->dir = get_dir_to(data->enemies[i].pos, data->player->pos);
-	ray->coll = data->enemies[i].pos;
-	horiz_coll = get_horiz_coll(*data->player, ray, data->map);
-	vert_coll = get_vert_coll(*data->player, ray, data->map);
-	free(ray);
-	if (horiz_coll < vert_coll)
-		return (horiz_coll <= distance);
-	else
-		return (vert_coll <= distance);
-	return (false);
-}
-
-void attack(t_data *data, int i)
-{
-	data->enemies[i].state = ATTACK;
-	double current_time;
-	current_time = currtime();
-	static double last_attacked;
-	if (current_time - last_attacked >= 1000)
-	{
-		if(data->player->health > 0)
-			data->player->health--;
-		last_attacked = current_time;
-	}
-}
-
-
 int	move_enemies(t_data *data)
 {
 	double	dir;
@@ -86,7 +52,8 @@ int	move_enemies(t_data *data)
 		dir = get_dir_to(data->enemies[i].pos, data->player->pos);
 		distance = get_dist(dir, data->enemies[i].pos, *data->player);
 		obstructed = enemy_obstructed(data, i, distance);
-		if (distance <= fire_dist && data->enemies[i].state != DIE && !obstructed)
+		if (distance <= fire_dist && data->enemies[i].state != DIE
+			&& !obstructed)
 			attack(data, i);
 		else if (data->enemies[i].state != DIE)
 			move_enemy(data, i, dir);
@@ -112,7 +79,6 @@ void	kill_enemy(t_data *data, t_coord pos)
 		i++;
 	}
 }
-
 
 void	update_enemy_frame(t_enemy *enemy)
 {

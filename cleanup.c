@@ -6,7 +6,7 @@
 /*   By: phartman <phartman@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/27 20:07:24 by wpepping          #+#    #+#             */
-/*   Updated: 2024/10/23 16:34:54 by phartman         ###   ########.fr       */
+/*   Updated: 2024/10/23 17:32:10 by phartman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ void	cleanup(t_data *data)
 	if (data->map->doors != NULL)
 		free(data->map->doors);
 	if (data->enemies != NULL)
-			free(data->enemies);
+		free(data->enemies);
 	if (data->mlx_ptr != NULL)
 	{
 		if (data->win_ptr != NULL)
