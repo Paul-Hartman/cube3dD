@@ -6,7 +6,7 @@
 /*   By: phartman <phartman@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/23 17:24:58 by phartman          #+#    #+#             */
-/*   Updated: 2024/10/23 17:32:43 by phartman         ###   ########.fr       */
+/*   Updated: 2024/10/23 18:15:34 by phartman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ static int	load_enemy_texture(t_data *data)
 		ft_strlcat(filename, index, 30);
 		ft_strlcat(filename, ".xpm", 30);
 		if (load_image(data->mlx_ptr, &data->textures->enemy[i], filename)
-		== -1)
+			== -1)
 			return (-1);
 		free(index);
 		i++;
@@ -73,6 +73,14 @@ static int	load_gun_textures(t_data *data)
 	return (0);
 }
 
+static int	load_gameover_texture(t_data *data)
+{
+	if (load_image(data->mlx_ptr, &data->textures->gameover,
+			"textures/game_over_screen.xpm") == -1)
+		return (-1);
+	return (0);
+}
+
 int	load_bonus_textures(t_data *data, t_config *cfg)
 {
 	if (load_image(data->mlx_ptr, &data->textures->door, cfg->door) == -1)
@@ -82,6 +90,8 @@ int	load_bonus_textures(t_data *data, t_config *cfg)
 	if (load_gun_textures(data) == -1)
 		return (-1);
 	if (load_healthbar_texture(data) == -1)
+		return (-1);
+	if (load_gameover_texture(data) == -1)
 		return (-1);
 	return (0);
 }

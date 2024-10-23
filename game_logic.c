@@ -6,7 +6,7 @@
 /*   By: phartman <phartman@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/23 16:12:35 by phartman          #+#    #+#             */
-/*   Updated: 2024/10/23 17:23:53 by phartman         ###   ########.fr       */
+/*   Updated: 2024/10/23 18:12:26 by phartman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,4 +79,27 @@ bool	enemy_obstructed(t_data *data, int i, double distance)
 	else
 		return (vert_coll <= distance);
 	return (false);
+}
+
+void	draw_gameover(t_data *data)
+{
+	t_coord	img_start;
+	int		i;
+	int		j;
+
+	img_start.x = (WINDOW_WIDTH / 2) - (GAMEOVER_WIDTH / 2);
+	img_start.y = (WINDOW_HEIGHT / 2) - (GAMEOVER_HEIGHT / 2);
+	i = 0;
+	j = 0;
+	while (i < GAMEOVER_HEIGHT)
+	{
+		j = 0;
+		while (j < GAMEOVER_WIDTH)
+		{
+			put_pixel_from_img(data, &data->textures->gameover, (t_coord){j, i},
+				(t_coord){img_start.x + j, img_start.y + i});
+			j++;
+		}
+		i++;
+	}
 }

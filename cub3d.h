@@ -6,7 +6,7 @@
 /*   By: phartman <phartman@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/15 20:13:31 by wpepping          #+#    #+#             */
-/*   Updated: 2024/10/23 17:33:38 by phartman         ###   ########.fr       */
+/*   Updated: 2024/10/23 18:15:46 by phartman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,8 @@
 # define GUN_HEIGHT 280
 # define HEALTHBAR_WIDTH 100
 # define HEALTHBAR_HEIGHT 100
+# define GAMEOVER_WIDTH 256
+# define GAMEOVER_HEIGHT 224
 # define WINDOW_WIDTH 1024
 # define WINDOW_HEIGHT 640
 # define MOVE_SPEED 0.2
@@ -169,6 +171,7 @@ typedef struct s_textures
 	t_image			healthbar[9];
 	t_image			gun[3];
 	t_image			door;
+	t_image			gameover;
 }					t_textures;
 
 typedef struct s_data
@@ -383,5 +386,6 @@ t_ray				update_ray(t_ray *r, double dist, bool is_horiz);
 void				set_game_state(t_data *data);
 bool				enemy_obstructed(t_data *data, int i, double distance);
 void				attack(t_data *data, int i);
+void				draw_gameover(t_data *data);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: phartman <phartman@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/27 18:07:22 by wpepping          #+#    #+#             */
-/*   Updated: 2024/10/23 17:21:00 by phartman         ###   ########.fr       */
+/*   Updated: 2024/10/23 18:13:00 by phartman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,12 @@ void	render_frame(t_data *data)
 			draw_gun(data);
 		}
 		free(rays);
+	}
+	if (data->game_state == GAME_OVER)
+	{
+		draw_gameover(data);
+		mlx_put_image_to_window(data->mlx_ptr, data->win_ptr, data->img_ptr, 0,
+			0);
 	}
 }
 
@@ -100,7 +106,6 @@ static void	draw_healthbar(t_data *data)
 		j = 0;
 		while (j < HEALTHBAR_HEIGHT)
 		{
-			(void)data;
 			put_pixel_from_img(data, &data->textures->healthbar[health - 1],
 				(t_coord){j, i}, (t_coord){img_start_x + j, img_start_y + i});
 			j++;
