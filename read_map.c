@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   read_map.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: phartman <phartman@student.42berlin.de>    +#+  +:+       +#+        */
+/*   By: wpepping <wpepping@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/28 20:03:56 by wpepping          #+#    #+#             */
-/*   Updated: 2024/10/15 20:05:57 by wpepping         ###   ########.fr       */
+/*   Updated: 2024/10/23 18:46:57 by wpepping         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ static int	save_type(t_config *config, int fd, char type[2])
 {
 	char	value[PATH_MAX + 1];
 
+	value[0] = '\0';
 	read_to_eoln(fd, value);
 	if (type[0] == 'F')
 		return (try_save(&config->floor, value));

@@ -6,7 +6,7 @@
 /*   By: wpepping <wpepping@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/14 16:21:55 by wpepping          #+#    #+#             */
-/*   Updated: 2024/10/22 17:48:34 by wpepping         ###   ########.fr       */
+/*   Updated: 2024/10/23 15:40:18 by wpepping         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,7 +83,7 @@ int	load_textures(t_data *data, t_config *cfg)
 		|| load_image(data->mlx_ptr, &data->textures->south, cfg->south) == -1
 		|| load_image(data->mlx_ptr, &data->textures->west, cfg->west) == -1)
 		return (-1);
-	xpm = BONUS && !strncmp(file_ext(cfg->floor), ".xpm", 4);
+	xpm = BONUS && !ft_strncmp(file_ext(cfg->floor), ".xpm", 4);
 	if (xpm && load_image(data->mlx_ptr, &data->textures->floor, cfg->floor)
 		== -1)
 		return (-1);

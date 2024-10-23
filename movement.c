@@ -6,7 +6,7 @@
 /*   By: wpepping <wpepping@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/16 18:19:31 by wpepping          #+#    #+#             */
-/*   Updated: 2024/10/18 17:51:48 by wpepping         ###   ########.fr       */
+/*   Updated: 2024/10/23 18:26:33 by wpepping         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,16 +22,6 @@ bool	is_wall(t_coord pos, t_map *map)
 	if (isdoor || map_item == WALL)
 		return (true);
 	return (false);
-}
-
-int	angle_to_index(double angle)
-{
-	double	n_angle;
-	int		index;
-
-	n_angle = norm_angle(angle);
-	index = (int)(n_angle * 3600 / (2 * M_PI));
-	return (index % 3600);
 }
 
 bool	move_player(t_data *data, bool rev)
@@ -54,8 +44,18 @@ bool	move_player(t_data *data, bool rev)
 		move.x = 0;
 	if (is_wall((t_coord){player->pos.x, player->pos.y - move.y}, data->map))
 		move.y = 0;
-	data->player->pos.x += move.x;
-	data->player->pos.y -= move.y;
+	player->pos.x += move.x;
+	player->pos.y -= move.y;
+	return (true);
+}
+
+bool	move_ready(bool direction, bool opposite, long *last_move_time)
+{
+	if (!direction || opposite)
+		return (false);
+	if (currtime() - *last_move_time < MOVEMENT_DELAY)
+		return (false);
+	*last_move_time = currtime();
 	return (true);
 }
 

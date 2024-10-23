@@ -6,7 +6,7 @@
 /*   By: wpepping <wpepping@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/15 20:13:31 by wpepping          #+#    #+#             */
-/*   Updated: 2024/10/22 17:46:10 by wpepping         ###   ########.fr       */
+/*   Updated: 2024/10/23 18:27:20 by wpepping         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,6 @@
 # include "mlx/mlx.h"
 # include <X11/Xlib.h>
 # include <X11/keysym.h>
-# include <float.h>
 # include <linux/limits.h>
 # include <math.h>
 # include <stdbool.h>
@@ -38,10 +37,11 @@
 # define GUN_HEIGHT 280
 # define WINDOW_WIDTH 1024
 # define WINDOW_HEIGHT 640
-# define MOVE_SPEED 0.2
+# define MOVE_SPEED 5
 # define MOUSE_SENSITIVITY 0.001
 # define ROTATE_SPEED 0.02
 # define MS_BETWEEN_FRAMES 10
+# define MOVEMENT_DELAY 10
 # define DOOR_STEP 5
 # define EPSILON 1e-6
 # define M_PI 3.14159265358979323846
@@ -50,7 +50,6 @@
 # define MAP_ERROR "Map error"
 # define OOM_ERROR "Out of memory error"
 # define GUN_TEXTURE_BASE_NAME "textures/gun0.xpm"
-# define XPM_EXT ".xpm"
 
 # define EMPTY 48
 # define WALL 49
@@ -180,6 +179,8 @@ typedef struct s_data
 	int				ceiling[3];
 	double			focal_len;
 	long			last_render;
+	long			last_move_time;
+	long			last_strafe_time;
 	int				mouse_x;
 	t_key_state		key_state;
 	double			sin_table[3600];
@@ -257,6 +258,7 @@ int					load_textures(t_data *data, t_config *config);
 void				unload_textures(void *mlx_ptr, t_textures *textures);
 
 // movement
+bool				move_ready(bool direction, bool opposite, long *last_move_time);
 bool				move_player(t_data *data, bool rev);
 bool				strafe_player(t_data *data, bool left);
 bool				rotate_player(t_data *data, bool left, double rotate_speed);

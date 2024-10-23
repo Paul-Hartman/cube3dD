@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   read_map_content.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: phartman <phartman@student.42berlin.de>    +#+  +:+       +#+        */
+/*   By: wpepping <wpepping@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/03 19:09:39 by wpepping          #+#    #+#             */
-/*   Updated: 2024/10/17 14:32:34 by wpepping         ###   ########.fr       */
+/*   Updated: 2024/10/23 15:49:29 by wpepping         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ static int	get_width(char *line)
 	int	len;
 
 	len = 0;
-	while (*line && *line != '\n')
+	while (line && *line != '\n')
 	{
 		if (*line != EMPTY && *line != WALL && *line != NORTH
 			&& *line != SOUTH && *line != EAST && *line != WEST

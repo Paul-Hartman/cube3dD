@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   inits.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: phartman <phartman@student.42berlin.de>    +#+  +:+       +#+        */
+/*   By: wpepping <wpepping@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/16 15:39:28 by wpepping          #+#    #+#             */
-/*   Updated: 2024/10/22 15:34:48 by phartman         ###   ########.fr       */
+/*   Updated: 2024/10/23 18:10:01 by wpepping         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,10 @@ void	init_data(t_data *data)
 	data->win_ptr = NULL;
 	data->img_ptr = NULL;
 	data->active_door = NULL;
+	data->enemies = NULL;
 	data->last_render = currtime();
+	data->last_move_time = currtime();
+	data->last_strafe_time = currtime();
 	data->mouse_x = WINDOW_WIDTH / 2;
 	data->focal_len = (WINDOW_WIDTH / 2.0) / (tan(FOV / 2.0));
 }
