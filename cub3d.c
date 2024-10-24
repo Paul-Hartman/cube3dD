@@ -6,7 +6,7 @@
 /*   By: wpepping <wpepping@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/23 19:13:16 by wpepping          #+#    #+#             */
-/*   Updated: 2024/10/23 19:13:17 by wpepping         ###   ########.fr       */
+/*   Updated: 2024/10/24 16:05:16 by wpepping         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ static int	init(t_data *data, char *fname)
 
 static int	check_input(int argc, char **argv)
 {
-	if (argc != 2 || ft_strncmp(file_ext(argv[1]), ".cub", 4) != 0)
+	if (argc != 2 || ft_strncmp(file_ext(argv[1]), ".cub", 5) != 0)
 	{
 		ft_putendl_fd("Usage: cub3d <map name>.cub", 2);
 		return (-1);

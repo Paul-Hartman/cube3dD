@@ -6,7 +6,7 @@
 /*   By: wpepping <wpepping@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/23 19:13:35 by wpepping          #+#    #+#             */
-/*   Updated: 2024/10/23 19:13:47 by wpepping         ###   ########.fr       */
+/*   Updated: 2024/10/24 15:39:13 by wpepping         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,8 @@ static void	move_enemy(t_data *data, int i, double dir)
 	t_coord	move;
 
 	data->enemies[i].state = WALK;
-	move.x = MOVE_SPEED / 2 * data->cos_table[angle_to_index(dir)];
-	move.y = MOVE_SPEED / 2 * data->sin_table[angle_to_index(dir)];
+	move.x = ENEMY_MOVE_SPEED / 2 * data->cos_table[angle_to_index(dir)];
+	move.y = ENEMY_MOVE_SPEED / 2 * data->sin_table[angle_to_index(dir)];
 	if (enemy_hit_wall(data->enemies[i].pos, (t_coord){move.x, 0}, data))
 		move.x = 0;
 	if (enemy_hit_wall(data->enemies[i].pos, (t_coord){0, move.y}, data))

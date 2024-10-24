@@ -14,7 +14,6 @@ SRCS := raytracing.c events.c cleanup.c cub3d.c doors.c inits.c inits2.c inits3.
 		validate_map.c get_next_line.c get_next_line_utils.c enemy.c sprites.c minimap.c\
 		events2.c environment.c render_utils.c game_logic.c bonus_textures.c
 
-
 OBJS := $(SRCS:%.c=$(OBJDIR)/%.o)
 OBJS_BONUS := $(SRCS:%.c=$(OBJDIR_BONUS)/%.o)
 

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   read_map_content.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: phartman <phartman@student.42berlin.de>    +#+  +:+       +#+        */
+/*   By: wpepping <wpepping@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/03 19:09:39 by wpepping          #+#    #+#             */
-/*   Updated: 2024/10/24 13:59:49 by phartman         ###   ########.fr       */
+/*   Updated: 2024/10/24 15:34:19 by wpepping         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

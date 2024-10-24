@@ -6,7 +6,7 @@
 /*   By: wpepping <wpepping@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/23 19:14:16 by wpepping          #+#    #+#             */
-/*   Updated: 2024/10/23 19:14:18 by wpepping         ###   ########.fr       */
+/*   Updated: 2024/10/24 15:34:48 by wpepping         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,9 @@ void	init_textures(t_textures *textures)
 	i = 0;
 	while (i < 3)
 		textures->gun[i++].img_ptr = NULL;
+	i = 0;
+	while (i < 9)
+		textures->healthbar[i++].img_ptr = NULL;
 	textures->north.img_ptr = NULL;
 	textures->east.img_ptr = NULL;
 	textures->south.img_ptr = NULL;
@@ -29,6 +32,7 @@ void	init_textures(t_textures *textures)
 	textures->floor.img_ptr = NULL;
 	textures->ceiling.img_ptr = NULL;
 	textures->door.img_ptr = NULL;
+	textures->gameover.img_ptr = NULL;
 }
 
 void	init_trig_tables(double *sin_table, double *cos_table)

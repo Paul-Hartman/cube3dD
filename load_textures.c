@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   load_textures.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: phartman <phartman@student.42berlin.de>    +#+  +:+       +#+        */
+/*   By: wpepping <wpepping@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/23 19:14:28 by wpepping          #+#    #+#             */
-/*   Updated: 2024/10/23 19:56:30 by phartman         ###   ########.fr       */
+/*   Updated: 2024/10/24 15:34:06 by wpepping         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ int	load_textures(t_data *data, t_config *cfg)
 		return (-1);
 	else if (!xpm && save_rgbs(cfg->floor, data->floor) == -1)
 		return (-1);
-	xpm = !strncmp(file_ext(cfg->ceiling), ".xpm", 4);
+	xpm = BONUS && !strncmp(file_ext(cfg->ceiling), ".xpm", 4);
 	if (xpm && load_image(data->mlx_ptr, &data->textures->ceiling,
 			cfg->ceiling) == -1)
 		return (-1);
