@@ -6,17 +6,17 @@
 /*   By: phartman <phartman@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/23 19:13:24 by wpepping          #+#    #+#             */
-/*   Updated: 2024/10/24 16:30:45 by phartman         ###   ########.fr       */
+/*   Updated: 2024/10/24 17:19:14 by phartman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CUB3D_H
 # define CUB3D_H
 
-# include "ft_printf/ft_printf.h"
-# include "ft_printf/libft/libft.h"
+# include "ft_printf.h"
+# include "libft.h"
 # include "get_next_line.h"
-# include "mlx/mlx.h"
+# include "mlx.h"
 # include <X11/Xlib.h>
 # include <X11/keysym.h>
 # include <linux/limits.h>

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   read_map_content.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wpepping <wpepping@student.42berlin.de>    +#+  +:+       +#+        */
+/*   By: phartman <phartman@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/03 19:09:39 by wpepping          #+#    #+#             */
-/*   Updated: 2024/10/24 15:34:19 by wpepping         ###   ########.fr       */
+/*   Updated: 2024/10/24 17:26:33 by phartman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,7 +98,7 @@ int	read_map_content(t_map *map, int fd, int start)
 		if (!map->grid[i])
 			return (err_handl(NULL, map->grid));
 		map->grid[i][map->width] = '\0';
-		len = strlen(map->grid[i]);
+		len = ft_strlen(map->grid[i]);
 		if (map->grid[i][len - 1] == '\n')
 			len--;
 		ft_memset(map->grid[i] + len, ' ', map->width - len);
