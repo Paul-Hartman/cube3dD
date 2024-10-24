@@ -6,7 +6,7 @@
 /*   By: phartman <phartman@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/27 18:07:22 by wpepping          #+#    #+#             */
-/*   Updated: 2024/10/23 20:00:33 by phartman         ###   ########.fr       */
+/*   Updated: 2024/10/24 13:59:15 by phartman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,6 @@ void	render_frame(t_data *data)
 	if (currtime() - data->last_render > MS_BETWEEN_FRAMES
 		&& data->game_state == PLAYING)
 	{
-		rays = cast_rays(data->map, *data->player);
 		draw_env(rays, data);
 		draw_minimap(data, rays);
 		render_sprites(data, rays);
@@ -98,14 +97,14 @@ static void	draw_healthbar(t_data *data)
 	int	health;
 
 	health = data->player->health;
-	img_start_x = WINDOW_WIDTH - HEALTHBAR_WIDTH;
+	img_start_x = WINDOW_WIDTH - data->textures->healthbar[health - 1].width;
 	img_start_y = 10;
 	i = 0;
 	j = 0;
-	while (i < HEALTHBAR_HEIGHT)
+	while (i < data->textures->healthbar[health - 1].width)
 	{
 		j = 0;
-		while (j < HEALTHBAR_HEIGHT)
+		while (j < data->textures->healthbar[health - 1].height)
 		{
 			put_pixel_from_img(data, &data->textures->healthbar[health - 1],
 				(t_coord){j, i}, (t_coord){img_start_x + j, img_start_y + i});
@@ -117,24 +116,25 @@ static void	draw_healthbar(t_data *data)
 
 static void	draw_gun(t_data *data)
 {
-	int	img_start_x;
-	int	img_start_y;
-	int	i;
-	int	j;
+	t_coord	img_start;
+	t_coord	size;
+	int		i;
+	int		j;
 
-	img_start_x = (WINDOW_WIDTH - GUN_WIDTH) / 2;
-	img_start_y = WINDOW_HEIGHT - GUN_HEIGHT;
+	size.x = data->textures->gun[data->player->gun_texture].width;
+	size.y = data->textures->gun[data->player->gun_texture].height;
+	img_start.x = (WINDOW_WIDTH - size.x) / 2;
+	img_start.y = WINDOW_HEIGHT - size.y;
 	i = 0;
 	j = 0;
-	while (i < GUN_HEIGHT)
+	while (i < size.y)
 	{
 		j = 0;
-		while (j < GUN_WIDTH)
+		while (j < size.x)
 		{
-			(void)data;
 			put_pixel_from_img(data,
 				&data->textures->gun[data->player->gun_texture], (t_coord){j,
-				i}, (t_coord){img_start_x + j, img_start_y + i});
+				i}, (t_coord){img_start.x + j, img_start.y + i});
 			j++;
 		}
 		i++;

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wpepping <wpepping@student.42berlin.de>    +#+  +:+       +#+        */
+/*   By: phartman <phartman@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/23 19:13:24 by wpepping          #+#    #+#             */
-/*   Updated: 2024/10/23 19:13:25 by wpepping         ###   ########.fr       */
+/*   Updated: 2024/10/23 19:56:40 by phartman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,13 +32,6 @@
 # define MINI_SIZE 250
 # define CHAR_HEIGHT 32
 # define CUBE_SIZE 180
-# define TEXTURE_HEIGHT 180
-# define GUN_WIDTH 310
-# define GUN_HEIGHT 280
-# define HEALTHBAR_WIDTH 100
-# define HEALTHBAR_HEIGHT 100
-# define GAMEOVER_WIDTH 256
-# define GAMEOVER_HEIGHT 224
 # define WINDOW_WIDTH 1024
 # define WINDOW_HEIGHT 640
 # define MOVE_SPEED 5
@@ -157,6 +150,8 @@ typedef struct s_image
 	int				lsize;
 	int				bpp;
 	int				endian;
+	int				width;
+	int				height;
 }					t_image;
 
 typedef struct s_textures

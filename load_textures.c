@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   load_textures.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wpepping <wpepping@student.42berlin.de>    +#+  +:+       +#+        */
+/*   By: phartman <phartman@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/23 19:14:28 by wpepping          #+#    #+#             */
-/*   Updated: 2024/10/23 19:14:29 by wpepping         ###   ########.fr       */
+/*   Updated: 2024/10/23 19:56:30 by phartman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,8 @@
 
 int	load_image(void *mlx_ptr, t_image *img, char *fname)
 {
-	int	dummy;
-
-	img->img_ptr = mlx_xpm_file_to_image(mlx_ptr, fname, &dummy, &dummy);
+	img->img_ptr = mlx_xpm_file_to_image(mlx_ptr, fname, &img->width,
+			&img->height);
 	if (img->img_ptr == NULL)
 		return (-1);
 	img->buff = mlx_get_data_addr(img->img_ptr, &img->bpp, &img->lsize,
