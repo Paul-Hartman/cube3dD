@@ -6,7 +6,7 @@
 /*   By: wpepping <wpepping@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/23 19:13:53 by wpepping          #+#    #+#             */
-/*   Updated: 2024/10/23 19:13:54 by wpepping         ###   ########.fr       */
+/*   Updated: 2024/10/24 15:38:30 by wpepping         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,13 +19,13 @@ int	handle_loop(t_data *data)
 
 	key_state = data->key_state;
 	moved = false;
-	if (move_ready(key_state.mv_up, key_state.mv_dn, &data->last_move_time))
+	if (should_move(key_state.mv_up, key_state.mv_dn))
 		moved = move_player(data, false) || moved;
-	if (move_ready(key_state.mv_dn, key_state.mv_up, &data->last_move_time))
+	if (should_move(key_state.mv_dn, key_state.mv_up))
 		moved = move_player(data, true) || moved;
-	if (move_ready(key_state.mv_r, key_state.mv_l, &data->last_strafe_time))
+	if (should_move(key_state.mv_r, key_state.mv_l))
 		moved = strafe_player(data, false) || moved;
-	if (move_ready(key_state.mv_l, key_state.mv_r, &data->last_strafe_time))
+	if (should_move(key_state.mv_l, key_state.mv_r))
 		moved = strafe_player(data, true) || moved;
 	if (data->key_state.rot_r)
 		moved = rotate_player(data, false, ROTATE_SPEED) || moved;

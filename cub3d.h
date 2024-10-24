@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: phartman <phartman@student.42berlin.de>    +#+  +:+       +#+        */
+/*   By: wpepping <wpepping@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/23 19:13:24 by wpepping          #+#    #+#             */
-/*   Updated: 2024/10/23 19:56:40 by phartman         ###   ########.fr       */
+/*   Updated: 2024/10/24 16:01:13 by wpepping         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,8 @@
 # define CUBE_SIZE 180
 # define WINDOW_WIDTH 1024
 # define WINDOW_HEIGHT 640
-# define MOVE_SPEED 5
+# define MOVE_SPEED 0.25
+# define ENEMY_MOVE_SPEED 0.5
 # define MOUSE_SENSITIVITY 0.001
 # define ROTATE_SPEED 0.02
 # define MS_BETWEEN_FRAMES 10
@@ -271,7 +272,7 @@ int					load_image(void *mlx_ptr, t_image *img, char *fname);
 void				unload_textures(void *mlx_ptr, t_textures *textures);
 
 // movement
-bool				move_ready(bool direction, bool opposite, long *last_move_time);
+bool				should_move(bool direction, bool opposite);
 bool				move_player(t_data *data, bool rev);
 bool				strafe_player(t_data *data, bool left);
 bool				rotate_player(t_data *data, bool left, double rotate_speed);

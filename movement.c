@@ -6,22 +6,29 @@
 /*   By: wpepping <wpepping@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/16 18:19:31 by wpepping          #+#    #+#             */
-/*   Updated: 2024/10/23 18:26:33 by wpepping         ###   ########.fr       */
+/*   Updated: 2024/10/24 15:40:01 by wpepping         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-bool	is_wall(t_coord pos, t_map *map)
+bool	should_move(bool direction, bool opposite)
 {
-	char	map_item;
-	bool	isdoor;
+	if (!direction || opposite)
+		return (false);
+	return (true);
+}
 
-	map_item = get_map_item(pos, map);
-	isdoor = (map_item == DOOR && is_door(map, pos));
-	if (isdoor || map_item == WALL)
-		return (true);
-	return (false);
+static double	speed_multiplier(bool run, bool diagonal)
+{
+	double	move_speed;
+
+	move_speed = 1;
+	if (run)
+		move_speed *= 2;
+	if (diagonal)
+		move_speed /= SQRT_2;
+	return (move_speed);
 }
 
 bool	move_player(t_data *data, bool rev)
@@ -31,13 +38,10 @@ bool	move_player(t_data *data, bool rev)
 	t_player	*player;
 
 	player = data->player;
-	move_speed = MOVE_SPEED;
+	move_speed = 1.0 * MOVE_SPEED * speed_multiplier(data->key_state.run,
+			data->key_state.mv_l || data->key_state.mv_r);
 	if (rev)
 		move_speed *= -1;
-	if (data->key_state.run)
-		move_speed *= 2;
-	if (data->key_state.mv_l || data->key_state.mv_r)
-		move_speed /= SQRT_2;
 	move.x = move_speed * data->cos_table[angle_to_index(data->player->dir)];
 	move.y = move_speed * data->sin_table[angle_to_index(data->player->dir)];
 	if (is_wall((t_coord){player->pos.x + move.x, player->pos.y}, data->map))
@@ -49,16 +53,6 @@ bool	move_player(t_data *data, bool rev)
 	return (true);
 }
 
-bool	move_ready(bool direction, bool opposite, long *last_move_time)
-{
-	if (!direction || opposite)
-		return (false);
-	if (currtime() - *last_move_time < MOVEMENT_DELAY)
-		return (false);
-	*last_move_time = currtime();
-	return (true);
-}
-
 bool	strafe_player(t_data *data, bool left)
 {
 	t_coord		move;
@@ -67,11 +61,9 @@ bool	strafe_player(t_data *data, bool left)
 	t_player	*player;
 
 	player = data->player;
+	move_speed = 1.0 * MOVE_SPEED * speed_multiplier(data->key_state.run,
+			data->key_state.mv_up || data->key_state.mv_dn);
 	move_speed = MOVE_SPEED;
-	if (data->key_state.run)
-		move_speed *= 2;
-	if (data->key_state.mv_up || data->key_state.mv_dn)
-		move_speed /= SQRT_2;
 	if (left)
 		strafe_dir = norm_angle(data->player->dir + M_PI / 2);
 	else
