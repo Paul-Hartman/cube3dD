@@ -2,7 +2,7 @@
 static char *ground_0[] = {
 /* columns rows colors chars-per-pixel */
 "256 256 162 2 ",
-"   c #01FF01",
+"   c none",
 ".  c #76738D",
 "X  c #7A768E",
 "o  c #7C788F",

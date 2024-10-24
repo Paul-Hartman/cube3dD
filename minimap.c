@@ -6,7 +6,7 @@
 /*   By: phartman <phartman@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/22 13:32:47 by phartman          #+#    #+#             */
-/*   Updated: 2024/10/24 15:14:39 by phartman         ###   ########.fr       */
+/*   Updated: 2024/10/24 16:27:26 by phartman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,14 +33,14 @@ void	draw_minimap(t_data *data, t_ray *rays)
 		{
 			pos = (t_coord){x - offset.x, y - offset.y};
 			if (data->map->grid[y / TILE_SZ][x / TILE_SZ] == WALL)
-				draw_square(data, pos, TILE_SZ, (int [3]){95, 95, 95});
+				draw_square(data, pos, TILE_SZ/10, (int [3]){95, 95, 95});
 			else if (data->map->grid[y / TILE_SZ][x / TILE_SZ] == DOOR)
-				draw_square(data, pos, TILE_SZ, (int [3]){0, 0, 255});
+				draw_square(data, pos, TILE_SZ/10, (int [3]){0, 0, 255});
 			else if (data->map->grid[y / TILE_SZ][x / TILE_SZ] != SPACE)
-				draw_square(data, pos, TILE_SZ, (int [3]){195, 195, 195});
-			x += TILE_SZ / 5;
+				draw_square(data, pos, TILE_SZ/10, (int [3]){195, 195, 195});
+			x += TILE_SZ/10;
 		}
-		y += TILE_SZ / 5;
+		y += TILE_SZ/10;
 	}
 	draw_player(data, rays, offset);
 	draw_enemies(data, offset);
@@ -99,7 +99,7 @@ static void	draw_player(t_data *data, t_ray *rays, t_coord offset)
 	i = 0;
 	p.x = data->player->pos.x / CUBE_SIZE * TILE_SZ - offset.x;
 	p.y = data->player->pos.y / CUBE_SIZE * TILE_SZ - offset.y;
-	draw_square(data, (t_coord){p.x-2.5, p.y -2.5}, 5, (int [3]){0, 255, 0});
+	draw_square(data, (t_coord){p.x -2.5, p.y -2.5}, 5, (int [3]){0, 255, 0});
 	while (i < WINDOW_WIDTH)
 	{
 		if (i % 20 == 0 && i != 0)
