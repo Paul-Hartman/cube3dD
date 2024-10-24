@@ -6,7 +6,7 @@
 /*   By: phartman <phartman@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/22 13:32:47 by phartman          #+#    #+#             */
-/*   Updated: 2024/10/24 16:29:09 by phartman         ###   ########.fr       */
+/*   Updated: 2024/10/24 16:59:02 by phartman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,14 +33,14 @@ void	draw_minimap(t_data *data, t_ray *rays)
 		{
 			pos = (t_coord){x - offset.x, y - offset.y};
 			if (data->map->grid[y / TILE_SZ][x / TILE_SZ] == WALL)
-				draw_square(data, pos, TILE_SZ/10, (int [3]){95, 95, 95});
+				draw_square(data, pos, TILE_SZ / 10, (int [3]){95, 95, 95});
 			else if (data->map->grid[y / TILE_SZ][x / TILE_SZ] == DOOR)
-				draw_square(data, pos, TILE_SZ/10, (int [3]){0, 0, 255});
+				draw_square(data, pos, TILE_SZ / 10, (int [3]){0, 0, 255});
 			else if (data->map->grid[y / TILE_SZ][x / TILE_SZ] != SPACE)
-				draw_square(data, pos, TILE_SZ/10, (int [3]){195, 195, 195});
-			x += TILE_SZ/10;
+				draw_square(data, pos, TILE_SZ / 10, (int [3]){195, 195, 195});
+			x += TILE_SZ / 10;
 		}
-		y += TILE_SZ/10;
+		y += TILE_SZ / 10;
 	}
 	draw_player(data, rays, offset);
 	draw_enemies(data, offset);
@@ -129,8 +129,7 @@ static void	draw_enemies(t_data *data, t_coord offset)
 			e.x = data->enemies[i].pos.x / CUBE_SIZE * TILE_SZ - offset.x;
 			e.y = data->enemies[i].pos.y / CUBE_SIZE * TILE_SZ - offset.y;
 			if (e.x >= 0 && e.y >= 0 && e.x < MINI_SIZE && e.y < MINI_SIZE)
-				draw_square(data, (t_coord){e.x, e.y}, 5,
-					(int [3]){255, 0, 0});
+				draw_square(data, (t_coord){e.x, e.y}, 5, (int [3]){255, 0, 0});
 		}
 		i++;
 	}
