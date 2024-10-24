@@ -6,7 +6,7 @@
 /*   By: phartman <phartman@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/23 19:13:24 by wpepping          #+#    #+#             */
-/*   Updated: 2024/10/24 17:19:14 by phartman         ###   ########.fr       */
+/*   Updated: 2024/10/24 19:38:15 by phartman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@
 # define CUBE_SIZE 180
 # define WINDOW_WIDTH 1024
 # define WINDOW_HEIGHT 640
-# define MOVE_SPEED 0.25
+# define MOVE_SPEED 0.01
 # define ENEMY_MOVE_SPEED 0.5
 # define MOUSE_SENSITIVITY 0.001
 # define ROTATE_SPEED 0.001
