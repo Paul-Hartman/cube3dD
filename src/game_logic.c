@@ -6,7 +6,7 @@
 /*   By: phartman <phartman@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/23 16:12:35 by phartman          #+#    #+#             */
-/*   Updated: 2024/10/24 14:42:49 by phartman         ###   ########.fr       */
+/*   Updated: 2024/10/24 20:55:19 by phartman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,8 @@ bool	enemy_obstructed(t_data *data, int i, double distance)
 	double	vert_coll;
 
 	ray = malloc(sizeof(t_ray));
+	if (!ray)
+		cleanup(data);
 	ray->dir = get_dir_to(data->enemies[i].pos, data->player->pos);
 	ray->coll = data->enemies[i].pos;
 	horiz_coll = get_horiz_coll(*data->player, ray, data->map);

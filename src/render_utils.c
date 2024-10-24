@@ -6,7 +6,7 @@
 /*   By: phartman <phartman@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/22 13:14:41 by phartman          #+#    #+#             */
-/*   Updated: 2024/10/23 16:18:11 by phartman         ###   ########.fr       */
+/*   Updated: 2024/10/24 20:45:22 by phartman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,13 +47,13 @@ t_image	*get_texture(t_textures *textures, t_ray *r)
 		return (&textures->door);
 	side = check_dir(r->dir, r->is_horiz);
 	if (side == NORTH)
-		return (&textures->south);
-	if (side == SOUTH)
 		return (&textures->north);
+	if (side == SOUTH)
+		return (&textures->south);
 	if (side == EAST)
-		return (&textures->west);
-	if (side == WEST)
 		return (&textures->east);
+	if (side == WEST)
+		return (&textures->west);
 	return (NULL);
 }
 

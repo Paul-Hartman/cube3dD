@@ -6,7 +6,7 @@
 /*   By: phartman <phartman@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/22 13:14:23 by phartman          #+#    #+#             */
-/*   Updated: 2024/10/22 13:20:26 by phartman         ###   ########.fr       */
+/*   Updated: 2024/10/24 20:54:52 by phartman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,6 +80,8 @@ static void	set_sprite_info(t_data *data, t_hit *info_arr, t_sprite *sprite,
 	i = 0;
 	middle = 10000;
 	info = malloc(sizeof(t_sprite_info));
+	if(!info)
+		cleanup(data);
 	dir_to_sprite = get_dir_to(data->player->pos, sprite->pos);
 	info->min_x = info_arr[i].screen_x;
 	while (i < len)
