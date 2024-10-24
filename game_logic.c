@@ -6,7 +6,7 @@
 /*   By: phartman <phartman@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/23 16:12:35 by phartman          #+#    #+#             */
-/*   Updated: 2024/10/23 19:42:16 by phartman         ###   ########.fr       */
+/*   Updated: 2024/10/24 14:42:49 by phartman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ void	attack(t_data *data, int i)
 
 	data->enemies[i].state = ATTACK;
 	current_time = currtime();
-	if (current_time - last_attacked >= 1000)
+	if (current_time - last_attacked >= 2000)
 	{
 		if (data->player->health > 0)
 			data->player->health--;

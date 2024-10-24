@@ -6,7 +6,7 @@
 /*   By: phartman <phartman@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/22 13:55:27 by phartman          #+#    #+#             */
-/*   Updated: 2024/10/23 19:38:15 by phartman         ###   ########.fr       */
+/*   Updated: 2024/10/24 14:41:16 by phartman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,9 +77,9 @@ void	draw_ceiling(t_data *data, int i, int j, bool is_texture)
 			/ CUBE_SIZE;
 		r.coll.y = ((int)(r.coll.y * 1000) % (CUBE_SIZE * 1000)) / 1000.0
 			/ CUBE_SIZE;
-		tex.x = (int)(r.coll.x * (data->textures->floor.width));
-		tex.y = (int)(r.coll.y * (data->textures->floor.height));
-		put_pixel_from_img(data, &data->textures->floor, tex, (t_coord){i, j});
+		tex.x = (int)(r.coll.x * (data->textures->ceiling.width));
+		tex.y = (int)(r.coll.y * (data->textures->ceiling.height));
+		put_pixel_from_img(data, &data->textures->ceiling, tex, (t_coord){i, j});
 	}
 	else
 		set_pixel(data, data->ceiling, i, j);

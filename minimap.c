@@ -6,7 +6,7 @@
 /*   By: phartman <phartman@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/22 13:32:47 by phartman          #+#    #+#             */
-/*   Updated: 2024/10/23 17:22:34 by phartman         ###   ########.fr       */
+/*   Updated: 2024/10/24 15:14:39 by phartman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,7 +99,7 @@ static void	draw_player(t_data *data, t_ray *rays, t_coord offset)
 	i = 0;
 	p.x = data->player->pos.x / CUBE_SIZE * TILE_SZ - offset.x;
 	p.y = data->player->pos.y / CUBE_SIZE * TILE_SZ - offset.y;
-	draw_square(data, (t_coord){p.x, p.y}, 5, (int [3]){0, 255, 0});
+	draw_square(data, (t_coord){p.x-2.5, p.y -2.5}, 5, (int [3]){0, 255, 0});
 	while (i < WINDOW_WIDTH)
 	{
 		if (i % 20 == 0 && i != 0)
