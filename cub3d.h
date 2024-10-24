@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wpepping <wpepping@student.42berlin.de>    +#+  +:+       +#+        */
+/*   By: phartman <phartman@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/23 19:13:24 by wpepping          #+#    #+#             */
-/*   Updated: 2024/10/24 16:01:13 by wpepping         ###   ########.fr       */
+/*   Updated: 2024/10/24 16:30:45 by phartman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@
 # define MOVE_SPEED 0.25
 # define ENEMY_MOVE_SPEED 0.5
 # define MOUSE_SENSITIVITY 0.001
-# define ROTATE_SPEED 0.02
+# define ROTATE_SPEED 0.001
 # define MS_BETWEEN_FRAMES 10
 # define MOVEMENT_DELAY 10
 # define DOOR_STEP 5
